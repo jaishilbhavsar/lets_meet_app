@@ -1,0 +1,187 @@
+<ion-header>
+
+  <ion-navbar>
+    <!--<ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>-->
+    <ion-title>Let's Meet</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<!--<h1>Hello</h1>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of currentItems">
+      <button ion-item (click)="openItem(item)">
+        <ion-avatar item-start>
+          <img [src]="item.profilePic" />
+        </ion-avatar>
+        <h2>{{item.name}}</h2>
+        <p>{{item.about}}</p>
+        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
+      </button>
+
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>-->
+  <ion-content class="cards-bg">
+    
+      <ion-card>
+    
+        <img src="assets/img/new_statesman_events.jpg"/>
+    
+        <ion-card-content>
+          <ion-card-title>
+            Event 1
+          </ion-card-title>
+          <p>
+            <!--The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.-->
+          </p>
+        </ion-card-content>
+    
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='star'></ion-icon>
+              Favorite
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='add'></ion-icon>
+              Join Event
+            </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='share-alt'></ion-icon>
+              Share
+            </button>
+          </ion-col>
+        </ion-row>
+    
+      </ion-card>
+    
+      <ion-card>
+    
+        <div>
+          <img src="assets/img/new_statesman_events.jpg"/>
+        </div>
+    
+        <ion-card-content>
+          <ion-card-title>
+            Event 2
+          </ion-card-title>
+          <p>
+          <!--American singer-songwriter, record producer, activist, and actress, Badu's style is a prime example of neo-soul.-->
+          </p>
+        </ion-card-content>
+    
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='star'></ion-icon>
+              Favorite
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='add'></ion-icon>
+              Join Event
+            </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='share-alt'></ion-icon>
+              Share
+            </button>
+          </ion-col>
+        </ion-row>
+    
+      </ion-card>
+    
+      <ion-card>
+    
+        <div>
+          <img src="assets/img/new_statesman_events.jpg"/>
+        </div>
+    
+        <ion-card-content>
+          <ion-card-title>
+            Event 3
+          </ion-card-title>
+          <p>
+          <!--  The British rock band formed in London in 1970, and is considered one of the biggest stadium rock bands in the world.-->
+          </p>
+        </ion-card-content>
+    
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='star'></ion-icon>
+              Favorite
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='add'></ion-icon>
+              Join Event
+            </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='share-alt'></ion-icon>
+              Share
+            </button>
+          </ion-col>
+        </ion-row>
+    
+      </ion-card>
+    
+      <ion-card>
+    
+        <div>
+          <img src="assets/img/new_statesman_events.jpg"/>
+        </div>
+    
+        <ion-card-content>
+          <ion-card-title>
+            Event 4
+          </ion-card-title>
+          <p>
+          <!--  The American hip hop group widely acknowledged as one of the most influential acts in the history of hip hop.-->
+          </p>
+        </ion-card-content>
+    
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='star'></ion-icon>
+              Favorite
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='add'></ion-icon>
+              Join Event
+            </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='share-alt'></ion-icon>
+              Share
+            </button>
+          </ion-col>
+        </ion-row>
+    
+      </ion-card>
+</ion-content>
