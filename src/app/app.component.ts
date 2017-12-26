@@ -14,6 +14,8 @@ import { CreateStoryPage } from "../pages/create-story/create-story";
 import { CreateCommunityPage } from "../pages/create-community/create-community";
 import { ViewEventPage } from "../pages/view-event/view-event";
 import { ViewCommunityPage } from "../pages/view-community/view-community";
+import { EventMasterPage } from "../pages/event-master/event-master";
+import { Demo1Page } from "../pages/demo1/demo1";
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -48,6 +50,7 @@ export class MyApp {
     { title: 'Login', component: 'LoginPage' },
     { title: 'Signup', component: 'SignupPage' },
     { title: 'Master Detail', component: 'ListMasterPage' },
+    { title: 'Event Master', component: 'EventMasterPage' },
     { title: 'Menu', component: 'MenuPage' },
     { title: 'Settings', component: 'SettingsPage' },
     { title: 'Search', component: 'SearchPage' },
@@ -57,7 +60,8 @@ export class MyApp {
     { title: 'AddStory', component: 'CreateStoryPage' },
     { title: 'AddCommunity', component: 'CreateCommunityPage' },
     { title: 'ViewEvent', component: 'ViewEventPage' },
-    { title: 'ViewCommunity', component: 'ViewCommunityPage' }
+    { title: 'ViewCommunity', component: 'ViewCommunityPage' },
+    { title: 'Demo', component: 'Demo1Page' }
   ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {

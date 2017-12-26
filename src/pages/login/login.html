@@ -8,15 +8,15 @@
 
 
 <ion-content>
-  
-    <ion-list>
 
-      <ion-item>
-        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="eid" name="email"></ion-input>
-      </ion-item>
+  <ion-list>
 
-      <!--
+    <ion-item>
+      <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+      <ion-input type="email" [(ngModel)]="eid" name="email" value="zeel91297@gmail.com"></ion-input>
+    </ion-item>
+
+    <!--
       Want to use a Username instead of an Email? Here you go:
 
       <ion-item>
@@ -25,14 +25,14 @@
       </ion-item>
       -->
 
-      <ion-item>
-        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="pass" name="password"></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+      <ion-input type="password" [(ngModel)]="pass" name="password" value="12234"></ion-input>
+    </ion-item>
 
-      <div padding>
-        <button ion-button color="meetup" (click)="onClick()"block>{{ 'LOGIN_BUTTON' | translate }}</button>
-      </div>
+    <div padding>
+      <button ion-button color="meetup" (click)="onClick()" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+    </div>
 
-    </ion-list>
+  </ion-list>
 </ion-content>
