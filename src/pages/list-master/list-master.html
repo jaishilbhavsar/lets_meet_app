@@ -37,13 +37,14 @@
 
   <ion-card *ngFor="let item of arr">
 
-    <img src="{{item.event_pic}}" />
+    <img src="{{item.event_pic}}" (click)="onClick(item.event_id)" />
 
     <ion-card-content>
       <ion-row>
         <ion-col>
           <ion-card-title>
             {{item.event_name}}
+            {{u_id}}
           </ion-card-title>
         </ion-col>
       </ion-row>
@@ -56,8 +57,6 @@
         </ion-col>
 
       </ion-row>
-
-
     </ion-card-content>
 
 
