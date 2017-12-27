@@ -33,24 +33,28 @@ export class UsersPage {
 
     this.storage.get('uid').then((val)=>{
       this.uid=val;
+      let l1 = this.load.create({
+        content: "Loading ..."
+      });
+      l1.present();
+      this.data.getUser(this.uid).subscribe(
+        (dt: user_class[]) => {
+        this.u = dt;
+        this.eid = this.u[0].user_name;
+        
+        },
+        function (e) { 
+          alert(e);
+        },
+        function () {
+          l1.dismiss();
+        }
+      );
     })
-    let l1 = this.load.create({
-      content: "Loading ..."
-    });
-    l1.present();
+    
     //this.data.set_url();
-    this.data.getUser(this.uid).subscribe(
-      (dt: user_class[]) => {
-      this.u = dt;
-      },
-      function (e) { 
-        alert(e);
-      },
-      function () {
-        l1.dismiss();
-      }
-    );
-    //this.eid = this.u[0].user_name;
+    
+    
   }
 
   openModal() {
