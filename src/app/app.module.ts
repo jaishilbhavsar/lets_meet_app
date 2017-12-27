@@ -27,8 +27,10 @@ import { ViewEventPage } from "../pages/view-event/view-event";
 import { ViewCommunityPage } from "../pages/view-community/view-community";
 import { LoginproProvider } from '../providers/loginpro/loginpro';
 import { Demo1Page } from '../pages/demo1/demo1';
+import { ComminityDbTsProvider } from "../providers/community-db/community-db";
 import { EventDbProvider } from '../providers/event-db/event-db';
 import { Demo1Provider } from '../providers/demo1/demo1';
+
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -98,6 +100,7 @@ export function provideSettings(storage: Storage) {
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginproProvider,
+    ComminityDbTsProvider,
     EventDbProvider,
     Demo1Provider
   ]

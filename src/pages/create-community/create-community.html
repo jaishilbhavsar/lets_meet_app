@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="signcolor">
     <ion-title>Create Community</ion-title>
   </ion-navbar>
 
@@ -14,28 +14,27 @@
 
 
 <ion-content padding>
-  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
-    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
-    <div class="profile-image-wrapper" (click)="getPicture()">
-      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
-        <ion-icon name="add"></ion-icon>
-        <div>
-          {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
-        </div>
-      </div>
-      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
-    </div>
-    <ion-list>
-      <ion-item>
-        <ion-input type="text" placeholder="Add Community Title" formControlName="name"></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-list>
-      <ion-item>
-        <ion-input type="text" placeholder="Add Community Description" formControlName="name"></ion-input>
-      </ion-item>
-    </ion-list>
+  <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+  <div class="profile-image-wrapper" (click)="getPicture()">
+    <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
+      <ion-icon name="add"></ion-icon>
+      <div>
+        {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
 
-    <button ion-button full> Create </button>
-  </form>
+      </div>
+    </div>
+    <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" placeholder="Community Name" [(ngModel)]="comm_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Community Description" [(ngModel)]="comm_des"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button color="danger" (click)="onCreate()" block>Create Community</button>
 </ion-content>

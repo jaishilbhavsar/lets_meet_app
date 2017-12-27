@@ -7,7 +7,6 @@ import { CommentStmt } from '@angular/compiler/src/output/output_ast';
 
 /*
   Generated class for the LoginproProvider provider.
-
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
