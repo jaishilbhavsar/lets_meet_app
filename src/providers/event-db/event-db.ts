@@ -43,4 +43,7 @@ export class EventDbProvider {
     return this.http.delete(this.url + evn.event_id, rs).map((res: Response) => res.json());
   }
 
+  getEventById(id){
+    return this.http.get(this.url+id).map((res:Response)=>res.json());
+  }
 }
