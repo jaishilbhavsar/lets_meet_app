@@ -15,11 +15,11 @@
 
   <ion-card *ngFor="let item of arr ">
       <!--  <img src="assets/img/cjpg.jpg"/>-->
-      <img src="assets/img/{{item.comm_pic}}"/>
+      <img src="assets/img/communities/{{item.comm_pic}}"/>
         <ion-card-content>
           <ion-card-title>
             {{item.comm_name}}
-            <button  ion-button item-right (click)="onJoin()" color="meetup">Join Now</button>
+            <button  ion-button  (click)="onJoin()" color="danger" item-right>Join Now</button>
             </ion-card-title>
         </ion-card-content>
       </ion-card>
