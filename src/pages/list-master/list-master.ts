@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoadingController, ToastController, IonicPage, ModalController, NavController } from 'ionic-angular';
+import { Storage } from "@ionic/storage";
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
@@ -7,6 +8,8 @@ import { Items } from '../../providers/providers';
 import { Events_Class } from "../../shared/event_class";
 import { EventDbProvider } from "../../providers/event-db/event-db";
 import { Demo1Provider } from '../../providers/demo1/demo1';
+import { CreateEventPage } from "../create-event/create-event";
+import { ViewEventPage } from "../view-event/view-event";
 
 @IonicPage()
 @Component({
@@ -15,11 +18,12 @@ import { Demo1Provider } from '../../providers/demo1/demo1';
 })
 export class ListMasterPage {
   currentItems: Item[];
-
+  u_id: string = "";
   arr: Events_Class[] = [];
   //arr1: Events[] = [];
 
-  constructor(public tos: ToastController,
+  constructor(public storage: Storage,
+    public tos: ToastController,
     public _data1: Demo1Provider,
     public _data: EventDbProvider,
     public load: LoadingController,
@@ -40,6 +44,9 @@ export class ListMasterPage {
     this._data.getAllEvents().subscribe(
       (d: Events_Class[]) => {
         this.arr = d;
+        this.storage.get('uid').then((val) => {
+          this.u_id = val;
+        });
       },
       function (e) {
         alert(e);
@@ -54,7 +61,7 @@ export class ListMasterPage {
    * Prompt the user to add a new item. This shows our ItemCreatePage in a
    * modal and then adds the new item to our data source if the user created one.
    */
-  /*addItem() {
+  addItem() {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {
       if (item) {
@@ -62,7 +69,14 @@ export class ListMasterPage {
       }
     })
     addModal.present();
-  }*/
+    //this.navCtrl.push(CreateEventPage);
+  }
+
+  onClick(event_id: Events_Class) {
+    //this.navCtrl.push(ViewEventPage,{e_id:event_id});
+    this.navCtrl.push(ViewEventPage);
+    this.storage.set('evn_id', event_id);
+  }
 
   /**
    * Delete an item from the list of items.

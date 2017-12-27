@@ -24,6 +24,7 @@ import { StoryDetailPage } from "../pages/story-detail/story-detail";
 import { CreateStoryPage } from "../pages/create-story/create-story";
 import { CreateCommunityPage } from "../pages/create-community/create-community";
 import { ViewEventPage } from "../pages/view-event/view-event";
+import { CreateEventPage } from "../pages/create-event/create-event";
 import { ViewCommunityPage } from "../pages/view-community/view-community";
 import { LoginproProvider } from '../providers/loginpro/loginpro';
 import { Demo1Page } from '../pages/demo1/demo1';
@@ -60,6 +61,7 @@ export function provideSettings(storage: Storage) {
     CreateStoryPage,
     CreateCommunityPage,
     ViewEventPage,
+    CreateEventPage,
     ViewCommunityPage,
     Demo1Page
   ],
@@ -84,6 +86,7 @@ export function provideSettings(storage: Storage) {
     CreateStoryPage,
     CreateCommunityPage,
     ViewEventPage,
+    CreateEventPage,
     ViewCommunityPage,
     Demo1Page
   ],
