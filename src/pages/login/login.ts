@@ -69,9 +69,9 @@ export class LoginPage {
         }
         else {
           this.storage.set('uid', this.eid);
-          this.storage.get('uid').then((val) => {
-            console.log(val)
-          });
+          /*this.storage.get('uid').then((val) => {
+            console.log(val);
+          });*/
           this.navCtrl.push(MainPage);
 
         }
