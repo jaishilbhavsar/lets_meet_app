@@ -110,7 +110,7 @@ export class CreateCommunityPage {
 
     this.st.get('uname').then((val) => {
       this.created_by = val;
-    });
+    
     alert(this.created_by);
 
     let t1 = this.tos.create({
@@ -134,7 +134,7 @@ export class CreateCommunityPage {
         l1.dismiss();
       }
     );
-
+  });
   }
 
 }
