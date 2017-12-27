@@ -68,10 +68,10 @@ export class LoginPage {
           toast.present();
         }
         else {
-          this.storage.set('uname', this.eid);
-          this.storage.get('uname').then((val) => {
-            console.log(val)
-          });
+          this.storage.set('uid', this.eid);
+          /*this.storage.get('uid').then((val) => {
+            console.log(val);
+          });*/
           this.navCtrl.push(MainPage);
 
         }

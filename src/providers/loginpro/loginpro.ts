@@ -1,6 +1,9 @@
+import { Storage } from '@ionic/storage';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http,Response,Headers,RequestOptions } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { CommentStmt } from '@angular/compiler/src/output/output_ast';
 
 /*
   Generated class for the LoginproProvider provider.
@@ -13,42 +16,61 @@ export class LoginproProvider {
     user_id: '',
     user_pass: ''
   };
-  useradd: { user_id: string,user_name: string,user_pass: string,user_pic: string,gender: string,user_mob_no: string,user_bdate: Date } = {
+  useradd: { user_id: string, user_name: string, user_pass: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
     user_id: '',
-    user_name:'',
+    user_name: '',
     user_pass: '',
-    user_pic:'',
-    gender:'',
-    user_mob_no:'',
-    user_bdate:null,
+    user_pic: '',
+    gender: '',
+    user_mob_no: '',
+    user_bdate: null,
   };
-  constructor(public http: Http) {
+  constructor(public storage: Storage, public http: HttpClient) {
     console.log('Hello LoginproProvider Provider');
   }
-  url:string="http://localhost:3000/login";
-  urlsignup:string="http://localhost:3000/user";
-  doLogin(eid,pass)
-  {
-    let header=new Headers({'Content-Type':'application/json'});
-    let ro=new RequestOptions({headers:header});
-    this.account.user_id=eid;
-    this.account.user_pass=pass;
-    let body=JSON.stringify(this.account);
-    return this.http.post(this.url,body,ro).map((res:Response)=>res.json()); 
+  url: string = "http://localhost:3000/login";
+  urlsignup: string = "http://localhost:3000/user/";
+
+  doLogin(eid, pass) {
+    let header = new Headers({ 'Content-Type': 'application/json' });
+    let ro = new RequestOptions({ headers: header });
+    this.account.user_id = eid;
+    this.account.user_pass = pass;
+    let body = JSON.stringify(this.account);
+    return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  addUser(eid,uname,pass,image,gender,mobile,myDate)
-  {
-    let header=new Headers({'Content-Type':'application/json'});
-    let ro=new RequestOptions({headers:header});
-    this.useradd.user_id=eid;
-    this.useradd.user_name=uname;
-    this.useradd.user_pass=pass;
-    this.useradd.user_pic=image;
-    this.useradd.gender=gender;
-    
-    this.useradd.user_mob_no=mobile;
-    this.useradd.user_bdate=myDate;
-    let body=JSON.stringify(this.useradd);
-    return this.http.post(this.urlsignup,body,ro).map((res:Response)=>res.json());
+  addUser(eid, uname, pass, image, gender, mobile, myDate) {
+    let header = new Headers({ 'Content-Type': 'application/json' });
+    let ro = new RequestOptions({ headers: header });
+    this.useradd.user_id = eid;
+    this.useradd.user_name = uname;
+    this.useradd.user_pass = pass;
+    this.useradd.user_pic = image;
+    this.useradd.gender = gender;
+    this.useradd.user_mob_no = mobile;
+    this.useradd.user_bdate = myDate;
+    let body = JSON.stringify(this.useradd);
+    return this.http.post(this.urlsignup, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  }
+  ed: string = '';
+  urluser: string = "http://localhost:3000/user/";
+  set_url() {
+    //this.storage.get('uid').then((val) => {this.ed=this.urluser+val});
+    /*this.storage.get('uid').then((val) => {this.ed=val});
+    console.log("ed aavse have");
+    console.log(this.ed);
+    this.urluser="http://localhost:3000/user/"+this.ed;
+    console.log(this.urluser);*/
+    //return this.http.get(this.url + uid)
+  }
+
+  getUser(id) {
+    this.urluser.concat(id);
+    console.log(id);
+    console.log(this.urluser);
+    console.log(this.urlsignup+id);
+    return this.http.get(this.urlsignup+id);
+    //alert(this.ed);
+    //return this.http.get(this.ed);
   }
 }

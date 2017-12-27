@@ -1,5 +1,9 @@
+import { LoginproProvider } from './../../providers/loginpro/loginpro';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, ModalController,ViewController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { IonicPage, NavController, NavParams, Platform, ModalController, ViewController } from 'ionic-angular';
+import { user_class } from '../login/user_class';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 /**
  * Generated class for the UsersPage page.
@@ -15,21 +19,48 @@ import { IonicPage, NavController, NavParams, Platform, ModalController,ViewCont
 })
 export class UsersPage {
 
+  ed: any = "";
+  u: user_class[] = [];
+  eid: string = "";
+  uid: string = "";
   pet: string = "kittens";
   isAndroid: boolean = false;
-  constructor(platform: Platform, public modalCtrl:ModalController ,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
-  
+ 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UsersPage');
+
+    this.storage.get('uid').then((val)=>{
+      this.uid=val;
+      let l1 = this.load.create({
+        content: "Loading ..."
+      });
+      l1.present();
+      this.data.getUser(this.uid).subscribe(
+        (dt: user_class[]) => {
+        this.u = dt;
+        this.eid = this.u[0].user_name;
+        
+        },
+        function (e) { 
+          alert(e);
+        },
+        function () {
+          l1.dismiss();
+        }
+      );
+    })
+    
+    //this.data.set_url();
+    
+    
   }
 
-  openModal(){
+  openModal() {
 
-    let modal=this.modalCtrl.create(ModalContentPage);
+    let modal = this.modalCtrl.create(ModalContentPage);
     modal.present();
-
   }
 
 }
@@ -64,7 +95,7 @@ export class UsersPage {
 </ion-content>
 `
 })
-export class ModalContentPage{
+export class ModalContentPage {
   character;
   constructor(
     public platform: Platform,
