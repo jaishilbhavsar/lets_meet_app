@@ -12,3 +12,4 @@ export const Tab3Root = 'SearchPage';
 export const Tab2Root = 'SettingsPage';
 export const Tab4Root = 'StoriesPage';
 export const Tab5Root = 'UsersPage';
+//export const Tab6Root = '';

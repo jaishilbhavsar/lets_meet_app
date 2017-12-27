@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="signcolor">
     <!--<ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>-->
     <ion-title>Let's Meet</ion-title>
 
@@ -33,155 +33,63 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>-->
-  <ion-content class="cards-bg">
-    
-      <ion-card>
-    
-        <img src="assets/img/new_statesman_events.jpg"/>
-    
-        <ion-card-content>
+<ion-content class="cards-bg">
+
+  <ion-card *ngFor="let item of arr">
+
+    <img src="{{item.event_pic}}" />
+
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
           <ion-card-title>
-            Event 1
+            {{item.event_name}}
           </ion-card-title>
-          <p>
-            <!--The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.-->
-          </p>
-        </ion-card-content>
-    
-        <ion-row no-padding>
-          <ion-col>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='star'></ion-icon>
-              Favorite
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='add'></ion-icon>
-              Join Event
-            </button>
-          </ion-col>
-          <ion-col text-right>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='share-alt'></ion-icon>
-              Share
-            </button>
-          </ion-col>
-        </ion-row>
-    
-      </ion-card>
-    
-      <ion-card>
-    
-        <div>
-          <img src="assets/img/new_statesman_events.jpg"/>
-        </div>
-    
-        <ion-card-content>
-          <ion-card-title>
-            Event 2
-          </ion-card-title>
-          <p>
-          <!--American singer-songwriter, record producer, activist, and actress, Badu's style is a prime example of neo-soul.-->
-          </p>
-        </ion-card-content>
-    
-        <ion-row no-padding>
-          <ion-col>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='star'></ion-icon>
-              Favorite
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='add'></ion-icon>
-              Join Event
-            </button>
-          </ion-col>
-          <ion-col text-right>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='share-alt'></ion-icon>
-              Share
-            </button>
-          </ion-col>
-        </ion-row>
-    
-      </ion-card>
-    
-      <ion-card>
-    
-        <div>
-          <img src="assets/img/new_statesman_events.jpg"/>
-        </div>
-    
-        <ion-card-content>
-          <ion-card-title>
-            Event 3
-          </ion-card-title>
-          <p>
-          <!--  The British rock band formed in London in 1970, and is considered one of the biggest stadium rock bands in the world.-->
-          </p>
-        </ion-card-content>
-    
-        <ion-row no-padding>
-          <ion-col>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='star'></ion-icon>
-              Favorite
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='add'></ion-icon>
-              Join Event
-            </button>
-          </ion-col>
-          <ion-col text-right>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='share-alt'></ion-icon>
-              Share
-            </button>
-          </ion-col>
-        </ion-row>
-    
-      </ion-card>
-    
-      <ion-card>
-    
-        <div>
-          <img src="assets/img/new_statesman_events.jpg"/>
-        </div>
-    
-        <ion-card-content>
-          <ion-card-title>
-            Event 4
-          </ion-card-title>
-          <p>
-          <!--  The American hip hop group widely acknowledged as one of the most influential acts in the history of hip hop.-->
-          </p>
-        </ion-card-content>
-    
-        <ion-row no-padding>
-          <ion-col>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='star'></ion-icon>
-              Favorite
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='add'></ion-icon>
-              Join Event
-            </button>
-          </ion-col>
-          <ion-col text-right>
-            <button ion-button clear small color="danger" icon-start>
-              <ion-icon name='share-alt'></ion-icon>
-              Share
-            </button>
-          </ion-col>
-        </ion-row>
-    
-      </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button class="align-button" ion-button block icon-left color="danger" item-end>
+            <ion-icon name="add"></ion-icon>
+            Join Event
+          </button>
+        </ion-col>
+
+      </ion-row>
+
+
+    </ion-card-content>
+
+
+
+    <!--<ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='star'></ion-icon>
+          Favorite
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='musical-notes'></ion-icon>
+          Listen
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+      </ion-col>
+    </ion-row>-->
+
+  </ion-card>
+
+
+  <!--<ion-card *ngFor="let item of arr">
+    <img src="{{item.event_pic}}" class="event-img"/>
+    <div class="card-title">{{item.event_name}}</div>
+    <div class="card-subtitle">41 Listings</div>
+  </ion-card>-->
+
 </ion-content>
