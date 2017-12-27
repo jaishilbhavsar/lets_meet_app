@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { Community_Class} from "./community_class";
+import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
+
 
 import { Settings } from '../../providers/providers';
 
@@ -18,10 +21,12 @@ import { CreateCommunityPage } from "../create-community/create-community";
   templateUrl: 'settings.html'
 })
 export class SettingsPage {
+
+  arr: Community_Class[] = [];
   // Our local settings object
   options: any;
 
-  addCommunity(){
+  addCommunity() {
     this.navCtrl.push(CreateCommunityPage);
   }
 
@@ -44,7 +49,10 @@ export class SettingsPage {
     public settings: Settings,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+    public _data: ComminityDbTsProvider,
+    public load: LoadingController,
+    public toast: ToastController) {
   }
 
   _buildForm() {
@@ -74,6 +82,27 @@ export class SettingsPage {
   ionViewDidLoad() {
     // Build an empty form for the template to render
     this.form = this.formBuilder.group({});
+
+    let l1 = this.load.create({
+      content: "Loading..."
+    });
+    l1.present();
+
+    this._data.getAllCommunities().subscribe(
+
+      (data: any) => {
+        this.arr = data;
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+
+        l1.dismiss();
+      }
+
+    );
+    
   }
 
   ionViewWillEnter() {
@@ -97,5 +126,9 @@ export class SettingsPage {
 
   ngOnChanges() {
     console.log('Ng All Changes');
+  }
+
+  onJoin(){
+
   }
 }
