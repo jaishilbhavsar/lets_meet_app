@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Events } from "../../shared/event_class";
+import { Events_Class } from "../../shared/event_class";
 import { Jsonp } from '@angular/http/src/http';
 
 /*

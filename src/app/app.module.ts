@@ -18,7 +18,6 @@ import { User } from '../providers/providers';
 import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
 
-import { EventMasterPage } from "../pages/event-master/event-master";
 import { UsersPage } from "../pages/users/users";
 import { StoriesPage } from "../pages/stories/stories";
 import { StoryDetailPage } from "../pages/story-detail/story-detail";
@@ -29,6 +28,7 @@ import { ViewCommunityPage } from "../pages/view-community/view-community";
 import { LoginproProvider } from '../providers/loginpro/loginpro';
 import { Demo1Page } from '../pages/demo1/demo1';
 import { EventDbProvider } from '../providers/event-db/event-db';
+import { Demo1Provider } from '../providers/demo1/demo1';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -54,7 +54,6 @@ export function provideSettings(storage: Storage) {
 @NgModule({
   declarations: [
     MyApp,
-    EventMasterPage,
     StoryDetailPage,
     CreateStoryPage,
     CreateCommunityPage,
@@ -79,7 +78,6 @@ export function provideSettings(storage: Storage) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    EventMasterPage,
     StoryDetailPage,
     CreateStoryPage,
     CreateCommunityPage,
@@ -100,7 +98,8 @@ export function provideSettings(storage: Storage) {
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginproProvider,
-    EventDbProvider
+    EventDbProvider,
+    Demo1Provider
   ]
 })
 export class AppModule { }

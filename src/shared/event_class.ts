@@ -1,4 +1,4 @@
-export class Events {
+export class Events_Class {
     constructor(public event_id: number,
         public event_name: string,
         public event_des: string,

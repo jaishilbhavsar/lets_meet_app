@@ -4,8 +4,9 @@ import { LoadingController, ToastController, IonicPage, ModalController, NavCont
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 
-import { Events } from "../../shared/event_class";
+import { Events_Class } from "../../shared/event_class";
 import { EventDbProvider } from "../../providers/event-db/event-db";
+import { Demo1Provider } from '../../providers/demo1/demo1';
 
 @IonicPage()
 @Component({
@@ -15,10 +16,11 @@ import { EventDbProvider } from "../../providers/event-db/event-db";
 export class ListMasterPage {
   currentItems: Item[];
 
-  arr: Event[] = [];
-  arr1: Event[] = [];
+  arr: Events_Class[] = [];
+  //arr1: Events[] = [];
 
   constructor(public tos: ToastController,
+    public _data1: Demo1Provider,
     public _data: EventDbProvider,
     public load: LoadingController,
     public navCtrl: NavController,
@@ -32,17 +34,17 @@ export class ListMasterPage {
    */
   ionViewDidLoad() {
     let l1 = this.load.create({
-      content:'Loading Events'
+      content: 'Loading Events'
     });
     l1.present();
     this._data.getAllEvents().subscribe(
-      (d:any)=>{
-        this.arr=d;
+      (d: Events_Class[]) => {
+        this.arr = d;
       },
-      function(e){
+      function (e) {
         alert(e);
       },
-      function(){
+      function () {
         l1.dismiss();
       }
     )
