@@ -1,7 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
-import { IonicPage, NavController, ViewController,NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ViewController,NavParams,ToastController,LoadingController } from 'ionic-angular';
+import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
+import { Community_Class } from "../settings/community_class";
+import { DateTime } from 'ionic-angular/components/datetime/datetime';
+import { Storage } from "@ionic/storage";
 
 /**
  * Generated class for the CreateCommunityPage page.
@@ -17,6 +21,17 @@ import { IonicPage, NavController, ViewController,NavParams } from 'ionic-angula
 })
 export class CreateCommunityPage {
 
+  comm_title:string='';
+  comm_des:string='';
+  comm_pic:string='';
+  dt:DateTime;
+  //comm_date=this.dt.getDefaultValueDateString();
+  comm_date:any=new Date();
+  st:Storage;
+  created_by:string='';
+  comm_rating:number=3;
+  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateStoryPage');
   }
@@ -29,7 +44,7 @@ export class CreateCommunityPage {
   
     form: FormGroup;
   
-    constructor(public navCtrl: NavController,public navParams: NavParams, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+    constructor(public navCtrl: NavController,public _data:ComminityDbTsProvider,public navParams: NavParams,public tos:ToastController,public load:LoadingController , public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
       this.form = formBuilder.group({
         profilePic: [''],
         name: ['', Validators.required],
@@ -89,4 +104,5 @@ export class CreateCommunityPage {
       this.viewCtrl.dismiss(this.form.value);
     }
 
+   
 }

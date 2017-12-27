@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="signcolor">
     <ion-title>Create Community</ion-title>
   </ion-navbar>
 
@@ -25,17 +25,25 @@
       </div>
       <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
     </div>
-    <ion-list>
-      <ion-item>
-        <ion-input type="text" placeholder="Add Community Title" formControlName="name"></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-list>
-      <ion-item>
-        <ion-input type="text" placeholder="Add Community Description" formControlName="name"></ion-input>
-      </ion-item>
-    </ion-list>
 
-    <button ion-button full> Create </button>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>{{ 'Add Community Title' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="comm_title" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>{{ 'Add Community Description' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="comm_des" formControlName="name"></ion-input>
+      </ion-item>
+   
+
+    <ion-item>
+      <ion-label floating>{{ 'Community Picture' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="comm_pic" formControlName="name"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button color="meetup" (click)="onCreate()" block>{{ 'Create Event' | translate }}</button>
   </form>
 </ion-content>
