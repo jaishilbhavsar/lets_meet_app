@@ -108,7 +108,7 @@ export class CreateCommunityPage {
 
   onCreate() {
 
-    this.st.get('uname').then((val) => {
+    this.st.get('uid').then((val) => {
       this.created_by = val;
     
     alert(this.created_by);
