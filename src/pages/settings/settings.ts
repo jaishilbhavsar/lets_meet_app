@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { Community_Class} from "./community_class";
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
-
+import { ViewCommunityPage } from "../view-community/view-community";
 
 import { Settings } from '../../providers/providers';
 
@@ -132,5 +132,9 @@ export class SettingsPage {
 
     
 
+  }
+
+  onView(comm_id){
+      this.navCtrl.push(ViewCommunityPage,{c_id:comm_id});
   }
 }

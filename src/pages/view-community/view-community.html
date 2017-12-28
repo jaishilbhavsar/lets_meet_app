@@ -6,13 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>viewCommunity</ion-title>
+  <ion-navbar color="signcolor">
+    <ion-title>View Community</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
 
+  <ion-list *ngFor="let item of arr">
+    <img src="assets/img/communities/{{item.comm_pic}}"/>
+ <!-- <ion-img src="assets/img/communities/{{item.comm_pic}}" width="200" height="200"></ion-img>-->
+  <h4>Community Name: </h4> {{item.comm_name}}
+  <h4>Community Description: </h4> {{item.comm_des}}
+  <h4>Community Date: </h4> {{item.comm_date}}
+  <h4>Community Rating is: </h4> {{item.comm_rating}}
+  <h4>Community is Created By</h4> {{item.created_by}}
+
+  </ion-list>
 </ion-content>

@@ -21,6 +21,10 @@ export class ComminityDbTsProvider {
   getAllCommunities() {
     return this.http.get(this.url);
   }
+  
+  getCommunityById(id){
+    return this.http.get(this.url+id);
+  }
 
   addCommuniy(item: Community_Class) {
 
