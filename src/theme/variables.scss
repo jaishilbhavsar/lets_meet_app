@@ -32,7 +32,7 @@ $colors: (
   dark:       #222,
   meetup:     #ff956b,
   signcolor:  #fa5454,
-  zeel:rgb(235, 83, 83)
+  zeel:#eb5353
 );
 
 
@@ -40,14 +40,16 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
+$tabs-ios-tab-icon-color-active:#fa5454;
+$tabs-ios-tab-text-color-active:#fa5454;
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
+$tabs-md-tab-text-color-active:#fa5454;
+$tabs-md-tab-icon-color-active:#fa5454;
 
 
 // App Windows Variables
