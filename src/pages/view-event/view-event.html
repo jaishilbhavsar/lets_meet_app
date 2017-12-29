@@ -5,19 +5,47 @@
   Ionic pages and navigation.
 -->
 <ion-header>
+  <ion-toolbar>
+    <ion-navbar >
+      <ion-title></ion-title>
+    </ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 
-  <ion-navbar>
-    <ion-title>viewEvent</ion-title>
-  </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<h1>{{e_id}}</h1>
-<h2>{{event_loc}}</h2>
-<ion-item *ngFor="let item of arr">
-  <h2>{{item.event_name}}</h2>
+  <img src="{{event_pic}}" />
+  <h1>{{event_name}}</h1>
+  <button ion-button block color="danger">Join Event</button>
+  <ion-item>
+    <h3>
+      <ion-icon name="calendar"></ion-icon> {{event_date}}</h3>
+  </ion-item>
 
-</ion-item>
+  <ion-item>
+    <h4>
+      <ion-icon name="time"></ion-icon> {{event_s_time}} - {{event_e_time}}</h4>
+  </ion-item>
+
+  <ion-item>
+
+    <h3>
+      <ion-icon name="navigate"></ion-icon> {{event_loc}}</h3>
+  </ion-item>
+
+  <ion-item>
+
+    <h3>
+      <ion-icon name="person"> Hosted by</ion-icon> {{created_by}}</h3>
+  </ion-item>
+
+  <p>{{event_des}}</p>
+
 </ion-content>
