@@ -114,7 +114,7 @@ export class CreateCommunityPage {
     alert(this.created_by);
 
     let t1 = this.tos.create({
-      message: "Added",
+      message: "Created",
       duration: 3000
     });
 
@@ -126,6 +126,7 @@ export class CreateCommunityPage {
     this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.comm_rating, this.created_by)).subscribe(
       (data: any) => {
         t1.present();
+        this.navCtrl.pop();
       },
       function (err) {
         alert(err);

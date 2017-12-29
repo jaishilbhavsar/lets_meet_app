@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Community_Class } from "../settings/community_class";
+import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
 
 /**
  * Generated class for the ViewCommunityPage page.
@@ -15,11 +17,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ViewCommunityPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  arr: Community_Class[] = [];
+  comm_id: number;
+
+  constructor(public _data: ComminityDbTsProvider, public load: LoadingController, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewCommunityPage');
+    this.comm_id = this.navParams.get('c_id');
+
+    let l1 = this.load.create({
+      content: "Loading..."
+    });
+    l1.present();
+
+    this._data.getCommunityById(this.comm_id).subscribe(
+
+      (data: any) => {
+        this.arr = data;
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+        l1.dismiss();
+      }
+
+    );
   }
 
 }

@@ -23,51 +23,55 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content padding>
   <!--<form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">-->
-    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
-    <div class="profile-image-wrapper" (click)="getPicture()">
-      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
-        <ion-icon name="add"></ion-icon>
-        <div>
-          {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
-        </div>
+  <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+  <div class="profile-image-wrapper" (click)="getPicture()">
+    <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
+      <ion-icon name="add"></ion-icon>
+      <div>
+        {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
       </div>
-      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
     </div>
-    <ion-list>
-      <ion-item>
-        <ion-input type="text" [(ngModel)]="event_name" placeholder="Event Name" formControlName="name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Event Description</ion-label>
-        <ion-textarea [(ngModel)]="event_des"></ion-textarea>
-      </ion-item>
-      <ion-item>
-        <ion-label>Event Starting Time</ion-label>
-        <ion-input type="time" [(ngModel)]="event_s_time"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Event Ending Time</ion-label>
-        <ion-input type="time" [(ngModel)]="event_e_time"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Event Date</ion-label>
-        <ion-input type="date" [(ngModel)]="event_date"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Event Location</ion-label>
-        <ion-textarea [(ngModel)]="event_loc"></ion-textarea>
-      </ion-item>
-      <ion-item>
-        <ion-label>Community Name : </ion-label>
-        <ion-select multiple="">
-          <ion-option value="">Tech</ion-option>
-          <ion-option value="">Business Event</ion-option>
-          <ion-option value="">Adventure</ion-option>
-          <ion-option value="">Book Club</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
-  </form>
+    <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="event_name" placeholder="Event Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea placeholder="Event Description" [(ngModel)]="event_des"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event Starting Time</ion-label>
+      <ion-datetime displayFormat="hh:mm A" pickerFormat="hh mm A" [(ngModel)]="event_s_time"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event Ending Time</ion-label>
+      <ion-datetime displayFormat="hh:mm A" pickerFormat="hh mm A" [(ngModel)]="event_e_time"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event Date</ion-label>
+      <ion-datetime displayFormat="DD/MMMM/YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="event_date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event Location</ion-label>
+      <ion-textarea [(ngModel)]="event_loc"></ion-textarea>
+    </ion-item>
+    <!--<ion-item>
+      <ion-label>Community Name : </ion-label>
+      <ion-select multiple="">
+        <ion-option value="">Tech</ion-option>
+        <ion-option value="">Business Event</ion-option>
+        <ion-option value="">Adventure</ion-option>
+        <ion-option value="">Book Club</ion-option>
+      </ion-select>
+    </ion-item>-->
+    <button ion-button block (click)="onAdd()" icon-right color="danger">
+      Create
+      <ion-icon name="checkmark-circle" color="primary"></ion-icon>
+    </button>
+  </ion-list>
+
+  <!--</form>-->
 </ion-content>

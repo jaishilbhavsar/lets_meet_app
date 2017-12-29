@@ -42,7 +42,7 @@
     <ion-card-content>
       <ion-row>
         <ion-col>
-          <ion-card-title>
+          <ion-card-title (click)="onClick(item.event_id)">
             {{item.event_name}}
           </ion-card-title>
         </ion-col>

@@ -15,9 +15,9 @@
 
   <ion-card *ngFor="let item of arr ">
       <!--  <img src="assets/img/cjpg.jpg"/>-->
-      <img src="assets/img/communities/{{item.comm_pic}}" />
+      <img src="assets/img/communities/{{item.comm_pic}}" (click)="onView(item.comm_id)"/>
         <ion-card-content>
-          <ion-card-title>
+          <ion-card-title (click)="onView(item.comm_id)">
             {{item.comm_name}}
             <button  ion-button  (click)="onJoin()" color="danger" item-right>Join Now</button>
             </ion-card-title>

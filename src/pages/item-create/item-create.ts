@@ -1,7 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
-import { IonicPage, NavController, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, ViewController, LoadingController, ToastController } from 'ionic-angular';
+import { DateTime } from 'ionic-angular/components/datetime/datetime';
+import { Storage } from "@ionic/storage";
+
+import { EventDbProvider } from "../../providers/event-db/event-db";
+import { Events_Class } from "../../shared/event_class";
 
 @IonicPage()
 @Component({
@@ -17,7 +22,24 @@ export class ItemCreatePage {
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  event_id: number = null;
+  event_name: string = "";
+  event_des: string = "";
+  event_s_time: DateTime;
+  event_e_time: DateTime;
+  event_date: DateTime;
+  event_loc: string = "";
+  created_by: string = "";
+  event_pic: string = "";
+
+  constructor(public storage: Storage,
+    public _data: EventDbProvider,
+    public load: LoadingController,
+    public tos: ToastController,
+    public navCtrl: NavController,
+    public viewCtrl: ViewController,
+    formBuilder: FormBuilder,
+    public camera: Camera) {
     this.form = formBuilder.group({
       profilePic: [''],
       name: ['', Validators.required],
@@ -32,6 +54,33 @@ export class ItemCreatePage {
 
   ionViewDidLoad() {
 
+  }
+
+  onAdd() {
+
+    this.storage.get('uid').then((val) => {
+      this.created_by = val;
+      let l1 = this.load.create({
+        content: 'Creating ...'
+      });
+      l1.present();
+      let t1=this.tos.create({
+        duration:3000,
+        message:"Added ..."
+      })
+      this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, 1, 'true')).subscribe(
+        (data:any)=>{
+          this.navCtrl.pop();
+          t1.present();
+        },
+        function(e){
+          alert(e);
+        },
+        function(){
+          l1.dismiss();
+        }
+      );
+    });
   }
 
   getPicture() {
