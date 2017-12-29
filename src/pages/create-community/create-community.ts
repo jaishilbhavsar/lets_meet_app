@@ -5,11 +5,7 @@ import { IonicPage, NavController, ViewController, NavParams, ToastController, L
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
 import { Community_Class } from "../settings/community_class";
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
-<<<<<<< HEAD
-import { IonicStorageModule, Storage } from "@ionic/storage";
-=======
 import { Storage } from "@ionic/storage";
->>>>>>> 29f31b3e30742e7b9b451e41e913a1c5d7eff507
 
 /**
  * Generated class for the CreateCommunityPage page.
@@ -115,7 +111,6 @@ export class CreateCommunityPage {
 
   onCreate() {
 
-<<<<<<< HEAD
     this.st.get('uid').then((val) => {
       this.created_by = val;
     });
