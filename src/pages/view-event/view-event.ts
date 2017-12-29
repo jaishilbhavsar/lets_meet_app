@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EventDbProvider } from "../../providers/event-db/event-db";
-//import {  } from "../../providers/";
+import { EventCommunityDbProvider } from "../../providers/event-community-db/event-community-db";
 import { Events_Class } from "../../shared/event_class";
+import { Event_Community_Class } from "../../shared/event_community_class";
 import { Storage } from "@ionic/storage";
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 
@@ -21,6 +22,7 @@ import { DateTime } from 'ionic-angular/components/datetime/datetime';
 export class ViewEventPage {
 
   arr: Events_Class[];
+  event_community: Event_Community_Class[];
   e_id: number;
   event_name: string = "";
   event_des: string = "";
@@ -31,8 +33,12 @@ export class ViewEventPage {
   created_by: string = "";
   event_pic: string = "";
 
+  comm_id: number;
+  comm_name: string = "";
+  comm_pic: string = "";
   constructor(public storage: Storage,
     public _data: EventDbProvider,
+    public _data1: Event_Community_Class,
     public navCtrl: NavController,
     public navParams: NavParams) {
   }
@@ -40,7 +46,7 @@ export class ViewEventPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewEventPage');
     this.e_id = this.navParams.get('e_id');
-    this._data.getEventById(this.e_id).subscribe(
+    /*this._data.getEventById(this.e_id).subscribe(
       (d: Events_Class[]) => {
         this.arr = d;
         this.event_name = this.arr[0].event_name;
@@ -59,7 +65,9 @@ export class ViewEventPage {
       function () {
 
       }
-    );
+    );*/
+
+    this._data.
 
     /*this.storage.get('evn_id').then((val) => {
       this.e_id = val;
