@@ -5,7 +5,11 @@ import { IonicPage, NavController, ViewController, NavParams, ToastController, L
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
 import { Community_Class } from "../settings/community_class";
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
+<<<<<<< HEAD
 import { IonicStorageModule, Storage } from "@ionic/storage";
+=======
+import { Storage } from "@ionic/storage";
+>>>>>>> 29f31b3e30742e7b9b451e41e913a1c5d7eff507
 
 /**
  * Generated class for the CreateCommunityPage page.
@@ -26,13 +30,16 @@ export class CreateCommunityPage {
   comm_name: string = '';
   comm_des: string = '';
   comm_pic: string = '';
-  //comm_date=this.dt.getDefaultValueDateString();
   comm_date: any = new Date();
-  created_by: string = '';
+  created_by: any = '';
   comm_rating: number = 3;
 
 
   ionViewDidLoad() {
+    this.st.get('uid').then((val) => {
+      this.created_by = val;
+
+    });
     console.log('ionViewDidLoad CreateStoryPage');
   }
 
@@ -108,6 +115,7 @@ export class CreateCommunityPage {
 
   onCreate() {
 
+<<<<<<< HEAD
     this.st.get('uid').then((val) => {
       this.created_by = val;
     });
@@ -115,6 +123,10 @@ export class CreateCommunityPage {
     console.log(this.created_by);
     alert(this.created_by);
 
+=======
+   
+   // console.log(this.created_by);
+>>>>>>> 29f31b3e30742e7b9b451e41e913a1c5d7eff507
     let t1 = this.tos.create({
       message: "Created",
       duration: 3000
@@ -137,6 +149,10 @@ export class CreateCommunityPage {
         l1.dismiss();
       }
     );
+<<<<<<< HEAD
+=======
+
+>>>>>>> 29f31b3e30742e7b9b451e41e913a1c5d7eff507
   }
 
 }
