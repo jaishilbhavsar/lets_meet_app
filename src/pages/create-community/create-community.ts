@@ -118,10 +118,6 @@ export class CreateCommunityPage {
     console.log(this.created_by);
     alert(this.created_by);
 
-=======
-   
-   // console.log(this.created_by);
->>>>>>> 29f31b3e30742e7b9b451e41e913a1c5d7eff507
     let t1 = this.tos.create({
       message: "Created",
       duration: 3000
@@ -144,10 +140,5 @@ export class CreateCommunityPage {
         l1.dismiss();
       }
     );
-<<<<<<< HEAD
-=======
-
->>>>>>> 29f31b3e30742e7b9b451e41e913a1c5d7eff507
   }
-
 }
