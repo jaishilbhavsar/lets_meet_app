@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { EventDbProvider } from "../../providers/event-db/event-db";
-//import { EventCommunityDbProvider } from "../../providers/event-community-db/event-community-db";
+import { EventCommunityDbProvider } from "../../providers/event-community-db/event-community-db";
 import { Events_Class } from "../../shared/event_class";
 import { Event_Community_Class } from "../../shared/event_community_class";
 import { RSVP_Class } from "../../shared/rsvp_class";
 import { RsvpDbProvider } from "../../providers/rsvp-db/rsvp-db";
 import { Storage } from "@ionic/storage";
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
+import { ViewCommunityPage } from '../view-community/view-community';
 
 /**
  * Generated class for the ViewEventPage page.
@@ -24,7 +25,7 @@ import { DateTime } from 'ionic-angular/components/datetime/datetime';
 export class ViewEventPage {
 
   arr: Events_Class[];
-  //event_community: Event_Community_Class[];
+  event_community: Event_Community_Class[];
   e_id: number;
   event_name: string = "";
   event_des: string = "";
@@ -36,14 +37,15 @@ export class ViewEventPage {
   event_pic: string = "";
   user_id: string = "";
 
-  /* comm_id: number;
-   comm_name: string = "";
-   comm_pic: string = "";*/
+  comm_id: number;
+  comm_name: string = "";
+  comm_pic: string = "";
   constructor(public storage: Storage,
     public load: LoadingController,
     public tos: ToastController,
     public _dataEvent: EventDbProvider,
     public _dataRSVP: RsvpDbProvider,
+    public _dataEventComm: EventCommunityDbProvider,
     public navCtrl: NavController,
     public navParams: NavParams) {
   }
@@ -71,6 +73,20 @@ export class ViewEventPage {
       }
     );
 
+    this._dataEventComm.getCommunityByEventId(this.e_id).subscribe(
+      (data: Event_Community_Class[]) => {
+        this.event_community = data;
+        this.comm_id = this.event_community[0].comm_id;
+        this.comm_name = this.event_community[0].comm_name;
+        this.comm_pic = this.event_community[0].comm_pic;
+      },
+      function (e) {
+        alert(e)
+      },
+      function () {
+
+      }
+    )
   }
   onRSVP() {
     this.storage.get('uid').then((val) => {
@@ -97,5 +113,9 @@ export class ViewEventPage {
     });
 
   }
+
+  onView(){
+    this.navCtrl.push(ViewCommunityPage,{c_id:this.comm_id});
+}
 }
 

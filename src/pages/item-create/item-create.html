@@ -58,15 +58,12 @@
       <ion-label>Event Location</ion-label>
       <ion-textarea [(ngModel)]="event_loc"></ion-textarea>
     </ion-item>
-    <!--<ion-item>
+    <ion-item>
       <ion-label>Community Name : </ion-label>
-      <ion-select multiple="">
-        <ion-option value="">Tech</ion-option>
-        <ion-option value="">Business Event</ion-option>
-        <ion-option value="">Adventure</ion-option>
-        <ion-option value="">Book Club</ion-option>
+      <ion-select multiple="" [(ngModel)]="community_id">
+        <ion-option *ngFor="let item of arr" value="{{item.comm_id}}">{{item.comm_name}}</ion-option>
       </ion-select>
-    </ion-item>-->
+    </ion-item>
     <button ion-button block (click)="onAdd()" icon-right color="danger">
       Create
       <ion-icon name="checkmark-circle" color="primary"></ion-icon>

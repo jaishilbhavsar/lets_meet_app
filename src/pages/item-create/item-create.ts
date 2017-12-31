@@ -7,6 +7,9 @@ import { Storage } from "@ionic/storage";
 
 import { EventDbProvider } from "../../providers/event-db/event-db";
 import { Events_Class } from "../../shared/event_class";
+import { Community_Class } from "../settings/community_class";
+import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
+
 
 @IonicPage()
 @Component({
@@ -22,6 +25,7 @@ export class ItemCreatePage {
 
   form: FormGroup;
 
+  arr: Community_Class[] = [];
   event_id: number = null;
   event_name: string = "";
   event_des: string = "";
@@ -31,9 +35,11 @@ export class ItemCreatePage {
   event_loc: string = "";
   created_by: string = "";
   event_pic: string = "";
+  community_id: number;
 
   constructor(public storage: Storage,
     public _data: EventDbProvider,
+    public _data1: ComminityDbTsProvider,
     public load: LoadingController,
     public tos: ToastController,
     public navCtrl: NavController,
@@ -54,6 +60,18 @@ export class ItemCreatePage {
 
   ionViewDidLoad() {
 
+    this._data1.getAllCommunities().subscribe(
+      (data: Community_Class[]) => {
+        this.arr = data;
+      },
+      function (e) {
+        alert(e);
+      },
+      function () {
+
+      }
+    )
+
   }
 
   onAdd() {
@@ -64,19 +82,19 @@ export class ItemCreatePage {
         content: 'Creating ...'
       });
       l1.present();
-      let t1=this.tos.create({
-        duration:3000,
-        message:"Added ..."
+      let t1 = this.tos.create({
+        duration: 3000,
+        message: "Added ..."
       })
-      this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, 1, 'true')).subscribe(
-        (data:any)=>{
+      this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, this.community_id, 'true')).subscribe(
+        (data: any) => {
           this.navCtrl.pop();
           t1.present();
         },
-        function(e){
+        function (e) {
           alert(e);
         },
-        function(){
+        function () {
           l1.dismiss();
         }
       );

@@ -22,11 +22,11 @@
 
 <ion-content padding>
 
-  <ion-item>
+  <ion-item (click)="onView()">
     <ion-avatar item-start>
-      <img src="assets/img/marty-avatar.png">
+      <img src="assets/img/communities/{{comm_pic}}">
     </ion-avatar>
-    <h2>Marty McFly</h2>
+    <h2>{{comm_name}}</h2>
     <!--<p>November 5, 1955</p>-->
   </ion-item>
 
