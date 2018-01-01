@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Community_Class } from "../settings/community_class";
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
+import { Community_Post_User_Class } from "../../shared/community_post_user_class";
+import { ViewPostPage } from '../view-post/view-post';
 
 /**
  * Generated class for the ViewCommunityPage page.
@@ -19,7 +21,7 @@ export class ViewCommunityPage {
 
   arr: Community_Class[] = [];
   comm_id: number;
-
+  comm_post_user: Community_Post_User_Class[] = [];
   constructor(public _data: ComminityDbTsProvider, public load: LoadingController, public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -45,6 +47,26 @@ export class ViewCommunityPage {
       }
 
     );
+
+    let l2 = this.load.create({
+      content: "Loading..."
+    });
+    l2.present();
+    this._data.getPostByCommunityId(this.comm_id).subscribe(
+      (data: Community_Post_User_Class[]) => {
+        this.comm_post_user = data;
+      },
+      function (e) {
+        alert(e);
+      },
+      function () {
+        l2.dismiss();
+      }
+    )
+  }
+
+  onPostClick(item: Community_Post_User_Class) {
+    this.navCtrl.push(ViewPostPage, { post_id: item.post_id });
   }
 
 }
