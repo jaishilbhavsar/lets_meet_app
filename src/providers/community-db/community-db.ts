@@ -21,9 +21,9 @@ export class ComminityDbTsProvider {
   getAllCommunities() {
     return this.http.get(this.url);
   }
-  
-  getCommunityById(id){
-    return this.http.get(this.url+id);
+
+  getCommunityById(id) {
+    return this.http.get(this.url + id);
   }
 
   addCommuniy(item: Community_Class) {
@@ -34,17 +34,15 @@ export class ComminityDbTsProvider {
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
-  deleteCommunity(item:Community_Class){
+  deleteCommunity(item: Community_Class) {
 
-    return this.http.post(this.url+item.comm_id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.post(this.url + item.comm_id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
 
   }
-
-
-  editCommunity(item:Community_Class){
+  editCommunity(item: Community_Class) {
 
     let body = JSON.stringify(item);
-    return this.http.post(this.url+item.comm_id,body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.post(this.url + item.comm_id, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
 
   }
 
