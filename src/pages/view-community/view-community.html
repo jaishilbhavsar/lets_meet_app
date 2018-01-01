@@ -20,13 +20,13 @@
     <button ion-button block color="danger">Join Community</button>
  <!-- <ion-img src="assets/img/communities/{{item.comm_pic}}" width="200" height="200"></ion-img>-->
     <ion-item>
-  <h4><ion-icon name="calendar"></ion-icon> {{item.comm_date}} </h4>
+  <h4><ion-icon name="calendar"></ion-icon> {{item.comm_date | date:'dd-MM-yy'}} </h4>
 </ion-item>
 <ion-item>
   <h4><ion-icon name="star"></ion-icon> {{item.comm_rating}} </h4>
 </ion-item>
 <ion-item>
-  <h4><ion-icon name="person"></ion-icon> {{item.created_by}} </h4>
+  <h4><ion-icon name="person">Created by </ion-icon> {{item.created_by}} </h4>
 </ion-item>
   <h4>Community Description: </h4> {{item.comm_des}}
 
