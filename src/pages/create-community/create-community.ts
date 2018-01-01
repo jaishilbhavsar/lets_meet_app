@@ -111,8 +111,13 @@ export class CreateCommunityPage {
 
   onCreate() {
 
-   
-   // console.log(this.created_by);
+    this.st.get('uid').then((val) => {
+      this.created_by = val;
+    });
+
+    console.log(this.created_by);
+    alert(this.created_by);
+
     let t1 = this.tos.create({
       message: "Created",
       duration: 3000
@@ -135,7 +140,5 @@ export class CreateCommunityPage {
         l1.dismiss();
       }
     );
-
   }
-
 }

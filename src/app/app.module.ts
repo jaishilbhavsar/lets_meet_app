@@ -31,6 +31,12 @@ import { Demo1Page } from '../pages/demo1/demo1';
 import { ComminityDbTsProvider } from "../providers/community-db/community-db";
 import { EventDbProvider } from '../providers/event-db/event-db';
 import { Demo1Provider } from '../providers/demo1/demo1';
+<<<<<<< HEAD
+import { EditprofilePage } from '../pages/editprofile/editprofile';
+=======
+import { EventCommunityDbProvider } from '../providers/event-community-db/event-community-db';
+import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
+>>>>>>> 1765c1308028362e581da2cc972e21c2e378bc18
 
 
 // The translate loader needs to know where to load i18n files
@@ -63,7 +69,8 @@ export function provideSettings(storage: Storage) {
     ViewEventPage,
     CreateEventPage,
     ViewCommunityPage,
-    Demo1Page
+    Demo1Page,
+    EditprofilePage
   ],
   imports: [
     BrowserModule,
@@ -88,7 +95,8 @@ export function provideSettings(storage: Storage) {
     ViewEventPage,
     CreateEventPage,
     ViewCommunityPage,
-    Demo1Page
+    Demo1Page,
+    EditprofilePage
   ],
   providers: [
     Api,
@@ -105,7 +113,9 @@ export function provideSettings(storage: Storage) {
     LoginproProvider,
     ComminityDbTsProvider,
     EventDbProvider,
-    Demo1Provider
+    Demo1Provider,
+    EventCommunityDbProvider,
+    RsvpDbProvider
   ]
 })
 export class AppModule { }

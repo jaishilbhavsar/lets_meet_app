@@ -1,3 +1,4 @@
+import { EditprofilePage } from './../editprofile/editprofile';
 import { LoginproProvider } from './../../providers/loginpro/loginpro';
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
@@ -59,7 +60,7 @@ export class UsersPage {
 
   openModal() {
 
-    let modal = this.modalCtrl.create(ModalContentPage);
+    let modal = this.modalCtrl.create(EditprofilePage);
     modal.present();
   }
 

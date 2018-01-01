@@ -25,6 +25,14 @@ export class LoginproProvider {
     user_mob_no: '',
     user_bdate: null,
   };
+  userupdate: { user_id: string, user_name: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
+    user_id: '',
+    user_name: '',
+    user_pic: '',
+    gender: '',
+    user_mob_no: '',
+    user_bdate: null,
+  };
   constructor(public storage: Storage, public http: HttpClient) {
     console.log('Hello LoginproProvider Provider');
   }
@@ -51,6 +59,22 @@ export class LoginproProvider {
     this.useradd.user_bdate = myDate;
     let body = JSON.stringify(this.useradd);
     return this.http.post(this.urlsignup, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  }
+  updateUser(id, uname, image, gender, mobile, mydate) {
+    let header = new Headers({ 'Content-Type': 'application/json' });
+    let ro = new RequestOptions({ headers: header });
+    this.userupdate.user_id = id;
+    console.log('Login pro ma user update');
+    console.log(id);
+    console.log(this.userupdate.user_id);
+    this.userupdate.user_name = uname;
+    this.userupdate.user_pic = image;
+    this.userupdate.gender = gender;
+    this.userupdate.user_mob_no = mobile;
+    this.userupdate.user_bdate = mydate;
+    let body = JSON.stringify(this.userupdate);
+    alert(this.userupdate.user_id);
+    return this.http.put(this.urlsignup, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
   ed: string = '';
   urluser: string = "http://localhost:3000/user/";
