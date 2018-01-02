@@ -21,4 +21,8 @@ export class EventCommunityDbProvider {
     return this.http.get(this.url + id);
   }
 
+  getAllEventsAndCommunities() {
+    return this.http.get(this.url);
+  }
+
 }

@@ -2,13 +2,18 @@
 
   <ion-navbar color="signcolor">
     <!--<ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>-->
-    <ion-title>Let's Meet</ion-title>
-
+    <ion-title>Upcoming Events</ion-title>
+    <ion-buttons start>
+      <button (click)="onSearchIcon()" ion-button icon-only>
+        <ion-icon name='search'></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-buttons end>
       <button ion-button icon-only (click)="addItem()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
@@ -33,7 +38,8 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>-->
-<ion-content class="cards-bg">
+
+<!--<ion-content class="cards-bg">
 
   <ion-card *ngFor="let item of arr">
 
@@ -56,38 +62,21 @@
         </ion-col>
 
       </ion-row>
-    </ion-card-content>
+    </ion-card-content>-->
+<ion-content>
+  <ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of arr" class="text-wrap">
+      <ion-avatar item-start>
+        <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">
+      </ion-avatar>
+      <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
+      <h3 class="text-wrap">{{item.comm_name}}</h3>
+      <p class="text-wrap">{{item.event_date | date:'fullDate'}},{{item.event_s_time}}</p>
+      <button ion-button (click)="onRSVP(item.event_id)" *ngIf="join_button" color="danger" clear item-end>Join Event</button>
+      <button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button" clear item-end>Going</button>
+    </ion-item>
+  </ion-list>
 
-
-
-    <!--<ion-row no-padding>
-      <ion-col>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='star'></ion-icon>
-          Favorite
-        </button>
-      </ion-col>
-      <ion-col text-center>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='musical-notes'></ion-icon>
-          Listen
-        </button>
-      </ion-col>
-      <ion-col text-right>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='share-alt'></ion-icon>
-          Share
-        </button>
-      </ion-col>
-    </ion-row>-->
-
-  </ion-card>
-
-
-  <!--<ion-card *ngFor="let item of arr">
-    <img src="{{item.event_pic}}" class="event-img"/>
-    <div class="card-title">{{item.event_name}}</div>
-    <div class="card-subtitle">41 Listings</div>
-  </ion-card>-->
 
 </ion-content>
