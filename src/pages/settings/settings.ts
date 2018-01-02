@@ -25,8 +25,7 @@ export class SettingsPage {
   arr:Community_Class[]=[];
   arr1:Community_Class[]=[];
   txtsearch:string='';
-  flag=1;
-  arr: Community_Class[] = [];
+  flag:string="false";
   // Our local settings object
   options: any;
 
@@ -132,7 +131,7 @@ export class SettingsPage {
     console.log('Ng All Changes');
   }
 
-  onClick(){
+  onSearch(){
 
     if (this.txtsearch != '') {
       this.arr = this.arr.filter((x) => x.comm_name.startsWith(this.txtsearch))
@@ -142,6 +141,10 @@ export class SettingsPage {
     }
   
     
+  }
+
+  onClick(){
+    this.flag="true";
   }
 
   onJoin(){

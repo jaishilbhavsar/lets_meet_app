@@ -59,15 +59,15 @@ export class SearchPage {
   }
 
 
-  onSearch() {
+  /*onSearch() {
 
     if (this.txtsearch != '') {
-      this.arr1 = this.arr.filter((x) => x.comm_name.startsWith(this.txtsearch))
+      this.arr1 = this.arr.filter((x) => x..startsWith(this.txtsearch))
     }
     else{
       this.arr1=null;
     }
   
 
-  }
+  }*/
 }

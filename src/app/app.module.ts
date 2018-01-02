@@ -35,11 +35,6 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { EventCommunityDbProvider } from '../providers/event-community-db/event-community-db';
 import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
 import { PostDbProvider } from '../providers/post-db/post-db';
-<<<<<<< HEAD
-import { ViewPostPage } from "../pages/view-post/view-post";
-
-=======
->>>>>>> 95ae78d252cd913a08c885f34e18ad1dd7af96f7
 
 
 // The translate loader needs to know where to load i18n files
