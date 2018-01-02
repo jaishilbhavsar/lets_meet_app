@@ -1,4 +1,3 @@
-import { ViewPostPage } from './../pages/view-post/view-post';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,6 +34,7 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { EventCommunityDbProvider } from '../providers/event-community-db/event-community-db';
 import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
 import { PostDbProvider } from '../providers/post-db/post-db';
+import { ViewPostPage } from "../pages/view-post/view-post";
 
 
 // The translate loader needs to know where to load i18n files
