@@ -30,11 +30,18 @@ import { LoginproProvider } from '../providers/loginpro/loginpro';
 import { Demo1Page } from '../pages/demo1/demo1';
 import { ComminityDbTsProvider } from "../providers/community-db/community-db";
 import { EventDbProvider } from '../providers/event-db/event-db';
+<<<<<<< HEAD
+import { Demo1Provider } from '../providers/demo1/demo1';
+import { EditprofilePage } from '../pages/editprofile/editprofile';
+import { EventCommunityDbProvider } from '../providers/event-community-db/event-community-db';
+import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
+=======
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { EventCommunityDbProvider } from '../providers/event-community-db/event-community-db';
 import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
 import { PostDbProvider } from '../providers/post-db/post-db';
 import { ViewPostPage } from "../pages/view-post/view-post";
+>>>>>>> 533b53188bcdcd9b436f224ac318d9f2efd3d3fa
 
 
 // The translate loader needs to know where to load i18n files
