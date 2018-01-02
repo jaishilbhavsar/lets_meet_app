@@ -29,6 +29,7 @@ export class ListMasterPage {
   going_button: boolean = false;
   user_id: string = "";
   flag: boolean = false;
+  txtsearch:string='';
 
   constructor(public storage: Storage,
     public tos: ToastController,
@@ -138,6 +139,18 @@ export class ListMasterPage {
         }
       );
     });
+  }
+
+  onSearch(){
+
+    if (this.txtsearch != '') {
+      this.arr = this.arr.filter((x) => x.event_name.startsWith(this.txtsearch))
+    }
+    else{
+      this.arr=this.arr1;
+    }
+  
+    
   }
 
   onSearchIcon() {

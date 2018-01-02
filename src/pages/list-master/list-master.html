@@ -64,7 +64,7 @@
       </ion-row>
     </ion-card-content>-->
 <ion-content>
-  <ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar *ngIf="flag"  [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by Events"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let item of arr" class="text-wrap">
       <ion-avatar item-start>

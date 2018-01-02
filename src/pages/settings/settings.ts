@@ -5,10 +5,14 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { Community_Class} from "./community_class";
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
 import { ViewCommunityPage } from "../view-community/view-community";
+import { Comm_member_class } from "../../shared/comm_member_class";
+
 
 import { Settings } from '../../providers/providers';
 
 import { CreateCommunityPage } from "../create-community/create-community";
+import { CommunityMemberDbProvider } from '../../providers/community-member-db/community-member-db';
+import { Storage } from '@ionic/storage';
 
 /**
  * The Settings page is a simple form that syncs with a Settings provider
@@ -24,8 +28,9 @@ export class SettingsPage {
 
   arr:Community_Class[]=[];
   arr1:Community_Class[]=[];
+  user_id: string = "";
   txtsearch:string='';
-  flag:string="false";
+  flag: boolean = false;
   // Our local settings object
   options: any;
 
@@ -55,7 +60,9 @@ export class SettingsPage {
     public translate: TranslateService,
     public _data: ComminityDbTsProvider,
     public load: LoadingController,
-    public toast: ToastController) {
+    public toast: ToastController,
+    public comm_member:CommunityMemberDbProvider,
+    public storage:Storage) {
   }
 
   _buildForm() {
@@ -95,6 +102,8 @@ export class SettingsPage {
 
       (data: any) => {
         this.arr = data;
+        this.arr1=data;
+        
       },
       function (err) {
         alert(err);
@@ -143,13 +152,41 @@ export class SettingsPage {
     
   }
 
-  onClick(){
-    this.flag="true";
+  onSearchIcon() {
+    if (this.flag == true) {
+      this.flag = false;
+    }
+    else {
+      this.flag = true;
+    }
   }
+  onJoin(comm_id){
 
-  onJoin(){
+      alert(comm_id);
+    this.storage.get('uid').then((val) => {
+      this.user_id = val;
+      alert(this.user_id);
+      let l1 = this.load.create({
+        content: 'Joining ...'
+      });
+      l1.present();
+      let t1 = this.toast.create({
+        duration: 3000,
+        message: "Joined ..."
+      })
+      this.comm_member.addCommunityMember(new Comm_member_class(null, this.user_id, comm_id)).subscribe(
+        (data: any) => {
+          t1.present();
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+          l1.dismiss();
 
-    
+        }
+      );
+    });
 
   }
 

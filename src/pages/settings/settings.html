@@ -2,12 +2,12 @@
 
   <ion-navbar color="signcolor">
     <ion-title>Communities</ion-title>
+    <ion-buttons start>
+      <button (click)="onSearchIcon()" ion-button icon-only>
+        <ion-icon name='search'></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-buttons end>
-        <button ion-button icon-only>
-          <ion-icon name="search" (click)="onClick()"></ion-icon>
-             <ion-searchbar (keyup)="onSearch()" *ngIf="flag=='true'"></ion-searchbar>
-           </button>
-        
         <button ion-button icon-only (click)="addCommunity()">
           <ion-icon name="add"></ion-icon>
         </button>
@@ -17,7 +17,7 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-searchbar *ngIf="flag" [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by community"></ion-searchbar>
   <ion-card *ngFor="let item of arr ">
       <!--  <img src="assets/img/cjpg.jpg"/>-->
       <ion-row>
@@ -27,9 +27,9 @@
     <ion-col col-10>
         <ion-card-content>
           <ion-card-title (click)="onView(item.comm_id)">
-            <h5>{{item.comm_name}}</h5>
-            <h5>Is created by: {{item.created_by}}</h5>
-            <button  ion-button  (click)="onJoin()" color="danger" >Join Now</button>
+            <h4>{{item.comm_name}}</h4>
+            <h5>Is created by : {{item.created_by}}</h5>
+            <button  ion-button  (click)="onJoin(item.comm_id)" color="danger" small>Join Now</button>
             </ion-card-title>
         </ion-card-content>
       </ion-col>
