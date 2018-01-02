@@ -29,9 +29,10 @@
       <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
       <ion-input type="password" [(ngModel)]="pass" name="password" ></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item >
+      <a (click)="showPrompt()" class="forgetAlign">Forgot Password</a>
     </ion-item>
-    <a (click)="showPrompt()">Forgot Password</a>
+   
     <div padding>
       <button ion-button color="meetup" (click)="onClick()" block>{{ 'LOGIN_BUTTON' | translate }}</button>
     </div>
