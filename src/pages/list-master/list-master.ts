@@ -7,7 +7,6 @@ import { Items } from '../../providers/providers';
 
 import { Events_Class } from "../../shared/event_class";
 import { EventDbProvider } from "../../providers/event-db/event-db";
-import { Demo1Provider } from '../../providers/demo1/demo1';
 import { CreateEventPage } from "../create-event/create-event";
 import { ViewEventPage } from "../view-event/view-event";
 
@@ -24,7 +23,6 @@ export class ListMasterPage {
 
   constructor(public storage: Storage,
     public tos: ToastController,
-    public _data1: Demo1Provider,
     public _data: EventDbProvider,
     public load: LoadingController,
     public navCtrl: NavController,

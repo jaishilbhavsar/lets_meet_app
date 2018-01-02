@@ -16,6 +16,7 @@ import { ViewEventPage } from "../pages/view-event/view-event";
 import { ViewCommunityPage } from "../pages/view-community/view-community";
 import { Demo1Page } from "../pages/demo1/demo1";
 import { CreateEventPage } from "../pages/create-event/create-event";
+import { ViewPostPage } from "../pages/view-post/view-post";
 
 @Component({
   template: `<ion-menu [content]="content">
