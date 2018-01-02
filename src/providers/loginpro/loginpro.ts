@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CommentStmt } from '@angular/compiler/src/output/output_ast';
+import { email_class } from '../../shared/email_class';
 
 /*
   Generated class for the LoginproProvider provider.
@@ -96,5 +97,11 @@ export class LoginproProvider {
     return this.http.get(this.urlsignup+id);
     //alert(this.ed);
     //return this.http.get(this.ed);
+  }
+  urlmail:string="http://localhost:3000/demomail/"
+  sendMail(demo:email_class)
+  {
+    let body = JSON.stringify(demo);
+    return this.http.post(this.urlmail, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 }

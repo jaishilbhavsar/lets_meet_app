@@ -1,5 +1,5 @@
 import { Storage } from '@ionic/storage';
-
+import { AlertController } from 'ionic-angular';
 import { loginclass } from './loginclass';
 import { user_class } from './user_class';
 import { Component } from '@angular/core';
@@ -10,6 +10,8 @@ import { User } from '../../providers/providers';
 import { Demo1Page } from '../../pages/demo1/demo1';
 import { LoginproProvider } from '../../providers/loginpro/loginpro';
 import { MainPage } from "../pages";
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { email_class } from '../../shared/email_class';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -28,7 +30,7 @@ export class LoginPage {
   private loginErrorString: string;
   u1: user_class[] = [];
   loginsession: loginclass;
-  constructor(public storage: Storage, public data: LoginproProvider, public navCtrl: NavController,
+  constructor(public load: LoadingController, public alert: AlertController, public storage: Storage, public data: LoginproProvider, public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
@@ -80,4 +82,75 @@ export class LoginPage {
       (err) => alert("invalid"),
     );
   }
+  forid: string = '';
+  u: user_class[] = [];
+  validate() {
+    let l1 = this.load.create({
+      content: "Loading ..."
+    });
+    l1.present();
+    this.data.getUser(this.forid)
+      .subscribe(
+      (dt:any) => {
+        if(dt!="")
+        {
+        this.u = dt;
+        this.eid = this.u[0].user_id;
+        var msg = "Hello " + this.forid + ". You have requested to reset the password. your password is '" + this.u[0].user_pass + "'. Password is one of the confidential thing, Don't share it with anyone.";
+        this.data.sendMail(new email_class(msg, this.forid, "Resetting the password of Reunir."))
+          .subscribe(
+          (data1: any) => {
+            console.log("mail sent");
+            alert("The Password has been sent to " + this.forid);
+          },
+          function (e) {
+            alert(e);
+          },
+          function () {
+            l1.dismiss();
+          }
+          );
+      }
+      else{
+        alert("enter valid mail");
+      }
+    }
+      ,
+      function (e) {
+        alert(e);
+      },
+      function () {
+        l1.dismiss();
+      }
+      );
+  }
+  showPrompt() {
+    let prompt = this.alert.create({
+      title: 'Forgot Password',
+      message: "Enter Your Email Id To Get Your Password",
+      inputs: [
+        {
+          name: 'name',
+          placeholder: 'Email_id'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Send',
+          handler: data => {
+            this.forid = data.name;
+            this.validate();
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
 }
+
