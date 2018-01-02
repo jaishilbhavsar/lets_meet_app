@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { Event_Community_Class } from "../../shared/event_community_class";
-
 /*
   Generated class for the EventCommunityDbProvider provider.
 

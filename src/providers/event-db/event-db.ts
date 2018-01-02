@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Events_Class } from "../../shared/event_class";
 import { Jsonp } from '@angular/http/src/http';
@@ -38,7 +37,6 @@ export class EventDbProvider {
   }
 
   deleteEvent(evn:Events_Class) {
-    let h = new Headers({ 'Content-Type': 'application/json' });
     return this.http.delete(this.url + evn.event_id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
