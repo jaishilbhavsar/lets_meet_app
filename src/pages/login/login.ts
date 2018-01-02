@@ -96,8 +96,8 @@ export class LoginPage {
         {
         this.u = dt;
         this.eid = this.u[0].user_id;
-        var msg = "Hello " + this.forid + ". You have requested to reset the password. your password is '" + this.u[0].user_pass + "'. Password is one of the confidential thing, Don't share it with anyone.";
-        this.data.sendMail(new email_class(msg, this.forid, "Resetting the password of Reunir."))
+        var message = "Hello " + this.forid + ". You have requested to reset the password. your password is '" + this.u[0].user_pass + "'. Password is one of the confidential thing, Don't share it with anyone.";
+        this.data.sendMail(new email_class(message, this.forid, "Resetting the password of Lets_Meet."))
           .subscribe(
           (data1: any) => {
             console.log("mail sent");

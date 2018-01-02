@@ -102,6 +102,9 @@ export class LoginproProvider {
   sendMail(demo:email_class)
   {
     let body = JSON.stringify(demo);
+    console.log(demo.name);
+    console.log(demo.message);
+    console.log(demo.subject);
     return this.http.post(this.urlmail, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 }
