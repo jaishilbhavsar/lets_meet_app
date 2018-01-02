@@ -4,9 +4,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 
-import { Community_Class } from "../settings/community_class";
-import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
-
+import { user_class } from "../login/user_class";
+import { LoginproProvider } from "../../providers/loginpro/loginpro";
 
 @IonicPage()
 @Component({
@@ -19,14 +18,14 @@ export class SearchPage {
   //items:any=[];
 
   txtsearch: string = '';
-  arr: Community_Class[] = [];
-  arr1: Community_Class[] = [];
+  arr: user_class[] = [];
+  arr1: user_class[] = [];
 
-  constructor(public navCtrl: NavController, public _data: ComminityDbTsProvider, public navParams: NavParams, public items: Items) { }
+  constructor(public navCtrl: NavController, public _data: LoginproProvider, public navParams: NavParams, public items: Items) { }
 
-  ionViewDidLoad() {
+  /*ionViewDidLoad() {
 
-    this._data.getAllCommunities().subscribe(
+    this._data.().subscribe(
 
       (data: any) => {
         this.arr = data;
@@ -35,7 +34,7 @@ export class SearchPage {
         alert(e);
       }
     );
-  }
+  }*/
   /**
    * Perform a service for the proper items.
    */

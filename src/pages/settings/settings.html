@@ -3,6 +3,11 @@
   <ion-navbar color="signcolor">
     <ion-title>Communities</ion-title>
     <ion-buttons end>
+        <button ion-button icon-only>
+          
+             <ion-searchbar (click)="onClick()" *ngIf="flag=='true'"></ion-searchbar>
+           </button>
+        
         <button ion-button icon-only (click)="addCommunity()">
           <ion-icon name="add"></ion-icon>
         </button>

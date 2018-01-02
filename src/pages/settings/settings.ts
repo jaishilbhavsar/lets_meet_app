@@ -22,6 +22,10 @@ import { CreateCommunityPage } from "../create-community/create-community";
 })
 export class SettingsPage {
 
+  arr:Community_Class[]=[];
+  arr1:Community_Class[]=[];
+  txtsearch:string='';
+  flag=1;
   arr: Community_Class[] = [];
   // Our local settings object
   options: any;
@@ -126,6 +130,18 @@ export class SettingsPage {
 
   ngOnChanges() {
     console.log('Ng All Changes');
+  }
+
+  onClick(){
+
+    if (this.txtsearch != '') {
+      this.arr = this.arr.filter((x) => x.comm_name.startsWith(this.txtsearch))
+    }
+    else{
+      this.arr=this.arr1;
+    }
+  
+    
   }
 
   onJoin(){

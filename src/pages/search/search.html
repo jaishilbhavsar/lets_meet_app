@@ -8,7 +8,7 @@
 
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by Community or Event"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by User"></ion-searchbar>
   <ion-list inset>
     <ion-item *ngFor="let item of arr1">
        {{item.comm_name}}
