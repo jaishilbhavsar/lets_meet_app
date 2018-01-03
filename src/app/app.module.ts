@@ -35,6 +35,7 @@ import { EventCommunityDbProvider } from '../providers/event-community-db/event-
 import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
 import { PostDbProvider } from '../providers/post-db/post-db';
 import { ViewPostPage } from "../pages/view-post/view-post";
+import { CommunityMemberDbProvider } from '../providers/community-member-db/community-member-db';
 
 
 // The translate loader needs to know where to load i18n files
@@ -115,7 +116,8 @@ export function provideSettings(storage: Storage) {
     EventDbProvider,
     EventCommunityDbProvider,
     RsvpDbProvider,
-    PostDbProvider
+    PostDbProvider,
+    CommunityMemberDbProvider
   ]
 })
 export class AppModule { }
