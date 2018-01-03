@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ViewController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { EventDbProvider } from "../../providers/event-db/event-db";
 import { EventCommunityDbProvider } from "../../providers/event-community-db/event-community-db";
 import { Events_Class } from "../../shared/event_class";
@@ -40,14 +40,23 @@ export class ViewEventPage {
   comm_id: number;
   comm_name: string = "";
   comm_pic: string = "";
+
+  rsvp_id: number[] = [];
+  arrRsvp: RSVP_Class;
+  cnt_rsvp: number;
+
+  join_button: boolean;
+  going_button: boolean;
   constructor(public storage: Storage,
     public load: LoadingController,
     public tos: ToastController,
+    public alerCtrl: AlertController,
     public _dataEvent: EventDbProvider,
     public _dataRSVP: RsvpDbProvider,
     public _dataEventComm: EventCommunityDbProvider,
     public navCtrl: NavController,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
@@ -87,8 +96,45 @@ export class ViewEventPage {
 
       }
     )
+
+    this.storage.get('uid').then((val) => {
+      this.user_id = val;
+      this._dataRSVP.checkRSVPOfEvent(this.user_id, this.e_id).subscribe(
+        (data) => {
+          if (data == "") {
+            alert("baki");
+            this.join_button = true;
+            this.going_button = false;
+          }
+          else {
+            this.join_button = false;
+            this.going_button = true;
+          }
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+        }
+      );
+    });
+
+    this._dataRSVP.countRSVP(this.e_id).subscribe(
+      (data) => {
+        this.cnt_rsvp = data[0].count;
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+
+      }
+    );
   }
+
   onRSVP() {
+    console.log(this.user_id);
+    console.log(this.e_id);
     this.storage.get('uid').then((val) => {
       this.user_id = val;
       let l1 = this.load.create({
@@ -100,8 +146,13 @@ export class ViewEventPage {
         message: "Joined ..."
       })
       this._dataRSVP.addRSVP(new RSVP_Class(null, this.user_id, this.e_id)).subscribe(
-        (data: any) => {
+        (data: RSVP_Class) => {
           t1.present();
+          this.join_button = false;
+          this.going_button = true;
+          //his.arrRsvp = data;
+          //this.rsvp_id = this.arrRsvp.RSVP_id;
+          //alert(this.rsvp_id);
         },
         function (e) {
           alert(e);
@@ -111,11 +162,112 @@ export class ViewEventPage {
         }
       );
     });
-
   }
 
-  onView(){
-    this.navCtrl.push(ViewCommunityPage,{c_id:this.comm_id});
-}
+  onClickRSVP() {
+    this.storage.get('uid').then((val) => {
+      this.user_id = val;
+      let l1 = this.load.create({
+        content: 'Joining ...'
+      });
+      l1.present();
+      this._dataRSVP.checkRSVPOfEvent(this.user_id, this.e_id).subscribe(
+        (data: any) => {
+          if (data == "") {
+            this.onRSVP();
+          }
+          else {
+            let t1 = this.tos.create({
+              duration: 3000,
+              message: "You're Going ..."
+            });
+            t1.present();
+            this.arrRsvp = data;
+            // this.rsvp_id = this.arrRsvp.RSVP_id;
+            //alert(this.rsvp_id);
+          }
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+          l1.dismiss();
+        }
+      );
+    });
+  }
+
+  onRemoveRSVP() {
+
+    this.storage.get('uid').then((val) => {
+      this.user_id = val;
+      let l1 = this.load.create({
+        content: 'Removing ...'
+      });
+      l1.present();
+      let t1 = this.tos.create({
+        duration: 3000,
+        message: "Removed ..."
+      });
+      this._dataRSVP.checkRSVPOfEvent(this.user_id, this.e_id).subscribe(
+        (data: any) => {
+          if (data == "") {
+            alert("nathi");
+          }
+          else {
+            this.arrRsvp = data;
+            //console.log(data);
+            //console.log(this.arrRsvp[0].RSVP_id);
+            this._dataRSVP.deleteRSVP(this.arrRsvp[0].RSVP_id).subscribe(
+              (data: RSVP_Class) => {
+                //alert("thyu");
+                this.join_button = true;
+                this.going_button = false;
+              },
+              function (err) {
+                alert(err);
+              },
+              function () {
+
+              }
+            );
+          }
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+          l1.dismiss();
+          t1.present();
+        }
+      );
+    });
+  }
+
+  doConfirm() {
+    let confirm = this.alerCtrl.create({
+      title: 'Not going?',
+      message: "Are you sure you don't want to attend this event?",
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.onRemoveRSVP();
+          }
+        }
+      ]
+    });
+    confirm.present()
+  }
+
+  onView() {
+    this.navCtrl.push(ViewCommunityPage, { c_id: this.comm_id });
+  }
 }
 

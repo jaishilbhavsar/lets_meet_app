@@ -71,10 +71,10 @@
         <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">
       </ion-avatar>
       <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
-      <h3 class="text-wrap">{{item.comm_name}}</h3>
-      <p class="text-wrap">{{item.event_date | date:'fullDate'}},{{item.event_s_time}}</p>
-      <button ion-button (click)="onRSVP(item.event_id)" *ngIf="join_button" color="danger" clear item-end>Join Event</button>
-      <button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button" clear item-end>Going</button>
+      <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>
+      <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:'fullDate'}},{{item.event_s_time}}</p>
+      <button ion-button (click)="onClickRSVP(item.event_id)" color="danger" clear item-end>Join Event</button>
+      <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->
     </ion-item>
   </ion-list>
 

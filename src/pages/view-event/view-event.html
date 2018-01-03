@@ -32,7 +32,9 @@
 
   <img src="{{event_pic}}" />
   <h1>{{event_name}}</h1>
-  <button (click)="onRSVP()" ion-button block color="danger">Join Event</button>
+  <button ion-button (click)="onClickRSVP()" *ngIf="join_button" color="success" block item-end>Join Event</button>
+  <button ion-button (click)="doConfirm()" *ngIf="going_button" color="danger" block item-end>Going</button>
+  <h1>{{cnt_rsvp}} are going</h1>
   <ion-item>
     <h3>
       <ion-icon name="calendar"></ion-icon> {{event_date | date:'dd-MM-yy' }}</h3>
