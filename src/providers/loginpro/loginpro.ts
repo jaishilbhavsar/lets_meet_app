@@ -110,4 +110,15 @@ getAllUser()
     console.log(demo.subject);
     return this.http.post(this.urlmail, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
+  urlfollowers:string="http://localhost:3000/follower/";
+  urlfollowing:string="http://localhost:3000/following/";
+  getFollowers(uid)
+  {
+    return this.http.get(this.urlfollowers+uid);
+  }
+  getFollowing(uid)
+  {
+    alert("following");
+    return this.http.get(this.urlfollowing+uid);
+  }
 }
