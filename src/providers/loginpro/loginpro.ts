@@ -88,7 +88,10 @@ export class LoginproProvider {
     console.log(this.urluser);*/
     //return this.http.get(this.url + uid)
   }
-
+getAllUser()
+{
+  return this.http.get(this.urlsignup);
+}
   getUser(id) {
     this.urluser.concat(id);
     console.log(id);
