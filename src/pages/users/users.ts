@@ -1,3 +1,4 @@
+import { FollowerPage } from './../follower/follower';
 import { EditprofilePage } from './../editprofile/editprofile';
 import { LoginproProvider } from './../../providers/loginpro/loginpro';
 import { Component } from '@angular/core';
@@ -5,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams, Platform, ModalController, ViewController } from 'ionic-angular';
 import { user_class } from '../login/user_class';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { follower_class } from '../../shared/follower_class';
 
 /**
  * Generated class for the UsersPage page.
@@ -20,6 +22,10 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 })
 export class UsersPage {
 
+  followingcount:number;
+  followercount:number;
+  followers:follower_class[]=[];
+  followings:follower_class[]=[];
   ed: any = "";
   u: user_class[] = [];
   eid: string = "";
@@ -51,13 +57,35 @@ export class UsersPage {
           l1.dismiss();
         }
       );
+      this.data.getFollowers(this.uid).subscribe(
+        (ft:any)=>
+        {
+          if(ft!=="")
+          {
+            this.followers=ft;
+            this.followercount=this.followers.length;
+          }
+        },
+      );
+      this.data.getFollowing(this.uid).subscribe(
+        (fl:any)=>{
+          if(fl!="")
+          {
+            this.followings=fl;
+            this.followingcount=this.followings.length;
+          }
+        }
+      );
     })
     
     //this.data.set_url();
     
     
   }
-
+  onFollower()
+  {
+    this.navCtrl.push(FollowerPage);
+  }
   openModal() {
 
     let modal = this.modalCtrl.create(EditprofilePage);

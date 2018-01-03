@@ -24,15 +24,15 @@
     </ion-item>
   </ion-list>
 
-  <ion-item>
+  <ion-item (click)="onFollower()">
     <ion-icon name="logo-twitter" item-start></ion-icon>
     Followers
-    <ion-badge item-end>260k</ion-badge>
+    <ion-badge item-end>{{followercount}}</ion-badge>
   </ion-item>
   <ion-item>
     <ion-icon name="logo-twitter" item-start></ion-icon>
     Following
-    <ion-badge item-end>210k</ion-badge>
+    <ion-badge item-end>{{followingcount}}</ion-badge>
   </ion-item>
   <ion-item>
     <ion-icon name="people" item-start></ion-icon>
