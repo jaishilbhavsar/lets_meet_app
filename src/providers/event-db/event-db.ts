@@ -4,6 +4,7 @@ import { Events_Class } from "../../shared/event_class";
 import { Jsonp } from '@angular/http/src/http';
 
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { RSVP_Class } from '../../shared/rsvp_class';
 
 
 
@@ -17,30 +18,37 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class EventDbProvider {
 
   url: string = "http://localhost:3000/event/";
+  url1: string = "http://localhost:3000/comingEvent/";
 
   constructor(public http: HttpClient) {
     console.log('Hello EventDbProvider Provider');
   }
 
-  getAllEvents() {
+  /*getAllEvents() {
     return this.http.get(this.url);
+  }*/
+
+  getAllEvents() {
+    return this.http.get(this.url1);
   }
 
-  addEvent(evn:Events_Class) {
+  addEvent(evn: Events_Class) {
     let body = JSON.stringify(evn);
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
-  editEvent(evn:Events_Class) {
+  editEvent(evn: Events_Class) {
     let body = JSON.stringify(evn);
     return this.http.put(this.url + evn.event_id, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
-  deleteEvent(evn:Events_Class) {
+  deleteEvent(evn: Events_Class) {
     return this.http.delete(this.url + evn.event_id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
   getEventById(id) {
     return this.http.get(this.url + id);
   }
+
+
 }

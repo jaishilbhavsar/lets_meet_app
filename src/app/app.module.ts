@@ -36,6 +36,8 @@ import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
 import { PostDbProvider } from '../providers/post-db/post-db';
 import { ViewPostPage } from "../pages/view-post/view-post";
 import { CommunityMemberDbProvider } from '../providers/community-member-db/community-member-db';
+import { FollowerPage } from '../pages/follower/follower';
+import { FollowingPage } from '../pages/following/following';
 
 
 // The translate loader needs to know where to load i18n files
@@ -70,7 +72,9 @@ export function provideSettings(storage: Storage) {
     ViewCommunityPage,
     Demo1Page,
     EditprofilePage,
-    ViewPostPage
+    ViewPostPage,
+    FollowerPage,
+    FollowingPage
   ],
   imports: [
     BrowserModule,
@@ -97,7 +101,9 @@ export function provideSettings(storage: Storage) {
     ViewCommunityPage,
     Demo1Page,
     EditprofilePage,
-    ViewPostPage
+    ViewPostPage,
+    FollowerPage,
+    FollowingPage
   ],
   providers: [
     Api,

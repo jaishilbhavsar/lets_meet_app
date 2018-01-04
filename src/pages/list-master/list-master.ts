@@ -24,12 +24,13 @@ export class ListMasterPage {
   u_id: string = "";
   arr: Event_Community_Class[] = [];
   arr1: Event_Community_Class[] = [];
+  arrRsvp: RSVP_Class;
   //arr1: Events[] = [];
-  join_button: boolean = true;
-  going_button: boolean = false;
+  //join_button: boolean[] = [true];
+  //going_button: boolean[] = [false];
   user_id: string = "";
   flag: boolean = false;
-  txtsearch:string='';
+  txtsearch: string = '';
 
   constructor(public storage: Storage,
     public tos: ToastController,
@@ -66,6 +67,8 @@ export class ListMasterPage {
         l1.dismiss();
       }
     )
+
+
   }
 
   /**
@@ -102,21 +105,94 @@ export class ListMasterPage {
       })
       this._dataRSVP.addRSVP(new RSVP_Class(null, this.user_id, event_id)).subscribe(
         (data: any) => {
-          t1.present();
-          this.join_button = false;
-          this.going_button = true;
+
+
+          //this.join_button = false;
+          //this.going_button = true;
         },
         function (e) {
           alert(e);
         },
         function () {
           l1.dismiss();
-
+          t1.present();
         }
       );
     });
   }
-  onRemoveRSVP(event_id) {
+
+  onSearchIcon() {
+    if (this.flag == true) {
+      this.flag = false;
+    }
+    else {
+      this.flag = true;
+    }
+  }
+
+  getItems(ev) {
+    this.arr = this.arr1;
+    var val = ev.target.value;
+    if (val && val.trim() != '') {
+      this.arr = this.arr.filter((x) =>
+        x.event_name.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) > -1);
+    }
+  }
+
+  onClickRSVP(evn_id) {
+    this.storage.get('uid').then((val) => {
+      this.user_id = val;
+      let l1 = this.load.create({
+        content: 'Joining ...'
+      });
+      l1.present();
+      this._dataRSVP.checkRSVPOfEvent(this.u_id, evn_id).subscribe(
+        (data) => {
+          if (data == "") {
+            this.onRSVP(evn_id);
+            //console.log("hello");
+            //console.log(data);
+          }
+          else {
+            let t1 = this.tos.create({
+              duration: 3000,
+              message: "You're already Going ...",
+              position: 'top'
+            });
+            t1.present();
+          }
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+          l1.dismiss();
+          
+        }
+      );
+    });
+
+  }
+}
+
+  /**
+   * Delete an item from the list of items.
+   */
+  /*deleteItem(item) {
+    this.items.delete(item);
+  }*/
+
+  /**
+   * Navigate to the detail page for this item.
+   */
+  /* openItem(item: Item) {
+     this.navCtrl.push('ItemDetailPage', {
+       item: item
+     });
+   }*/
+
+   /*
+   onRemoveRSVP(event_id) {
     this.storage.get('uid').then((val) => {
       this.user_id = val;
       let l1 = this.load.create({
@@ -141,49 +217,5 @@ export class ListMasterPage {
     });
   }
 
-  onSearch(){
-
-    if (this.txtsearch != '') {
-      this.arr = this.arr.filter((x) => x.event_name.startsWith(this.txtsearch))
-    }
-    else{
-      this.arr=this.arr1;
-    }
-  
-    
-  }
-
-  onSearchIcon() {
-    if (this.flag == true) {
-      this.flag = false;
-    }
-    else {
-      this.flag = true;
-    }
-  }
-
-  getItems(ev) {
-    this.arr = this.arr1;
-    var val = ev.target.value;
-    if (val && val.trim() != '') {
-      this.arr = this.arr.filter((x) =>
-        x.event_name.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) > -1);
-    }
-  }
-
-  /**
-   * Delete an item from the list of items.
    */
-  /*deleteItem(item) {
-    this.items.delete(item);
-  }*/
 
-  /**
-   * Navigate to the detail page for this item.
-   */
-  /* openItem(item: Item) {
-     this.navCtrl.push('ItemDetailPage', {
-       item: item
-     });
-   }*/
-}
