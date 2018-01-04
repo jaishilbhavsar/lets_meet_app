@@ -24,14 +24,14 @@ export class RsvpDbProvider {
     return this.http.get(this.url);
   }
 
-  rsvp: { fk_user_id: string, fk_event_id: string } = {
-    fk_user_id: '',
+  rsvp: { rsvp_fk_user_id: string, fk_event_id: string } = {
+    rsvp_fk_user_id: '',
     fk_event_id: ''
   };
 
   checkRSVPOfEvent(user_id, event_id) {
     console.log("rsvp pro");
-    this.rsvp.fk_user_id = user_id;
+    this.rsvp.rsvp_fk_user_id = user_id;
     this.rsvp.fk_event_id = event_id;
     let body = JSON.stringify(this.rsvp);
     console.log(this.rsvp);

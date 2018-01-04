@@ -19,6 +19,7 @@ import { ViewPostPage } from '../view-post/view-post';
 })
 export class ViewCommunityPage {
 
+  Community: string = "posts";
   arr: Community_Class[] = [];
   comm_id: number;
   comm_post_user: Community_Post_User_Class[] = [];

@@ -2,7 +2,7 @@
 
   <ion-navbar color="signcolor">
     <!--<ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>-->
-    <ion-title>Upcoming Events</ion-title>
+    <ion-title>Events</ion-title>
     <ion-buttons start>
       <button (click)="onSearchIcon()" ion-button icon-only>
         <ion-icon name='search'></ion-icon>
@@ -15,6 +15,16 @@
     </ion-buttons>
 
   </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="event">
+      <ion-segment-button value="upcEvents">
+        Upcomig
+      </ion-segment-button>
+      <ion-segment-button value="rgEvents">
+        Registered
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
 </ion-header>
 
@@ -65,6 +75,37 @@
     </ion-card-content>-->
 <ion-content>
   <ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>
+  <div [ngSwitch]="event">
+    <ion-list *ngSwitchCase="'upcEvents'">
+      <ion-list>
+        <ion-item *ngFor="let item of arr" class="text-wrap">
+          <ion-avatar item-start>
+            <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">
+          </ion-avatar>
+          <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
+          <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>
+          <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:'fullDate'}},{{item.event_s_time}}</p>
+          <button ion-button (click)="onClickRSVP(item.event_id)" color="danger" clear item-end>Join Event</button>
+          <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->
+        </ion-item>
+      </ion-list>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'rgEvents'">
+      <ion-list>
+        <ion-item *ngFor="let item of reg" class="text-wrap">
+          <ion-avatar item-start>
+            <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">
+          </ion-avatar>
+          <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
+          <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>
+          <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:'fullDate'}},{{item.event_s_time}}</p>
+          <button ion-button (click)="onClickRSVP(item.event_id)" color="danger" clear item-end>Going</button>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+  </div>
+  <!--<ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let item of arr" class="text-wrap">
       <ion-avatar item-start>
@@ -73,10 +114,10 @@
       <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
       <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>
       <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:'fullDate'}},{{item.event_s_time}}</p>
-      <button ion-button (click)="onClickRSVP(item.event_id)" color="danger" clear item-end>Join Event</button>
-      <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->
-    </ion-item>
-  </ion-list>
+      <button ion-button (click)="onClickRSVP(item.event_id)" color="danger" clear item-end>Join Event</button>-->
+  <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->
+  <!--</ion-item>
+  </ion-list>-->
 
 
 </ion-content>
