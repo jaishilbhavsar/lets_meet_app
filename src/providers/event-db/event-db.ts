@@ -19,6 +19,7 @@ export class EventDbProvider {
 
   url: string = "http://localhost:3000/event/";
   url1: string = "http://localhost:3000/comingEvent/";
+  url2: string = "http://localhost:3000/event_reg/";
 
   constructor(public http: HttpClient) {
     console.log('Hello EventDbProvider Provider');
@@ -50,5 +51,9 @@ export class EventDbProvider {
     return this.http.get(this.url + id);
   }
 
+  getRegisteredEventsofUser(id) {
+    console.log(id);
+    return this.http.get(this.url2 + id);
+  }
 
 }

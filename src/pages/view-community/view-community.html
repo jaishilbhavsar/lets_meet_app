@@ -15,75 +15,69 @@
 <ion-content padding>
 
   <ion-list *ngFor="let item of arr">
-    <img src="assets/img/communities/{{item.comm_pic}}" height="150" width="250"/>
+    <img src="assets/img/communities/{{item.comm_pic}}" height="150" width="250" />
     <h3> {{item.comm_name}} </h3>
 
-    <div padding>
-        <ion-segment [(ngModel)]="Community">
-          <ion-segment-button value="details">
-            Details
-          </ion-segment-button>
-          <ion-segment-button value="posts">
-            Posts
-          </ion-segment-button>
-        </ion-segment>
-      </div>
-      
-      <div [ngSwitch]="Community">
-        <ion-list *ngSwitchCase="'details'">
-          <ion-item>
-              <h4><ion-icon name="calendar"></ion-icon> {{item.comm_date | date:'dd-MM-yy'}} </h4>
-            </ion-item>
-            <ion-item>
-              <h4><ion-icon name="star"></ion-icon> {{item.comm_rating}} </h4>
-            </ion-item>
-            <ion-item>
-              <h4><ion-icon name="person">Created by </ion-icon> {{item.created_by}} </h4>
-            </ion-item>
-              <h4>Community Description: </h4> {{item.comm_des}}            
-          
-        
-        </ion-list>
-      
-        <ion-list *ngSwitchCase="'posts'">
-          <ion-item>
-              <ion-card *ngFor="let item of comm_post_user">
-            <ion-thumbnail item-start>
-                <img src="{{item.post_pic}}" (click)="onPostClick(item)">
-              </ion-thumbnail>
-    <ion-card-content (click)="onPostClick(item)">
-      <p>{{item.post_title}}</p>
-    </ion-card-content>
+    <div>
+      <ion-segment [(ngModel)]="Community">
+        <ion-segment-button value="posts">
+          Posts
+        </ion-segment-button>
+        <ion-segment-button value="details">
+          Details
+        </ion-segment-button>
+      </ion-segment>
+    </div>
 
-    <ion-row>
-      <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
-        </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
-        </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
-      </ion-col>
-    </ion-row>
+    <div [ngSwitch]="Community">
+      <ion-list *ngSwitchCase="'posts'">
+        <ion-card *ngFor="let item of comm_post_user">
+          <ion-thumbnail item-start>
+            <img src="{{item.post_pic}}" (click)="onPostClick(item)">
+          </ion-thumbnail>
+          <ion-card-content (click)="onPostClick(item)">
+            <p>{{item.post_title}}</p>
+          </ion-card-content>
+          <!--<ion-row>
+              <ion-col>
+                <button ion-button icon-left clear small>
+                  <ion-icon name="thumbs-up"></ion-icon>
+                  <div>12 Likes</div>
+                </button>
+              </ion-col>
+              <ion-col>
+                <button ion-button icon-left clear small>
+                  <ion-icon name="text"></ion-icon>
+                  <div>4 Comments</div>
+                </button>
+              </ion-col>
+              <ion-col center text-center>
+                <ion-note>
+                  11h ago
+                </ion-note>
+              </ion-col>
+            </ion-row>-->
+        </ion-card>
+      </ion-list>
 
-  </ion-card>
-            
-           
-          </ion-item>
-          ...
-        </ion-list>
-      </div>
+      <ion-list *ngSwitchCase="'details'">
+        <ion-item>
+          <h4>
+            <ion-icon name="calendar"></ion-icon> {{item.comm_date | date:'dd-MM-yy'}} </h4>
+        </ion-item>
+        <ion-item>
+          <h4>
+            <ion-icon name="star"></ion-icon> {{item.comm_rating}} </h4>
+        </ion-item>
+        <ion-item>
+          <h4>
+            <ion-icon name="person">Created by </ion-icon> {{item.created_by}} </h4>
+        </ion-item>
+        <h4>Community Description: </h4> {{item.comm_des}}
+      </ion-list>
+    </div>
 
-   <!-- <h3> {{item.comm_name}} </h3>
+    <!-- <h3> {{item.comm_name}} </h3>
     <button ion-button block color="danger" small (click)="onJoin(item.comm_id)">Join Community</button>
     <ion-item>
   <h4><ion-icon name="calendar"></ion-icon> {{item.comm_date | date:'dd-MM-yy'}} </h4>
@@ -135,5 +129,5 @@
     </ion-row>
 
   </ion-card>-->
-</ion-list>
+  </ion-list>
 </ion-content>

@@ -13,6 +13,7 @@ import { EventCommunityDbProvider } from "../../providers/event-community-db/eve
 import { Event_Community_Class } from "../../shared/event_community_class";
 import { RSVP_Class } from '../../shared/rsvp_class';
 import { RsvpDbProvider } from '../../providers/rsvp-db/rsvp-db';
+import { Event_Comm_Rsvp } from "../../shared/event_community_rsvp_class";
 
 @IonicPage()
 @Component({
@@ -20,6 +21,7 @@ import { RsvpDbProvider } from '../../providers/rsvp-db/rsvp-db';
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
+  event: string = "upcEvents";
   currentItems: Item[];
   u_id: string = "";
   arr: Event_Community_Class[] = [];
@@ -31,6 +33,8 @@ export class ListMasterPage {
   user_id: string = "";
   flag: boolean = false;
   txtsearch: string = '';
+
+  reg: Event_Comm_Rsvp[] = [];
 
   constructor(public storage: Storage,
     public tos: ToastController,
@@ -66,9 +70,27 @@ export class ListMasterPage {
       function () {
         l1.dismiss();
       }
-    )
+    );
 
-
+    let l2 = this.load.create({
+      content: 'Registered Events'
+    });
+    l2.present();
+    this.storage.get('uid').then((val) => {
+      this.u_id = val;
+      this._data.getRegisteredEventsofUser(this.u_id).subscribe(
+        (data: Event_Comm_Rsvp[]) => {
+          this.reg = data;
+          console.log(this.reg);
+        },
+        function (err) {
+          alert(err);
+        },
+        function () {
+          l2.dismiss();
+        }
+      );
+    });
   }
 
   /**
@@ -167,7 +189,7 @@ export class ListMasterPage {
         },
         function () {
           l1.dismiss();
-          
+
         }
       );
     });
