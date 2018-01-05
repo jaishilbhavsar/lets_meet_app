@@ -23,17 +23,15 @@ import { Storage } from '@ionic/storage';
 })
 export class ViewCommunityPage {
 
-<<<<<<< HEAD
+
   join_Comm: boolean;
   remove_Comm: boolean;
 
   user_id: string = "";
   arr: Community_comm_member[] = [];
   comm_mem: Community_comm_member[] = [];
-=======
   Community: string = "posts";
-  arr: Community_Class[] = [];
->>>>>>> 1cc2e8e748e869ea6cf33c0b35d4e109f09f353e
+  arr1: Community_Class[] = [];
   comm_id: number;
   member:Comm_member_class[]=[];
   comm_post_user: Community_Post_User_Class[] = [];
