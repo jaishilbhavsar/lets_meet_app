@@ -31,8 +31,8 @@ export class CommunityMemberDbProvider {
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
-  deleteMember(item:Comm_member_class){
-    return this.http.post(this.url + item.join_id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  deleteMember(id){
+    return this.http.delete(this.url + id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
 
   }
 

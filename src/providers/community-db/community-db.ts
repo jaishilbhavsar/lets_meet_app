@@ -14,6 +14,12 @@ export class ComminityDbTsProvider {
 
   url: string = "http://localhost:3000/community/";
   url1: string = "http://localhost:3000/comm_post/";
+  url2: string = "http://localhost:3000/checkMember/";
+
+  community_member: { fk_user_id: string, fk_comm_id: string } = {
+    fk_user_id: '',
+    fk_comm_id: ''
+  }
 
   constructor(public http: HttpClient) {
     console.log('Hello ComminityDbTsProvider Provider');
@@ -51,6 +57,11 @@ export class ComminityDbTsProvider {
     return this.http.get(this.url1 + id);
   }
 
-
+  checkCommMember(user_id, comm_id) {
+    this.community_member.fk_user_id=user_id;
+    this.community_member.fk_comm_id=comm_id;
+    let body=JSON.stringify(this.community_member);
+    return this.http.post(this.url2, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  }
 
 }
