@@ -79,6 +79,7 @@ export class LoginproProvider {
   }
   ed: string = '';
   urluser: string = "http://localhost:3000/user/";
+  follow_user:string="http://localhost:3000/follow_user/";
   set_url() {
     //this.storage.get('uid').then((val) => {this.ed=this.urluser+val});
     /*this.storage.get('uid').then((val) => {this.ed=val});
@@ -88,37 +89,33 @@ export class LoginproProvider {
     console.log(this.urluser);*/
     //return this.http.get(this.url + uid)
   }
-getAllUser()
-{
-  return this.http.get(this.urlsignup);
-}
-  getUser(id) {
+  getAllUser() {
+    return this.http.get(this.urlsignup);
+  }
+  getUser(id: string) {
     this.urluser.concat(id);
     console.log(id);
     console.log(this.urluser);
-    console.log(this.urlsignup+id);
-    return this.http.get(this.urlsignup+id);
+    console.log(this.urlsignup + id);
+    return this.http.get(this.urlsignup + id);
     //alert(this.ed);
     //return this.http.get(this.ed);
   }
-  urlmail:string="http://localhost:3000/demomail/"
-  sendMail(demo:email_class)
-  {
+  urlmail: string = "http://localhost:3000/demomail/"
+  sendMail(demo: email_class) {
     let body = JSON.stringify(demo);
     console.log(demo.name);
     console.log(demo.message);
     console.log(demo.subject);
     return this.http.post(this.urlmail, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  urlfollowers:string="http://localhost:3000/follower/";
-  urlfollowing:string="http://localhost:3000/following/";
-  getFollowers(uid)
-  {
-    return this.http.get(this.urlfollowers+uid);
+  urlfollowers: string = "http://localhost:3000/follower/";
+  urlfollowing: string = "http://localhost:3000/following/";
+  getFollowers(uid) {
+    return this.http.get(this.urlfollowers + uid);
   }
-  getFollowing(uid)
-  {
+  getFollowing(uid) {
     alert("following");
-    return this.http.get(this.urlfollowing+uid);
+    return this.http.get(this.urlfollowing + uid);
   }
 }
