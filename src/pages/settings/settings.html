@@ -8,10 +8,10 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-        <button ion-button icon-only (click)="addCommunity()">
-          <ion-icon name="add"></ion-icon>
-        </button>
-      </ion-buttons>
+      <button ion-button icon-only (click)="addCommunity()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -19,24 +19,29 @@
 <ion-content>
   <ion-searchbar *ngIf="flag" [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by community"></ion-searchbar>
   <ion-card *ngFor="let item of arr ">
-      <!--  <img src="assets/img/cjpg.jpg"/>-->
-      <ion-row>
-        <ion-col col-2>
-      <img src="assets/img/communities/{{item.comm_pic}}"  (click)="onView(item.comm_id)" height="50" width="50"/>
-    </ion-col>
-    <ion-col col-10>
-        <ion-card-content>
+    <!--  <img src="assets/img/cjpg.jpg"/>-->
+    
+    <img src="assets/img/communities/{{item.comm_pic}}" (click)="onView(item.comm_id)" height="120" width="100" />
+    <ion-row>
+      <ion-col col-12>
+        <ion-card-content >
           <ion-card-title (click)="onView(item.comm_id)">
-            <h4>{{item.comm_name}}</h4>
-            <h5>Is created by : {{item.created_by}}</h5>
-            <button  ion-button  (click)="onJoin(item.comm_id)" color="danger" small>Join Now</button>
-            </ion-card-title>
+            {{item.comm_name}}
+          
+        </ion-card-title>
+            Is created by : <h4>{{item.created_by}}</h4>
+          
         </ion-card-content>
       </ion-col>
-    </ion-row>
-      </ion-card>
+   <!-- <ion-col col-4>
+        
+        <button ion-button (click)="onJoin(item.comm_id)" color="danger" small align="center">Join Now</button>
 
- <!--  <ion-card>
+      </ion-col>-->
+    </ion-row>
+  </ion-card>
+
+  <!--  <ion-card>
         
             <img src="assets/img/cjpg.jpg" />
         
@@ -56,12 +61,12 @@
             <button ion-button block >Join Now</button>
         
           </ion-card>-->
-            <!--<ion-item>
+  <!--<ion-item>
               <ion-icon name='logo-twitter' item-start style="color: #55acee"></ion-icon>
               Followers
               <ion-badge item-end>260k</ion-badge>
             </ion-item>-->
-        
-       
+
+
 
 </ion-content>

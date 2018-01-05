@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
-import { Community_Class} from "./community_class";
+import { Community_Class } from "./community_class";
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
 import { ViewCommunityPage } from "../view-community/view-community";
 import { Comm_member_class } from "../../shared/comm_member_class";
+import { Community_comm_member } from "../../shared/community_comm_member_class";
+import { CommunityCommMemberProvider } from "../../providers/community-comm-member/community-comm-member";
 
 
 import { Settings } from '../../providers/providers';
@@ -26,10 +28,10 @@ import { Storage } from '@ionic/storage';
 })
 export class SettingsPage {
 
-  arr:Community_Class[]=[];
-  arr1:Community_Class[]=[];
+  arr: Community_Class[] = [];
+  arr1: Community_Class[] = [];
   user_id: string = "";
-  txtsearch:string='';
+  txtsearch: string = '';
   flag: boolean = false;
   // Our local settings object
   options: any;
@@ -61,8 +63,9 @@ export class SettingsPage {
     public _data: ComminityDbTsProvider,
     public load: LoadingController,
     public toast: ToastController,
-    public comm_member:CommunityMemberDbProvider,
-    public storage:Storage) {
+    public comm_member: CommunityMemberDbProvider,
+    public storage: Storage,
+    public community_comm_member: CommunityCommMemberProvider) {
   }
 
   _buildForm() {
@@ -102,8 +105,8 @@ export class SettingsPage {
 
       (data: any) => {
         this.arr = data;
-        this.arr1=data;
-        
+        this.arr1 = data;
+
       },
       function (err) {
         alert(err);
@@ -114,7 +117,7 @@ export class SettingsPage {
       }
 
     );
-    
+
   }
 
   ionViewWillEnter() {
@@ -140,16 +143,16 @@ export class SettingsPage {
     console.log('Ng All Changes');
   }
 
-  onSearch(){
+  onSearch() {
 
     if (this.txtsearch != '') {
       this.arr = this.arr.filter((x) => x.comm_name.startsWith(this.txtsearch))
     }
-    else{
-      this.arr=this.arr1;
+    else {
+      this.arr = this.arr1;
     }
-  
-    
+
+
   }
 
   onSearchIcon() {
@@ -160,37 +163,9 @@ export class SettingsPage {
       this.flag = true;
     }
   }
-  onJoin(comm_id){
-
-      alert(comm_id);
-    this.storage.get('uid').then((val) => {
-      this.user_id = val;
-      alert(this.user_id);
-      let l1 = this.load.create({
-        content: 'Joining ...'
-      });
-      l1.present();
-      let t1 = this.toast.create({
-        duration: 3000,
-        message: "Joined ..."
-      })
-      this.comm_member.addCommunityMember(new Comm_member_class(null, this.user_id, comm_id)).subscribe(
-        (data: any) => {
-          t1.present();
-        },
-        function (e) {
-          alert(e);
-        },
-        function () {
-          l1.dismiss();
-
-        }
-      );
-    });
-
-  }
-
-  onView(comm_id){
-      this.navCtrl.push(ViewCommunityPage,{c_id:comm_id});
+  
+  onView(comm_id) {
+    alert(comm_id);
+    this.navCtrl.push(ViewCommunityPage, { c_id: comm_id });
   }
 }

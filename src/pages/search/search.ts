@@ -16,16 +16,18 @@ export class SearchPage {
 
   currentItems: any = [];
   //items:any=[];
-
+  user:string="allusers";
   txtsearch: string = '';
   arr: user_class[] = [];
   arr1: user_class[] = [];
 
-  constructor(public navCtrl: NavController, public _data: LoginproProvider, public navParams: NavParams, public items: Items) { }
+  constructor(public navCtrl: NavController, public _data: LoginproProvider, public navParams: NavParams, public items: Items) { 
+      this.currentItems = this.items.query();
+  }
 
-  /*ionViewDidLoad() {
+  ionViewDidLoad() {
 
-    this._data.().subscribe(
+    this._data.getAllUser().subscribe(
 
       (data: any) => {
         this.arr = data;
@@ -34,40 +36,41 @@ export class SearchPage {
         alert(e);
       }
     );
-  }*/
+  }
   /**
    * Perform a service for the proper items.
    */
-  getItems(ev) {
-    let val = ev.target.value;
-    if (!val || !val.trim()) {
-      this.currentItems = [];
-      return;
+  /*getUsers(us) {
+    this.arr=this.arr1;
+    let val = us.target.value;
+    if (val && val.trim() != '') {
+      this.arr1 = this.arr.filter((x) =>
+        x.user_name.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) > -1);
     }
-    this.currentItems = this.items.query({
-      name: val
-    });
-  }
+   
+  }*/
 
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
+ /* openItem(item: Item) {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });
-  }
+  }*/
 
 
-  /*onSearch() {
+  onSearch() {
 
     if (this.txtsearch != '') {
-      this.arr1 = this.arr.filter((x) => x..startsWith(this.txtsearch))
+
+      this.arr1 = this.arr.filter((x) =>x.user_name.toLocaleLowerCase().indexOf(this.txtsearch.toLocaleLowerCase()) > -1);
+   //   this.arr1 = this.arr.filter((x) => x..startsWith(this.txtsearch))
     }
     else{
       this.arr1=null;
     }
   
 
-  }*/
+  }
 }

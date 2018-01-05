@@ -9,9 +9,12 @@
 
 <ion-content>
   <ion-searchbar [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by User"></ion-searchbar>
-  <ion-list inset>
+  <ion-list >
     <ion-item *ngFor="let item of arr1">
-       {{item.comm_name}}
+      <ion-avatar item-start>
+        <img src="{{item.user_pic}}">
+      </ion-avatar>
+      <h3>{{item.user_name}}</h3>
     </ion-item>
   </ion-list>
   <!--<ion-list>
