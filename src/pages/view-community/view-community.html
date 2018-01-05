@@ -12,11 +12,13 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content padding="5px">
 
-  <ion-list *ngFor="let item of arr">
+  <ion-list *ngFor="let item of comm_mem">
     <img src="assets/img/communities/{{item.comm_pic}}" height="150" width="250"/>
-    <h3> {{item.comm_name}} </h3>
+  <!--   <h5>{{item.comm_name}} <button ion-button style="float: right"  (click)="onJoin(item.comm_id)" color="danger" small>Join Now</button>  </h5><br>-->
+     <h5>{{item.comm_name}} <button ion-button style="float: right"  (click)="onRemove(item.join_id)" color="primary" small>Remove</button>  </h5><br>
+   <b>People who are joined in Community:</b><br>{{item.fk_user_id}}
 
     <div padding>
         <ion-segment [(ngModel)]="Community">
@@ -31,6 +33,11 @@
       
       <div [ngSwitch]="Community">
         <ion-list *ngSwitchCase="'details'">
+            <ion-list *ngFor="let item1 of com_mem">
+                <ion-item>
+                  <h4> People who are joined  </h4>{{item1.fk_user_id}}
+                </ion-item>          
+              </ion-list>
           <ion-item>
               <h4><ion-icon name="calendar"></ion-icon> {{item.comm_date | date:'dd-MM-yy'}} </h4>
             </ion-item>
@@ -40,10 +47,9 @@
             <ion-item>
               <h4><ion-icon name="person">Created by </ion-icon> {{item.created_by}} </h4>
             </ion-item>
-              <h4>Community Description: </h4> {{item.comm_des}}            
-          
-        
-        </ion-list>
+              <h4>Community Description: </h4> {{item.comm_des}}  
+            </ion-list>
+            
       
         <ion-list *ngSwitchCase="'posts'">
           <ion-item>
