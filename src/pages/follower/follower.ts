@@ -6,6 +6,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { follower_class } from '../../shared/follower_class';
 import { Console } from '@angular/core/src/console';
+import { follow_user_class } from '../../shared/follow_user_class';
 
 /**
  * Generated class for the FollowerPage page.
@@ -24,6 +25,7 @@ export class FollowerPage {
   constructor(public storage: Storage, public load: LoadingController, public data: LoginproProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
   i: number = 0;
+  arr:follow_user_class[]=[];
   follow: follower_class[] = [];
   uid: string = '';
   user: user_class[] = [];
@@ -41,15 +43,9 @@ export class FollowerPage {
             this.follow = fl;
             console.log(this.follow);
             console.log(this.follow.length);
-            this.i = 0;
-
-            while (this.i <= this.follow.length) {
-              this.data.getUser(this.follow[this.i].fk_user_id).subscribe(
-                (dt: any) => { this.user[this.i] = dt },
-                function (e) { },
-              );
-              this.i = this.i + 1;
-            }
+            this.data.getFollowingUser(this.uid).subscribe(
+              (data:any)=>{this.arr=data;},  
+            );
           }
         },
         function (e) {
