@@ -14,11 +14,11 @@
 
 
 <ion-content padding>
-  <ion-card *ngFor="let item of arr">
+  <ion-card *ngFor="let item of arrPost">
 
     <img src="{{item.post_pic}}">
 
-    <ion-card-content >
+    <ion-card-content>
       <h1>{{item.post_title}}</h1>
       <p>{{item.post_des}}</p>
     </ion-card-content>
@@ -42,6 +42,14 @@
         </ion-note>
       </ion-col>
     </ion-row>
-
+    <ion-list>
+      <ion-item *ngFor="let item of arrCommUserPost">
+        <ion-avatar item-start>
+          <img src="{{item.user_pic}}">
+        </ion-avatar>
+        <h2>{{item.user_name}}</h2>
+        <p>{{item.com_des}}</p>
+      </ion-item>
+    </ion-list>
   </ion-card>
 </ion-content>

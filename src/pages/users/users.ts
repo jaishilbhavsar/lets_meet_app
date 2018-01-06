@@ -30,6 +30,7 @@ export class UsersPage {
   u: user_class[] = [];
   eid: string = "";
   uid: string = "";
+  img:string="";
   pet: string = "kittens";
   isAndroid: boolean = false;
   constructor(public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
@@ -48,7 +49,7 @@ export class UsersPage {
         (dt: user_class[]) => {
         this.u = dt;
         this.eid = this.u[0].user_name;
-        
+        this.img=this.u[0].user_pic;
         },
         function (e) { 
           alert(e);

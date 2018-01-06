@@ -1,3 +1,5 @@
+import { DateTime } from "ionic-angular/components/datetime/datetime";
+
 export class Community_comm_member {
 
     constructor(
@@ -8,7 +10,7 @@ export class Community_comm_member {
         public comm_name: string,
         public comm_des: string,
         public comm_pic: string,
-        public comm_date: Date,
+        public comm_date: DateTime,
         public comm_rating: number,
         public created_by: string,
       ) {
