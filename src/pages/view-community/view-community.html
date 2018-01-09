@@ -13,19 +13,23 @@
 </ion-header>
 
 
-<ion-content>
-    <img src="assets/img/communities/{{comm_pic}}" align="center" height="150" width="250" />
-    <h5 align="center">{{comm_name}}</h5>
-    <button ion-button block *ngIf="join_button" (click)="onJoin()" color="danger" padding>Join Now</button>
-    <button ion-button block *ngIf="leave_button" (click)="doConfirm()" color="danger" padding>Leave Community</button>
-    <!--<button ion-button style="float: right" (click)="onJoin()" color="danger" small>Join Now</button>-->
-
+<ion-content padding="5px">
+  <img src="assets/img/communities/{{comm_pic}}" align="center" height="150" width="250" />
+  <h5>{{comm_name}}
+    <button ion-button style="float: right" small *ngIf="join_button" (click)="onJoin()" color="danger">Join Now</button>
+    <button ion-button style="float: right" small *ngIf="leave_button" (click)="doConfirm()" color="danger">Leave Community</button>
+  </h5>
+  <!--<button ion-button style="float: right" (click)="onJoin()" color="danger" small>Join Now</button>-->
+  <h6>{{cnt_member}} Members are joined</h6>
   <ion-segment [(ngModel)]="Community" padding>
     <ion-segment-button value="posts">
       Posts
     </ion-segment-button>
     <ion-segment-button value="details">
       Details
+    </ion-segment-button>
+    <ion-segment-button value="members">
+      Members
     </ion-segment-button>
   </ion-segment>
 
@@ -62,6 +66,20 @@
         </ion-card>
       </ion-item>
     </ion-list>
+
+    <ion-list *ngSwitchCase="'members'">
+
+      <ion-list *ngFor="let item of comm_comm_member">
+        <ion-item>
+         <ion-avatar item-start>
+            <img src="">
+         </ion-avatar>
+          <h2>{{item.fk_user_id}}</h2>
+        
+        </ion-item>
+      </ion-list>
+    </ion-list>
+
   </div>
 
 </ion-content>

@@ -14,6 +14,7 @@ import 'rxjs/add/operator/map';
 export class CommunityMemberDbProvider {
 
   url:string="http://localhost:3000/comm_member/";
+  url1:string="http://localhost:3000/membercount/";
 
   constructor(public http: HttpClient) {
     console.log('Hello CommunityMemberDbProvider Provider');
@@ -33,6 +34,11 @@ export class CommunityMemberDbProvider {
 
   deleteMember(id){
     return this.http.delete(this.url + id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+
+  }
+
+  memberCount(id){
+    return this.http.get(this.url1+id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
 
   }
 

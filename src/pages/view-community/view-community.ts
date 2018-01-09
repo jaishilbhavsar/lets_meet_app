@@ -8,6 +8,7 @@ import { Community_Class } from '../settings/community_class';
 import { Community_Post_User_Class } from '../../shared/community_post_user_class';
 import { ViewPostPage } from "../../pages/view-post/view-post";
 import { Comm_member_class } from '../../shared/comm_member_class';
+import { Community_comm_member } from "../../shared/community_comm_member_class";
 
 /**
  * Generated class for the ViewCommunityPage page.
@@ -41,8 +42,12 @@ export class ViewCommunityPage {
   arrMember: Comm_member_class[] = [];
   comm_mem: Comm_member_class[] = [];
   comm_member_count: number = null;
-
+  cnt_member: number;
   user_id: string = "";
+  members: any[] = [];
+
+  comm_comm_member: Community_comm_member[] = [];
+  mem_length:number;
 
   constructor(public commu_member: CommunityMemberDbProvider,
     public storage: Storage,
@@ -105,6 +110,21 @@ export class ViewCommunityPage {
       }
     );
 
+
+    this._comm_mem_data.getAllMembers(this.comm_id).subscribe(
+      (data: any) => {
+        this.comm_comm_member = data;
+        //this.mem_length=this.comm_comm_member.length;
+        
+      },
+      function (e) {
+        alert(e);
+      },
+      function () {
+
+      }
+    );
+
     this.storage.get('uid').then((val) => {
       this.user_id = val;
       this._data.checkCommMember(this.user_id, this.comm_id).subscribe(
@@ -122,7 +142,24 @@ export class ViewCommunityPage {
         }
       );
     });
+
+
+    this.commu_member.memberCount(this.comm_id).subscribe(
+
+      (data) => {
+        this.cnt_member = data[0].count;
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+
+      }
+
+    );
   }
+
+
 
   onJoin() {
 
