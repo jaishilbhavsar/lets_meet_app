@@ -84,10 +84,15 @@ export class ViewPostPage {
   newComment() {
     this.storage.get('uid').then((val) => {
       this.user_id = val;
+<<<<<<< HEAD
       console.log(this.comment_date);
+=======
+       console.log(this.comment_date);
+>>>>>>> c120a4acdc2871122979875cd9e837d1c8ad2984
       this._dataComment.addComment(new Comment_Class(null, this.comment_date, this.new_comment, this.post_id, this.user_id)).subscribe(
         (data: Comment_Class) => {
           console.log(data);
+          this.new_comment="";
         },
         function (e) {
           alert(e);

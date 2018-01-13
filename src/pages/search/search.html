@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-searchbar [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by User"></ion-searchbar>
-  <ion-list >
+  <ion-list>
     <ion-item *ngFor="let item of arr1">
       <ion-avatar item-start>
         <img src="{{item.user_pic}}">
@@ -30,19 +30,23 @@
 
 
 
-  <h3>Top Rated Communities</h3>
+  <h4>Top Rated Communities</h4>
   <ion-grid>
-    <ion-row>
-      <ion-col>
+    <ion-row >
+      <ion-col *ngFor="let item of topComm">
         <ion-card>
-          <img src="assets/img/huddle1.jpg" class="imgComm" />
+          <img src="assets/img/communities/{{item.comm_pic}}" class="imgComm" />
           <ion-card-content>
-            Community 1
-            <button ion-button small>Join Now</button>
+            {{item.comm_name}}
+            <!--<button ion-button small>Join Now</button>-->
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+<!--  <ion-col>
         <ion-card>
           <img src="assets/img/huddle1.jpg" class="imgComm" />
           <ion-card-content>
@@ -71,8 +75,4 @@
             <button ion-button small>Join Now</button>
           </ion-card-content>
         </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-</ion-content>
+      </ion-col>-->
