@@ -36,6 +36,7 @@ export class SettingsPage {
   // Our local settings object
   options: any;
 
+
   addCommunity() {
     this.navCtrl.push(CreateCommunityPage);
   }
@@ -118,6 +119,7 @@ export class SettingsPage {
 
     );
 
+
   }
 
   ionViewWillEnter() {
@@ -163,9 +165,8 @@ export class SettingsPage {
       this.flag = true;
     }
   }
-  
+
   onView(comm_id) {
-    alert(comm_id);
     this.navCtrl.push(ViewCommunityPage, { c_id: comm_id });
   }
 }
