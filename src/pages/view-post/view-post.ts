@@ -30,11 +30,11 @@ export class ViewPostPage {
   comment_count: number;
   user_id: string;
   new_comment: string;
-  year: number = new Date().getFullYear();
-  month: number = new Date().getMonth();
-  day: number = new Date().getDate();
-  today: Date = new Date(this.year, this.month, this.day);
-  //comment_date = new Date();
+  //year: number = new Date().getFullYear();
+  //month: number = new Date().getMonth();
+  //day: number = new Date().getDate();
+  //today: Date = new Date(this.year, this.month, this.day);
+  comment_date = new Date();
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -84,10 +84,11 @@ export class ViewPostPage {
   newComment() {
     this.storage.get('uid').then((val) => {
       this.user_id = val;
-       console.log(this.today);
-      this._dataComment.addComment(new Comment_Class(null, this.today, this.new_comment, this.post_id, this.user_id)).subscribe(
+       console.log(this.comment_date);
+      this._dataComment.addComment(new Comment_Class(null, this.comment_date, this.new_comment, this.post_id, this.user_id)).subscribe(
         (data: Comment_Class) => {
           console.log(data);
+          this.new_comment="";
         },
         function (e) {
           alert(e);
