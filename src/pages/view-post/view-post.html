@@ -33,7 +33,7 @@
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
+          <div>{{comment_count}} Comments</div>
         </button>
       </ion-col>
       <ion-col center text-center>
@@ -50,6 +50,16 @@
         <h2>{{item.user_name}}</h2>
         <p>{{item.com_des}}</p>
       </ion-item>
+    <!--</ion-list>-->
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="">
+      </ion-avatar>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="new_comment" placeholder="Add a Comment..."></ion-input>
+      </ion-item>
+      <button ion-button small (click)="newComment()">Add</button>
+    </ion-item>
     </ion-list>
   </ion-card>
 </ion-content>

@@ -6,6 +6,8 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 import { CommentDbProvider } from "../../providers/comment-db/comment-db";
 import { Comment_Class } from "../../shared/comment_class";
 import { Comment_User_Post } from "../../shared/comment_user_post";
+import { Storage } from "@ionic/storage";
+import { DateTime } from 'ionic-angular/components/datetime/datetime';
 
 /**
  * Generated class for the ViewPostPage page.
@@ -25,10 +27,20 @@ export class ViewPostPage {
   post_id: number;
   arrPost: Post_Class[] = [];
   arrCommUserPost: Comment_User_Post[] = [];
+  comment_count: number;
+  user_id: string;
+  new_comment: string;
+  year: number = new Date().getFullYear();
+  month: number = new Date().getMonth();
+  day: number = new Date().getDate();
+  today: Date = new Date(this.year, this.month, this.day);
+  //comment_date = new Date();
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public _dataPost: PostDbProvider,
     public _dataComment: CommentDbProvider,
+    public storage: Storage,
     public load: LoadingController) {
   }
 
@@ -57,15 +69,34 @@ export class ViewPostPage {
     this._dataComment.getAllCommentsByPostId(this.post_id).subscribe(
       (data: Comment_User_Post[]) => {
         this.arrCommUserPost = data;
+        this.comment_count = this.arrCommUserPost.length;
         console.log(this.arrCommUserPost);
       },
       function (err) {
         alert(err);
       },
       function () {
-      //  l1.dismiss();
+        //  l1.dismiss();
       }
     );
   }
 
+  newComment() {
+    this.storage.get('uid').then((val) => {
+      this.user_id = val;
+       console.log(this.today);
+      this._dataComment.addComment(new Comment_Class(null, this.today, this.new_comment, this.post_id, this.user_id)).subscribe(
+        (data: Comment_Class) => {
+          console.log(data);
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+          alert("added");
+        }
+      );
+    });
+  }
 }
+
