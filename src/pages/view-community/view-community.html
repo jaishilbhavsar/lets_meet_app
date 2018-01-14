@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content padding="5px">
+<ion-content padding>
   <img src="assets/img/communities/{{comm_pic}}" align="center" height="150" width="250" />
   <h5>{{comm_name}}
     <button ion-button style="float: right" small *ngIf="join_button" (click)="onJoin()" color="danger">Join Now</button>
@@ -55,27 +55,32 @@
 
 
     <ion-list *ngSwitchCase="'posts'">
-      <ion-item>
-        <ion-card *ngFor="let item of comm_post_user">
-          <ion-thumbnail item-start>
-            <img src="{{item.post_pic}}" (click)="onPostClick(item)">
-          </ion-thumbnail>
-          <ion-card-content (click)="onPostClick(item)">
-            <p class="text-wrap">{{item.post_title}}</p>
-          </ion-card-content>
-        </ion-card>
+      <ion-item (click)="onAddPost()">
+        <ion-avatar item-start>
+          <img src="{{user_pic}}">
+        </ion-avatar>
+        <h2>{{user_name}}</h2>
+        <p>Add a new Post</p>
       </ion-item>
+      <ion-card *ngFor="let item of comm_post_user">
+        <ion-thumbnail item-start>
+          <img src="{{item.post_pic}}" (click)="onPostClick(item)">
+        </ion-thumbnail>
+        <ion-card-content (click)="onPostClick(item)">
+          <p class="text-wrap">{{item.post_title}}</p>
+        </ion-card-content>
+      </ion-card>
     </ion-list>
 
     <ion-list *ngSwitchCase="'members'">
 
       <ion-list *ngFor="let item of comm_comm_member">
         <ion-item>
-         <ion-avatar item-start>
+          <ion-avatar item-start>
             <img src="{{item.user_pic}}">
-         </ion-avatar>
+          </ion-avatar>
           <h2>{{item.fk_user_id}}</h2>
-        
+
         </ion-item>
       </ion-list>
     </ion-list>

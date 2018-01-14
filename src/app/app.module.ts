@@ -35,11 +35,13 @@ import { EventCommunityDbProvider } from '../providers/event-community-db/event-
 import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
 import { PostDbProvider } from '../providers/post-db/post-db';
 import { ViewPostPage } from "../pages/view-post/view-post";
+import { CreatePostPage } from "../pages/create-post/create-post";
 import { CommunityMemberDbProvider } from '../providers/community-member-db/community-member-db';
 import { FollowerPage } from '../pages/follower/follower';
 import { FollowingPage } from '../pages/following/following';
 import { CommunityCommMemberProvider } from '../providers/community-comm-member/community-comm-member';
 import { CommentDbProvider } from '../providers/comment-db/comment-db';
+import { LikeDbProvider } from '../providers/like-db/like-db';
 
 
 // The translate loader needs to know where to load i18n files
@@ -75,6 +77,7 @@ export function provideSettings(storage: Storage) {
     Demo1Page,
     EditprofilePage,
     ViewPostPage,
+    CreatePostPage,
     FollowerPage,
     FollowingPage
   ],
@@ -104,6 +107,7 @@ export function provideSettings(storage: Storage) {
     Demo1Page,
     EditprofilePage,
     ViewPostPage,
+    CreatePostPage,
     FollowerPage,
     FollowingPage
   ],
@@ -127,7 +131,8 @@ export function provideSettings(storage: Storage) {
     PostDbProvider,
     CommunityMemberDbProvider,
     CommunityCommMemberProvider,
-    CommentDbProvider
+    CommentDbProvider,
+    LikeDbProvider
   ]
 })
 export class AppModule { }
