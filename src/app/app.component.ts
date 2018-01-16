@@ -14,8 +14,6 @@ import { CreateStoryPage } from "../pages/create-story/create-story";
 import { CreateCommunityPage } from "../pages/create-community/create-community";
 import { ViewEventPage } from "../pages/view-event/view-event";
 import { ViewCommunityPage } from "../pages/view-community/view-community";
-import { Demo1Page } from "../pages/demo1/demo1";
-import { CreateEventPage } from "../pages/create-event/create-event";
 import { ViewPostPage } from "../pages/view-post/view-post";
 import { CreatePostPage } from "../pages/create-post/create-post";
 
@@ -62,8 +60,6 @@ export class MyApp {
     { title: 'AddCommunity', component: 'CreateCommunityPage' },
     { title: 'ViewEvent', component: 'ViewEventPage' },
     { title: 'ViewCommunity', component: 'ViewCommunityPage' },
-    { title: 'Demo', component: 'Demo1Page' },
-    { title: 'CreateEvent', component: 'CreateEventPage' },
     { title: 'CreatePost', component: 'CreatePostPage' }
   ]
 

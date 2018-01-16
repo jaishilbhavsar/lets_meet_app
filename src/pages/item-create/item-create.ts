@@ -10,6 +10,7 @@ import { Events_Class } from "../../shared/event_class";
 import { Community_Class } from "../settings/community_class";
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
 
+import { DateValidator } from "./event_date";
 
 @IonicPage()
 @Component({
@@ -48,8 +49,13 @@ export class ItemCreatePage {
     public camera: Camera) {
     this.form = formBuilder.group({
       profilePic: [''],
-      name: ['', Validators.required],
-      about: ['']
+      event_name: ['', Validators.required],
+      event_des: ['', Validators.compose([Validators.minLength(15), Validators.required])],
+      event_s_time: ['', Validators.required],
+      event_e_time: ['', Validators.required],
+      event_date: ['', Validators.required],
+      event_loc: ['', Validators.compose([Validators.minLength(10), Validators.required])],
+      community_id: ['', Validators.required]
     });
 
     // Watch the form for changes, and
@@ -74,32 +80,32 @@ export class ItemCreatePage {
 
   }
 
-  onAdd() {
-
-    this.storage.get('uid').then((val) => {
-      this.created_by = val;
-      let l1 = this.load.create({
-        content: 'Creating ...'
-      });
-      l1.present();
-      let t1 = this.tos.create({
-        duration: 3000,
-        message: "Added ..."
-      })
-      this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, this.community_id, 'true')).subscribe(
-        (data: any) => {
-          this.navCtrl.pop();
-          t1.present();
-        },
-        function (e) {
-          alert(e);
-        },
-        function () {
-          l1.dismiss();
-        }
-      );
-    });
-  }
+  /* onAdd() {
+ 
+     this.storage.get('uid').then((val) => {
+       this.created_by = val;
+       let l1 = this.load.create({
+         content: 'Creating ...'
+       });
+       l1.present();
+       let t1 = this.tos.create({
+         duration: 3000,
+         message: "Added ..."
+       })
+       this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, this.community_id, 'true')).subscribe(
+         (data: any) => {
+           this.navCtrl.pop();
+           t1.present();
+         },
+         function (e) {
+           alert(e);
+         },
+         function () {
+           l1.dismiss();
+         }
+       );
+     });
+   }*/
 
   getPicture() {
     if (Camera['installed']()) {
@@ -145,6 +151,29 @@ export class ItemCreatePage {
    */
   done() {
     if (!this.form.valid) { return; }
-    this.viewCtrl.dismiss(this.form.value);
+    this.storage.get('uid').then((val) => {
+      this.created_by = val;
+      let l1 = this.load.create({
+        content: 'Creating ...'
+      });
+      l1.present();
+      let t1 = this.tos.create({
+        duration: 3000,
+        message: "Added ..."
+      })
+      this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, this.community_id, 'true')).subscribe(
+        (data: any) => {
+          this.viewCtrl.dismiss();
+          t1.present();
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+          l1.dismiss();
+        }
+      );
+    });
+    // this.viewCtrl.dismiss(this.form.value);
   }
 }

@@ -7,7 +7,6 @@ import { Items } from '../../providers/providers';
 
 import { Events_Class } from "../../shared/event_class";
 import { EventDbProvider } from "../../providers/event-db/event-db";
-import { CreateEventPage } from "../create-event/create-event";
 import { ViewEventPage } from "../view-event/view-event";
 import { EventCommunityDbProvider } from "../../providers/event-community-db/event-community-db";
 import { Event_Community_Class } from "../../shared/event_community_class";
@@ -100,9 +99,7 @@ export class ListMasterPage {
   addItem() {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
-      }
+      this.ionViewDidLoad();
     })
     addModal.present();
     //this.navCtrl.push(CreateEventPage);
