@@ -14,7 +14,7 @@ import { Comment_User_Post } from "../../shared/comment_user_post";
 export class CommentDbProvider {
 
   url: string = "http://localhost:3000/com_post/";
-  url1:string="http://localhost:3000/comment/";
+  url1: string = "http://localhost:3000/comment/";
 
   constructor(public http: HttpClient) {
     console.log('Hello CommentDbProvider Provider');
@@ -30,6 +30,6 @@ export class CommentDbProvider {
   }
 
   deleteComment(id: number) {
-    return this.http.delete(this.url1, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.delete(this.url1 + id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 }

@@ -6,7 +6,7 @@ export class Post_Class {
         public post_des: string,
         public post_pic: string,
         public post_date: DateTime,
-        public fk_user_id: string,
+        public post_fk_user_id: string,
         public fk_comm_id: number) {
 
     }

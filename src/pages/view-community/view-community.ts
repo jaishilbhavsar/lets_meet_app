@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController, DateTime, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, DateTime, AlertController, ModalController } from 'ionic-angular';
 import { CommunityMemberDbProvider } from '../../providers/community-member-db/community-member-db';
 import { CommunityCommMemberProvider } from '../../providers/community-comm-member/community-comm-member';
 import { ComminityDbTsProvider } from '../../providers/community-db/community-db';
@@ -9,6 +9,9 @@ import { Community_Post_User_Class } from '../../shared/community_post_user_clas
 import { ViewPostPage } from "../../pages/view-post/view-post";
 import { Comm_member_class } from '../../shared/comm_member_class';
 import { Community_comm_member } from "../../shared/community_comm_member_class";
+import { LoginproProvider } from "../../providers/loginpro/loginpro";
+import { user_class } from "../login/user_class";
+import { CreatePostPage } from "../create-post/create-post";
 
 /**
  * Generated class for the ViewCommunityPage page.
@@ -47,14 +50,19 @@ export class ViewCommunityPage {
   members: any[] = [];
 
   comm_comm_member: Community_comm_member[] = [];
-  mem_length:number;
+  mem_length: number;
 
+  arrUser: user_class[] = [];
+  user_pic: string;
+  user_name: string;
   constructor(public commu_member: CommunityMemberDbProvider,
     public storage: Storage,
     public toast: ToastController,
     public alerCtrl: AlertController,
+    public modalCtrl: ModalController,
     public _comm_mem_data: CommunityCommMemberProvider,
     public _data: ComminityDbTsProvider,
+    public _dataUser: LoginproProvider,
     public load: LoadingController,
     public navCtrl: NavController,
     public navParams: NavParams) {
@@ -110,12 +118,11 @@ export class ViewCommunityPage {
       }
     );
 
-
     this._comm_mem_data.getAllMembers(this.comm_id).subscribe(
       (data: any) => {
         this.comm_comm_member = data;
         //this.mem_length=this.comm_comm_member.length;
-        
+
       },
       function (e) {
         alert(e);
@@ -145,7 +152,6 @@ export class ViewCommunityPage {
 
 
     this.commu_member.memberCount(this.comm_id).subscribe(
-
       (data) => {
         this.cnt_member = data[0].count;
       },
@@ -156,6 +162,25 @@ export class ViewCommunityPage {
 
       }
 
+    );
+
+    this.storage.get('uid').then(
+      (val) => {
+        this.user_id = val;
+        this._dataUser.getUser(this.user_id).subscribe(
+          (data: user_class[]) => {
+            this.arrUser = data;
+            this.user_pic = this.arrUser[0].user_pic;
+            this.user_name = this.arrUser[0].user_name;
+          },
+          function (err) {
+            alert(err);
+          },
+          function () {
+
+          }
+        );
+      }
     );
   }
 
@@ -179,6 +204,21 @@ export class ViewCommunityPage {
           t1.present();
           this.join_button = false;
           this.leave_button = true;
+
+          this._data.checkCommMember(this.user_id, this.comm_id).subscribe(
+            (data: any) => {
+              if (data == "") {
+                this.join_button = true;
+                this.leave_button = false;
+              }
+              else {
+                this.join_button = false;
+                this.leave_button = true;
+                this.arrMember = data;
+                console.log(this.arrMember);
+              }
+            }
+          );
         },
         function (e) {
           alert(e);
@@ -272,6 +312,14 @@ export class ViewCommunityPage {
 
   onPostClick(item: Community_Post_User_Class) {
     this.navCtrl.push(ViewPostPage, { post_id: item.post_id });
+  }
+
+  onAddPost() {
+    let addModal = this.modalCtrl.create(CreatePostPage, { c_id: this.comm_id });
+    addModal.onDidDismiss(item => {
+      this.ionViewDidLoad();
+    })
+    addModal.present();
   }
 
 

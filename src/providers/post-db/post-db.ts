@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { Post_Class } from '../../shared/post_class';
 
 
 /*
@@ -22,7 +23,7 @@ export class PostDbProvider {
     return this.http.get(this.url + id);
   }
 
-  addPost(post) {
+  addPost(post: Post_Class) {
     let body = JSON.stringify(post);
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }

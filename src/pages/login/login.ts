@@ -7,7 +7,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
-import { Demo1Page } from '../../pages/demo1/demo1';
 import { LoginproProvider } from '../../providers/loginpro/loginpro';
 import { MainPage } from "../pages";
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';

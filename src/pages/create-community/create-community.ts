@@ -130,6 +130,7 @@ export class CreateCommunityPage {
 
     this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.comm_rating, this.created_by)).subscribe(
       (data: any) => {
+        console.log(data);
         t1.present();
         this.navCtrl.pop();
       },

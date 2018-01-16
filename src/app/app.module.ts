@@ -24,10 +24,8 @@ import { StoryDetailPage } from "../pages/story-detail/story-detail";
 import { CreateStoryPage } from "../pages/create-story/create-story";
 import { CreateCommunityPage } from "../pages/create-community/create-community";
 import { ViewEventPage } from "../pages/view-event/view-event";
-import { CreateEventPage } from "../pages/create-event/create-event";
 import { ViewCommunityPage } from "../pages/view-community/view-community";
 import { LoginproProvider } from '../providers/loginpro/loginpro';
-import { Demo1Page } from '../pages/demo1/demo1';
 import { ComminityDbTsProvider } from "../providers/community-db/community-db";
 import { EventDbProvider } from '../providers/event-db/event-db';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
@@ -35,11 +33,13 @@ import { EventCommunityDbProvider } from '../providers/event-community-db/event-
 import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
 import { PostDbProvider } from '../providers/post-db/post-db';
 import { ViewPostPage } from "../pages/view-post/view-post";
+import { CreatePostPage } from "../pages/create-post/create-post";
 import { CommunityMemberDbProvider } from '../providers/community-member-db/community-member-db';
 import { FollowerPage } from '../pages/follower/follower';
 import { FollowingPage } from '../pages/following/following';
 import { CommunityCommMemberProvider } from '../providers/community-comm-member/community-comm-member';
 import { CommentDbProvider } from '../providers/comment-db/comment-db';
+import { LikeDbProvider } from '../providers/like-db/like-db';
 
 
 // The translate loader needs to know where to load i18n files
@@ -70,11 +70,10 @@ export function provideSettings(storage: Storage) {
     CreateStoryPage,
     CreateCommunityPage,
     ViewEventPage,
-    CreateEventPage,
     ViewCommunityPage,
-    Demo1Page,
     EditprofilePage,
     ViewPostPage,
+    CreatePostPage,
     FollowerPage,
     FollowingPage
   ],
@@ -99,11 +98,10 @@ export function provideSettings(storage: Storage) {
     CreateStoryPage,
     CreateCommunityPage,
     ViewEventPage,
-    CreateEventPage,
     ViewCommunityPage,
-    Demo1Page,
     EditprofilePage,
     ViewPostPage,
+    CreatePostPage,
     FollowerPage,
     FollowingPage
   ],
@@ -127,7 +125,8 @@ export function provideSettings(storage: Storage) {
     PostDbProvider,
     CommunityMemberDbProvider,
     CommunityCommMemberProvider,
-    CommentDbProvider
+    CommentDbProvider,
+    LikeDbProvider
   ]
 })
 export class AppModule { }
