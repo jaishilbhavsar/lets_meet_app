@@ -11,7 +11,7 @@ export class Event_Community_Class {
         public event_loc: string,
         public fk_user_id: string,
         public fk_comm_id: number,
-        public verify: string,
+        public event_verify: string,
         public comm_id: number, 
         public comm_name: string,
         public comm_des: string, 

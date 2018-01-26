@@ -11,7 +11,7 @@ export class Events_Class {
         public event_loc: string,
         public fk_user_id: string,
         public fk_comm_id: number,
-        public verify: string) {
+        public event_verify: string) {
 
     }
 }

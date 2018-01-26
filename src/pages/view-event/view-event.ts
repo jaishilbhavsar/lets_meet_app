@@ -9,6 +9,12 @@ import { RsvpDbProvider } from "../../providers/rsvp-db/rsvp-db";
 import { Storage } from "@ionic/storage";
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { ViewCommunityPage } from '../view-community/view-community';
+import { Event_RSVP_User_class } from "../../shared/event_rsvp_user_class";
+import { FeedbackDbProvider } from "../../providers/feedback-db/feedback-db";
+import { Feedback_Event_User_Class } from "../../shared/feedback_event_user_class";
+import { user_class } from '../login/user_class';
+import { LoginproProvider } from '../../providers/loginpro/loginpro';
+
 
 /**
  * Generated class for the ViewEventPage page.
@@ -24,6 +30,7 @@ import { ViewCommunityPage } from '../view-community/view-community';
 })
 export class ViewEventPage {
 
+  viewEvent: string = "event_detail";
   arr: Events_Class[];
   event_community: Event_Community_Class[];
   e_id: number;
@@ -43,10 +50,21 @@ export class ViewEventPage {
 
   rsvp_id: number[] = [];
   arrRsvp: RSVP_Class;
-  cnt_rsvp: number;
 
   join_button: boolean;
   going_button: boolean;
+
+  event_rsvp_user: Event_RSVP_User_class[] = [];
+  cnt_rsvp: number;
+
+  feedback_event_user: Feedback_Event_User_Class[] = [];
+
+  arrUser: user_class[] = [];
+  user_pic: string;
+  user_name: string;
+
+  flag1: boolean = true;
+
   constructor(public storage: Storage,
     public load: LoadingController,
     public tos: ToastController,
@@ -54,6 +72,8 @@ export class ViewEventPage {
     public _dataEvent: EventDbProvider,
     public _dataRSVP: RsvpDbProvider,
     public _dataEventComm: EventCommunityDbProvider,
+    public _dataFeedback: FeedbackDbProvider,
+    public _dataUser: LoginproProvider,
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController) {
@@ -102,7 +122,7 @@ export class ViewEventPage {
       this._dataRSVP.checkRSVPOfEvent(this.user_id, this.e_id).subscribe(
         (data) => {
           if (data == "") {
-            alert("baki");
+            //alert("baki");
             this.join_button = true;
             this.going_button = false;
           }
@@ -120,8 +140,10 @@ export class ViewEventPage {
     });
 
     this._dataRSVP.countRSVP(this.e_id).subscribe(
-      (data) => {
-        this.cnt_rsvp = data[0].count;
+      (data: Event_RSVP_User_class[]) => {
+        //this.cnt_rsvp = data[0].count;
+        this.event_rsvp_user = data;
+        this.cnt_rsvp = this.event_rsvp_user.length;
       },
       function (err) {
         alert(err);
@@ -130,8 +152,48 @@ export class ViewEventPage {
 
       }
     );
-  }
 
+    alert(this.e_id);
+    this._dataFeedback.getFeedbacksByEvent(this.e_id).subscribe(
+      (data: Feedback_Event_User_Class[]) => {
+        this.feedback_event_user = data;
+        console.log(this.feedback_event_user);
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+
+      }
+    );
+
+    this.storage.get('uid').then(
+      (val) => {
+        this.user_id = val;
+        this._dataUser.getUser(this.user_id).subscribe(
+          (data: user_class[]) => {
+            this.arrUser = data;
+            this.user_pic = this.arrUser[0].user_pic;
+            this.user_name = this.arrUser[0].user_name;
+          },
+          function (err) {
+            alert(err);
+          },
+          function () {
+
+          }
+        );
+      }
+    );
+  }
+  changeFlag() {
+    if (this.flag1 == true) {
+      this.flag1 = false;
+    }
+    else {
+      this.flag1 = true;
+    }
+  }
   onRSVP() {
     console.log(this.user_id);
     console.log(this.e_id);

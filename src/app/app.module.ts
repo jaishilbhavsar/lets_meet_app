@@ -40,6 +40,7 @@ import { FollowingPage } from '../pages/following/following';
 import { CommunityCommMemberProvider } from '../providers/community-comm-member/community-comm-member';
 import { CommentDbProvider } from '../providers/comment-db/comment-db';
 import { LikeDbProvider } from '../providers/like-db/like-db';
+import { FeedbackDbProvider } from '../providers/feedback-db/feedback-db';
 
 
 // The translate loader needs to know where to load i18n files
@@ -126,7 +127,8 @@ export function provideSettings(storage: Storage) {
     CommunityMemberDbProvider,
     CommunityCommMemberProvider,
     CommentDbProvider,
-    LikeDbProvider
+    LikeDbProvider,
+    FeedbackDbProvider
   ]
 })
 export class AppModule { }
