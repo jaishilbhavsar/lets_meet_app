@@ -124,7 +124,7 @@ export class ListMasterPage {
       })
       this._dataRSVP.addRSVP(new RSVP_Class(null, this.user_id, event_id)).subscribe(
         (data: any) => {
-
+          this.ionViewDidLoad();
 
           //this.join_button = false;
           //this.going_button = true;
