@@ -20,7 +20,7 @@
     <button ion-button style="float: right" small *ngIf="leave_button" (click)="doConfirm()" color="danger">Leave Community</button>
   </h5>
   <!--<button ion-button style="float: right" (click)="onJoin()" color="danger" small>Join Now</button>-->
-  <h6>{{cnt_member}} Members are joined</h6>
+  
   <ion-segment [(ngModel)]="Community" padding>
     <ion-segment-button value="posts">
       Posts
@@ -29,15 +29,12 @@
       Details
     </ion-segment-button>
     <ion-segment-button value="members">
-      Members
+      {{comm_member_count}} Members
     </ion-segment-button>
   </ion-segment>
 
   <div [ngSwitch]="Community">
     <ion-list *ngSwitchCase="'details'">
-      <ion-item>
-        <h4> {{comm_member_count}} Members</h4>
-      </ion-item>
       <ion-item>
         <h4>
           <ion-icon name="calendar"></ion-icon> {{comm_date | date:'dd-MM-yy'}} </h4>
@@ -74,12 +71,12 @@
 
     <ion-list *ngSwitchCase="'members'">
 
-      <ion-list *ngFor="let item of comm_comm_member">
-        <ion-item>
+      <ion-list>
+        <ion-item *ngFor="let item of comm_comm_member">
           <ion-avatar item-start>
             <img src="{{item.user_pic}}">
           </ion-avatar>
-          <h2>{{item.fk_user_id}}</h2>
+          <h2>{{item.user_name}}</h2>
 
         </ion-item>
       </ion-list>
