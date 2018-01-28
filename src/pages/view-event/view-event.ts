@@ -14,6 +14,7 @@ import { FeedbackDbProvider } from "../../providers/feedback-db/feedback-db";
 import { Feedback_Event_User_Class } from "../../shared/feedback_event_user_class";
 import { user_class } from '../login/user_class';
 import { LoginproProvider } from '../../providers/loginpro/loginpro';
+import { Feedback_Class } from "../../shared/feedback_class";
 
 
 /**
@@ -64,6 +65,8 @@ export class ViewEventPage {
   user_name: string;
 
   flag1: boolean = true;
+
+  feed_des: string = "";
 
   constructor(public storage: Storage,
     public load: LoadingController,
@@ -153,11 +156,11 @@ export class ViewEventPage {
       }
     );
 
-    alert(this.e_id);
+    //alert(this.e_id);
     this._dataFeedback.getFeedbacksByEvent(this.e_id).subscribe(
       (data: Feedback_Event_User_Class[]) => {
         this.feedback_event_user = data;
-        console.log(this.feedback_event_user);
+        //console.log(this.feedback_event_user);
       },
       function (err) {
         alert(err);
@@ -330,6 +333,53 @@ export class ViewEventPage {
 
   onView() {
     this.navCtrl.push(ViewCommunityPage, { c_id: this.comm_id });
+  }
+
+  newFeedback() {
+    if (this.feed_des.length > 0) {
+      let l1 = this.load.create({
+        content: 'Adding Feedback ...'
+      });
+      l1.present();
+      this.storage.get('uid').then((val) => {
+        this.user_id = val;
+        this._dataFeedback.addFeedback(new Feedback_Class(null, this.feed_des, this.e_id, this.user_id, null)).subscribe(
+          (d: Feedback_Class) => {
+            this.flag1 = true;
+            this.feed_des = "";
+            this.ionViewDidLoad();
+          },
+          function (err) {
+            alert(err);
+          },
+          function () {
+            l1.dismiss();
+          }
+        );
+      });
+    }
+    else {
+      this.flag1 = true;
+    }
+  }
+
+  deleteFeedback(id) {
+    let t1 = this.tos.create({
+      duration: 3000,
+      message: "Deleted ..."
+    });
+    this._dataFeedback.deleteFeedback(id).subscribe(
+      (d: any) => {
+        this.ionViewDidLoad();
+        t1.present();
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+
+      }
+    );
   }
 }
 

@@ -13,16 +13,18 @@ export class Event_Comm_Rsvp {
         public fk_user_id: string,
         public fk_comm_id: number,
         public event_verify: string,
+
+        public RSVP_id: number,
+        public rsvp_fk_user_id: string,
+        public fk_event_id: number,
+
         public comm_id: number,
         public comm_name: string,
         public comm_des: string,
         public comm_pic: string,
         public comm_date: Date,
         public comm_rating: number,
-        public created_by: string,
-        public RSVP_id: number,
-        public rsvp_fk_user_id:string,
-        public fk_event_id: number
+        public created_by: string
     ) {
 
     }

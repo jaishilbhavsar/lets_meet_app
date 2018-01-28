@@ -12,6 +12,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class EventCommunityDbProvider {
 
   url: string = "http://localhost:3000/eventCommunity/";
+  url1: string = "http://localhost:3000/eventNotReg/";
 
   constructor(public http: HttpClient) {
     console.log('Hello EventCommunityDbProvider Provider');
@@ -19,6 +20,10 @@ export class EventCommunityDbProvider {
 
   getCommunityByEventId(id) {
     return this.http.get(this.url + id);
+  }
+
+  getEventsNotReg(user_id) {
+    return this.http.get(this.url1 + user_id);
   }
 
   getAllEventsAndCommunities() {

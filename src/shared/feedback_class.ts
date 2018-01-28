@@ -5,7 +5,7 @@ export class Feedback_Class {
         public feed_id: number,
         public feed_des: string,
         public feed_fk_event_id: number,
-        public feed_fk_user_id: number,
+        public feed_fk_user_id: string,
         public feed_date: DateTime
     ) {
 

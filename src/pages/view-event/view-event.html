@@ -97,11 +97,11 @@
           <img src="{{user_pic}}">
         </ion-avatar>
         <h2>{{user_name}}</h2>
-        <p *ngIf="flag1;else textAreaBox">Add a new Fedback</p>
+        <p (click)="changeFlag()" *ngIf="flag1;else textAreaBox">Add a new Fedback</p>
         <ng-template #textAreaBox>
-          <textarea placeholder="Add a new Fedback" [(ngModel)]="post_des" name="" id="" cols="20" rows="3"></textarea>
-          <button ion-button icon-only (click)="changeFlag()">
-            <ion-icon name="trash"></ion-icon>
+          <textarea placeholder="Add a new Fedback" [(ngModel)]="feed_des" name="" id="" cols="14" rows="3"></textarea>
+          <button ion-button icon-only (click)="newFeedback()">
+            <ion-icon name="happy"></ion-icon>
           </button>
         </ng-template>
       </ion-item>
@@ -113,8 +113,14 @@
           <h2>{{item.user_name}}</h2>
           <p>{{item.feed_date | date:'mediumDate'}}</p>
           <ion-card-content>
-            <p>{{item.feed_des}}</p>
+            <p class="text-wrap">{{item.feed_des}}</p>
           </ion-card-content>
+          <button *ngIf="item.user_id==user_id" (click)="deleteFeedback(item.feed_id)" ion-button icon-only item-end clear>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+          <!--<button *ngIf="item.user_id==user_id" (click)="updateFeedback(item.feed_id)" ion-button icon-only item-end clear>
+            <ion-icon name="create"></ion-icon>
+          </button>-->
         </ion-item>
       </ion-card>
     </ion-list>
