@@ -32,31 +32,107 @@
 
   <img src="{{event_pic}}" />
   <h1>{{event_name}}</h1>
-  <button ion-button (click)="onClickRSVP()" *ngIf="join_button" color="success" block item-end>Join Event</button>
-  <button ion-button (click)="doConfirm()" *ngIf="going_button" color="danger" block item-end>Going</button>
-  <h1>{{cnt_rsvp}} are going</h1>
-  <ion-item>
-    <h3>
-      <ion-icon name="calendar"></ion-icon> {{event_date | date:'dd-MM-yy' }}</h3>
+  <ion-item *ngIf="join_button">
+    <h2>Are you going?</h2>
+    <ion-buttons end>
+      <button small ion-button icon-only (click)="onClickRSVP()" color="success">
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-item>
 
-  <ion-item>
-    <h4>
-      <ion-icon name="time"></ion-icon> {{event_s_time}} - {{event_e_time}}</h4>
+  <ion-item *ngIf="going_button">
+    <h2>You're going!</h2>
+    <ion-buttons end>
+      <button ion-button small icon-only (click)="doConfirm()" color="danger">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-item>
 
-  <ion-item>
+  <div padding>
+    <ion-segment [(ngModel)]="viewEvent">
+      <ion-segment-button value="event_detail">
+        Details
+      </ion-segment-button>
+      <ion-segment-button value="feedback">
+        Feedback
+      </ion-segment-button>
+      <ion-segment-button value="going_cnt">
+        {{cnt_rsvp}} are going
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
-    <h3 class="text-wrap">
-      <ion-icon name="navigate"></ion-icon> {{event_loc}}</h3>
-  </ion-item>
+  <div [ngSwitch]="viewEvent">
+    <ion-list *ngSwitchCase="'event_detail'">
+      <ion-item>
+        <h3>
+          <ion-icon name="calendar"></ion-icon> {{event_date | date:'dd-MM-yy' }}</h3>
+      </ion-item>
 
-  <ion-item>
+      <ion-item>
+        <h4>
+          <ion-icon name="time"></ion-icon> {{event_s_time}} - {{event_e_time}}</h4>
+      </ion-item>
 
-    <h3>
-      <ion-icon name="person"> Hosted by</ion-icon> {{created_by}}</h3>
-  </ion-item>
+      <ion-item>
+        <h3 class="text-wrap">
+          <ion-icon name="navigate"></ion-icon> {{event_loc}}</h3>
+      </ion-item>
 
-  <p>{{event_des}}</p>
+      <ion-item>
+        <h3>
+          <ion-icon name="person"> Hosted by</ion-icon> {{created_by}}
+        </h3>
+      </ion-item>
+
+      <p>{{event_des}}</p>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'feedback'">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{user_pic}}">
+        </ion-avatar>
+        <h2>{{user_name}}</h2>
+        <p (click)="changeFlag()" *ngIf="flag1;else textAreaBox">Add a new Fedback</p>
+        <ng-template #textAreaBox>
+          <textarea placeholder="Add a new Fedback" [(ngModel)]="feed_des" name="" id="" cols="14" rows="3"></textarea>
+          <button ion-button icon-only (click)="newFeedback()">
+            <ion-icon name="happy"></ion-icon>
+          </button>
+        </ng-template>
+      </ion-item>
+      <ion-card>
+        <ion-item *ngFor="let item of feedback_event_user">
+          <ion-avatar item-start>
+            <img src="{{item.user_pic}}">
+          </ion-avatar>
+          <h2>{{item.user_name}}</h2>
+          <p>{{item.feed_date | date:'mediumDate'}}</p>
+          <ion-card-content>
+            <p class="text-wrap">{{item.feed_des}}</p>
+          </ion-card-content>
+          <button *ngIf="item.user_id==user_id" (click)="deleteFeedback(item.feed_id)" ion-button icon-only item-end clear>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+          <!--<button *ngIf="item.user_id==user_id" (click)="updateFeedback(item.feed_id)" ion-button icon-only item-end clear>
+            <ion-icon name="create"></ion-icon>
+          </button>-->
+        </ion-item>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'going_cnt'">
+      <ion-item *ngFor="let item of event_rsvp_user">
+        <ion-avatar item-left>
+          <img src="{{item.user_pic}}">
+        </ion-avatar>
+        <h2>{{item.user_name}}</h2>
+      </ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>
