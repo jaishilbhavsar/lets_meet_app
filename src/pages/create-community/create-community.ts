@@ -28,13 +28,18 @@ export class CreateCommunityPage {
   comm_pic: string = '';
   comm_date: any = new Date();
   created_by: any = '';
-  comm_rating: number = 3;
-
+  comm_rating: number = 0;
+  rate:number=0;
 
   ionViewDidLoad() {
     this.st.get('uid').then((val) => {
       this.created_by = val;
 
+    });
+
+    this.st.get("rating").then((val)=>{
+
+      this.rate=val;
     });
     console.log('ionViewDidLoad CreateStoryPage');
   }
@@ -128,7 +133,7 @@ export class CreateCommunityPage {
     });
     l1.present();
 
-    this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.comm_rating, this.created_by)).subscribe(
+    this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.rate, this.created_by)).subscribe(
       (data: any) => {
         console.log(data);
         t1.present();
