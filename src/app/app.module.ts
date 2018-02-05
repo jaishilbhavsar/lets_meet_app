@@ -11,6 +11,7 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/providers';
@@ -90,7 +91,8 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

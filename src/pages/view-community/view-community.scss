@@ -3,3 +3,17 @@ page-view-community {
     white-space: normal
   }
 }
+
+ul {
+  padding: 0px;
+ 
+  &.rating li {
+    padding:  3px !important;
+    background: none;
+    color: #ffb400;
+ 
+    ion-icon {
+      font-size: 30px;
+    }
+  }
+}

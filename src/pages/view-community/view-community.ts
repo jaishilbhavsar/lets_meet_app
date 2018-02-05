@@ -12,6 +12,7 @@ import { Community_comm_member } from "../../shared/community_comm_member_class"
 import { LoginproProvider } from "../../providers/loginpro/loginpro";
 import { user_class } from "../login/user_class";
 import { CreatePostPage } from "../create-post/create-post";
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 /**
  * Generated class for the ViewCommunityPage page.
@@ -55,6 +56,11 @@ export class ViewCommunityPage {
   arrUser: user_class[] = [];
   user_pic: string;
   user_name: string;
+
+  
+  rate:number;
+
+
   constructor(public commu_member: CommunityMemberDbProvider,
     public storage: Storage,
     public toast: ToastController,
@@ -72,6 +78,9 @@ export class ViewCommunityPage {
     console.log('ionViewDidLoad ViewCommunityPage');
 
     this.comm_id = this.navParams.get('c_id');
+    this.storage.get('uid').then((val) => {
+      this.user_id = val;
+
     let l1 = this.load.create({
       content: "Loading..."
     });
@@ -84,7 +93,10 @@ export class ViewCommunityPage {
         this.comm_des = this.arr[0].comm_des;
         this.comm_pic = this.arr[0].comm_pic;
         this.comm_date = this.arr[0].comm_date;
-        this.comm_rating = this.arr[0].comm_rating;
+        if(this.user_id==this.arr[0].created_by)
+        {
+          this.comm_rating = this.arr[0].comm_rating;
+        }
         this.created_by = this.arr[0].created_by;
       },
       function (err) {
@@ -132,8 +144,7 @@ export class ViewCommunityPage {
       }
     );
 
-    this.storage.get('uid').then((val) => {
-      this.user_id = val;
+    
       this._data.checkCommMember(this.user_id, this.comm_id).subscribe(
         (data: any) => {
           if (data == "") {
@@ -322,6 +333,13 @@ export class ViewCommunityPage {
     addModal.present();
   }
 
+  onModelChange($event){
+    
+    this.comm_rating=this.rate;
+    alert(this.comm_rating);
 
+    this.storage.set("rating",this.comm_rating);
+    
+  }
 
 }
