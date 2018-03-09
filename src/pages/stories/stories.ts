@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StoryDetailPage } from "../story-detail/story-detail";
 import { CreateStoryPage } from "../create-story/create-story";
+import { StoryDbProvider } from "../../providers/story-db/story-db";
+import { Story_class } from "../../shared/stoty_class";
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the StoriesPage page.
@@ -17,18 +20,49 @@ import { CreateStoryPage } from "../create-story/create-story";
 })
 export class StoriesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  arr: Story_class[] = [];
+  arr1: Story_class[] = [];
+  user_id: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public _data: StoryDbProvider,
+    public storage: Storage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StoriesPage');
+    this.storage.get('uid').then((val) => {
+      this.user_id = val;
+        this._data.getStoriesById(this.user_id).subscribe(
+          (data: any) => {
+            this.arr = data;
+          },
+          function (err) {
+            alert(err);
+          },
+          function () {
+            
+          }
+        );
+    });
+  
+    this._data.getAllStories().subscribe(
+      (data: any) => {
+        this.arr1 = data;
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+       
+      }
+    );
   }
 
-  viewStory(){
+  viewStory() {
     this.navCtrl.push(StoryDetailPage);
   }
 
-  addStory(){
+  addStory() {
     this.navCtrl.push(CreateStoryPage);
   }
 
