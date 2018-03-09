@@ -57,19 +57,20 @@ export class ViewCommunityPage {
   user_pic: string;
   user_name: string;
 
-  
-  rate:number;
+
+  rate: number;
 
 
   constructor(public commu_member: CommunityMemberDbProvider,
     public storage: Storage,
     public toast: ToastController,
+    public load: LoadingController,
     public alerCtrl: AlertController,
     public modalCtrl: ModalController,
+    public modalCtrl1: ModalController,
     public _comm_mem_data: CommunityCommMemberProvider,
     public _data: ComminityDbTsProvider,
     public _dataUser: LoginproProvider,
-    public load: LoadingController,
     public navCtrl: NavController,
     public navParams: NavParams) {
   }
@@ -81,70 +82,69 @@ export class ViewCommunityPage {
     this.storage.get('uid').then((val) => {
       this.user_id = val;
 
-    let l1 = this.load.create({
-      content: "Loading..."
-    });
-    l1.present();
-    this._data.getCommunityById(this.comm_id).subscribe(
+      let l1 = this.load.create({
+        content: "Loading..."
+      });
+      l1.present();
+      this._data.getCommunityById(this.comm_id).subscribe(
 
-      (data: any) => {
-        this.arr = data;
-        this.comm_name = this.arr[0].comm_name;
-        this.comm_des = this.arr[0].comm_des;
-        this.comm_pic = this.arr[0].comm_pic;
-        this.comm_date = this.arr[0].comm_date;
-        if(this.user_id==this.arr[0].created_by)
-        {
-          this.comm_rating = this.arr[0].comm_rating;
+        (data: any) => {
+          this.arr = data;
+          this.comm_name = this.arr[0].comm_name;
+          this.comm_des = this.arr[0].comm_des;
+          this.comm_pic = this.arr[0].comm_pic;
+          this.comm_date = this.arr[0].comm_date;
+          if (this.user_id == this.arr[0].created_by) {
+            this.comm_rating = this.arr[0].comm_rating;
+          }
+          this.created_by = this.arr[0].created_by;
+        },
+        function (err) {
+          alert(err);
+        },
+        function () {
+          l1.dismiss();
         }
-        this.created_by = this.arr[0].created_by;
-      },
-      function (err) {
-        alert(err);
-      },
-      function () {
-        l1.dismiss();
-      }
-    );
+      );
 
-    let l2 = this.load.create({
-      content: "Loading..."
-    });
-    l2.present();
-    this._data.getPostByCommunityId(this.comm_id).subscribe(
-      (data: Community_Post_User_Class[]) => {
-        this.comm_post_user = data;
-      },
-      function (e) {
-        alert(e);
-      },
-      function () {
-        l2.dismiss();
-      }
-    );
+      let l2 = this.load.create({
+        content: "Loading..."
+      });
+      l2.present();
+      this._data.getPostByCommunityId(this.comm_id).subscribe(
+        (data: Community_Post_User_Class[]) => {
+          this.comm_post_user = data;
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+          l2.dismiss();
+        }
+      );
 
-    this._comm_mem_data.getAllMembersByCommunityId(this.comm_id).subscribe(
-      (data: Comm_member_class[]) => {
-        this.comm_mem = data;
-        this.comm_member_count = this.comm_mem.length;
-      }
-    );
+      this._comm_mem_data.getAllMembersByCommunityId(this.comm_id).subscribe(
+        (data: Comm_member_class[]) => {
+          this.comm_mem = data;
+          this.comm_member_count = this.comm_mem.length;
+        }
+      );
 
-    this._comm_mem_data.getAllMembers(this.comm_id).subscribe(
-      (data: any) => {
-        this.comm_comm_member = data;
-        //this.mem_length=this.comm_comm_member.length;
+      this._comm_mem_data.getAllMembers(this.comm_id).subscribe(
+        (data: any) => {
+          this.comm_comm_member = data;
+          //this.mem_length=this.comm_comm_member.length;
 
-      },
-      function (e) {
-        alert(e);
-      },
-      function () {
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
 
-      }
-    );
+        }
+      );
 
-    
+
       this._data.checkCommMember(this.user_id, this.comm_id).subscribe(
         (data: any) => {
           if (data == "") {
@@ -333,13 +333,20 @@ export class ViewCommunityPage {
     addModal.present();
   }
 
-  onModelChange($event){
-    
-    this.comm_rating=this.rate;
+  onModelChange($event) {
+
+    this.comm_rating = this.rate;
     alert(this.comm_rating);
 
-    this.storage.set("rating",this.comm_rating);
-    
+    this.storage.set("rating", this.comm_rating);
+
   }
 
+  /*addNewMember() {
+    let modalMember = this.modalCtrl1.create(AddMemberPage, { c_id: this.comm_id });
+    modalMember.onDidDismiss(item => {
+      this.ionViewDidLoad();
+    })
+    modalMember.present();
+}*/
 }

@@ -13,8 +13,9 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CommunityMemberDbProvider {
 
-  url:string="http://localhost:3000/comm_member/";
-  url1:string="http://localhost:3000/membercount/";
+  url: string = "http://localhost:3000/comm_member/";
+  url1: string = "http://localhost:3000/membercount/";
+  url2: string = "http://localhost:3000/memberList/";
 
   constructor(public http: HttpClient) {
     console.log('Hello CommunityMemberDbProvider Provider');
@@ -23,7 +24,7 @@ export class CommunityMemberDbProvider {
   getAllMembersByCommunityId(id) {
     return this.http.get(this.url + id);
   }
-  
+
   addCommunityMember(item: Comm_member_class) {
 
     let body = JSON.stringify(item);
@@ -32,14 +33,18 @@ export class CommunityMemberDbProvider {
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
-  deleteMember(id){
+  deleteMember(id) {
     return this.http.delete(this.url + id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
 
   }
 
-  memberCount(id){
-    return this.http.get(this.url1+id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  memberCount(id) {
+    return this.http.get(this.url1 + id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
 
+  }
+
+  getMemberListToAdd(comm_id, user_id) {
+    return this.http.get(this.url2 + comm_id + "/" + user_id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
 }

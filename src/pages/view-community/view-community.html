@@ -82,7 +82,7 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'members'">
-
+     <!-- <button ion-button full *ngIf="created_by==user_id" (click)="addNewMember()" ><ion-icon name="person-add"> Add a new Member</ion-icon></button>-->
       <ion-list>
         <ion-item *ngFor="let item of comm_comm_member">
           <ion-avatar item-start>

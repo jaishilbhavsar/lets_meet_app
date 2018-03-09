@@ -4,6 +4,7 @@ import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController, LoadingController, ToastController } from 'ionic-angular';
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { Storage } from "@ionic/storage";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { EventDbProvider } from "../../providers/event-db/event-db";
 import { Events_Class } from "../../shared/event_class";
@@ -27,18 +28,22 @@ export class ItemCreatePage {
   form: FormGroup;
 
   arr: Community_Class[] = [];
-  event_id: number = null;
+  event_id: any = null;
   event_name: string = "";
   event_des: string = "";
-  event_s_time: DateTime;
-  event_e_time: DateTime;
-  event_date: DateTime;
+  event_s_time: any;
+  event_e_time: any;
+  event_date: any;
   event_loc: string = "";
   created_by: string = "";
   event_pic: string = "";
-  community_id: number;
+  community_id: any;
+  event_verify: any = "true";
 
-  constructor(public storage: Storage,
+  selectedFile: File = null;
+
+  constructor(public http: HttpClient
+    , public storage: Storage,
     public _data: EventDbProvider,
     public _data1: ComminityDbTsProvider,
     public load: LoadingController,
@@ -132,6 +137,7 @@ export class ItemCreatePage {
     };
 
     reader.readAsDataURL(event.target.files[0]);
+    this.selectedFile = <File>event.target.files[0];
   }
 
   getProfileImageStyle() {
@@ -161,7 +167,7 @@ export class ItemCreatePage {
         duration: 3000,
         message: "Added ..."
       })
-      this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, this.community_id, 'true')).subscribe(
+      /*this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, this.community_id, 'true')).subscribe(
         (data: any) => {
           this.viewCtrl.dismiss();
           t1.present();
@@ -172,7 +178,48 @@ export class ItemCreatePage {
         function () {
           l1.dismiss();
         }
-      );
+      );*/
+      const fd = new FormData();
+      fd.append("event_id", this.event_id);
+      fd.append("event_name", this.event_name);
+      fd.append("event_des", this.event_des);
+      fd.append("image", this.selectedFile, this.selectedFile.name);
+      fd.append("event_s_time", this.event_s_time);
+      fd.append("event_e_time", this.event_e_time);
+      fd.append("event_date", this.event_date);
+      fd.append("event_loc", this.event_loc);
+      fd.append("fk_user_id", this.created_by);
+      fd.append("fk_comm_id", this.community_id);
+      fd.append("event_verify", "true");
+
+      this.http.post("http://localhost:3000/event/", fd).subscribe(
+        (data: any) => {
+          console.log(data);
+          console.log(this.selectedFile);
+          console.log(this.selectedFile.name);
+          this.viewCtrl.dismiss();
+          t1.present();
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+          l1.dismiss();
+        }
+      )
+      /*this._data.addEvent(fd).subscribe(
+        (data: any) => {
+          console.log(data);
+          this.viewCtrl.dismiss();
+          t1.present();
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+          l1.dismiss();
+        }
+      )*/
     });
     // this.viewCtrl.dismiss(this.form.value);
   }
