@@ -38,7 +38,7 @@ export class EventDbProvider {
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }*/
   addEvent(fd: FormData) {
-    return this.http.post(this.url, fd, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.post(this.url, fd);
   }
 
   editEvent(evn: Events_Class) {

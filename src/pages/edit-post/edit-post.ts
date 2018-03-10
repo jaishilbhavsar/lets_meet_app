@@ -1,13 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, DateTime } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
 import { PostDbProvider } from "../../providers/post-db/post-db";
 import { Post_Class } from "../../shared/post_class";
 import { Camera } from '@ionic-native/camera';
 
 /**
- * Generated class for the CreatePostPage page.
+ * Generated class for the EditPostPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -15,45 +15,59 @@ import { Camera } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
-  selector: 'page-create-post',
-  templateUrl: 'create-post.html',
+  selector: 'page-edit-post',
+  templateUrl: 'edit-post.html',
 })
-export class CreatePostPage {
+export class EditPostPage {
 
   @ViewChild('fileInput') fileInput;
   selectedFile: File = null;
 
-  comm_id = this.navParams.get('c_id');
-  user_id: string;
+  post_id: number;
 
   arrPost: Post_Class[] = [];
   post_title: string;
   post_des: string;
+  user_id: string;
+  post_pic: string;
+  post_date: DateTime;
+  post_fk_user_id: string;
+  fk_comm_id: number;
 
   isReadyToSave: boolean;
   form: FormGroup;
+
   constructor(public _dataPost: PostDbProvider,
     public storage: Storage,
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
     public camera: Camera,
-    public formBuilder: FormBuilder
-  ) {
+    public formBuilder: FormBuilder) {
+
     this.form = formBuilder.group({
       profilePic: [''],
       post_title: ['', Validators.required],
       post_des: ['', Validators.required]
     });
 
-    // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CreatePostPage');
+    console.log('ionViewDidLoad EditPostPage');
+    this.post_id = this.navParams.get('p_id');
+    console.log(this.post_id);
+    this._dataPost.getPostById(this.post_id).subscribe(
+      (data: Post_Class[]) => {
+        this.arrPost = data;
+        this.post_pic = this.arrPost[0].post_pic;
+        this.post_title = this.arrPost[0].post_title;
+        this.post_des = this.arrPost[0].post_des;
+      }
+    )
   }
 
   getPicture() {
@@ -117,13 +131,7 @@ export class CreatePostPage {
         }
       )*/
       const fd = new FormData();
-      fd.append("post_id", null);
-      fd.append("post_title", this.post_title);
-      fd.append("post_des", this.post_des);
-      fd.append("image", this.selectedFile, this.selectedFile.name);
-      fd.append("post_date", null);
-      fd.append("post_fk_user_id", this.user_id);
-      fd.append("fk_comm_id", this.comm_id);
+
       this._dataPost.addPost(fd).subscribe(
         (data: Post_Class) => {
           alert("added");
@@ -141,4 +149,5 @@ export class CreatePostPage {
     );
     //this.viewCtrl.dismiss(this.form.value);
   }
+
 }

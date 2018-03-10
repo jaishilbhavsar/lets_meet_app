@@ -16,6 +16,7 @@ import { ViewEventPage } from "../pages/view-event/view-event";
 import { ViewCommunityPage } from "../pages/view-community/view-community";
 import { ViewPostPage } from "../pages/view-post/view-post";
 import { CreatePostPage } from "../pages/create-post/create-post";
+import { EditPostPage } from "../pages/edit-post/edit-post";
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -60,7 +61,8 @@ export class MyApp {
     { title: 'AddCommunity', component: 'CreateCommunityPage' },
     { title: 'ViewEvent', component: 'ViewEventPage' },
     { title: 'ViewCommunity', component: 'ViewCommunityPage' },
-    { title: 'CreatePost', component: 'CreatePostPage' }
+    { title: 'CreatePost', component: 'CreatePostPage' },
+    { title: 'EditPost', component: 'EditPostPage' }
   ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
