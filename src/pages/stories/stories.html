@@ -26,7 +26,7 @@
     </button>
   </ion-fab>-->
   
-  <h3>My Stroy</h3>
+  <h4><font color="red">My Story </font></h4>
 
   <ion-item *ngFor="let item of arr">
     <ion-avatar item-start>
@@ -36,7 +36,7 @@
     <p>{{item.story_time | date:"HH:mm"}}</p>
   </ion-item>
   
-  <h3>Recent Updates</h3>
+  <h4><font color="red">Recent Updates</font></h4>
    <ion-item *ngFor="let item of arr1">
     <ion-avatar item-start>
       <img src="{{item.story_pic}}">

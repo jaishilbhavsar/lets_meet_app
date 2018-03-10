@@ -34,14 +34,9 @@ export class CreateCommunityPage {
   //comm_date: any = new Date();
   comm_date: any = null;
   created_by: any = '';
-<<<<<<< HEAD
-  comm_rating: number = 0;
-  rate: number = 0;
-=======
   comm_rating: any = null;
   comm_fk_cat_id: any = "3";
   rate: any = 0;
->>>>>>> 4b5ed133bf434a7619cb7b58da2df8f54973244a
 
   ionViewDidLoad() {
     this.st.get('uid').then((val) => {
@@ -51,11 +46,7 @@ export class CreateCommunityPage {
 
     this.st.get("rating").then((val) => {
 
-<<<<<<< HEAD
-      this.comm_rating = val;
-=======
       this.rate = val;
->>>>>>> 4b5ed133bf434a7619cb7b58da2df8f54973244a
     });
     console.log('ionViewDidLoad CreateStoryPage');
   }
@@ -145,10 +136,9 @@ export class CreateCommunityPage {
 
     this.st.get('uid').then((val) => {
       this.created_by = val;
-    });
+    
 
     console.log(this.created_by);
-    alert(this.created_by);
 
     let t1 = this.tos.create({
       message: "Created",
@@ -160,9 +150,6 @@ export class CreateCommunityPage {
     });
     l1.present();
 
-<<<<<<< HEAD
-    this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.comm_rating, this.created_by)).subscribe(
-=======
     /*this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.rate, this.created_by)).subscribe(
       (data: any) => {
         console.log(data);
@@ -177,6 +164,7 @@ export class CreateCommunityPage {
       }
     );*/
     const fd = new FormData();
+    alert(this.created_by);
     fd.append("comm_id", this.comm_id);
     fd.append("comm_name", this.comm_name);
     fd.append("comm_des", this.comm_des);
@@ -187,7 +175,6 @@ export class CreateCommunityPage {
     fd.append("comm_fk_cat_id", this.comm_fk_cat_id);
 
     this.http.post("http://localhost:3000/community/", fd).subscribe(
->>>>>>> 4b5ed133bf434a7619cb7b58da2df8f54973244a
       (data: any) => {
         console.log(data);
         t1.present();
@@ -200,5 +187,7 @@ export class CreateCommunityPage {
         l1.dismiss();
       }
     );
+  });
   }
+
 }

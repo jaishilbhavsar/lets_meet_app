@@ -338,8 +338,6 @@ export class ViewCommunityPage {
     this.comm_rating = this.rate;
     alert(this.comm_rating);
 
-    this.storage.set("rating", this.comm_rating);
-
   }
 
   /*addNewMember() {

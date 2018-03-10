@@ -22,16 +22,7 @@
   <!--<button ion-button style="float: right" (click)="onJoin()" color="danger" small>Join Now</button>-->
   
  <!-- <rating ng-model="data.rating" max="data.max" ></rating>-->
- 
- <rating [(ngModel)]="comm_rating" 
-        readOnly="false"
-        max="5"
-        emptyStarIconName="star-outline"
-        halfStarIconName="star-half" 
-        starIconName="star" 
-        nullable="false" 
-        (ngModelChange)="onModelChange($event)"></rating>
-    
+
 
   <ion-segment [(ngModel)]="Community" padding>
     <ion-segment-button value="posts">
@@ -53,13 +44,22 @@
       </ion-item>
       <ion-item>
         <h4>
-          <ion-icon name="star"></ion-icon> {{comm_rating}} </h4>
+        <rating [(ngModel)]="comm_rating" 
+        readOnly="false"
+        max="5"
+        emptyStarIconName="star-outline"
+        halfStarIconName="star-half" 
+        starIconName="star" 
+        nullable="false" 
+        (ngModelChange)="onModelChange($event)"></rating>
+      </h4>
       </ion-item>
       <ion-item>
         <h4>
           <ion-icon name="person">Created by </ion-icon> {{created_by}} </h4>
       </ion-item>
-      <h4>Community Description: {{comm_des}}</h4>
+
+      {{comm_des}}
     </ion-list>
 
 
