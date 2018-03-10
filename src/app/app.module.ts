@@ -42,11 +42,8 @@ import { CommunityCommMemberProvider } from '../providers/community-comm-member/
 import { CommentDbProvider } from '../providers/comment-db/comment-db';
 import { LikeDbProvider } from '../providers/like-db/like-db';
 import { FeedbackDbProvider } from '../providers/feedback-db/feedback-db';
-<<<<<<< HEAD
 import { StoryDbProvider } from '../providers/story-db/story-db';
-=======
 import { EditPostPage } from "../pages/edit-post/edit-post";
->>>>>>> 65cc1b8aa00d62dfca7aab2671260908965ff06e
 
 
 // The translate loader needs to know where to load i18n files

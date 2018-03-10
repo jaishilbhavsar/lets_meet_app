@@ -54,7 +54,8 @@ export class ListMasterPage {
     l1.present();
     this.storage.get('uid').then((val) => {
       this.u_id = val;
-      this._data1.getAllEventsAndCommunities().subscribe(
+      //this._data1.getAllEventsAndCommunities().subscribe(
+        this._data.getNotRegisteredEventsofUser(this.u_id).subscribe(
         (d: Event_Community_Class[]) => {
           this.arr = d;
           this.arr1 = d;
@@ -87,6 +88,10 @@ export class ListMasterPage {
         }
       );
     });
+  }
+
+  ionViewDidEnter(){
+   this.ionViewDidLoad();
   }
 
   /**
