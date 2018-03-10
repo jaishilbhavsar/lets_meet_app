@@ -26,10 +26,10 @@
       <ion-col col-12>
         <ion-card-content >
           <ion-card-title (click)="onView(item.comm_id)">
-            {{item.comm_name}}
+            <b>{{item.comm_name}}</b>
           
         </ion-card-title>
-            Is created by : <h4>{{item.created_by}}</h4>
+           <b> Created by : </b> <h4>{{item.user_name}}</h4>
           
         </ion-card-content>
       </ion-col>
