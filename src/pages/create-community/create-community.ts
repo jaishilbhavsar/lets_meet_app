@@ -35,7 +35,7 @@ export class CreateCommunityPage {
   comm_date: any = null;
   created_by: any = '';
   comm_rating: any = null;
-  comm_fk_cat_id: any = "3";
+  comm_fk_cat_id: string = '3';
   rate: any = 0;
 
   ionViewDidLoad() {
@@ -173,7 +173,7 @@ export class CreateCommunityPage {
     fd.append("comm_rating", this.comm_rating);
     fd.append("created_by", this.created_by);
     fd.append("comm_fk_cat_id", this.comm_fk_cat_id);
-
+    
     this.http.post("http://localhost:3000/community/", fd).subscribe(
       (data: any) => {
         console.log(data);

@@ -20,18 +20,12 @@
     <button ion-button style="float: right" small *ngIf="leave_button" (click)="doConfirm()" color="danger">Leave Community</button>
   </h5>
   <!--<button ion-button style="float: right" (click)="onJoin()" color="danger" small>Join Now</button>-->
-  
- <!-- <rating ng-model="data.rating" max="data.max" ></rating>-->
- 
- <rating [(ngModel)]="comm_rating" 
-        readOnly="false"
-        max="5"
-        emptyStarIconName="star-outline"
-        halfStarIconName="star-half" 
-        starIconName="star" 
-        nullable="false" 
-        (ngModelChange)="onModelChange($event)"></rating>
-    
+
+  <!-- <rating ng-model="data.rating" max="data.max" ></rating>-->
+
+  <rating [(ngModel)]="comm_rating" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+    starIconName="star" nullable="false" (ngModelChange)="onModelChange($event)"></rating>
+
 
   <ion-segment [(ngModel)]="Community" padding>
     <ion-segment-button value="posts">
@@ -78,11 +72,26 @@
         <ion-card-content (click)="onPostClick(item)">
           <p class="text-wrap">{{item.post_title}}</p>
         </ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              <button ion-button small *ngIf="item.post_fk_user_id==user_id" (click)="editPost(item.post_id)">
+                <ion-icon name="create"></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-6>
+              <button ion-button small *ngIf="item.post_fk_user_id==user_id" (click)="deletePost(item)">
+                <ion-icon name="trash"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
       </ion-card>
     </ion-list>
 
     <ion-list *ngSwitchCase="'members'">
-     <!-- <button ion-button full *ngIf="created_by==user_id" (click)="addNewMember()" ><ion-icon name="person-add"> Add a new Member</ion-icon></button>-->
+      <!-- <button ion-button full *ngIf="created_by==user_id" (click)="addNewMember()" ><ion-icon name="person-add"> Add a new Member</ion-icon></button>-->
       <ion-list>
         <ion-item *ngFor="let item of comm_comm_member">
           <ion-avatar item-start>

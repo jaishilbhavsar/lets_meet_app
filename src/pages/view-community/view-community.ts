@@ -13,6 +13,9 @@ import { LoginproProvider } from "../../providers/loginpro/loginpro";
 import { user_class } from "../login/user_class";
 import { CreatePostPage } from "../create-post/create-post";
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { PostDbProvider } from "../../providers/post-db/post-db";
+import { Post_Class } from '../../shared/post_class';
+import { EditPostPage } from "../../pages/edit-post/edit-post";
 
 /**
  * Generated class for the ViewCommunityPage page.
@@ -61,7 +64,8 @@ export class ViewCommunityPage {
   rate: number;
 
 
-  constructor(public commu_member: CommunityMemberDbProvider,
+  constructor(public dataPost: PostDbProvider,
+    public commu_member: CommunityMemberDbProvider,
     public storage: Storage,
     public toast: ToastController,
     public load: LoadingController,
@@ -331,6 +335,57 @@ export class ViewCommunityPage {
       this.ionViewDidLoad();
     })
     addModal.present();
+  }
+
+  deletePost(item: Post_Class) {
+    let confirm1 = this.alerCtrl.create({
+      title: 'Delete Post?',
+      message: 'Are you sure you want to delete this Post?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('No Clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes Clicked');
+            this.removePost(item);
+          }
+        }
+      ]
+    });
+    confirm1.present();
+  }
+
+  removePost(item: Post_Class) {
+    this.dataPost.deletePost(item).subscribe(
+      (data) => {
+        const toast = this.toast.create({
+          message: 'Your post has been successfully deleted.',
+          showCloseButton: true,
+          closeButtonText: 'Ok'
+        });
+        this.ionViewDidLoad();
+        toast.present();
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+
+      }
+    )
+  }
+
+  editPost(id) {
+    let addModal1 = this.modalCtrl.create(EditPostPage, { p_id: id });
+    addModal1.onDidDismiss(item => {
+      this.ionViewDidLoad();
+    })
+    addModal1.present();
   }
 
   onModelChange($event) {

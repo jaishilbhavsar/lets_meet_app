@@ -192,7 +192,7 @@ export class ItemCreatePage {
       fd.append("fk_comm_id", this.community_id);
       fd.append("event_verify", "true");
 
-      this.http.post("http://localhost:3000/event/", fd).subscribe(
+      /*this.http.post("http://localhost:3000/event/", fd).subscribe(
         (data: any) => {
           console.log(data);
           console.log(this.selectedFile);
@@ -206,8 +206,8 @@ export class ItemCreatePage {
         function () {
           l1.dismiss();
         }
-      )
-      /*this._data.addEvent(fd).subscribe(
+      )*/
+      this._data.addEvent(fd).subscribe(
         (data: any) => {
           console.log(data);
           this.viewCtrl.dismiss();
@@ -219,7 +219,7 @@ export class ItemCreatePage {
         function () {
           l1.dismiss();
         }
-      )*/
+      )
     });
     // this.viewCtrl.dismiss(this.form.value);
   }
