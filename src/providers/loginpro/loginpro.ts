@@ -74,7 +74,7 @@ export class LoginproProvider {
     this.userupdate.user_mob_no = mobile;
     this.userupdate.user_bdate = mydate;
     let body = JSON.stringify(this.userupdate);
-    alert(this.userupdate.user_id);
+   // alert(this.userupdate.user_id);
     return this.http.put(this.urlsignup, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
   ed: string = '';

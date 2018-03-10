@@ -126,7 +126,7 @@ export class CreatePostPage {
       fd.append("fk_comm_id", this.comm_id);
       this._dataPost.addPost(fd).subscribe(
         (data: Post_Class) => {
-          alert("added");
+         // alert("added");
           console.log(data);
           this.viewCtrl.dismiss();
         },

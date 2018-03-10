@@ -391,7 +391,7 @@ export class ViewCommunityPage {
   onModelChange($event) {
 
     this.comm_rating = this.rate;
-    alert(this.comm_rating);
+   // alert(this.comm_rating);
 
   }
 

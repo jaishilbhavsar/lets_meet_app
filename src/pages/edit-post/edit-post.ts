@@ -134,7 +134,7 @@ export class EditPostPage {
 
       this._dataPost.addPost(fd).subscribe(
         (data: Post_Class) => {
-          alert("added");
+         // alert("added");
           console.log(data);
           this.viewCtrl.dismiss();
         },
