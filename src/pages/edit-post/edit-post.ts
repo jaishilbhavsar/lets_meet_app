@@ -66,6 +66,7 @@ export class EditPostPage {
         this.post_pic = this.arrPost[0].post_pic;
         this.post_title = this.arrPost[0].post_title;
         this.post_des = this.arrPost[0].post_des;
+        this.form.patchValue({ 'profilePic': this.post_pic });
       }
     )
   }
