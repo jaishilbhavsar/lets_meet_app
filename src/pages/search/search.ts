@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 
 import { user_class } from "../login/user_class";
 import { LoginproProvider } from "../../providers/loginpro/loginpro";
+import { Community_Class } from "../settings/community_class";
+import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
 
 @IonicPage()
 @Component({
@@ -16,13 +18,16 @@ export class SearchPage {
 
   currentItems: any = [];
   //items:any=[];
-  user:string="allusers";
+  user: string = "allusers";
   txtsearch: string = '';
   arr: user_class[] = [];
   arr1: user_class[] = [];
 
-  constructor(public navCtrl: NavController, public _data: LoginproProvider, public navParams: NavParams, public items: Items) { 
-      this.currentItems = this.items.query();
+  
+  topComm: Community_Class[] = [];
+
+  constructor(public navCtrl: NavController,public load:LoadingController ,public _data1:ComminityDbTsProvider ,public _data: LoginproProvider, public navParams: NavParams, public items: Items) {
+    this.currentItems = this.items.query();
   }
 
   ionViewDidLoad() {
@@ -35,6 +40,28 @@ export class SearchPage {
       function (e) {
         alert(e);
       }
+    );
+
+
+    
+    let l2 = this.load.create({
+      content: "Loading..."
+    });
+    l2.present();
+
+    this._data1.gettopcommunity().subscribe(
+
+      (data: any) => {
+        this.topComm = data;
+      },
+      function (e) {
+        alert(e);
+
+      },
+      function () {
+        l2.dismiss();
+      }
+
     );
   }
   /**
@@ -53,24 +80,24 @@ export class SearchPage {
   /**
    * Navigate to the detail page for this item.
    */
- /* openItem(item: Item) {
-    this.navCtrl.push('ItemDetailPage', {
-      item: item
-    });
-  }*/
+  /* openItem(item: Item) {
+     this.navCtrl.push('ItemDetailPage', {
+       item: item
+     });
+   }*/
 
 
   onSearch() {
 
     if (this.txtsearch != '') {
 
-      this.arr1 = this.arr.filter((x) =>x.user_name.toLocaleLowerCase().indexOf(this.txtsearch.toLocaleLowerCase()) > -1);
-   //   this.arr1 = this.arr.filter((x) => x..startsWith(this.txtsearch))
+      this.arr1 = this.arr.filter((x) => x.user_name.toLocaleLowerCase().indexOf(this.txtsearch.toLocaleLowerCase()) > -1);
+      //   this.arr1 = this.arr.filter((x) => x..startsWith(this.txtsearch))
     }
-    else{
-      this.arr1=null;
+    else {
+      this.arr1 = null;
     }
-  
+
 
   }
 }

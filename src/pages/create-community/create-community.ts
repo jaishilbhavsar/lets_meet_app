@@ -6,6 +6,7 @@ import { ComminityDbTsProvider } from "../../providers/community-db/community-db
 import { Community_Class } from "../settings/community_class";
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { Storage } from "@ionic/storage";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 /**
  * Generated class for the CreateCommunityPage page.
@@ -21,25 +22,36 @@ import { Storage } from "@ionic/storage";
 })
 export class CreateCommunityPage {
 
+  @ViewChild('fileInput') fileInput;
+
+  selectedFile: File = null;
+
   dt: DateTime;
-  comm_id: number = null;
+  comm_id: any = null;
   comm_name: string = '';
   comm_des: string = '';
   comm_pic: string = '';
-  comm_date: any = new Date();
+  //comm_date: any = new Date();
+  comm_date: any = null;
   created_by: any = '';
-  comm_rating: number = 3;
-
+  comm_rating: any = null;
+  comm_fk_cat_id: string = '3';
+  rate: any = 0;
 
   ionViewDidLoad() {
     this.st.get('uid').then((val) => {
       this.created_by = val;
 
     });
+
+    this.st.get("rating").then((val) => {
+
+      this.rate = val;
+    });
     console.log('ionViewDidLoad CreateStoryPage');
   }
 
-  @ViewChild('fileInput') fileInput;
+
 
   isReadyToSave: boolean;
 
@@ -47,21 +59,30 @@ export class CreateCommunityPage {
 
   form: FormGroup;
 
-  constructor(public st: Storage, public navCtrl: NavController, public _data: ComminityDbTsProvider, public navParams: NavParams, public tos: ToastController, public load: LoadingController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  constructor(public http: HttpClient,
+    public st: Storage,
+    public navCtrl: NavController,
+    public _data: ComminityDbTsProvider,
+    public navParams: NavParams,
+    public tos: ToastController,
+    public load: LoadingController,
+    public viewCtrl: ViewController,
+    formBuilder: FormBuilder,
+    public camera: Camera) {
     this.form = formBuilder.group({
       profilePic: [''],
-      name: ['', Validators.required],
-      about: ['']
+      comm_name: ['', Validators.required],
+      comm_des: ['', Validators.required]
     });
 
     // Watch the form for changes, and
-    this.form.valueChanges.subscribe((v) => {
+    /*this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
-    });
+    });*/
   }
 
   getPicture() {
-    if (Camera['installed']()) {
+    /*if (Camera['installed']()) {
       this.camera.getPicture({
         destinationType: this.camera.DestinationType.DATA_URL,
         targetWidth: 96,
@@ -73,7 +94,8 @@ export class CreateCommunityPage {
       })
     } else {
       this.fileInput.nativeElement.click();
-    }
+    }*/
+    this.fileInput.nativeElement.click();
   }
 
   processWebImage(event) {
@@ -85,6 +107,7 @@ export class CreateCommunityPage {
     };
 
     reader.readAsDataURL(event.target.files[0]);
+    this.selectedFile = <File>event.target.files[0];
   }
 
   getProfileImageStyle() {
@@ -113,10 +136,9 @@ export class CreateCommunityPage {
 
     this.st.get('uid').then((val) => {
       this.created_by = val;
-    });
+    
 
     console.log(this.created_by);
-    alert(this.created_by);
 
     let t1 = this.tos.create({
       message: "Created",
@@ -128,8 +150,33 @@ export class CreateCommunityPage {
     });
     l1.present();
 
-    this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.comm_rating, this.created_by)).subscribe(
+    /*this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.rate, this.created_by)).subscribe(
       (data: any) => {
+        console.log(data);
+        t1.present();
+        this.navCtrl.pop();
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+        l1.dismiss();
+      }
+    );*/
+    const fd = new FormData();
+    alert(this.created_by);
+    fd.append("comm_id", this.comm_id);
+    fd.append("comm_name", this.comm_name);
+    fd.append("comm_des", this.comm_des);
+    fd.append("image", this.selectedFile, this.selectedFile.name);
+    fd.append("comm_date", this.comm_date);
+    fd.append("comm_rating", this.comm_rating);
+    fd.append("created_by", this.created_by);
+    fd.append("comm_fk_cat_id", this.comm_fk_cat_id);
+    
+    this.http.post("http://localhost:3000/community/", fd).subscribe(
+      (data: any) => {
+        console.log(data);
         t1.present();
         this.navCtrl.pop();
       },
@@ -140,5 +187,7 @@ export class CreateCommunityPage {
         l1.dismiss();
       }
     );
+  });
   }
+
 }

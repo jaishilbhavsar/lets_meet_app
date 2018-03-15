@@ -20,6 +20,7 @@ export class EventDbProvider {
   url: string = "http://localhost:3000/event/";
   url1: string = "http://localhost:3000/comingEvent/";
   url2: string = "http://localhost:3000/event_reg/";
+  url3: string = "http://localhost:3000/eventNotReg/";
 
   constructor(public http: HttpClient) {
     console.log('Hello EventDbProvider Provider');
@@ -33,9 +34,12 @@ export class EventDbProvider {
     return this.http.get(this.url1);
   }
 
-  addEvent(evn: Events_Class) {
+  /*addEvent(evn: Events_Class) {
     let body = JSON.stringify(evn);
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  }*/
+  addEvent(fd: FormData) {
+    return this.http.post(this.url, fd);
   }
 
   editEvent(evn: Events_Class) {
@@ -56,4 +60,7 @@ export class EventDbProvider {
     return this.http.get(this.url2 + id);
   }
 
+  getNotRegisteredEventsofUser(id) {
+    return this.http.get(this.url3 + id);
+  }
 }

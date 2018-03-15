@@ -7,13 +7,12 @@ import { Items } from '../../providers/providers';
 
 import { Events_Class } from "../../shared/event_class";
 import { EventDbProvider } from "../../providers/event-db/event-db";
-import { CreateEventPage } from "../create-event/create-event";
 import { ViewEventPage } from "../view-event/view-event";
 import { EventCommunityDbProvider } from "../../providers/event-community-db/event-community-db";
-import { Event_Community_Class } from "../../shared/event_community_class";
+import { Event_Comm_Rsvp } from "../../shared/event_community_rsvp_class";
 import { RSVP_Class } from '../../shared/rsvp_class';
 import { RsvpDbProvider } from '../../providers/rsvp-db/rsvp-db';
-import { Event_Comm_Rsvp } from "../../shared/event_community_rsvp_class";
+import { Event_Community_Class } from "../../shared/event_community_class";
 
 @IonicPage()
 @Component({
@@ -45,33 +44,31 @@ export class ListMasterPage {
     public navCtrl: NavController,
     public items: Items,
     public modalCtrl: ModalController) {
-    this.currentItems = this.items.query();
+
   }
 
-  /**
-   * The view loaded, let's query our items for the list
-   */
   ionViewDidLoad() {
     let l1 = this.load.create({
       content: 'Loading Events'
     });
     l1.present();
-    this._data1.getAllEventsAndCommunities().subscribe(
-      (d: Event_Community_Class[]) => {
-        this.arr = d;
-        this.arr1 = d;
-        this.storage.get('uid').then((val) => {
-          this.u_id = val;
-        });
-      },
-      function (e) {
-        alert(e);
-      },
-      function () {
-        l1.dismiss();
-      }
-    );
-
+    this.storage.get('uid').then((val) => {
+      this.u_id = val;
+      //this._data1.getAllEventsAndCommunities().subscribe(
+        this._data.getNotRegisteredEventsofUser(this.u_id).subscribe(
+        (d: Event_Community_Class[]) => {
+          this.arr = d;
+          this.arr1 = d;
+          console.log(this.arr);
+        },
+        function (e) {
+          alert(e);
+        },
+        function () {
+          l1.dismiss();
+        }
+      );
+    });
     let l2 = this.load.create({
       content: 'Registered Events'
     });
@@ -93,6 +90,10 @@ export class ListMasterPage {
     });
   }
 
+  ionViewDidEnter(){
+   this.ionViewDidLoad();
+  }
+
   /**
    * Prompt the user to add a new item. This shows our ItemCreatePage in a
    * modal and then adds the new item to our data source if the user created one.
@@ -100,9 +101,7 @@ export class ListMasterPage {
   addItem() {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
-      }
+      this.ionViewDidLoad();
     })
     addModal.present();
     //this.navCtrl.push(CreateEventPage);
@@ -127,7 +126,7 @@ export class ListMasterPage {
       })
       this._dataRSVP.addRSVP(new RSVP_Class(null, this.user_id, event_id)).subscribe(
         (data: any) => {
-
+          this.ionViewDidLoad();
 
           //this.join_button = false;
           //this.going_button = true;

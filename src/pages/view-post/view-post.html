@@ -14,6 +14,16 @@
 
 
 <ion-content padding>
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull Down." refreshingSpinner="circles" refreshingText="Loading...">
+    </ion-refresher-content>
+  </ion-refresher>-->
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="{{user_pic}}">
+    </ion-avatar>
+    <h2>{{user_name}}</h2>
+  </ion-item>
   <ion-card *ngFor="let item of arrPost">
 
     <img src="{{item.post_pic}}">
@@ -25,15 +35,19 @@
 
     <ion-row>
       <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
+        <button *ngIf="like" ion-button icon-left clear small (click)="addLike()">
+          <ion-icon name="heart-outline"></ion-icon>
+          <div>{{like_cnt}} Likes</div>
+        </button>
+        <button *ngIf="dislike" ion-button icon-left clear small (click)="onLikeRemove()">
+          <ion-icon name="heart" color="danger"></ion-icon>
+          <div>{{like_cnt}} Likes</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
+          <div>{{comment_count}} Comments</div>
         </button>
       </ion-col>
       <ion-col center text-center>
@@ -49,6 +63,21 @@
         </ion-avatar>
         <h2>{{item.user_name}}</h2>
         <p>{{item.com_des}}</p>
+        <button *ngIf="item.user_name==user_name" ion-button icon-only clear item-end color="primary" (click)="onDeleteComment(item.com_id)">
+          <ion-icon color="primary" small name="trash"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{user_pic}}">
+        </ion-avatar>
+        <h2>{{user_name}}</h2>
+        <button ion-button icon-only clear item-end color="primary" (click)="newComment()">
+          <ion-icon color="primary" name="arrow-dropright-circle"></ion-icon>
+        </button>
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="new_comment" placeholder="Add a Comment..."></ion-input>
+        </ion-item>
       </ion-item>
     </ion-list>
   </ion-card>

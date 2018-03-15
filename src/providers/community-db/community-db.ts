@@ -15,6 +15,7 @@ export class ComminityDbTsProvider {
   url: string = "http://localhost:3000/community/";
   url1: string = "http://localhost:3000/comm_post/";
   url2: string = "http://localhost:3000/checkMember/";
+  url4: string = "http://localhost:3000/topcommunity/";
 
   community_member: { fk_user_id: string, fk_comm_id: string } = {
     fk_user_id: '',
@@ -58,10 +59,15 @@ export class ComminityDbTsProvider {
   }
 
   checkCommMember(user_id, comm_id) {
-    this.community_member.fk_user_id=user_id;
-    this.community_member.fk_comm_id=comm_id;
-    let body=JSON.stringify(this.community_member);
+    this.community_member.fk_user_id = user_id;
+    this.community_member.fk_comm_id = comm_id;
+    let body = JSON.stringify(this.community_member);
     return this.http.post(this.url2, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  }
+
+  gettopcommunity() {
+    return this.http.get(this.url4);
+    
   }
 
 }

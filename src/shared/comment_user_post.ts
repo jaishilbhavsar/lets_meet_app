@@ -9,7 +9,7 @@ export class Comment_User_Post {
         public fk_user_id: string,
         public fk_comm_id: number,
         public com_id: number,
-        public com_date: DateTime,
+        public com_date: Date,
         public com_des: string,
         public fk_post_id: number,
         public com_fk_user_id: string,
