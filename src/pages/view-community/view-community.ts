@@ -16,6 +16,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 import { PostDbProvider } from "../../providers/post-db/post-db";
 import { Post_Class } from '../../shared/post_class';
 import { EditPostPage } from "../../pages/edit-post/edit-post";
+import { Community_User_Class } from "../../shared/community_user_class";
 
 /**
  * Generated class for the ViewCommunityPage page.
@@ -35,7 +36,7 @@ export class ViewCommunityPage {
   leave_button: boolean = false;
 
   Community: string = "posts";
-  arr: Community_Class[] = [];
+  arr: Community_User_Class[] = [];
   public comm_name: string;
   public comm_des: string;
   public comm_pic: string;
@@ -101,7 +102,7 @@ export class ViewCommunityPage {
           if (this.user_id == this.arr[0].created_by) {
             this.comm_rating = this.arr[0].comm_rating;
           }
-          this.created_by = this.arr[0].created_by;
+          this.created_by = this.arr[0].user_name;
         },
         function (err) {
           alert(err);
@@ -219,6 +220,7 @@ export class ViewCommunityPage {
           t1.present();
           this.join_button = false;
           this.leave_button = true;
+          this.ionViewDidLoad();
 
           this._data.checkCommMember(this.user_id, this.comm_id).subscribe(
             (data: any) => {
@@ -290,6 +292,7 @@ export class ViewCommunityPage {
         //alert("deleted");
         this.join_button = true;
         this.leave_button = false;
+        this.ionViewDidLoad();
       },
       function (err) {
         alert(err);
@@ -388,10 +391,10 @@ export class ViewCommunityPage {
     addModal1.present();
   }
 
-  onModelChange($event) {
+  onModelChange(rt) {
 
-    this.comm_rating = this.rate;
-   // alert(this.comm_rating);
+    this.comm_rating = rt;
+    alert(this.comm_rating);
 
   }
 

@@ -1,3 +1,4 @@
+//import { ViewuserPage } from './../pages/viewuser/viewuser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -44,6 +45,8 @@ import { LikeDbProvider } from '../providers/like-db/like-db';
 import { FeedbackDbProvider } from '../providers/feedback-db/feedback-db';
 import { StoryDbProvider } from '../providers/story-db/story-db';
 import { EditPostPage } from "../pages/edit-post/edit-post";
+import { ViewuserPage } from '../pages/viewuser/viewuser';
+
 
 
 // The translate loader needs to know where to load i18n files
@@ -80,7 +83,8 @@ export function provideSettings(storage: Storage) {
     CreatePostPage,
     FollowerPage,
     FollowingPage,
-    EditPostPage
+    EditPostPage,
+    ViewuserPage
   ],
   imports: [
     BrowserModule,
@@ -110,7 +114,8 @@ export function provideSettings(storage: Storage) {
     CreatePostPage,
     FollowerPage,
     FollowingPage,
-    EditPostPage
+    EditPostPage,
+    ViewuserPage
   ],
   providers: [
     Api,

@@ -16,7 +16,7 @@
 <ion-content>
     <ion-card>
 
-        <ion-item *ngFor="let item of arr">
+        <ion-item *ngFor="let item of arr" (click)="showuser(item.user_id)">
           <ion-avatar item-start>
             <img src="item.user_pic">
           </ion-avatar>

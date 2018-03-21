@@ -112,9 +112,14 @@ export class LoginproProvider {
   urlfollowers: string = "http://localhost:3000/follower/";
   urlfollowing: string = "http://localhost:3000/following/";
   urlfollowuser:string="http://localhost:3000/follow_user/";
+  urlfollowingwhom:string="http://localhost:3000/followwhom/";
   getFollowingUser(uid)
   {
     return this.http.get(this.urlfollowuser + uid);
+  }
+  getFollowingwhom(uid)
+  {
+    return this.http.get(this.urlfollowingwhom+uid);
   }
   getFollowers(uid) {
     return this.http.get(this.urlfollowers + uid);
