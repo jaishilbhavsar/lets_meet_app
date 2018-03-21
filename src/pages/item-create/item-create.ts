@@ -11,7 +11,7 @@ import { Events_Class } from "../../shared/event_class";
 import { Community_Class } from "../settings/community_class";
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
 
-import { DateValidator } from "./event_date";
+//import { DateValidator } from "./event_date";
 
 @IonicPage()
 @Component({
