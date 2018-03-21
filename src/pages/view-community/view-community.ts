@@ -219,6 +219,7 @@ export class ViewCommunityPage {
           t1.present();
           this.join_button = false;
           this.leave_button = true;
+          this.ionViewDidLoad();
 
           this._data.checkCommMember(this.user_id, this.comm_id).subscribe(
             (data: any) => {
@@ -290,6 +291,7 @@ export class ViewCommunityPage {
         //alert("deleted");
         this.join_button = true;
         this.leave_button = false;
+        this.ionViewDidLoad();
       },
       function (err) {
         alert(err);

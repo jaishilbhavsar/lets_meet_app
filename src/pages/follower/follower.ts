@@ -1,3 +1,4 @@
+import { ViewuserPage } from './../viewuser/viewuser';
 import { user_class } from './../login/user_class';
 import { LoginproProvider } from './../../providers/loginpro/loginpro';
 import { Component } from '@angular/core';
@@ -7,6 +8,7 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 import { follower_class } from '../../shared/follower_class';
 import { Console } from '@angular/core/src/console';
 import { follow_user_class } from '../../shared/follow_user_class';
+
 
 /**
  * Generated class for the FollowerPage page.
@@ -31,8 +33,7 @@ export class FollowerPage {
   user: user_class[] = [];
   ionViewDidLoad() {
     console.log('ionViewDidLoad FollowerPage');
-    this.storage.get('uid').then((val) => {
-      this.uid = val;
+      this.uid=this.navParams.get('uid');
       let l1 = this.load.create({
         content: "Loading ..."
       });
@@ -55,7 +56,10 @@ export class FollowerPage {
           l1.dismiss();
         }
       );
-    }
-    );
+  }
+  showuser(id)
+  {
+    this.storage.set('viewid', id);
+    this.navCtrl.push(ViewuserPage);
   }
 }

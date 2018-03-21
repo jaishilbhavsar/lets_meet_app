@@ -10,7 +10,7 @@ import { follower_class } from '../../shared/follower_class';
 import { FollowingPage } from '../following/following';
 
 /**
- * Generated class for the UsersPage page.
+ * Generated class for the ViewuserPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -18,11 +18,12 @@ import { FollowingPage } from '../following/following';
 
 @IonicPage()
 @Component({
-  selector: 'page-users',
-  templateUrl: 'users.html',
+  selector: 'page-viewuser',
+  templateUrl: 'viewuser.html',
 })
-export class UsersPage {
+export class ViewuserPage {
 
+  
   followingcount:number;
   followercount:number;
   followers:follower_class[]=[];
@@ -37,10 +38,10 @@ export class UsersPage {
   constructor(public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
- 
-  ionViewDidLoad() {
 
-    this.storage.get('uid').then((val)=>{
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ViewuserPage');
+    this.storage.get('viewid').then((val)=>{
       this.uid=val;
       let l1 = this.load.create({
         content: "Loading ..."
@@ -96,61 +97,4 @@ export class UsersPage {
   {
     this.navCtrl.push(FollowingPage,{uid:this.uid});
   }
-  openModal() {
-
-    let modal = this.modalCtrl.create(EditprofilePage);
-    modal.present();
-  }
-
-}
-
-@Component({
-  template: `
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Description
-    </ion-title>
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios">Cancel</span>
-        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="{{character.image}}">
-        </ion-avatar>
-        <h2>{{character.name}}</h2>
-        <p>{{character.quote}}</p>
-      </ion-item>
-      
-  </ion-list>
-</ion-content>
-`
-})
-export class ModalContentPage {
-  character;
-  constructor(
-    public platform: Platform,
-    public params: NavParams,
-    public viewCtrl: ViewController
-  ) {
-    var characters = [
-      {
-        name: 'Gollum',
-        quote: 'Sneaky little hobbitses!',
-        image: 'assets/img/avatar-gollum.jpg'
-      }
-    ];
-  }
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
-
 }
