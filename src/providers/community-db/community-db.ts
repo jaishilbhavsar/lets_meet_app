@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Community_Class } from "../../pages/settings/community_class";
+import { Community_User_Class } from "../../shared/community_user_class";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import 'rxjs/add/operator/map';
 
