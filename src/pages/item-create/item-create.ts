@@ -138,6 +138,17 @@ export class ItemCreatePage {
 
     reader.readAsDataURL(event.target.files[0]);
     this.selectedFile = <File>event.target.files[0];
+    //alert(this.selectedFile.type);
+    if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
+      this.selectedFile = null;
+      this.isReadyToSave = this.form.invalid;
+      const toast = this.tos.create({
+        message: 'Only Image formats are accepted!',
+        showCloseButton: true,
+        closeButtonText: 'Ok'
+      });
+      toast.present();
+    }
   }
 
   getProfileImageStyle() {

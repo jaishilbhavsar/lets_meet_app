@@ -136,58 +136,58 @@ export class CreateCommunityPage {
 
     this.st.get('uid').then((val) => {
       this.created_by = val;
-    
 
-    console.log(this.created_by);
 
-    let t1 = this.tos.create({
-      message: "Created",
-      duration: 3000
+      console.log(this.created_by);
+
+      let t1 = this.tos.create({
+        message: "Created",
+        duration: 3000
+      });
+
+      let l1 = this.load.create({
+        content: "Loading..."
+      });
+      l1.present();
+
+      /*this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.rate, this.created_by)).subscribe(
+        (data: any) => {
+          console.log(data);
+          t1.present();
+          this.navCtrl.pop();
+        },
+        function (err) {
+          alert(err);
+        },
+        function () {
+          l1.dismiss();
+        }
+      );*/
+      const fd = new FormData();
+      alert(this.created_by);
+      fd.append("comm_id", this.comm_id);
+      fd.append("comm_name", this.comm_name);
+      fd.append("comm_des", this.comm_des);
+      fd.append("image", this.selectedFile, this.selectedFile.name);
+      fd.append("comm_date", this.comm_date);
+      fd.append("comm_rating", this.comm_rating);
+      fd.append("created_by", this.created_by);
+      fd.append("comm_fk_cat_id", this.comm_fk_cat_id);
+
+      this.http.post("http://localhost:3000/community/", fd).subscribe(
+        (data: any) => {
+          console.log(data);
+          t1.present();
+          this.navCtrl.pop();
+        },
+        function (err) {
+          alert(err);
+        },
+        function () {
+          l1.dismiss();
+        }
+      );
     });
-
-    let l1 = this.load.create({
-      content: "Loading..."
-    });
-    l1.present();
-
-    /*this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.rate, this.created_by)).subscribe(
-      (data: any) => {
-        console.log(data);
-        t1.present();
-        this.navCtrl.pop();
-      },
-      function (err) {
-        alert(err);
-      },
-      function () {
-        l1.dismiss();
-      }
-    );*/
-    const fd = new FormData();
-    alert(this.created_by);
-    fd.append("comm_id", this.comm_id);
-    fd.append("comm_name", this.comm_name);
-    fd.append("comm_des", this.comm_des);
-    fd.append("image", this.selectedFile, this.selectedFile.name);
-    fd.append("comm_date", this.comm_date);
-    fd.append("comm_rating", this.comm_rating);
-    fd.append("created_by", this.created_by);
-    fd.append("comm_fk_cat_id", this.comm_fk_cat_id);
-    
-    this.http.post("http://localhost:3000/community/", fd).subscribe(
-      (data: any) => {
-        console.log(data);
-        t1.present();
-        this.navCtrl.pop();
-      },
-      function (err) {
-        alert(err);
-      },
-      function () {
-        l1.dismiss();
-      }
-    );
-  });
   }
 
 }

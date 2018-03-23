@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
 import { PostDbProvider } from "../../providers/post-db/post-db";
 import { Post_Class } from "../../shared/post_class";
@@ -37,6 +37,7 @@ export class CreatePostPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
+    public tos: ToastController,
     public camera: Camera,
     public formBuilder: FormBuilder
   ) {
@@ -82,6 +83,16 @@ export class CreatePostPage {
 
     reader.readAsDataURL(event.target.files[0]);
     this.selectedFile = <File>event.target.files[0];
+    if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
+      this.selectedFile = null;
+      this.isReadyToSave = this.form.invalid;
+      const toast = this.tos.create({
+        message: 'Only Image formats are accepted!',
+        showCloseButton: true,
+        closeButtonText: 'Ok'
+      });
+      toast.present();
+    }
   }
 
   getProfileImageStyle() {
@@ -126,7 +137,7 @@ export class CreatePostPage {
       fd.append("fk_comm_id", this.comm_id);
       this._dataPost.addPost(fd).subscribe(
         (data: Post_Class) => {
-         // alert("added");
+          // alert("added");
           console.log(data);
           this.viewCtrl.dismiss();
         },
