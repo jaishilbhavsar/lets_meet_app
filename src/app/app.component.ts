@@ -3,6 +3,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
@@ -39,6 +40,7 @@ import { EditPostPage } from "../pages/edit-post/edit-post";
 })
 export class MyApp {
   rootPage = FirstRunPage;
+  public alertShown: boolean = false;
 
   @ViewChild(Nav) nav: Nav;
 
@@ -65,12 +67,24 @@ export class MyApp {
     { title: 'EditPost', component: 'EditPostPage' }
   ]
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private translate: TranslateService,
+    private platform: Platform,
+    settings: Settings,
+    private config: Config,
+    private statusBar: StatusBar,
+    public alertCtrl: AlertController,
+    private splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.platform.resume;
+      platform.registerBackButtonAction(() => {
+        if (this.alertShown == false) {
+          this.presentConfirm();
+        }
+      })
     });
     this.initTranslate();
   }
@@ -94,5 +108,32 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Exit',
+      message: 'Do you want Exit?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+            this.alertShown = false;
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes clicked');
+            this.platform.exitApp();
+          }
+        }
+      ]
+    });
+    alert.present().then(() => {
+      this.alertShown = true;
+    });
   }
 }

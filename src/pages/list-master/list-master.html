@@ -74,6 +74,12 @@
       </ion-row>
     </ion-card-content>-->
 <ion-content>
+  
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>
   <div [ngSwitch]="event">
     <ion-list *ngSwitchCase="'upcEvents'">
@@ -120,5 +126,9 @@
   <!--</ion-item>
   </ion-list>-->
 
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
 
 </ion-content>
