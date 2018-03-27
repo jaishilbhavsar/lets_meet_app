@@ -18,7 +18,7 @@
 
         <ion-item *ngFor="let item of arr" (click)="showuser(item.user_id)">
           <ion-avatar item-start>
-            <img src="item.user_pic">
+            <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">
           </ion-avatar>
           <h2>{{item.user_name}}</h2>
           <p>{{item.user_bdate}}</p>

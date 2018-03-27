@@ -13,10 +13,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ComminityDbTsProvider {
 
-  url: string = "http://localhost:3000/community/";
-  url1: string = "http://localhost:3000/comm_post/";
-  url2: string = "http://localhost:3000/checkMember/";
-  url4: string = "http://localhost:3000/topcommunity/";
+  url: string = "https://letsmeetbackend.herokuapp.com/community/";
+  url1: string = "https://letsmeetbackend.herokuapp.com/comm_post/";
+  url2: string = "https://letsmeetbackend.herokuapp.com/checkMember/";
+  url4: string = "https://letsmeetbackend.herokuapp.com/topcommunity/";
 
   community_member: { fk_user_id: string, fk_comm_id: string } = {
     fk_user_id: '',

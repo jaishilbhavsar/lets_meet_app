@@ -7,6 +7,7 @@ import { Camera } from '@ionic-native/camera';
 import { DatePicker } from '@ionic-native/date-picker';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -124,6 +125,7 @@ export function provideSettings(storage: Storage) {
     Camera,
     FileChooser,
     SplashScreen,
+    SocialSharing,
     StatusBar,
     DatePicker,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },

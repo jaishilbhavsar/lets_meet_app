@@ -12,8 +12,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CommunityCommMemberProvider {
 
-    url:string="http://localhost:3000/comm_mem_id/";
-    url1:string="http://localhost:3000/allmember/";
+    url:string="https://letsmeetbackend.herokuapp.com/comm_mem_id/";
+    url1:string="https://letsmeetbackend.herokuapp.com/allmember/";
 
   constructor(public http: HttpClient) {
     console.log('Hello CommunityCommMemberProvider Provider');

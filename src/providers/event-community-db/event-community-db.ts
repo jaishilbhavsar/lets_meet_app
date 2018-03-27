@@ -11,8 +11,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 @Injectable()
 export class EventCommunityDbProvider {
 
-  url: string = "http://localhost:3000/eventCommunity/";
-  url1: string = "http://localhost:3000/eventNotReg/";
+  url: string = "https://letsmeetbackend.herokuapp.com/eventCommunity/";
+  url1: string = "https://letsmeetbackend.herokuapp.com/eventNotReg/";
 
   constructor(public http: HttpClient) {
     console.log('Hello EventCommunityDbProvider Provider');

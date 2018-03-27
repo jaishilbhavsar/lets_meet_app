@@ -10,7 +10,7 @@
       <ion-title></ion-title>
     </ion-navbar>
     <ion-buttons end>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="onSharing()">
         <ion-icon name="share"></ion-icon>
       </button>
     </ion-buttons>
@@ -24,13 +24,13 @@
 
   <ion-item (click)="onView()">
     <ion-avatar item-start>
-      <img src="assets/img/communities/{{comm_pic}}">
+      <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{comm_pic}}">
     </ion-avatar>
     <h2>{{comm_name}}</h2>
     <!--<p>November 5, 1955</p>-->
   </ion-item>
 
-  <img src="{{event_pic}}" />
+  <img src="https://letsmeetbackend.herokuapp.com/images/events/{{event_pic}}" />
   <h1>{{event_name}}</h1>
   <ion-item *ngIf="join_button">
     <h2>Are you going?</h2>
@@ -94,7 +94,7 @@
     <ion-list *ngSwitchCase="'feedback'">
       <ion-item>
         <ion-avatar item-start>
-          <img src="{{user_pic}}">
+          <img src="https://letsmeetbackend.herokuapp.com/images/users/{{user_pic}}">
         </ion-avatar>
         <h2>{{user_name}}</h2>
         <p (click)="changeFlag()" *ngIf="flag1;else textAreaBox">Add a new Fedback</p>
@@ -108,7 +108,7 @@
       <ion-card>
         <ion-item *ngFor="let item of feedback_event_user">
           <ion-avatar item-start>
-            <img src="{{item.user_pic}}">
+            <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">
           </ion-avatar>
           <h2>{{item.user_name}}</h2>
           <p>{{item.feed_date | date:'mediumDate'}}</p>
@@ -128,7 +128,7 @@
     <ion-list *ngSwitchCase="'going_cnt'">
       <ion-item *ngFor="let item of event_rsvp_user">
         <ion-avatar item-left>
-          <img src="{{item.user_pic}}">
+          <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">
         </ion-avatar>
         <h2>{{item.user_name}}</h2>
       </ion-item>

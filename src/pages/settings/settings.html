@@ -21,7 +21,7 @@
   <ion-card *ngFor="let item of arr ">
     <!--  <img src="assets/img/cjpg.jpg"/>-->
     
-    <img src="assets/img/communities/{{item.comm_pic}}" (click)="onView(item.comm_id)" height="120" width="100" />
+    <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{item.comm_pic}}" (click)="onView(item.comm_id)" height="120" width="100" />
     <ion-row>
       <ion-col col-12>
         <ion-card-content >

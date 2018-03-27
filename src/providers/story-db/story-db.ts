@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class StoryDbProvider {
 
-  url: string = "http://localhost:3000/story/";
+  url: string = "https://letsmeetbackend.herokuapp.com/story/";
 
   constructor(public http: HttpClient) {
     console.log('Hello StoryDbProvider Provider');

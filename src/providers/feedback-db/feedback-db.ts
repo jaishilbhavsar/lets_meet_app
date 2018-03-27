@@ -14,8 +14,8 @@ import { Feedback_Event_User_Class } from "../../shared/feedback_event_user_clas
 @Injectable()
 export class FeedbackDbProvider {
 
-  url1: string = "http://localhost:3000/feedback/";
-  url2: string = "http://localhost:3000/feedbackByEvent/";
+  url1: string = "https://letsmeetbackend.herokuapp.com/feedback/";
+  url2: string = "https://letsmeetbackend.herokuapp.com/feedbackByEvent/";
 
   constructor(public http: HttpClient) {
     console.log('Hello FeedbackDbProvider Provider');

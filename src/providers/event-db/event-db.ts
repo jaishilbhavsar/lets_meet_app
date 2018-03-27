@@ -17,10 +17,10 @@ import { RSVP_Class } from '../../shared/rsvp_class';
 @Injectable()
 export class EventDbProvider {
 
-  url: string = "http://localhost:3000/event/";
-  url1: string = "http://localhost:3000/comingEvent/";
-  url2: string = "http://localhost:3000/event_reg/";
-  url3: string = "http://localhost:3000/eventNotReg/";
+  url: string = "https://letsmeetbackend.herokuapp.com/event/";
+  url1: string = "https://letsmeetbackend.herokuapp.com/comingEvent/";
+  url2: string = "https://letsmeetbackend.herokuapp.com/event_reg/";
+  url3: string = "https://letsmeetbackend.herokuapp.com/eventNotReg/";
 
   constructor(public http: HttpClient) {
     console.log('Hello EventDbProvider Provider');

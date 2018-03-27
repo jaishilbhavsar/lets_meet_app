@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ViewController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 import { EventDbProvider } from "../../providers/event-db/event-db";
 import { EventCommunityDbProvider } from "../../providers/event-community-db/event-community-db";
 import { Events_Class } from "../../shared/event_class";
@@ -44,6 +46,7 @@ export class ViewEventPage {
   created_by: string = "";
   event_pic: string = "";
   user_id: string = "";
+  e_pic: string = "";
 
   comm_id: number;
   comm_name: string = "";
@@ -71,6 +74,7 @@ export class ViewEventPage {
   constructor(public storage: Storage,
     public load: LoadingController,
     public tos: ToastController,
+    private socialSharing: SocialSharing,
     public alerCtrl: AlertController,
     public _dataEvent: EventDbProvider,
     public _dataRSVP: RsvpDbProvider,
@@ -380,6 +384,12 @@ export class ViewEventPage {
 
       }
     );
+  }
+
+  onSharing() {
+    this.e_pic = "https://letsmeetbackend.herokuapp.com/public/images/events/" + this.event_pic;
+    this.socialSharing.share(this.event_des, this.event_name).
+      catch((err) => alert(err));
   }
 }
 

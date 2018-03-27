@@ -80,7 +80,7 @@
       <ion-list>
         <ion-item *ngFor="let item of arr" class="text-wrap">
           <ion-avatar item-start>
-            <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">
+            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">
           </ion-avatar>
           <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
           <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>
@@ -95,12 +95,12 @@
       <ion-list>
         <ion-item *ngFor="let item of reg" class="text-wrap">
           <ion-avatar item-start>
-            <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">
+            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">
           </ion-avatar>
           <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
           <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>
           <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:'fullDate'}},{{item.event_s_time}}</p>
-          
+
           <ion-icon name="checkmark-circle" (click)="onClickRSVP(item.event_id)" item-end color="danger"></ion-icon>
         </ion-item>
       </ion-list>

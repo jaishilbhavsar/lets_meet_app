@@ -55,11 +55,12 @@ export class ListMasterPage {
     this.storage.get('uid').then((val) => {
       this.u_id = val;
       //this._data1.getAllEventsAndCommunities().subscribe(
-        this._data.getNotRegisteredEventsofUser(this.u_id).subscribe(
+      this._data.getNotRegisteredEventsofUser(this.u_id).subscribe(
         (d: Event_Community_Class[]) => {
           this.arr = d;
           this.arr1 = d;
           console.log(this.arr);
+          console.log(this.arr[0].event_pic);
         },
         function (e) {
           alert(e);
@@ -90,8 +91,8 @@ export class ListMasterPage {
     });
   }
 
-  ionViewDidEnter(){
-   this.ionViewDidLoad();
+  ionViewDidEnter() {
+    this.ionViewDidLoad();
   }
 
   /**
