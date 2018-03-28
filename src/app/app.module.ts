@@ -47,6 +47,7 @@ import { FeedbackDbProvider } from '../providers/feedback-db/feedback-db';
 import { StoryDbProvider } from '../providers/story-db/story-db';
 import { EditPostPage } from "../pages/edit-post/edit-post";
 import { ViewuserPage } from '../pages/viewuser/viewuser';
+import { ViewPastEventPage } from "../pages/view-past-event/view-past-event";
 
 
 
@@ -85,7 +86,8 @@ export function provideSettings(storage: Storage) {
     FollowerPage,
     FollowingPage,
     EditPostPage,
-    ViewuserPage
+    ViewuserPage,
+    ViewPastEventPage
   ],
   imports: [
     BrowserModule,
@@ -116,7 +118,8 @@ export function provideSettings(storage: Storage) {
     FollowerPage,
     FollowingPage,
     EditPostPage,
-    ViewuserPage
+    ViewuserPage,
+    ViewPastEventPage
   ],
   providers: [
     Api,

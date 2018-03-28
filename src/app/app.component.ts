@@ -18,6 +18,7 @@ import { ViewCommunityPage } from "../pages/view-community/view-community";
 import { ViewPostPage } from "../pages/view-post/view-post";
 import { CreatePostPage } from "../pages/create-post/create-post";
 import { EditPostPage } from "../pages/edit-post/edit-post";
+import { ViewPastEventPage } from "../pages/view-past-event/view-past-event";
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -64,7 +65,8 @@ export class MyApp {
     { title: 'ViewEvent', component: 'ViewEventPage' },
     { title: 'ViewCommunity', component: 'ViewCommunityPage' },
     { title: 'CreatePost', component: 'CreatePostPage' },
-    { title: 'EditPost', component: 'EditPostPage' }
+    { title: 'EditPost', component: 'EditPostPage' },
+    { title: 'PastEvent', component: 'ViewPastEventPage' }
   ]
 
   constructor(private translate: TranslateService,

@@ -4,7 +4,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { EventDbProvider } from "../../providers/event-db/event-db";
 import { EventCommunityDbProvider } from "../../providers/event-community-db/event-community-db";
-// import { Events_Class } from "../../shared/event_class";
+import { Events_Class } from "../../shared/event_class";
 import { Event_Community_Class } from "../../shared/event_community_class";
 import { RSVP_Class } from "../../shared/rsvp_class";
 import { RsvpDbProvider } from "../../providers/rsvp-db/rsvp-db";
@@ -17,11 +17,10 @@ import { Feedback_Event_User_Class } from "../../shared/feedback_event_user_clas
 import { user_class } from '../login/user_class';
 import { LoginproProvider } from '../../providers/loginpro/loginpro';
 import { Feedback_Class } from "../../shared/feedback_class";
-import { Events_User_Class } from "../../shared/event_user_class";
 
 
 /**
- * Generated class for the ViewEventPage page.
+ * Generated class for the ViewPastEventPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -29,13 +28,13 @@ import { Events_User_Class } from "../../shared/event_user_class";
 
 @IonicPage()
 @Component({
-  selector: 'page-view-event',
-  templateUrl: 'view-event.html',
+  selector: 'page-view-past-event',
+  templateUrl: 'view-past-event.html',
 })
-export class ViewEventPage {
+export class ViewPastEventPage {
 
   viewEvent: string = "event_detail";
-  arr: Events_User_Class[];
+  arr: Events_Class[];
   event_community: Event_Community_Class[];
   e_id: number;
   event_name: string = "";
@@ -91,7 +90,7 @@ export class ViewEventPage {
     console.log('ionViewDidLoad ViewEventPage');
     this.e_id = this.navParams.get('e_id');
     this._dataEvent.getEventById(this.e_id).subscribe(
-      (d: Events_User_Class[]) => {
+      (d: Events_Class[]) => {
         this.arr = d;
         this.event_name = this.arr[0].event_name;
         this.event_des = this.arr[0].event_des;
@@ -100,7 +99,7 @@ export class ViewEventPage {
         this.event_e_time = this.arr[0].event_e_time;
         this.event_date = this.arr[0].event_date;
         this.event_loc = this.arr[0].event_loc;
-        this.created_by = this.arr[0].user_name;
+        this.created_by = this.arr[0].fk_user_id;
       },
       function (e) {
         alert(e);
@@ -392,5 +391,5 @@ export class ViewEventPage {
     this.socialSharing.share(this.event_des, this.event_name).
       catch((err) => alert(err));
   }
-}
 
+}

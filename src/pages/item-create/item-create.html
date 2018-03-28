@@ -52,7 +52,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Event Date</ion-label>
-        <ion-datetime displayFormat="DD/MMMM/YYYY" formControlName="event_date" pickerFormat="DD MMMM YYYY" [(ngModel)]="event_date"></ion-datetime>
+        <ion-datetime displayFormat="DD/MMMM/YYYY" min="{{today}}" formControlName="event_date" pickerFormat="DD MMMM YYYY" [(ngModel)]="event_date"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Event Location</ion-label>
