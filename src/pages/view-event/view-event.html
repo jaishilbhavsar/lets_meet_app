@@ -73,7 +73,6 @@
         </h3>
       </ion-item>
 
-
       <ion-item>
         <h4>
           <ion-icon name="time" item-start></ion-icon> {{event_s_time}} - {{event_e_time}}
@@ -87,7 +86,7 @@
       </ion-item>
 
       <ion-item>
-        <h3>
+        <h3 (click)="showuser(u_id)">
           <ion-icon name="person" item-start> Hosted by</ion-icon> {{created_by}}
         </h3>
       </ion-item>
@@ -112,9 +111,9 @@
       <ion-card>
         <ion-item *ngFor="let item of feedback_event_user">
           <ion-avatar item-start>
-            <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">
+            <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}" (click)="showuser(item.user_id)">
           </ion-avatar>
-          <h2>{{item.user_name}}</h2>
+          <h2 (click)="showuser(item.user_id)">{{item.user_name}}</h2>
           <p>{{item.feed_date | date:'mediumDate'}}</p>
           <ion-card-content>
             <p class="text-wrap">{{item.feed_des}}</p>
@@ -130,7 +129,7 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'going_cnt'">
-      <ion-item *ngFor="let item of event_rsvp_user">
+      <ion-item *ngFor="let item of event_rsvp_user" (click)="showuser(item.user_id)">
         <ion-avatar item-left>
           <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">
         </ion-avatar>

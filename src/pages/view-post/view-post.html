@@ -20,7 +20,7 @@
   </ion-refresher>-->
   <ion-item>
     <ion-avatar item-start>
-      <img src="https://letsmeetbackend.herokuapp.com/images/users/{{user_pic}}">
+      <img src="https://letsmeetbackend.herokuapp.com/images/users/{{user_pic}}" (click)="showuser(u_id)">
     </ion-avatar>
     <h2>{{user_name}}</h2>
   </ion-item>
@@ -58,10 +58,10 @@
     </ion-row>
     <ion-list>
       <ion-item *ngFor="let item of arrCommUserPost">
-        <ion-avatar item-start>
+        <ion-avatar item-start (click)="showuser(item.user_id)">
           <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">
         </ion-avatar>
-        <h2>{{item.user_name}}</h2>
+        <h2 (click)="showuser(item.user_id)">{{item.user_name}}</h2>
         <p>{{item.com_des}}</p>
         <button *ngIf="item.user_name==user_name" ion-button icon-only clear item-end color="primary" (click)="onDeleteComment(item.com_id)">
           <ion-icon color="primary" small name="trash"></ion-icon>

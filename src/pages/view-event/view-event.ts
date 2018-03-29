@@ -18,6 +18,7 @@ import { user_class } from '../login/user_class';
 import { LoginproProvider } from '../../providers/loginpro/loginpro';
 import { Feedback_Class } from "../../shared/feedback_class";
 import { Events_User_Class } from "../../shared/event_user_class";
+import { ViewuserPage } from '../viewuser/viewuser';
 
 
 /**
@@ -48,6 +49,7 @@ export class ViewEventPage {
   event_pic: string = "";
   user_id: string = "";
   e_pic: string = "";
+  u_id: string = "";
 
   comm_id: number;
   comm_name: string = "";
@@ -101,6 +103,7 @@ export class ViewEventPage {
         this.event_date = this.arr[0].event_date;
         this.event_loc = this.arr[0].event_loc;
         this.created_by = this.arr[0].user_name;
+        this.u_id = this.arr[0].user_id;
       },
       function (e) {
         alert(e);
@@ -391,6 +394,11 @@ export class ViewEventPage {
     this.e_pic = "https://letsmeetbackend.herokuapp.com/public/images/events/" + this.event_pic;
     this.socialSharing.share(this.event_des, this.event_name).
       catch((err) => alert(err));
+  }
+
+  showuser(id) {
+    this.storage.set('viewid', id);
+    this.navCtrl.push(ViewuserPage);
   }
 }
 
