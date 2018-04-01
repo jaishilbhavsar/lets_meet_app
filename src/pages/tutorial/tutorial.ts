@@ -33,8 +33,9 @@ export class TutorialPage {
         this.slides = [
           {
             title: 'Discover Events Happening in Your City',
-            description:'',
-            image: 'assets/img/08248dc6-34f4-4d59-8383-f0f494c6b46f.png',
+            description: '',
+            // image: 'assets/img/08248dc6-34f4-4d59-8383-f0f494c6b46f.png',
+            image: '../assets/img/39796049-798f-4881-ad98-a5d7717e9729.png',
           },
           {
             title: values.TUTORIAL_SLIDE2_TITLE,

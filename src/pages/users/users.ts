@@ -104,53 +104,53 @@ export class UsersPage {
 
 }
 
-@Component({
-  template: `
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Description
-    </ion-title>
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios">Cancel</span>
-        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+// @Component({
+//   template: `
+// <ion-header>
+//   <ion-toolbar>
+//     <ion-title>
+//       Description
+//     </ion-title>
+//     <ion-buttons start>
+//       <button ion-button (click)="dismiss()">
+//         <span ion-text color="primary" showWhen="ios">Cancel</span>
+//         <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+//       </button>
+//     </ion-buttons>
+//   </ion-toolbar>
+// </ion-header>
 
-<ion-content>
-  <ion-list>
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="{{character.image}}">
-        </ion-avatar>
-        <h2>{{character.name}}</h2>
-        <p>{{character.quote}}</p>
-      </ion-item>
+// <ion-content>
+//   <ion-list>
+//       <ion-item>
+//         <ion-avatar item-start>
+//           <img src="{{character.image}}">
+//         </ion-avatar>
+//         <h2>{{character.name}}</h2>
+//         <p>{{character.quote}}</p>
+//       </ion-item>
       
-  </ion-list>
-</ion-content>
-`
-})
-export class ModalContentPage {
-  character;
-  constructor(
-    public platform: Platform,
-    public params: NavParams,
-    public viewCtrl: ViewController
-  ) {
-    var characters = [
-      {
-        name: 'Gollum',
-        quote: 'Sneaky little hobbitses!',
-        image: 'assets/img/avatar-gollum.jpg'
-      }
-    ];
-  }
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
+//   </ion-list>
+// </ion-content>
+// `
+// })
+// export class ModalContentPage {
+//   character;
+//   constructor(
+//     public platform: Platform,
+//     public params: NavParams,
+//     public viewCtrl: ViewController
+//   ) {
+//     var characters = [
+//       {
+//         name: 'Gollum',
+//         quote: 'Sneaky little hobbitses!',
+//         image: 'assets/img/avatar-gollum.jpg'
+//       }
+//     ];
+//   }
+//   dismiss() {
+//     this.viewCtrl.dismiss();
+//   }
 
-}
+// }

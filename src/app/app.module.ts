@@ -28,26 +28,29 @@ import { CreateStoryPage } from "../pages/create-story/create-story";
 import { CreateCommunityPage } from "../pages/create-community/create-community";
 import { ViewEventPage } from "../pages/view-event/view-event";
 import { ViewCommunityPage } from "../pages/view-community/view-community";
+import { EditprofilePage } from '../pages/editprofile/editprofile';
+import { ViewPostPage } from "../pages/view-post/view-post";
+import { CreatePostPage } from "../pages/create-post/create-post";
+import { FollowerPage } from '../pages/follower/follower';
+import { FollowingPage } from '../pages/following/following';
+import { EditPostPage } from "../pages/edit-post/edit-post";
+import { ViewuserPage } from '../pages/viewuser/viewuser';
+import { ViewPastEventPage } from "../pages/view-past-event/view-past-event";
+
 import { LoginproProvider } from '../providers/loginpro/loginpro';
 import { ComminityDbTsProvider } from "../providers/community-db/community-db";
 import { EventDbProvider } from '../providers/event-db/event-db';
-import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { EventCommunityDbProvider } from '../providers/event-community-db/event-community-db';
 import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
 import { PostDbProvider } from '../providers/post-db/post-db';
-import { ViewPostPage } from "../pages/view-post/view-post";
-import { CreatePostPage } from "../pages/create-post/create-post";
+
 import { CommunityMemberDbProvider } from '../providers/community-member-db/community-member-db';
-import { FollowerPage } from '../pages/follower/follower';
-import { FollowingPage } from '../pages/following/following';
 import { CommunityCommMemberProvider } from '../providers/community-comm-member/community-comm-member';
 import { CommentDbProvider } from '../providers/comment-db/comment-db';
 import { LikeDbProvider } from '../providers/like-db/like-db';
 import { FeedbackDbProvider } from '../providers/feedback-db/feedback-db';
 import { StoryDbProvider } from '../providers/story-db/story-db';
-import { EditPostPage } from "../pages/edit-post/edit-post";
-import { ViewuserPage } from '../pages/viewuser/viewuser';
-import { ViewPastEventPage } from "../pages/view-past-event/view-past-event";
+
 
 
 
