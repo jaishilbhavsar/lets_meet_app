@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { FirstRunPage, MainPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
@@ -87,21 +88,25 @@ export class MyApp {
     private storage: Storage,
     private statusBar: StatusBar,
     public alertCtrl: AlertController,
-    private splashScreen: SplashScreen) {
+    private splashScreen: SplashScreen,
+    private screenOrientation: ScreenOrientation) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.show();
-      if (this.storage.get('uid') != null) {
-        this.rootPage = MainPage;
-      }
+      this.statusBar.backgroundColorByHexString('#fa5454');
+      this.splashScreen.hide();
+      // if (this.storage.get('uid') != null) {
+      //   this.rootPage = MainPage;
+      // } else {
+      //   this.rootPage = FirstRunPage;
+      // }
       this.platform.resume;
       platform.registerBackButtonAction(() => {
         if (this.alertShown == false) {
           this.presentConfirm();
         }
-      })
+      });
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     });
     this.initTranslate();
   }

@@ -14,6 +14,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { Calendar } from '@ionic-native/calendar';
 
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/providers';
@@ -133,6 +135,8 @@ export function provideSettings(storage: Storage) {
     SplashScreen,
     SocialSharing,
     StatusBar,
+    ScreenOrientation,
+    Calendar,
     DatePicker,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development

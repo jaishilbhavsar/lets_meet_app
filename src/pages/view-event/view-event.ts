@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, ViewController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
+
 import { EventDbProvider } from "../../providers/event-db/event-db";
 import { EventCommunityDbProvider } from "../../providers/event-community-db/event-community-db";
 // import { Events_Class } from "../../shared/event_class";
@@ -19,6 +20,7 @@ import { LoginproProvider } from '../../providers/loginpro/loginpro';
 import { Feedback_Class } from "../../shared/feedback_class";
 import { Events_User_Class } from "../../shared/event_user_class";
 import { ViewuserPage } from '../viewuser/viewuser';
+import { Calendar } from '@ionic-native/calendar';
 
 
 /**
@@ -50,10 +52,16 @@ export class ViewEventPage {
   user_id: string = "";
   e_pic: string = "";
   u_id: string = "";
+  e_date: any;
+  e_Str: string;
+  to_date: any;
 
   comm_id: number;
   comm_name: string = "";
   comm_pic: string = "";
+  day: number;
+  month: number;
+  year: number;
 
   rsvp_id: number[] = [];
   arrRsvp: RSVP_Class;
@@ -78,6 +86,7 @@ export class ViewEventPage {
     public load: LoadingController,
     public tos: ToastController,
     private socialSharing: SocialSharing,
+    private calendar: Calendar,
     public alerCtrl: AlertController,
     public _dataEvent: EventDbProvider,
     public _dataRSVP: RsvpDbProvider,
@@ -104,6 +113,12 @@ export class ViewEventPage {
         this.event_loc = this.arr[0].event_loc;
         this.created_by = this.arr[0].user_name;
         this.u_id = this.arr[0].user_id;
+        this.e_date = this.event_date;
+        this.e_Str = new String(this.e_date).toString();
+        //alert(this.e_Str.substr(0, this.e_Str.indexOf('T')));
+        this.e_Str = this.e_Str.substr(0, this.e_Str.indexOf('T'));
+        this.to_date = new Date(this.e_Str);
+
       },
       function (e) {
         alert(e);
@@ -196,7 +211,13 @@ export class ViewEventPage {
         );
       }
     );
+
+    this.calendar.createCalendar('MyCalendar').then(
+      (msg) => { console.log(msg); },
+      (err) => { console.log(err); }
+    );
   }
+
   changeFlag() {
     if (this.flag1 == true) {
       this.flag1 = false;
@@ -223,6 +244,10 @@ export class ViewEventPage {
           t1.present();
           this.join_button = false;
           this.going_button = true;
+          this.calendar.createEvent(this.event_name, this.event_loc, this.event_des, this.to_date, this.to_date).then(
+            (msg) => { console.log(msg); },
+            (err) => { console.log(err); }
+          );
           //his.arrRsvp = data;
           //this.rsvp_id = this.arrRsvp.RSVP_id;
           //alert(this.rsvp_id);
@@ -293,6 +318,10 @@ export class ViewEventPage {
             //console.log(this.arrRsvp[0].RSVP_id);
             this._dataRSVP.deleteRSVP(this.arrRsvp[0].RSVP_id).subscribe(
               (data: RSVP_Class) => {
+                this.calendar.deleteEvent(this.event_name, this.event_loc, this.event_des, this.to_date, this.to_date).then(
+                  (msg) => { console.log(msg); },
+                  (err) => { console.log(err); }
+                );
                 //alert("thyu");
                 this.join_button = true;
                 this.going_button = false;
