@@ -56,7 +56,7 @@ export class ItemCreatePage {
     formBuilder: FormBuilder,
     public camera: Camera) {
     this.form = formBuilder.group({
-      profilePic: [''],
+      profilePic: ['',Validators.required],
       event_name: ['', Validators.required],
       event_des: ['', Validators.compose([Validators.minLength(15), Validators.required])],
       event_s_time: ['', Validators.required],
