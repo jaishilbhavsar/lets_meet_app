@@ -26,6 +26,10 @@ export class LoginproProvider {
     user_mob_no: '',
     user_bdate: null,
   };
+  chpass:{userid:string,password:string}={
+    userid:'',
+    password:''
+  };
   userupdate: { user_id: string, user_name: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
     user_id: '',
     user_name: '',
@@ -113,6 +117,7 @@ export class LoginproProvider {
   urlfollowing: string = "http://localhost:3000/following/";
   urlfollowuser:string="http://localhost:3000/follow_user/";
   urlfollowingwhom:string="http://localhost:3000/followwhom/";
+  urlchangepass:"http://localhost:3000/changepassword/";
   getFollowingUser(uid)
   {
     return this.http.get(this.urlfollowuser + uid);
@@ -126,5 +131,12 @@ export class LoginproProvider {
   }
   getFollowing(uid) {
     return this.http.get(this.urlfollowing + uid);
+  }
+  change(uid,newpass)
+  {
+      this.chpass.userid=uid;
+      this.chpass.password=newpass;
+    let body=JSON.stringify(this.chpass);
+    return this.http.post(this.urlchangepass,body,{ headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 }

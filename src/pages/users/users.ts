@@ -1,9 +1,10 @@
+import { WelcomePage } from './../welcome/welcome';
 import { FollowerPage } from './../follower/follower';
 import { EditprofilePage } from './../editprofile/editprofile';
 import { LoginproProvider } from './../../providers/loginpro/loginpro';
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { IonicPage, NavController, NavParams, Platform, ModalController, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, ModalController, ViewController, MenuController, AlertController } from 'ionic-angular';
 import { user_class } from '../login/user_class';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { follower_class } from '../../shared/follower_class';
@@ -34,7 +35,7 @@ export class UsersPage {
   img:string="";
   pet: string = "kittens";
   isAndroid: boolean = false;
-  constructor(public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public alert:AlertController,public menu: MenuController,public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
  
@@ -100,6 +101,124 @@ export class UsersPage {
 
     let modal = this.modalCtrl.create(EditprofilePage);
     modal.present();
+  }
+  onLogout()
+  {
+    this.storage.clear();
+    this.navCtrl.push(WelcomePage);
+    this.menu.enable(false);
+  }
+  newpassword:string="";
+  oldpassword:string="";
+
+  changepass(newpass)
+  {
+    this.storage.get('uid').then((val)=>{
+      this.uid=val;
+      this.data.change(this.uid,newpass).subscribe(
+        (dt:any)=>{
+          let prompt = this.alert.create({
+            title: 'Password Changed',
+            message: "Your Password has been successfully changed",
+            buttons: [
+              {
+                text: 'Ok',
+                handler: data => {
+                  console.log('Cancel clicked');
+                }
+ 
+          }]
+          });
+          prompt.present();
+        }
+      );
+    });
+  }
+  validate(oldpass)
+  {
+
+    let l1 = this.load.create({
+      content: "Loading ..."
+    });
+    l1.present();
+    this.storage.get('uid').then((val)=>{
+      this.uid=val;
+      this.data.doLogin(this.uid,oldpass)
+      .subscribe(
+      (dt:any) => {
+        if(dt!="")
+        {
+          let prompt = this.alert.create({
+            title: 'Change Password',
+            message: "Enter New Password",
+            inputs: [
+              {
+                name: 'name',
+                placeholder: 'Enter New Password'
+              },
+            ],
+            buttons: [
+              {
+                text: 'Cancel',
+                handler: data => {
+                  console.log('Cancel clicked');
+                }
+              },
+              {
+                text: 'Send',
+                handler: data => {
+                  this.newpassword= data.name;
+                  this.changepass(this.newpassword);
+                }
+              },
+            ]
+          });
+          prompt.present();
+      }
+      else{
+        alert("Incorrect Old Password");
+      }
+    }
+      ,
+      function (e) {
+        alert(e);
+      },
+      function () {
+        l1.dismiss();
+      }
+      );
+    
+    });
+     
+  }
+  onChangePassword()
+  {
+    let prompt = this.alert.create({
+      title: 'Change Password',
+      message: "Enter Your Old Password",
+      inputs: [
+        {
+          name: 'name',
+          placeholder: 'Enter Old Password'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Send',
+          handler: data => {
+            this.oldpassword= data.name;
+            this.validate(this.oldpassword);
+          }
+        },
+      ]
+    });
+    prompt.present();
   }
 
 }
