@@ -106,7 +106,7 @@ export class MyApp {
           this.presentConfirm();
         }
       });
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+      //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     });
     this.initTranslate();
   }

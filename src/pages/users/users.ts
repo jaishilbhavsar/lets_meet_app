@@ -3,18 +3,17 @@ import { WelcomePage } from './../welcome/welcome';
 import { FollowerPage } from './../follower/follower';
 import { EditprofilePage } from './../editprofile/editprofile';
 import { LoginproProvider } from './../../providers/loginpro/loginpro';
+import { EventDbProvider } from "../../providers/event-db/event-db";
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-<<<<<<< HEAD
-import { IonicPage, NavController, NavParams, Platform, ModalController } from 'ionic-angular';
-=======
 import { IonicPage, NavController, NavParams, Platform, ModalController, ViewController, MenuController, AlertController } from 'ionic-angular';
->>>>>>> 88847bb535c8ccb6f3eb0273bbf5c47b9e6faab4
 import { user_class } from '../login/user_class';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { follower_class } from '../../shared/follower_class';
 import { FollowingPage } from '../following/following';
 import { FirstRunPage, MainPage } from '../pages';
+import { ChangePasswordPage } from '../change-password/change-password';
+import { Event_Comm_Rsvp } from "../../shared/event_community_rsvp_class";
 
 /**
  * Generated class for the UsersPage page.
@@ -39,9 +38,22 @@ export class UsersPage {
   eid: string = "";
   uid: string = "";
   img: string = "";
-  pet: string = "kittens";
+  usr: string = "upc";
   isAndroid: boolean = false;
-  constructor(public alert: AlertController, public menu: MenuController, public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+
+  arrUpc: Event_Comm_Rsvp[] = [];
+  arrPast: Event_Comm_Rsvp[] = [];
+
+  constructor(public alert: AlertController,
+    public menu: MenuController,
+    public data: LoginproProvider,
+    public _dataEvent: EventDbProvider,
+    public load: LoadingController,
+    public storage: Storage,
+    platform: Platform,
+    public modalCtrl: ModalController,
+    public navCtrl: NavController,
+    public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
 
@@ -84,6 +96,35 @@ export class UsersPage {
       );
     })
 
+    this.storage.get('uid').then((val) => {
+      this.uid = val;
+      this._dataEvent.getUpcEventRegUser(this.uid).subscribe(
+        (data: Event_Comm_Rsvp[]) => {
+          this.arrUpc = data;
+        },
+        function (err) {
+          alert(err);
+        },
+        function () {
+
+        }
+      );
+    });
+
+    this.storage.get('uid').then((val) => {
+      this.uid = val;
+      this._dataEvent.getPastEventReg(this.uid).subscribe(
+        (data: Event_Comm_Rsvp[]) => {
+          this.arrPast = data;
+        },
+        function (err) {
+          alert(err);
+        },
+        function () {
+
+        }
+      );
+    });
     //this.data.set_url();
 
 
@@ -114,11 +155,11 @@ export class UsersPage {
   changepass(newpass) {
     this.storage.get('uid').then((val) => {
       this.uid = val;
-      alert(this.uid);
-      alert(newpass);
+      console.log(this.uid);
+      console.log(newpass);
       this.data.change(this.uid, newpass).subscribe(
         (dt: any) => {
-          let prompt = this.alert.create({
+          let prompt2 = this.alert.create({
             title: 'Password Changed',
             message: "Your Password has been successfully changed",
             buttons: [
@@ -130,10 +171,10 @@ export class UsersPage {
 
               }]
           });
-          prompt.present();
+          prompt2.present();
         },
         function (e) {
-          alert(e);
+          console.log(e);
         },
         function () {
 
@@ -153,33 +194,7 @@ export class UsersPage {
         .subscribe(
           (dt: any) => {
             if (dt != "") {
-              let prompt = this.alert.create({
-                title: 'Change Password',
-                message: "Enter New Password",
-                inputs: [
-                  {
-                    name: 'name',
-                    placeholder: 'Enter New Password'
-                  },
-                ],
-                buttons: [
-                  {
-                    text: 'Cancel',
-                    handler: data => {
-                      console.log('Cancel clicked');
-                    }
-                  },
-                  {
-                    text: 'Send',
-                    handler: data => {
-                      this.newpassword = data.name;
-                      alert(this.newpassword);
-                      this.changepass(this.newpassword);
-                    }
-                  },
-                ]
-              });
-              prompt.present();
+              this.navCtrl.push(ChangePasswordPage);
             }
             else {
               alert("Incorrect Old Password");
@@ -226,8 +241,15 @@ export class UsersPage {
     prompt.present();
   }
 
-}
+  onCLickUpcEvent(id) {
 
+
+  }
+
+  onCLickPastEvent(id) {
+
+  }
+}
 // @Component({
 //   template: `
 // <ion-header>

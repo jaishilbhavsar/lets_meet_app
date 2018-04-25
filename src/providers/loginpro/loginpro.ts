@@ -26,9 +26,9 @@ export class LoginproProvider {
     user_mob_no: '',
     user_bdate: null,
   };
-  chpass:{user_id:string,user_pass:string}={
-    user_id:'',
-    user_pass:''
+  chpass: { user_id: string, user_pass: string } = {
+    user_id: '',
+    user_pass: ''
   };
   userupdate: { user_id: string, user_name: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
     user_id: '',
@@ -66,7 +66,7 @@ export class LoginproProvider {
     return this.http.post(this.urlsignup, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
   updateUser(id, uname, image, gender, mobile, mydate) {
-   // let header = new Headers({ 'Content-Type': 'application/json' });
+    // let header = new Headers({ 'Content-Type': 'application/json' });
     //let ro = new RequestOptions({ headers: header });
     this.userupdate.user_id = id;
     console.log('Login pro ma user update');
@@ -113,7 +113,7 @@ export class LoginproProvider {
     console.log(demo.subject);
     return this.http.post(this.urlmail, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  urlchangepass:string="https://localhost:3000/changepassword/";
+  urlchangepass: string = "http://localhost:3000/changePass/";
   urlfollowers: string = "https://letsmeetbackend.herokuapp.com/follower/";
   urlfollowing: string = "https://letsmeetbackend.herokuapp.com/following/";
   urlfollowuser: string = "https://letsmeetbackend.herokuapp.com/follow_user/";
@@ -130,11 +130,12 @@ export class LoginproProvider {
   getFollowing(uid) {
     return this.http.get(this.urlfollowing + uid);
   }
-  change(uid,newpass)
-  {
-      this.chpass.user_id=uid;
-      this.chpass.user_pass=newpass;
-    let body=JSON.stringify(this.chpass);
-    return this.http.post(this.urlchangepass,body,{ headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  change(uid, newpass) {
+    this.chpass.user_id = uid;
+    this.chpass.user_pass = newpass;
+    console.log(this.chpass);
+    let body = JSON.stringify(this.chpass);
+    return this.http.put(this.urlchangepass, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    //"https://letsmeetbackend.herokuapp.com/changepassword/"
   }
 }

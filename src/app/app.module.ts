@@ -37,6 +37,7 @@ import { FollowerPage } from '../pages/follower/follower';
 import { FollowingPage } from '../pages/following/following';
 import { EditPostPage } from "../pages/edit-post/edit-post";
 import { ViewuserPage } from '../pages/viewuser/viewuser';
+import { ChangePasswordPage } from "../pages/change-password/change-password";
 // import { ViewPastEventPage } from "../pages/view-past-event/view-past-event";
 
 import { LoginproProvider } from '../providers/loginpro/loginpro';
@@ -91,7 +92,8 @@ export function provideSettings(storage: Storage) {
     FollowerPage,
     FollowingPage,
     EditPostPage,
-    ViewuserPage
+    ViewuserPage,
+    ChangePasswordPage
     // ,
     // ViewPastEventPage
   ],
@@ -124,7 +126,8 @@ export function provideSettings(storage: Storage) {
     FollowerPage,
     FollowingPage,
     EditPostPage,
-    ViewuserPage
+    ViewuserPage,
+    ChangePasswordPage
     // ,
     // ViewPastEventPage
   ],

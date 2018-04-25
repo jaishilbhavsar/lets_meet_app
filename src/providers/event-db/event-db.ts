@@ -20,6 +20,8 @@ export class EventDbProvider {
   url1: string = "https://letsmeetbackend.herokuapp.com/comingEvent/";
   url2: string = "https://letsmeetbackend.herokuapp.com/event_reg/";
   url3: string = "https://letsmeetbackend.herokuapp.com/eventNotReg/";
+  url4: string = "https://letsmeetbackend.herokuapp.com/upcEvnByUser/";
+  url5: string = "https://letsmeetbackend.herokuapp.com/pastEvnByUser/";
 
   constructor(public http: HttpClient) {
     console.log('Hello EventDbProvider Provider');
@@ -61,5 +63,13 @@ export class EventDbProvider {
 
   getNotRegisteredEventsofUser(id) {
     return this.http.get(this.url3 + id);
+  }
+
+  getUpcEventRegUser(id) {
+    return this.http.get(this.url4 + id);
+  }
+
+  getPastEventReg(id) {
+    return this.http.get(this.url5 + id);
   }
 }

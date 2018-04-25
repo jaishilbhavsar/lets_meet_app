@@ -41,135 +41,36 @@
   </ion-item>
 
   <div padding>
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="kittens">
-        Events
+    <ion-segment [(ngModel)]="usr">
+      <ion-segment-button value="upc">
+        Attending
       </ion-segment-button>
-      <ion-segment-button value="puppies">
-        Communities
+      <ion-segment-button value="past">
+        Attended
       </ion-segment-button>
     </ion-segment>
   </div>
 
-  <div [ngSwitch]="pet">
-    <ion-list *ngSwitchCase="'puppies'">
+  <div [ngSwitch]="usr">
+    <ion-list *ngSwitchCase="'upc'">
       <ion-list>
-
-        <ion-item>
+        <ion-item *ngFor="let item of arrUpc" (click)="onCLickUpcEvent(item.event_id)">
           <ion-thumbnail item-start>
-            <img src="assets/img/co_4.jpg">
+            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
           </ion-thumbnail>
-          <h2>Event 1</h2>
-
+          <h2>{{item.event_name}}</h2>
         </ion-item>
-
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/img/co_4.jpg">
-          </ion-thumbnail>
-          <h2>Event 2</h2>
-
-        </ion-item>
-
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/img/co_4.jpg">
-          </ion-thumbnail>
-          <h2>Event 3</h2>
-
-        </ion-item>
-
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/img/co_4.jpg">
-          </ion-thumbnail>
-          <h2>Event 4</h2>
-
-        </ion-item>
-
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/img/co_4.jpg">
-          </ion-thumbnail>
-          <h2>Event 5</h2>
-
-        </ion-item>
-
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/img/co_4.jpg">
-          </ion-thumbnail>
-          <h2>Event 6</h2>
-
-        </ion-item>
-
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/img/co_4.jpg">
-          </ion-thumbnail>
-          <h2>Event 7</h2>
-
-        </ion-item>
-
       </ion-list>
-      ...
     </ion-list>
 
-    <ion-list *ngSwitchCase="'kittens'">
+    <ion-list *ngSwitchCase="'past'">
       <ion-list>
-        <h2>Attending</h2>
-        <ion-item-sliding>
-          <ion-item>
-            <ion-avatar item-start>
-              <img src="assets/img/event2.jpg">
-            </ion-avatar>
-            <h2>Slimer</h2>
-          </ion-item>
-          <ion-item-options side="left">
-            <button ion-button color="primary">
-              <ion-icon name="text"></ion-icon>
-              Text
-            </button>
-            <button ion-button color="secondary">
-              <ion-icon name="call"></ion-icon>
-              Call
-            </button>
-          </ion-item-options>
-          <ion-item-options side="right">
-            <button ion-button color="primary">
-              <ion-icon name="mail"></ion-icon>
-              Email
-            </button>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>
-
-      <ion-list>
-        <h2>Attended</h2>
-        <ion-item-sliding>
-          <ion-item>
-            <ion-avatar item-start>
-              <img src="assets/img/event2.jpg">
-            </ion-avatar>
-            <h2>Slimer</h2>
-          </ion-item>
-          <ion-item-options side="left">
-            <button ion-button color="primary">
-              <ion-icon name="text"></ion-icon>
-              Text
-            </button>
-            <button ion-button color="secondary">
-              <ion-icon name="call"></ion-icon>
-              Call
-            </button>
-          </ion-item-options>
-          <ion-item-options side="right">
-            <button ion-button color="primary">
-              <ion-icon name="mail"></ion-icon>
-              Email
-            </button>
-          </ion-item-options>
-        </ion-item-sliding>
+        <ion-item *ngFor="let item of arrUpc" (click)="onCLickPastEvent(item.event_id)">
+          <ion-thumbnail item-start>
+            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
+          </ion-thumbnail>
+          <h2>{{item.event_name}}</h2>
+        </ion-item>
       </ion-list>
     </ion-list>
 
@@ -189,7 +90,7 @@
         </ion-avatar>
         <h2>Log Out</h2>
       </ion-item>
-        </ion-list>
+    </ion-list>
   </div>
 
 </ion-content>
