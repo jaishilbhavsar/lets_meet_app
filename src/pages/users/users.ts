@@ -14,6 +14,8 @@ import { FollowingPage } from '../following/following';
 import { FirstRunPage, MainPage } from '../pages';
 import { ChangePasswordPage } from '../change-password/change-password';
 import { Event_Comm_Rsvp } from "../../shared/event_community_rsvp_class";
+import { CommunityMemberDbProvider } from "../../providers/community-member-db/community-member-db";
+import { Community_Class } from '../settings/community_class';
 
 /**
  * Generated class for the UsersPage page.
@@ -39,10 +41,12 @@ export class UsersPage {
   uid: string = "";
   img: string = "";
   usr: string = "upc";
+  segme: string = "events";
   isAndroid: boolean = false;
 
   arrUpc: Event_Comm_Rsvp[] = [];
   arrPast: Event_Comm_Rsvp[] = [];
+  arrCommu: Community_Class[] = [];
 
   constructor(public alert: AlertController,
     public menu: MenuController,

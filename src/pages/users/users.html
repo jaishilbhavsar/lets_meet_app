@@ -41,6 +41,32 @@
   </ion-item>
 
   <div padding>
+    <ion-segment [(ngModel)]="segme">
+      <ion-segment-button value="events">
+        Events
+      </ion-segment-button>
+      <ion-segment-button value="commu">
+        Communities
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="segme">
+    <ion-list *ngSwitchCase="'Events'">
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'commu'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      ...
+    </ion-list>
+  </div>
+  <div padding>
     <ion-segment [(ngModel)]="usr">
       <ion-segment-button value="upc">
         Attending
@@ -65,7 +91,7 @@
 
     <ion-list *ngSwitchCase="'past'">
       <ion-list>
-        <ion-item *ngFor="let item of arrUpc" (click)="onCLickPastEvent(item.event_id)">
+        <ion-item *ngFor="let item of arrPast" (click)="onCLickPastEvent(item.event_id)">
           <ion-thumbnail item-start>
             <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
           </ion-thumbnail>
@@ -73,6 +99,7 @@
         </ion-item>
       </ion-list>
     </ion-list>
+
 
     <ion-list>
       <ion-item (click)="onChangePassword()">
