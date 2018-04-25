@@ -47,7 +47,7 @@ import { ViewuserPage } from '../pages/viewuser/viewuser';
   <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+  public rootPage = FirstRunPage;
   public alertShown: boolean = false;
 
   @ViewChild(Nav) nav: Nav;

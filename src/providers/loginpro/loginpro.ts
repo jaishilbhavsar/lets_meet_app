@@ -26,9 +26,9 @@ export class LoginproProvider {
     user_mob_no: '',
     user_bdate: null,
   };
-  chpass:{userid:string,password:string}={
-    userid:'',
-    password:''
+  chpass:{user_id:string,user_pass:string}={
+    user_id:'',
+    user_pass:''
   };
   userupdate: { user_id: string, user_name: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
     user_id: '',
@@ -113,21 +113,12 @@ export class LoginproProvider {
     console.log(demo.subject);
     return this.http.post(this.urlmail, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-<<<<<<< HEAD
-  urlfollowers: string = "http://localhost:3000/follower/";
-  urlfollowing: string = "http://localhost:3000/following/";
-  urlfollowuser:string="http://localhost:3000/follow_user/";
-  urlfollowingwhom:string="http://localhost:3000/followwhom/";
-  urlchangepass:"http://localhost:3000/changepassword/";
-  getFollowingUser(uid)
-  {
-=======
+  urlchangepass:string="https://localhost:3000/changepassword/";
   urlfollowers: string = "https://letsmeetbackend.herokuapp.com/follower/";
   urlfollowing: string = "https://letsmeetbackend.herokuapp.com/following/";
   urlfollowuser: string = "https://letsmeetbackend.herokuapp.com/follow_user/";
   urlfollowingwhom: string = "https://letsmeetbackend.herokuapp.com/followwhom/";
   getFollowingUser(uid) {
->>>>>>> 9bf042589d5bdd4b60c7f2bb92704931f0fd3204
     return this.http.get(this.urlfollowuser + uid);
   }
   getFollowingwhom(uid) {
@@ -141,8 +132,8 @@ export class LoginproProvider {
   }
   change(uid,newpass)
   {
-      this.chpass.userid=uid;
-      this.chpass.password=newpass;
+      this.chpass.user_id=uid;
+      this.chpass.user_pass=newpass;
     let body=JSON.stringify(this.chpass);
     return this.http.post(this.urlchangepass,body,{ headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
