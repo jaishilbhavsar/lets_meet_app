@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { DatePicker } from '@ionic-native/date-picker';
 import { User } from '../../providers/providers';
@@ -7,6 +8,7 @@ import { MainPage } from '../pages';
 import { FileChooser } from '@ionic-native/file-chooser';
 //import { RadioButton } from 'ionic-angular/components/radio/radio-button';
 import { LoginproProvider } from '../../providers/loginpro/loginpro';
+import { Camera } from '@ionic-native/camera';
 @IonicPage()
 @Component({
   selector: 'page-signup',
@@ -25,10 +27,35 @@ export class SignupPage {
   // Our translated text strings
   private signupErrorString: string;
 
-  constructor(public data: LoginproProvider, private fileChooser: FileChooser, private datePicker: DatePicker, public navCtrl: NavController,
+  @ViewChild('fileInput') fileInput;
+
+  isReadyToSave: boolean;
+
+  form: FormGroup;
+  selectedFile: File = null;
+
+  constructor(public data: LoginproProvider,
+    formBuilder: FormBuilder,
+    private fileChooser: FileChooser,
+    private datePicker: DatePicker,
+    public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
+    public camera: Camera,
     public translateService: TranslateService) {
+    this.form = formBuilder.group({
+      eid: ['', Validators.required],
+      uname: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
+      pass: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(10), Validators.required])],
+      gender: ['', Validators.required],
+      mobile: ['', Validators.required],
+      myDate: ['', Validators.required],
+      image: ['', Validators.required]
+    });
+
+    this.form.valueChanges.subscribe((v) => {
+      this.isReadyToSave = this.form.valid;
+    });
 
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
@@ -43,6 +70,50 @@ export class SignupPage {
   mobile: string = "";
   myDate: Date;
   image: string = "abcde";
+
+  getPicture() {
+    if (Camera['installed']()) {
+      this.camera.getPicture({
+        destinationType: this.camera.DestinationType.DATA_URL,
+        targetWidth: 96,
+        targetHeight: 96
+      }).then((data) => {
+        this.form.patchValue({ 'image': 'data:image/jpg;base64,' + data });
+      }, (err) => {
+        alert('Unable to take photo');
+      })
+    } else {
+      this.fileInput.nativeElement.click();
+    }
+  }
+
+  processWebImage(event) {
+    let reader = new FileReader();
+    reader.onload = (readerEvent) => {
+
+      let imageData = (readerEvent.target as any).result;
+      this.form.patchValue({ 'image': imageData });
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
+    this.selectedFile = <File>event.target.files[0];
+    //alert(this.selectedFile.type);
+    if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
+      this.selectedFile = null;
+      this.isReadyToSave = this.form.invalid;
+      const toast = this.toastCtrl.create({
+        message: 'Only Image formats are accepted!',
+        showCloseButton: true,
+        closeButtonText: 'Ok'
+      });
+      toast.present();
+    }
+  }
+
+  getProfileImageStyle() {
+    return 'url(' + this.form.controls['image'].value + ')'
+  }
+
   doSignup() {
     // Attempt to login in through our User service
     this.user.signup(this.account).subscribe((resp) => {
@@ -61,6 +132,7 @@ export class SignupPage {
     });
   }
   onClick() {
+    if (!this.form.valid) { return; }
     this.data.addUser(this.eid, this.uname, this.pass, this.image, this.gender, this.mobile, this.myDate).subscribe(
       (resp) => { alert("Success") },
       (err) => alert("Signup Later")
