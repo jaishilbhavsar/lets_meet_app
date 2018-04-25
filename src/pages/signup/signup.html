@@ -8,44 +8,44 @@
 
 
 <ion-content>
-    <ion-list>
+  <ion-list>
 
+    <ion-item>
+      <ion-label floating color="red">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="eid"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>UserName</ion-label>
+      <ion-input type="text" [(ngModel)]="uname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="passowrd" [(ngModel)]="pass"></ion-input>
+    </ion-item>
+
+    <ion-item>
+
+    </ion-item>
+
+    <ion-list radio-group [(ngModel)]="gender">
       <ion-item>
-        <ion-label floating color="red">Email</ion-label>
-        <ion-input type="email" [(ngModel)]="eid"></ion-input>
+        <ion-label>Male</ion-label>
+        <ion-radio value="Male"></ion-radio>
       </ion-item>
-
       <ion-item>
-        <ion-label floating>UserName</ion-label>
-        <ion-input type="text" [(ngModel)]="uname"></ion-input>
+        <ion-label>Female</ion-label>
+        <ion-radio value="Female"></ion-radio>
       </ion-item>
+    </ion-list>
 
-      <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="passowrd" [(ngModel)]="pass"></ion-input>
-      </ion-item>
-
-      <ion-item>
-
-      </ion-item>
-
-      <ion-list radio-group [(ngModel)]="gender">
-        <ion-item>
-          <ion-label>Male</ion-label>
-          <ion-radio value="Male"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Female</ion-label>
-          <ion-radio value="Female"></ion-radio>
-        </ion-item>
-      </ion-list>
-
-      <ion-item>
-        <ion-label floating>Mobile No</ion-label>
-        <ion-input type="text" [(ngModel)]="mobile"></ion-input>
-      </ion-item>
-      <ion-item></ion-item>
-      <!--<ion-item>
+    <ion-item>
+      <ion-label floating>Mobile No</ion-label>
+      <ion-input type="text" [(ngModel)]="mobile"></ion-input>
+    </ion-item>
+    <ion-item></ion-item>
+    <!--<ion-item>
         <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
         <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
       </ion-item>
@@ -55,7 +55,7 @@
         <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
       </ion-item>
     -->
-      <!--
+    <!--
       Want to add a Username? Here you go:
 
       <ion-item>
@@ -63,20 +63,20 @@
         <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
       </ion-item>
       -->
-<!--
+    <!--
       <ion-item>
         <button ion-button color="primary" (click)="onfile()"block>{{ 'Image' | translate }}</button>  
       </ion-item>-->
-      
+
 
     <ion-item>
       <ion-label>Date</ion-label>
       <ion-datetime displayFormat="DD/MMMM/YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="myDate"></ion-datetime>
     </ion-item>
-    
-      <div padding>
-        <button ion-button color="meetup" (click)="onClick()" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
-      </div>
 
-    </ion-list>
+    <div padding>
+      <button ion-button color="meetup" (click)="onClick()" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+    </div>
+
+  </ion-list>
 </ion-content>
