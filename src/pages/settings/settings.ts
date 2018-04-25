@@ -5,8 +5,8 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { Community_Class } from "./community_class";
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
 import { ViewCommunityPage } from "../view-community/view-community";
-import { Comm_member_class } from "../../shared/comm_member_class";
-import { Community_comm_member } from "../../shared/community_comm_member_class";
+//import { Comm_member_class } from "../../shared/comm_member_class";
+//import { Community_comm_member } from "../../shared/community_comm_member_class";
 import { CommunityCommMemberProvider } from "../../providers/community-comm-member/community-comm-member";
 
 

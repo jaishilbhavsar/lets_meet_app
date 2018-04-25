@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
-import { Community_Class } from "../settings/community_class";
+//import { Community_Class } from "../settings/community_class";
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { Storage } from "@ionic/storage";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 /**
  * Generated class for the CreateCommunityPage page.

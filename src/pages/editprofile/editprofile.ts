@@ -1,4 +1,4 @@
-import { UsersPage } from './../users/users';
+//import { UsersPage } from './../users/users';
 import { LoginproProvider } from './../../providers/loginpro/loginpro';
 import { Storage } from '@ionic/storage';
 import { Component } from '@angular/core';

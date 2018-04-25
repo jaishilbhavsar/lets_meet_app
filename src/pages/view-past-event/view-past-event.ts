@@ -26,7 +26,9 @@ import { Feedback_Class } from "../../shared/feedback_class";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  name: 'view-past-event'
+})
 @Component({
   selector: 'page-view-past-event',
   templateUrl: 'view-past-event.html',

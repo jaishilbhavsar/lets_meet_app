@@ -68,7 +68,7 @@ export class MyApp {
     { title: 'Users', component: 'UsersPage' },
     { title: 'StoriesDetail', component: 'StoryDetailPage' },
     { title: 'AddStory', component: 'CreateStoryPage' },
-    { title: 'AddCommunity', component: 'CreateCommunityPage' },
+    //{ title: 'AddCommunity', component: 'CreateCommunityPage' },
     { title: 'ViewEvent', component: 'ViewEventPage' },
     { title: 'ViewCommunity', component: 'ViewCommunityPage' },
     { title: 'ViewPost', component: 'ViewPostPage' },
@@ -95,11 +95,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.backgroundColorByHexString('#fa5454');
       this.splashScreen.hide();
-      // if (this.storage.get('uid') != null) {
-      //   this.rootPage = MainPage;
-      // } else {
-      //   this.rootPage = FirstRunPage;
-      // }
+      if (this.storage.get('uid') != null) {
+        this.rootPage = MainPage;
+      } else {
+        this.rootPage = FirstRunPage;
+      }
       this.platform.resume;
       platform.registerBackButtonAction(() => {
         if (this.alertShown == false) {

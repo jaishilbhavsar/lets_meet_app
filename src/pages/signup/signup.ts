@@ -5,7 +5,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
 import { FileChooser } from '@ionic-native/file-chooser';
-import { RadioButton } from 'ionic-angular/components/radio/radio-button';
+//import { RadioButton } from 'ionic-angular/components/radio/radio-button';
 import { LoginproProvider } from '../../providers/loginpro/loginpro';
 @IonicPage()
 @Component({
@@ -25,7 +25,7 @@ export class SignupPage {
   // Our translated text strings
   private signupErrorString: string;
 
-  constructor(public data:LoginproProvider,private fileChooser: FileChooser,private datePicker: DatePicker,public navCtrl: NavController,
+  constructor(public data: LoginproProvider, private fileChooser: FileChooser, private datePicker: DatePicker, public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
@@ -35,14 +35,14 @@ export class SignupPage {
     })
   }
 
-  eid:string="";
-  uname:string="";
-  pass:string="";
-  g:string;
-  gender:string="";
-  mobile:string="";
-  myDate:Date;
-  image:string="abcde";
+  eid: string = "";
+  uname: string = "";
+  pass: string = "";
+  g: string;
+  gender: string = "";
+  mobile: string = "";
+  myDate: Date;
+  image: string = "abcde";
   doSignup() {
     // Attempt to login in through our User service
     this.user.signup(this.account).subscribe((resp) => {
@@ -60,20 +60,17 @@ export class SignupPage {
       toast.present();
     });
   }
-  onClick()
-  {
-    this.data.addUser(this.eid,this.uname,this.pass,this.image,this.gender,this.mobile,this.myDate).subscribe(
-      (resp)=>{alert("Success")},
-      (err)=>alert("Signup Later")
+  onClick() {
+    this.data.addUser(this.eid, this.uname, this.pass, this.image, this.gender, this.mobile, this.myDate).subscribe(
+      (resp) => { alert("Success") },
+      (err) => alert("Signup Later")
     );
   }
-  onfile()
-  {
+  onfile() {
     this.fileChooser.open().then(uri => console.log(uri))
-    .catch(e => console.log(e));;
+      .catch(e => console.log(e));;
   }
-  onbirth()
-  {
+  onbirth() {
     this.datePicker.show({
       date: new Date(),
       mode: 'date',

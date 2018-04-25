@@ -1,9 +1,9 @@
 import { Storage } from '@ionic/storage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { CommentStmt } from '@angular/compiler/src/output/output_ast';
+//import { CommentStmt } from '@angular/compiler/src/output/output_ast';
 import { email_class } from '../../shared/email_class';
 
 /*
@@ -41,16 +41,16 @@ export class LoginproProvider {
   urlsignup: string = "https://letsmeetbackend.herokuapp.com/user/";
 
   doLogin(eid, pass) {
-    let header = new Headers({ 'Content-Type': 'application/json' });
-    let ro = new RequestOptions({ headers: header });
+    //let header = new Headers({ 'Content-Type': 'application/json' });
+    //let ro = new RequestOptions({ headers: header });
     this.account.user_id = eid;
     this.account.user_pass = pass;
     let body = JSON.stringify(this.account);
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
   addUser(eid, uname, pass, image, gender, mobile, myDate) {
-    let header = new Headers({ 'Content-Type': 'application/json' });
-    let ro = new RequestOptions({ headers: header });
+    //let header = new Headers({ 'Content-Type': 'application/json' });
+    // let ro = new RequestOptions({ headers: header });
     this.useradd.user_id = eid;
     this.useradd.user_name = uname;
     this.useradd.user_pass = pass;
@@ -62,8 +62,8 @@ export class LoginproProvider {
     return this.http.post(this.urlsignup, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
   updateUser(id, uname, image, gender, mobile, mydate) {
-    let header = new Headers({ 'Content-Type': 'application/json' });
-    let ro = new RequestOptions({ headers: header });
+   // let header = new Headers({ 'Content-Type': 'application/json' });
+    //let ro = new RequestOptions({ headers: header });
     this.userupdate.user_id = id;
     console.log('Login pro ma user update');
     console.log(id);

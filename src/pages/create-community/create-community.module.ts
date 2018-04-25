@@ -11,5 +11,8 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicPageModule.forChild(CreateCommunityPage),
     TranslateModule.forChild()
   ],
+  exports: [
+    CreateCommunityPage
+  ]
 })
 export class CreateCommunityPageModule { }

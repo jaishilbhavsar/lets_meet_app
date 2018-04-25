@@ -7,7 +7,7 @@ import { CommentDbProvider } from "../../providers/comment-db/comment-db";
 import { Comment_Class } from "../../shared/comment_class";
 import { Comment_User_Post } from "../../shared/comment_user_post";
 import { Storage } from "@ionic/storage";
-import { DateTime } from 'ionic-angular/components/datetime/datetime';
+//import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { LoginproProvider } from "../../providers/loginpro/loginpro";
 import { user_class } from "../login/user_class";
 import { LikeDbProvider } from "../../providers/like-db/like-db";

@@ -2,13 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController, LoadingController, ToastController } from 'ionic-angular';
-import { DateTime } from 'ionic-angular/components/datetime/datetime';
+//import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { Storage } from "@ionic/storage";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import * as moment from 'moment';
+//import * as moment from 'moment';
 
 import { EventDbProvider } from "../../providers/event-db/event-db";
-import { Events_Class } from "../../shared/event_class";
+//import { Events_Class } from "../../shared/event_class";
 import { Community_Class } from "../settings/community_class";
 import { ComminityDbTsProvider } from "../../providers/community-db/community-db";
 
@@ -45,8 +44,7 @@ export class ItemCreatePage {
 
   selectedFile: File = null;
 
-  constructor(public http: HttpClient
-    , public storage: Storage,
+  constructor(public storage: Storage,
     public _data: EventDbProvider,
     public _data1: ComminityDbTsProvider,
     public load: LoadingController,
@@ -56,7 +54,7 @@ export class ItemCreatePage {
     formBuilder: FormBuilder,
     public camera: Camera) {
     this.form = formBuilder.group({
-      profilePic: ['',Validators.required],
+      profilePic: ['', Validators.required],
       event_name: ['', Validators.required],
       event_des: ['', Validators.compose([Validators.minLength(15), Validators.required])],
       event_s_time: ['', Validators.required],

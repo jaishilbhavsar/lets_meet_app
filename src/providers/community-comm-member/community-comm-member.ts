@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Community_comm_member } from "../../shared/community_comm_member_class";
+import { HttpClient } from "@angular/common/http";
+//import { Community_comm_member } from "../../shared/community_comm_member_class";
 import 'rxjs/add/operator/map';
 
 /*

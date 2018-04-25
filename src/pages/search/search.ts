@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
-import { Item } from '../../models/item';
-import { Items } from '../../providers/providers';
+// import { Item } from '../../models/item';
+// import { Items } from '../../providers/providers';
 
 import { user_class } from "../login/user_class";
 import { LoginproProvider } from "../../providers/loginpro/loginpro";
@@ -23,11 +23,11 @@ export class SearchPage {
   arr: user_class[] = [];
   arr1: user_class[] = [];
 
-  
+
   topComm: Community_Class[] = [];
 
-  constructor(public navCtrl: NavController,public load:LoadingController ,public _data1:ComminityDbTsProvider ,public _data: LoginproProvider, public navParams: NavParams, public items: Items) {
-    this.currentItems = this.items.query();
+  constructor(public navCtrl: NavController, public load: LoadingController, public _data1: ComminityDbTsProvider, public _data: LoginproProvider, public navParams: NavParams) {
+
   }
 
   ionViewDidLoad() {
@@ -43,7 +43,7 @@ export class SearchPage {
     );
 
 
-    
+
     let l2 = this.load.create({
       content: "Loading..."
     });

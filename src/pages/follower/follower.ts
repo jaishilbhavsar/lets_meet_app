@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { follower_class } from '../../shared/follower_class';
-import { Console } from '@angular/core/src/console';
+//import { Console } from '@angular/core/src/console';
 import { follow_user_class } from '../../shared/follow_user_class';
 
 

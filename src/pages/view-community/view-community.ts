@@ -4,7 +4,7 @@ import { CommunityMemberDbProvider } from '../../providers/community-member-db/c
 import { CommunityCommMemberProvider } from '../../providers/community-comm-member/community-comm-member';
 import { ComminityDbTsProvider } from '../../providers/community-db/community-db';
 import { Storage } from '@ionic/storage';
-import { Community_Class } from '../settings/community_class';
+//import { Community_Class } from '../settings/community_class';
 import { Community_Post_User_Class } from '../../shared/community_post_user_class';
 import { ViewPostPage } from "../../pages/view-post/view-post";
 import { Comm_member_class } from '../../shared/comm_member_class';
@@ -12,7 +12,7 @@ import { Community_comm_member } from "../../shared/community_comm_member_class"
 import { LoginproProvider } from "../../providers/loginpro/loginpro";
 import { user_class } from "../login/user_class";
 import { CreatePostPage } from "../create-post/create-post";
-import { Ionic2RatingModule } from 'ionic2-rating';
+//import { Ionic2RatingModule } from 'ionic2-rating';
 import { PostDbProvider } from "../../providers/post-db/post-db";
 import { Post_Class } from '../../shared/post_class';
 import { EditPostPage } from "../../pages/edit-post/edit-post";

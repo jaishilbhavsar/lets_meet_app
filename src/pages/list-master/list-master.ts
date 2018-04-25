@@ -109,8 +109,9 @@ export class ListMasterPage {
   }
 
   onClick(event_id: Events_Class) {
-    this.navCtrl.push(ViewEventPage, { e_id: event_id });
+    // this.navCtrl.push(ViewEventPage, { e_id: event_id });
     //this.navCtrl.push(ViewEventPage);
+    this.navCtrl.push('view-past-event', { e_id: event_id });
     this.storage.set('evn_id', event_id);
   }
 

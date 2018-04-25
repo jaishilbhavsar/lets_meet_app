@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Events_Class } from "../../shared/event_class";
-import { Jsonp } from '@angular/http/src/http';
 
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { RSVP_Class } from '../../shared/rsvp_class';
+//import { RSVP_Class } from '../../shared/rsvp_class';
 
 
 
