@@ -1,3 +1,4 @@
+import { SocialSharing } from '@ionic-native/social-sharing';
 //import { ViewuserPage } from './../pages/viewuser/viewuser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -7,7 +8,6 @@ import { Camera } from '@ionic-native/camera';
 import { DatePicker } from '@ionic-native/date-picker';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { SocialSharing } from '@ionic-native/social-sharing';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';

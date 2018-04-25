@@ -14,6 +14,7 @@ import 'rxjs/add/operator/map';
 export class CommunityMemberDbProvider {
 
   url: string = "https://letsmeetbackend.herokuapp.com/comm_member/";
+  urlcommbyuser: string = "https://letsmeetbackend.herokuapp.com/commbyuser/";
   url1: string = "https://letsmeetbackend.herokuapp.com/membercount/";
   url2: string = "https://letsmeetbackend.herokuapp.com/memberList/";
 
@@ -25,6 +26,10 @@ export class CommunityMemberDbProvider {
     return this.http.get(this.url + id);
   }
 
+  getcommunitiesofuser(id)
+  {
+    return this.http.get(this.urlcommbyuser+id);
+  }
   addCommunityMember(item: Comm_member_class) {
 
     let body = JSON.stringify(item);

@@ -1,3 +1,5 @@
+import { CommunityMemberDbProvider } from './../../providers/community-member-db/community-member-db';
+import { CommunityCommMemberProvider } from './../../providers/community-comm-member/community-comm-member';
 import { MyApp } from './../../app/app.component';
 import { WelcomePage } from './../welcome/welcome';
 import { FollowerPage } from './../follower/follower';
@@ -37,10 +39,10 @@ export class UsersPage {
   img: string = "";
   pet: string = "kittens";
   isAndroid: boolean = false;
-  constructor(public alert: AlertController, public menu: MenuController, public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public comprovi:CommunityMemberDbProvider,public alert: AlertController, public menu: MenuController, public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
-
+commcount=0;
   ionViewDidLoad() {
 
     this.storage.get('uid').then((val) => {
@@ -62,6 +64,16 @@ export class UsersPage {
           l1.dismiss();
         }
       );
+      this.storage.get('uid').then((val)=>{
+        this.uid=val;
+        this.comprovi.getcommunitiesofuser(this.uid).subscribe(
+          (dt:any[])=>{
+            this.commcount=dt.length;
+          }
+
+        );
+      });
+      
       this.data.getFollowers(this.uid).subscribe(
         (ft: any) => {
           if (ft !== "") {
