@@ -12,8 +12,8 @@ import { Like_Class } from "../../shared/like_class";
 @Injectable()
 export class LikeDbProvider {
 
-  url: string = "http://localhost:3000/likebypost/";
-  url1: string = "http://localhost:3000/like/";
+  url: string = "https://letsmeetbackend.herokuapp.com/likebypost/";
+  url1: string = "https://letsmeetbackend.herokuapp.com/like/";
 
 
 

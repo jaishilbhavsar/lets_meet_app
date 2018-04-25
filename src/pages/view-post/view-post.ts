@@ -13,6 +13,7 @@ import { user_class } from "../login/user_class";
 import { LikeDbProvider } from "../../providers/like-db/like-db";
 import { Like_Class } from "../../shared/like_class";
 import { Like_Post_User_Class } from "../../shared/like_post_user_class";
+import { ViewuserPage } from '../viewuser/viewuser';
 
 /**
  * Generated class for the ViewPostPage page.
@@ -40,6 +41,7 @@ export class ViewPostPage {
   day: number = new Date().getDate();
   today: Date = new Date(this.year, this.month, this.day);
   comment_date: any = new Date();
+  u_id: string = "";
 
   arrUser: user_class[] = [];
   user_name: string;
@@ -74,6 +76,7 @@ export class ViewPostPage {
           this.arrUser = data;
           this.user_name = this.arrUser[0].user_name;
           this.user_pic = this.arrUser[0].user_pic;
+          this.u_id = this.arrUser[0].user_id;
         }
       );
     });
@@ -273,5 +276,9 @@ export class ViewPostPage {
       });
   }
 
+  showuser(id) {
+    this.storage.set('viewid', id);
+    this.navCtrl.push(ViewuserPage);
+  }
 }
 

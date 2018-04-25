@@ -5,6 +5,7 @@ import { IonicPage, NavController, ViewController, LoadingController, ToastContr
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { Storage } from "@ionic/storage";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import * as moment from 'moment';
 
 import { EventDbProvider } from "../../providers/event-db/event-db";
 import { Events_Class } from "../../shared/event_class";
@@ -26,6 +27,8 @@ export class ItemCreatePage {
   item: any;
 
   form: FormGroup;
+
+  today: string;
 
   arr: Community_Class[] = [];
   event_id: any = null;
@@ -53,7 +56,7 @@ export class ItemCreatePage {
     formBuilder: FormBuilder,
     public camera: Camera) {
     this.form = formBuilder.group({
-      profilePic: [''],
+      profilePic: ['',Validators.required],
       event_name: ['', Validators.required],
       event_des: ['', Validators.compose([Validators.minLength(15), Validators.required])],
       event_s_time: ['', Validators.required],
@@ -67,6 +70,9 @@ export class ItemCreatePage {
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
+
+    // this.today = moment().startOf('day').format('DD/MMMM/YYYY');
+    this.today = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString();
   }
 
   ionViewDidLoad() {

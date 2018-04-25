@@ -35,29 +35,57 @@
       </div>
       <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
     </div>
+    <ion-item *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">
+      <p>Please Choose an Image.</p>
+    </ion-item>
+
     <ion-list>
       <ion-item>
         <ion-input type="text" formControlName="event_name" [(ngModel)]="event_name" placeholder="Event Name"></ion-input>
       </ion-item>
+      <ion-item *ngIf="!this.form.controls.event_name.valid  && this.form.controls.event_name.dirty">
+        <p>Please Enter an Event Name.</p>
+      </ion-item>
+
       <ion-item>
         <ion-textarea placeholder="Event Description" formControlName="event_des" [(ngModel)]="event_des"></ion-textarea>
       </ion-item>
+      <ion-item *ngIf="!this.form.controls.event_des.valid  && this.form.controls.event_des.dirty">
+        <p>Please Enter Event Description with minimum length of 15.</p>
+      </ion-item>
+
       <ion-item>
         <ion-label>Event Starting Time</ion-label>
         <ion-datetime displayFormat="hh:mm A" formControlName="event_s_time" pickerFormat="hh mm A" [(ngModel)]="event_s_time"></ion-datetime>
       </ion-item>
+      <ion-item *ngIf="!this.form.controls.event_s_time.valid  && this.form.controls.event_s_time.dirty">
+        <p>Please choose Event Starting Time.</p>
+      </ion-item>
+
       <ion-item>
         <ion-label>Event Ending Time</ion-label>
         <ion-datetime displayFormat="hh:mm A" formControlName="event_e_time" pickerFormat="hh mm A" [(ngModel)]="event_e_time"></ion-datetime>
       </ion-item>
+      <ion-item *ngIf="!this.form.controls.event_e_time.valid  && this.form.controls.event_e_time.dirty">
+        <p>Please choose Event Ending Time.</p>
+      </ion-item>
+
       <ion-item>
         <ion-label>Event Date</ion-label>
-        <ion-datetime displayFormat="DD/MMMM/YYYY" formControlName="event_date" pickerFormat="DD MMMM YYYY" [(ngModel)]="event_date"></ion-datetime>
+        <ion-datetime displayFormat="DD/MMMM/YYYY" min="{{today}}" formControlName="event_date" pickerFormat="DD MMMM YYYY" [(ngModel)]="event_date"></ion-datetime>
       </ion-item>
+      <ion-item *ngIf="!this.form.controls.event_date.valid  && this.form.controls.event_date.dirty">
+        <p>Please choose Event Date.</p>
+      </ion-item>
+
       <ion-item>
         <ion-label>Event Location</ion-label>
         <ion-textarea formControlName="event_loc" [(ngModel)]="event_loc"></ion-textarea>
       </ion-item>
+      <ion-item *ngIf="!this.form.controls.event_loc.valid  && this.form.controls.event_loc.dirty">
+        <p>Please Enter Event Location with minimum length of 10.</p>
+      </ion-item>
+
       <ion-item>
         <ion-label>Community Name : </ion-label>
         <ion-select formControlName="community_id" [(ngModel)]="community_id">
@@ -65,6 +93,9 @@
             {{item.comm_name}}
           </ion-option>
         </ion-select>
+      </ion-item>
+      <ion-item *ngIf="!this.form.controls.community_id.valid  && this.form.controls.community_id.dirty">
+        <p>Please Select a Community.</p>
       </ion-item>
       <!--<button ion-button block (click)="onAdd()" icon-right color="danger">
         Create

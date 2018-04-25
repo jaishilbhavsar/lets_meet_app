@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { EditprofilePage } from './editprofile';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { EditprofilePage } from './editprofile';
   ],
   imports: [
     IonicPageModule.forChild(EditprofilePage),
+    TranslateModule.forChild()
   ],
 })
-export class EditprofilePageModule {}
+export class EditprofilePageModule { }

@@ -13,8 +13,8 @@ import { Comment_User_Post } from "../../shared/comment_user_post";
 @Injectable()
 export class CommentDbProvider {
 
-  url: string = "http://localhost:3000/com_post/";
-  url1: string = "http://localhost:3000/comment/";
+  url: string = "https://letsmeetbackend.herokuapp.com/com_post/";
+  url1: string = "https://letsmeetbackend.herokuapp.com/comment/";
 
   constructor(public http: HttpClient) {
     console.log('Hello CommentDbProvider Provider');

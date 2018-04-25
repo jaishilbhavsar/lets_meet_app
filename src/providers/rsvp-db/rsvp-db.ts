@@ -12,9 +12,9 @@ import { RSVP_Class } from "../../shared/rsvp_class";
 @Injectable()
 export class RsvpDbProvider {
 
-  url: string = "http://localhost:3000/rsvp/";
-  url1: string = "http://localhost:3000/rsvpabc/";
-  url2: string = "http://localhost:3000/rsvpCount/";
+  url: string = "https://letsmeetbackend.herokuapp.com/rsvp/";
+  url1: string = "https://letsmeetbackend.herokuapp.com/rsvpabc/";
+  url2: string = "https://letsmeetbackend.herokuapp.com/rsvpCount/";
 
   constructor(public http: HttpClient) {
     console.log('Hello RsvpDbProvider Provider');

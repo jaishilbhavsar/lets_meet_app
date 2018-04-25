@@ -3,12 +3,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
-import { FirstRunPage } from '../pages/pages';
+import { FirstRunPage, MainPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
-
-import { StoriesPage } from "../pages/stories/stories";
 import { UsersPage } from "../pages/users/users";
+import { StoriesPage } from "../pages/stories/stories";
+
 import { StoryDetailPage } from "../pages/story-detail/story-detail";
 import { CreateStoryPage } from "../pages/create-story/create-story";
 import { CreateCommunityPage } from "../pages/create-community/create-community";
@@ -17,6 +20,12 @@ import { ViewCommunityPage } from "../pages/view-community/view-community";
 import { ViewPostPage } from "../pages/view-post/view-post";
 import { CreatePostPage } from "../pages/create-post/create-post";
 import { EditPostPage } from "../pages/edit-post/edit-post";
+import { ViewPastEventPage } from "../pages/view-past-event/view-past-event";
+import { EditprofilePage } from '../pages/editprofile/editprofile';
+import { FollowerPage } from '../pages/follower/follower';
+import { FollowingPage } from '../pages/following/following';
+import { ViewuserPage } from '../pages/viewuser/viewuser';
+
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -39,6 +48,7 @@ import { EditPostPage } from "../pages/edit-post/edit-post";
 })
 export class MyApp {
   rootPage = FirstRunPage;
+  public alertShown: boolean = false;
 
   @ViewChild(Nav) nav: Nav;
 
@@ -46,7 +56,7 @@ export class MyApp {
     { title: 'Tutorial', component: 'TutorialPage' },
     { title: 'Welcome', component: 'WelcomePage' },
     { title: 'Tabs', component: 'TabsPage' },
-    { title: 'Cards', component: 'CardsPage' },
+    // { title: 'Cards', component: 'CardsPage' },
     { title: 'Content', component: 'ContentPage' },
     { title: 'Login', component: 'LoginPage' },
     { title: 'Signup', component: 'SignupPage' },
@@ -61,16 +71,42 @@ export class MyApp {
     { title: 'AddCommunity', component: 'CreateCommunityPage' },
     { title: 'ViewEvent', component: 'ViewEventPage' },
     { title: 'ViewCommunity', component: 'ViewCommunityPage' },
+    { title: 'ViewPost', component: 'ViewPostPage' },
     { title: 'CreatePost', component: 'CreatePostPage' },
-    { title: 'EditPost', component: 'EditPostPage' }
+    { title: 'EditPost', component: 'EditPostPage' },
+    { title: 'PastEvent', component: 'ViewPastEventPage' },
+    { title: 'EditProfile', component: 'EditprofilePage' },
+    { title: 'Follower', community: 'FollowerPage' },
+    { title: 'Following', component: 'FollowingPage' },
+    { title: 'ViewUser', component: 'ViewuserPage' }
   ]
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private translate: TranslateService,
+    private platform: Platform,
+    settings: Settings,
+    private config: Config,
+    private storage: Storage,
+    private statusBar: StatusBar,
+    public alertCtrl: AlertController,
+    private splashScreen: SplashScreen,
+    private screenOrientation: ScreenOrientation) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString('#fa5454');
       this.splashScreen.hide();
+      // if (this.storage.get('uid') != null) {
+      //   this.rootPage = MainPage;
+      // } else {
+      //   this.rootPage = FirstRunPage;
+      // }
+      this.platform.resume;
+      platform.registerBackButtonAction(() => {
+        if (this.alertShown == false) {
+          this.presentConfirm();
+        }
+      });
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     });
     this.initTranslate();
   }
@@ -94,5 +130,32 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Exit',
+      message: 'Do you want Exit?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+            this.alertShown = false;
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes clicked');
+            this.platform.exitApp();
+          }
+        }
+      ]
+    });
+    alert.present().then(() => {
+      this.alertShown = true;
+    });
   }
 }

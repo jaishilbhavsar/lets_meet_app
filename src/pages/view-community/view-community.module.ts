@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ViewCommunityPage } from './view-community';
 
@@ -9,5 +9,6 @@ import { ViewCommunityPage } from './view-community';
   imports: [
     IonicPageModule.forChild(ViewCommunityPage),
   ],
+  schemas: [NO_ERRORS_SCHEMA]
 })
-export class ViewCommunityPageModule {}
+export class ViewCommunityPageModule { }

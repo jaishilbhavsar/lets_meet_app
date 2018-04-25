@@ -13,8 +13,8 @@ import { Post_Class } from '../../shared/post_class';
 @Injectable()
 export class PostDbProvider {
 
-  url: string = "http://localhost:3000/post/";
-  url1: string = "http://localhost:3000/deletePost/";
+  url: string = "https://letsmeetbackend.herokuapp.com/post/";
+  url1: string = "https://letsmeetbackend.herokuapp.com/deletePost/";
 
   constructor(public http: HttpClient) {
     console.log('Hello PostDbProvider Provider');

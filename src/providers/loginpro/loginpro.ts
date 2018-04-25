@@ -41,8 +41,8 @@ export class LoginproProvider {
   constructor(public storage: Storage, public http: HttpClient) {
     console.log('Hello LoginproProvider Provider');
   }
-  url: string = "http://localhost:3000/login";
-  urlsignup: string = "http://localhost:3000/user/";
+  url: string = "https://letsmeetbackend.herokuapp.com/login";
+  urlsignup: string = "https://letsmeetbackend.herokuapp.com/user/";
 
   doLogin(eid, pass) {
     let header = new Headers({ 'Content-Type': 'application/json' });
@@ -78,12 +78,12 @@ export class LoginproProvider {
     this.userupdate.user_mob_no = mobile;
     this.userupdate.user_bdate = mydate;
     let body = JSON.stringify(this.userupdate);
-   // alert(this.userupdate.user_id);
+    // alert(this.userupdate.user_id);
     return this.http.put(this.urlsignup, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
   ed: string = '';
-  urluser: string = "http://localhost:3000/user/";
-  follow_user:string="http://localhost:3000/follow_user/";
+  urluser: string = "https://letsmeetbackend.herokuapp.com/user/";
+  follow_user: string = "https://letsmeetbackend.herokuapp.com/follow_user/";
   set_url() {
     //this.storage.get('uid').then((val) => {this.ed=this.urluser+val});
     /*this.storage.get('uid').then((val) => {this.ed=val});
@@ -105,7 +105,7 @@ export class LoginproProvider {
     //alert(this.ed);
     //return this.http.get(this.ed);
   }
-  urlmail: string = "http://localhost:3000/demomail/"
+  urlmail: string = "https://letsmeetbackend.herokuapp.com/demomail/"
   sendMail(demo: email_class) {
     let body = JSON.stringify(demo);
     console.log(demo.name);
@@ -113,6 +113,7 @@ export class LoginproProvider {
     console.log(demo.subject);
     return this.http.post(this.urlmail, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
+<<<<<<< HEAD
   urlfollowers: string = "http://localhost:3000/follower/";
   urlfollowing: string = "http://localhost:3000/following/";
   urlfollowuser:string="http://localhost:3000/follow_user/";
@@ -120,11 +121,17 @@ export class LoginproProvider {
   urlchangepass:"http://localhost:3000/changepassword/";
   getFollowingUser(uid)
   {
+=======
+  urlfollowers: string = "https://letsmeetbackend.herokuapp.com/follower/";
+  urlfollowing: string = "https://letsmeetbackend.herokuapp.com/following/";
+  urlfollowuser: string = "https://letsmeetbackend.herokuapp.com/follow_user/";
+  urlfollowingwhom: string = "https://letsmeetbackend.herokuapp.com/followwhom/";
+  getFollowingUser(uid) {
+>>>>>>> 9bf042589d5bdd4b60c7f2bb92704931f0fd3204
     return this.http.get(this.urlfollowuser + uid);
   }
-  getFollowingwhom(uid)
-  {
-    return this.http.get(this.urlfollowingwhom+uid);
+  getFollowingwhom(uid) {
+    return this.http.get(this.urlfollowingwhom + uid);
   }
   getFollowers(uid) {
     return this.http.get(this.urlfollowers + uid);

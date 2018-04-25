@@ -74,13 +74,19 @@
       </ion-row>
     </ion-card-content>-->
 <ion-content>
+  
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>
   <div [ngSwitch]="event">
     <ion-list *ngSwitchCase="'upcEvents'">
       <ion-list>
         <ion-item *ngFor="let item of arr" class="text-wrap">
           <ion-avatar item-start>
-            <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">
+            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">
           </ion-avatar>
           <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
           <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>
@@ -95,12 +101,12 @@
       <ion-list>
         <ion-item *ngFor="let item of reg" class="text-wrap">
           <ion-avatar item-start>
-            <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">
+            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">
           </ion-avatar>
           <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
           <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>
           <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:'fullDate'}},{{item.event_s_time}}</p>
-          
+
           <ion-icon name="checkmark-circle" (click)="onClickRSVP(item.event_id)" item-end color="danger"></ion-icon>
         </ion-item>
       </ion-list>
@@ -120,5 +126,9 @@
   <!--</ion-item>
   </ion-list>-->
 
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
 
 </ion-content>
