@@ -6,7 +6,7 @@ import { LoginproProvider } from './../../providers/loginpro/loginpro';
 import { EventDbProvider } from "../../providers/event-db/event-db";
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { IonicPage, NavController, NavParams, Platform, ModalController, ViewController, MenuController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, ModalController, ViewController, MenuController, AlertController, App } from 'ionic-angular';
 import { user_class } from '../login/user_class';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { follower_class } from '../../shared/follower_class';
@@ -58,6 +58,8 @@ export class UsersPage {
     platform: Platform,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
+    public viewCtrl: ViewController,
+    public appCtrl: App,
     public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
@@ -165,9 +167,9 @@ export class UsersPage {
     modal.present();
   }
   onLogout() {
+
     this.storage.clear();
-    this.navCtrl.popToRoot();
-    //this.navCtrl.parent.parent.setRoot(FirstRunPage);
+    this.appCtrl.getRootNav().setRoot(FirstRunPage);
   }
   newpassword: string = "";
   oldpassword: string = "";

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, ViewController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { IonicPage, NavController, ViewController, NavParams, LoadingController, ToastController, AlertController, Platform } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 
@@ -21,7 +21,9 @@ import { Feedback_Class } from "../../shared/feedback_class";
 import { Events_User_Class } from "../../shared/event_user_class";
 import { ViewuserPage } from '../viewuser/viewuser';
 import { Calendar } from '@ionic-native/calendar';
+import { GeolocationProvider } from '../../providers/geolocation/geolocation';
 
+declare var google;
 
 /**
  * Generated class for the ViewEventPage page.
@@ -82,6 +84,11 @@ export class ViewEventPage {
 
   feed_des: string = "";
 
+  /*  @ViewChild("map") mapElement: ElementRef;
+   map: any; */
+  @ViewChild("map") mapElement: ElementRef;
+  map: any;
+
   constructor(public storage: Storage,
     public load: LoadingController,
     public tos: ToastController,
@@ -93,9 +100,11 @@ export class ViewEventPage {
     public _dataEventComm: EventCommunityDbProvider,
     public _dataFeedback: FeedbackDbProvider,
     public _dataUser: LoginproProvider,
+    public _geolocation: GeolocationProvider,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public viewCtrl: ViewController) {
+    public viewCtrl: ViewController,
+    platform: Platform) {
   }
 
   ionViewDidLoad() {
@@ -118,6 +127,9 @@ export class ViewEventPage {
         //alert(this.e_Str.substr(0, this.e_Str.indexOf('T')));
         this.e_Str = this.e_Str.substr(0, this.e_Str.indexOf('T'));
         this.to_date = new Date(this.e_Str);
+
+        //this.geo_code(this.event_loc);
+        this.geo_code("Manekchowk,Ahmedabad,Gujarat,India");
 
       },
       function (e) {
@@ -216,6 +228,66 @@ export class ViewEventPage {
       (msg) => { console.log(msg); },
       (err) => { console.log(err); }
     );
+
+  }
+
+  /* geo_code(address: string) {
+    console.log("inside geocode");
+    this._geolocation.getCurrentPosition(address).subscribe(
+      (data: any) => {
+        this.loadMap(data);
+        console.log("Add:" + data);
+      }
+    );
+  } */
+  geo_code(address: string) {
+    console.log("inside geo_code::");
+    this._geolocation.getCurrentPosition(address).subscribe(
+      (data: any) => {
+        this.loadMap(data);
+        console.log("add:" + data);
+      }
+    );
+  }
+
+  /* loadMap(data: any) {
+    //let lat = data["results"][0].geometry.location.lat;
+    let lat = data["results"][0].geometry.location.lat;
+    let lng = data["results"][0].geometry.location.lng;
+    let letlng = new google.maps.Latlng(lat, lng);
+    console.log("lat:" + lat);
+    let mapOptions = {
+      center: letlng,
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    var marker = new google.maps.Marker({
+      position: letlng,
+      title: this.event_loc,
+      map: this.map,
+      draggable: true
+    });
+  } */
+  loadMap(data: any) {
+    let lat = data["results"][0].geometry.location.lat;
+    let lng = data["results"][0].geometry.location.lng;
+    let latLng = new google.maps.LatLng(lat, lng);
+    console.log("lat:" + lat);
+    let mapOptions = {
+      center: latLng,
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    var marker = new google.maps.Marker({
+      position: latLng,
+      title: "Manekchowk,Ahmedabad,Gujarat,India",
+      map: this.map,
+      draggable: true
+    });
   }
 
   changeFlag() {

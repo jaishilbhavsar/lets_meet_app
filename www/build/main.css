@@ -33490,6 +33490,15 @@ page-view-event .text-wrap {
   white-space: normal;
 }
 
+page-view-event .scroll {
+  height: 100%;
+}
+
+page-view-event #map {
+  width: 100%;
+  height: 50%;
+}
+
 page-welcome .splash-bg {
   position: relative;
   background: url("../assets/img/mic.jpg") no-repeat transparent;

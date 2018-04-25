@@ -29,7 +29,7 @@ ViewCommunityPageModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__view_community__["a" /* ViewCommunityPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__view_community__["a" /* ViewCommunityPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__view_community__["a" /* ViewCommunityPage */]),
         ],
         schemas: [__WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* NO_ERRORS_SCHEMA */]]
     })

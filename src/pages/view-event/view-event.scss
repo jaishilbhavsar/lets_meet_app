@@ -1,7 +1,12 @@
 page-view-event {
-
-    .text-wrap{
-        white-space: normal
-      }
-
+  .text-wrap {
+    white-space: normal
+  }
+  .scroll {
+    height: 100%;
+  }
+  #map {
+    width: 100%;
+    height: 50%;
+  }
 }

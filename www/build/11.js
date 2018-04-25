@@ -1,6 +1,6 @@
 webpackJsonp([11],{
 
-/***/ 355:
+/***/ 356:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__list_master__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__list_master__ = __webpack_require__(376);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -31,7 +31,7 @@ ListMasterPageModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */]),
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */]),
             __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
         ],
         exports: [
@@ -44,19 +44,20 @@ ListMasterPageModule = __decorate([
 
 /***/ }),
 
-/***/ 375:
+/***/ 376:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListMasterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_event_db_event_db__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_event_community_db_event_community_db__ = __webpack_require__(126);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_rsvp_class__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_rsvp_db_rsvp_db__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__view_event_view_event__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_event_community_db_event_community_db__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_rsvp_class__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_rsvp_db_rsvp_db__ = __webpack_require__(127);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -66,6 +67,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -150,10 +152,10 @@ var ListMasterPage = (function () {
         //this.navCtrl.push(CreateEventPage);
     };
     ListMasterPage.prototype.onClick = function (event_id) {
-        // this.navCtrl.push(ViewEventPage, { e_id: event_id });
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__view_event_view_event__["a" /* ViewEventPage */], { e_id: event_id });
         //this.navCtrl.push(ViewEventPage);
-        this.navCtrl.push('view-past-event', { e_id: event_id });
-        this.storage.set('evn_id', event_id);
+        // this.navCtrl.push('view-past-event', { e_id: event_id });
+        // this.storage.set('evn_id', event_id);
     };
     ListMasterPage.prototype.onRSVP = function (event_id) {
         var _this = this;
@@ -167,7 +169,7 @@ var ListMasterPage = (function () {
                 duration: 3000,
                 message: "Joined ..."
             });
-            _this._dataRSVP.addRSVP(new __WEBPACK_IMPORTED_MODULE_6__shared_rsvp_class__["a" /* RSVP_Class */](null, _this.user_id, event_id)).subscribe(function (data) {
+            _this._dataRSVP.addRSVP(new __WEBPACK_IMPORTED_MODULE_7__shared_rsvp_class__["a" /* RSVP_Class */](null, _this.user_id, event_id)).subscribe(function (data) {
                 _this.ionViewDidLoad();
                 //this.join_button = false;
                 //this.going_button = true;
@@ -249,14 +251,14 @@ ListMasterPage = __decorate([
         selector: 'page-list-master',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\list-master\list-master.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <!--<ion-title>{{ \'LIST_MASTER_TITLE\' | translate }}</ion-title>-->\n\n    <ion-title>Events</ion-title>\n\n    <ion-buttons start>\n\n      <button (click)="onSearchIcon()" ion-button icon-only>\n\n        <ion-icon name=\'search\'></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="addItem()">\n\n        <ion-icon name="add"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-segment [(ngModel)]="event">\n\n      <ion-segment-button value="upcEvents">\n\n        Upcomig\n\n      </ion-segment-button>\n\n      <ion-segment-button value="rgEvents">\n\n        Registered\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </ion-toolbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<!--<h1>Hello</h1>\n\n  <ion-list>\n\n    <ion-item-sliding *ngFor="let item of currentItems">\n\n      <button ion-item (click)="openItem(item)">\n\n        <ion-avatar item-start>\n\n          <img [src]="item.profilePic" />\n\n        </ion-avatar>\n\n        <h2>{{item.name}}</h2>\n\n        <p>{{item.about}}</p>\n\n        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>\n\n      </button>\n\n\n\n      <ion-item-options>\n\n        <button ion-button color="danger" (click)="deleteItem(item)">\n\n          {{ \'DELETE_BUTTON\' | translate }}\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n  </ion-list>-->\n\n\n\n<!--<ion-content class="cards-bg">\n\n\n\n  <ion-card *ngFor="let item of arr">\n\n\n\n    <img src="{{item.event_pic}}" (click)="onClick(item.event_id)" />\n\n\n\n    <ion-card-content>\n\n      <ion-row>\n\n        <ion-col>\n\n          <ion-card-title (click)="onClick(item.event_id)">\n\n            {{item.event_name}}\n\n          </ion-card-title>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col>\n\n          <button class="align-button" ion-button block icon-left color="danger" item-end>\n\n            <ion-icon name="add"></ion-icon>\n\n            Join Event\n\n          </button>\n\n        </ion-col>\n\n\n\n      </ion-row>\n\n    </ion-card-content>-->\n\n<ion-content>\n\n  \n\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n\n    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">\n\n    </ion-refresher-content>\n\n  </ion-refresher>\n\n\n\n  <ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>\n\n  <div [ngSwitch]="event">\n\n    <ion-list *ngSwitchCase="\'upcEvents\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of arr" class="text-wrap">\n\n          <ion-avatar item-start>\n\n            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">\n\n          </ion-avatar>\n\n          <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>\n\n          <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>\n\n          <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:\'fullDate\'}},{{item.event_s_time}}</p>\n\n          <ion-icon name="add-circle" (click)="onClickRSVP(item.event_id)" item-end color="danger"></ion-icon>\n\n          <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'rgEvents\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of reg" class="text-wrap">\n\n          <ion-avatar item-start>\n\n            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">\n\n          </ion-avatar>\n\n          <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>\n\n          <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>\n\n          <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:\'fullDate\'}},{{item.event_s_time}}</p>\n\n\n\n          <ion-icon name="checkmark-circle" (click)="onClickRSVP(item.event_id)" item-end color="danger"></ion-icon>\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-list>\n\n  </div>\n\n  <!--<ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>\n\n  <ion-list>\n\n    <ion-item *ngFor="let item of arr" class="text-wrap">\n\n      <ion-avatar item-start>\n\n        <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">\n\n      </ion-avatar>\n\n      <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>\n\n      <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>\n\n      <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:\'fullDate\'}},{{item.event_s_time}}</p>\n\n      <button ion-button (click)="onClickRSVP(item.event_id)" color="danger" clear item-end>Join Event</button>-->\n\n  <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->\n\n  <!--</ion-item>\n\n  </ion-list>-->\n\n\n\n  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n\n    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">\n\n    </ion-infinite-scroll-content>\n\n  </ion-infinite-scroll> -->\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\list-master\list-master.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
         __WEBPACK_IMPORTED_MODULE_4__providers_event_db_event_db__["a" /* EventDbProvider */],
-        __WEBPACK_IMPORTED_MODULE_5__providers_event_community_db_event_community_db__["a" /* EventCommunityDbProvider */],
-        __WEBPACK_IMPORTED_MODULE_7__providers_rsvp_db_rsvp_db__["a" /* RsvpDbProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_6__providers_event_community_db_event_community_db__["a" /* EventCommunityDbProvider */],
+        __WEBPACK_IMPORTED_MODULE_8__providers_rsvp_db_rsvp_db__["a" /* RsvpDbProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_3__providers_providers__["b" /* Items */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */]])
 ], ListMasterPage);
 
 /**

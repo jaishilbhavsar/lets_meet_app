@@ -81,6 +81,7 @@ export class MyApp {
     { title: 'ViewUser', component: 'ViewuserPage' }
   ]
 
+  u_id: string = null;
   constructor(private translate: TranslateService,
     private platform: Platform,
     settings: Settings,
@@ -95,7 +96,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.backgroundColorByHexString('#fa5454');
       this.splashScreen.hide();
-      if (this.storage.get('uid') != null) {
+      console.log("demo" + this.storage.get('uid'));
+      this.storage.get('uid').catch((data: any) => {
+        this.u_id = data;
+      }
+      );
+      console.log("demo1" + this.storage.get('uid'));
+      if (this.u_id != null) {
         this.rootPage = MainPage;
       } else {
         this.rootPage = FirstRunPage;

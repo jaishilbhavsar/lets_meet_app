@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 359:
+/***/ 360:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings__ = __webpack_require__(380);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings__ = __webpack_require__(381);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -31,7 +31,7 @@ SettingsPageModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__settings__["a" /* SettingsPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__settings__["a" /* SettingsPage */]),
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__settings__["a" /* SettingsPage */]),
             __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
         ],
         exports: [
@@ -44,7 +44,7 @@ SettingsPageModule = __decorate([
 
 /***/ }),
 
-/***/ 380:
+/***/ 381:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57,9 +57,9 @@ SettingsPageModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__view_community_view_community__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_community_comm_member_community_comm_member__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_providers__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__create_community_create_community__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__create_community_create_community__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_community_member_db_community_member_db__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_storage__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_storage__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -200,14 +200,14 @@ SettingsPage = SettingsPage_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-settings',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\settings\settings.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>Communities</ion-title>\n\n    <ion-buttons start>\n\n      <button (click)="onSearchIcon()" ion-button icon-only>\n\n        <ion-icon name=\'search\'></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="addCommunity()">\n\n        <ion-icon name="add"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-searchbar *ngIf="flag" [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by community"></ion-searchbar>\n\n  <ion-card *ngFor="let item of arr ">\n\n    <!--  <img src="assets/img/cjpg.jpg"/>-->\n\n    \n\n    <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{item.comm_pic}}" (click)="onView(item.comm_id)" height="120" width="100" />\n\n    <ion-row>\n\n      <ion-col col-12>\n\n        <ion-card-content >\n\n          <ion-card-title (click)="onView(item.comm_id)">\n\n            <b>{{item.comm_name}}</b>\n\n          \n\n        </ion-card-title>\n\n           <b> Created by : </b> <h4>{{item.user_name}}</h4>\n\n          \n\n        </ion-card-content>\n\n      </ion-col>\n\n   <!-- <ion-col col-4>\n\n        \n\n        <button ion-button (click)="onJoin(item.comm_id)" color="danger" small align="center">Join Now</button>\n\n\n\n      </ion-col>-->\n\n    </ion-row>\n\n  </ion-card>\n\n\n\n  <!--  <ion-card>\n\n        \n\n            <img src="assets/img/cjpg.jpg" />\n\n        \n\n            <ion-card-content>\n\n              <ion-card-title>\n\n                Community 1\n\n              </ion-card-title>\n\n              \n\n            </ion-card-content>\n\n        \n\n            <ion-item>\n\n              <ion-icon name=\'people\' item-start style="color: #d03e84"></ion-icon>\n\n              Group Members\n\n              <ion-badge item-end>9</ion-badge>\n\n            </ion-item>\n\n\n\n            <button ion-button block >Join Now</button>\n\n        \n\n          </ion-card>-->\n\n  <!--<ion-item>\n\n              <ion-icon name=\'logo-twitter\' item-start style="color: #55acee"></ion-icon>\n\n              Followers\n\n              <ion-badge item-end>260k</ion-badge>\n\n            </ion-item>-->\n\n\n\n\n\n\n\n</ion-content>'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\settings\settings.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavController */],
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_7__providers_providers__["c" /* Settings */],
         __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */],
         __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
         __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__["a" /* ComminityDbTsProvider */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */],
         __WEBPACK_IMPORTED_MODULE_9__providers_community_member_db_community_member_db__["a" /* CommunityMemberDbProvider */],
         __WEBPACK_IMPORTED_MODULE_10__ionic_storage__["b" /* Storage */],
         __WEBPACK_IMPORTED_MODULE_6__providers_community_comm_member_community_comm_member__["a" /* CommunityCommMemberProvider */]])
