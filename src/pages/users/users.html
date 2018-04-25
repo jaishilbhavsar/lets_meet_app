@@ -57,13 +57,12 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'commu'">
-      <ion-item>
+      <ion-item *ngFor="let item of arrCommu" (click)="onCLickCommu(item.event_id)">
         <ion-thumbnail item-start>
-          <img src="img/thumbnail-kitten-1.jpg">
+          <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{item.comm_pic}}">
         </ion-thumbnail>
-        <h2>Luna</h2>
+        <h2>{{item.comm_name}}</h2>
       </ion-item>
-      ...
     </ion-list>
   </div>
   <div padding>
