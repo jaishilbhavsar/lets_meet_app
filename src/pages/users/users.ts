@@ -1,3 +1,5 @@
+import { CommunityMemberDbProvider } from './../../providers/community-member-db/community-member-db';
+import { CommunityCommMemberProvider } from './../../providers/community-comm-member/community-comm-member';
 import { MyApp } from './../../app/app.component';
 import { WelcomePage } from './../welcome/welcome';
 import { FollowerPage } from './../follower/follower';
@@ -43,6 +45,7 @@ export class UsersPage {
   usr: string = "upc";
   segme: string = "events";
   isAndroid: boolean = false;
+<<<<<<< HEAD
 
   arrUpc: Event_Comm_Rsvp[] = [];
   arrPast: Event_Comm_Rsvp[] = [];
@@ -58,9 +61,12 @@ export class UsersPage {
     public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams) {
+=======
+  constructor(public comprovi:CommunityMemberDbProvider,public alert: AlertController, public menu: MenuController, public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+>>>>>>> d918c9ee82989faeba6f474b95ba490bf0493221
     this.isAndroid = platform.is('android');
   }
-
+commcount=0;
   ionViewDidLoad() {
 
     this.storage.get('uid').then((val) => {
@@ -82,6 +88,16 @@ export class UsersPage {
           l1.dismiss();
         }
       );
+      this.storage.get('uid').then((val)=>{
+        this.uid=val;
+        this.comprovi.getcommunitiesofuser(this.uid).subscribe(
+          (dt:any[])=>{
+            this.commcount=dt.length;
+          }
+
+        );
+      });
+      
       this.data.getFollowers(this.uid).subscribe(
         (ft: any) => {
           if (ft !== "") {
