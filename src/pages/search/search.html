@@ -9,14 +9,46 @@
 
 <ion-content>
   <ion-searchbar [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by User"></ion-searchbar>
-  <ion-list>
-    <ion-item *ngFor="let item of arr1">
-      <ion-avatar item-start>
-        <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">
-      </ion-avatar>
-      <h3>{{item.user_name}}</h3>
-    </ion-item>
-  </ion-list>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="search">
+      <ion-segment-button value="community">
+        Comminity
+      </ion-segment-button>
+      <ion-segment-button value="user">
+        User
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div [ngSwitch]="search">
+    <ion-list *ngSwitchCase="'community'">
+      <ion-list>
+        <ion-item *ngFor="let item of comm_arr">
+          <ion-avatar item-start>
+            <img src="{{item.comm_pic}}">
+          </ion-avatar>
+          <h3 (click)="onClick(item.comm_id)">{{item.comm_name}} </h3>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'user'">
+      <ion-list>
+        <ion-item *ngFor="let item of arr1" (click)="onUser(item.user_id)">
+          <ion-avatar item-start>
+            <img src="{{item.user_pic}}">
+          </ion-avatar>
+          <h3>{{item.user_name}}</h3>
+        </ion-item>
+      </ion-list>
+
+
+    </ion-list>
+  </div>
+
+
+
   <!--<ion-list>
     <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
       <ion-avatar item-start>
@@ -30,22 +62,24 @@
 
 
 
+
+<!--
   <h4>Top Rated Communities</h4>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let item of topComm">
         <ion-card>
-          <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{item.comm_pic}}" class="imgComm" />
+          <img src="assets/img/communities/{{item.comm_pic}}" class="imgComm" />
           <ion-card-content>
             {{item.comm_name}}
-            <!--<button ion-button small>Join Now</button>-->
+              <button ion-button small>Join Now</button>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-</ion-content>
+</ion-content>-->
 <!--  <ion-col>
         <ion-card>
           <img src="assets/img/huddle1.jpg" class="imgComm" />

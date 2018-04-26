@@ -17,7 +17,9 @@ import { PostDbProvider } from "../../providers/post-db/post-db";
 import { Post_Class } from '../../shared/post_class';
 import { EditPostPage } from "../../pages/edit-post/edit-post";
 import { Community_User_Class } from "../../shared/community_user_class";
-
+//import { Community_User_Class } from "../../shared/community_user_class";
+import { Rate_Class } from "../../shared/rating_tbl_class";
+import { RatingDbProvider } from "../../providers/rating-db/rating-db";
 /**
  * Generated class for the ViewCommunityPage page.
  *
@@ -61,9 +63,26 @@ export class ViewCommunityPage {
   user_pic: string;
   user_name: string;
 
+  public rate:number;
+  public review:number;
+  public avg:number;
 
-  rate: number;
+  public s1: number = 0;
+  public s2: number = 0;
+  public s3: number = 0;
+  public s4: number = 0;
+  public s5: number = 0;
+  public sum: number = 0;
 
+  w: any=0.0 ;
+
+  w2: any=0.0 ;
+
+  w3: any =0.0;
+
+  w4: any=0.0;
+
+  w5: any=0.0;
 
   constructor(public dataPost: PostDbProvider,
     public commu_member: CommunityMemberDbProvider,
@@ -77,7 +96,8 @@ export class ViewCommunityPage {
     public _data: ComminityDbTsProvider,
     public _dataUser: LoginproProvider,
     public navCtrl: NavController,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public _rate:RatingDbProvider) {
   }
 
   ionViewDidLoad() {
@@ -111,6 +131,120 @@ export class ViewCommunityPage {
           l1.dismiss();
         }
       );
+
+
+      this._rate.getRateCount(1,this.comm_id).subscribe(
+
+        (data:any)=>{
+
+          this.s1 = data[0]['COUNT(rate_value)'];
+          this.sum += this.s1;
+        },
+        function(err){
+          alert(err);
+        },
+        function(){
+
+        }
+
+      );
+
+      this._rate.getAvgRating(this.comm_id).subscribe(
+        (data: any) => {
+          this.avg = data[0]['AVG(rate_value)'];
+        },
+        function (err) { 
+          alert(err);
+        },
+        function () {
+
+         }
+      );
+
+
+    this._rate.getCountRating(this.comm_id).subscribe(
+      (data: any) => {
+        this.rate = data[0]['COUNT(rate_value)'];
+      },
+      function (err) {
+        alert(err);
+       },
+      function () {
+
+       }
+    );
+
+
+    
+    this._rate.getRateCount(2,this.comm_id).subscribe(
+
+      (data:any)=>{
+
+        this.s2 = data[0]['COUNT(rate_value)'];
+        this.sum += this.s2;
+      },
+      function(err){
+        alert(err);
+      },
+      function(){
+
+      }
+
+    );
+    
+    this._rate.getRateCount(3,this.comm_id).subscribe(
+
+      (data:any)=>{
+
+        this.s3 = data[0]['COUNT(rate_value)'];
+        this.sum += this.s3;
+      },
+      function(err){
+        alert(err);
+      },
+      function(){
+
+      }
+
+    );
+    
+    this._rate.getRateCount(4,this.comm_id).subscribe(
+
+      (data:any)=>{
+
+        this.s4 = data[0]['COUNT(rate_value)'];
+        this.sum += this.s4;
+      },
+      function(err){
+        alert(err);
+      },
+      function(){
+
+      }
+
+    );
+    
+    this._rate.getRateCount(5,this.comm_id).subscribe(
+
+      (data:any)=>{
+
+        this.s5 = data[0]['COUNT(rate_value)'];
+        this.sum += this.s5;
+        this.w = (this.s1 / this.sum);
+        this.w2 = (this.s2 / this.sum);
+        this.w3 = (this.s3 / this.sum);
+        this.w4 = (this.s4 / this.sum);
+        this.w5 = (this.s5 / this.sum);
+      },
+      function(err){
+        alert(err);
+      },
+      function(){
+
+      }
+
+    );
+
 
       let l2 = this.load.create({
         content: "Loading..."
