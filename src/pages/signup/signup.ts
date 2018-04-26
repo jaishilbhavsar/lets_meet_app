@@ -62,11 +62,11 @@ export class SignupPage {
     })
   }
 
-  eid: string = "zeel9@gmail.com";
-  uname: string = "Zeel";
-  pass: string = "123456";
-  gender: string = "Female";
-  mobile: string = "8460816553";
+  eid: string = "";
+  uname: string = "";
+  pass: string = "";
+  gender: string = "";
+  mobile: string = "";
   myDate: any;
   image: any;
 
