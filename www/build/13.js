@@ -166,12 +166,6 @@ var ItemCreatePage = (function () {
     };
     ItemCreatePage.prototype.processWebImage = function (event) {
         var _this = this;
-        var reader = new FileReader();
-        reader.onload = function (readerEvent) {
-            var imageData = readerEvent.target.result;
-            _this.form.patchValue({ 'profilePic': imageData });
-        };
-        reader.readAsDataURL(event.target.files[0]);
         this.selectedFile = event.target.files[0];
         console.log(this.selectedFile);
         if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
@@ -183,6 +177,14 @@ var ItemCreatePage = (function () {
                 closeButtonText: 'Ok'
             });
             toast.present();
+        }
+        else {
+            var reader = new FileReader();
+            reader.onload = function (readerEvent) {
+                var imageData = readerEvent.target.result;
+                _this.form.patchValue({ 'profilePic': imageData });
+            };
+            reader.readAsDataURL(event.target.files[0]);
         }
     };
     ItemCreatePage.prototype.getProfileImageStyle = function () {
@@ -213,18 +215,6 @@ var ItemCreatePage = (function () {
                 duration: 3000,
                 message: "Added ..."
             });
-            /*this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, this.community_id, 'true')).subscribe(
-              (data: any) => {
-                this.viewCtrl.dismiss();
-                t1.present();
-              },
-              function (e) {
-                alert(e);
-              },
-              function () {
-                l1.dismiss();
-              }
-            );*/
             var fd = new FormData();
             fd.append("event_id", _this.event_id);
             fd.append("event_name", _this.event_name);
@@ -237,21 +227,6 @@ var ItemCreatePage = (function () {
             fd.append("fk_user_id", _this.created_by);
             fd.append("fk_comm_id", _this.community_id);
             fd.append("event_verify", "true");
-            /*this.http.post("http://localhost:3000/event/", fd).subscribe(
-              (data: any) => {
-                console.log(data);
-                console.log(this.selectedFile);
-                console.log(this.selectedFile.name);
-                this.viewCtrl.dismiss();
-                t1.present();
-              },
-              function (e) {
-                alert(e);
-              },
-              function () {
-                l1.dismiss();
-              }
-            )*/
             _this._data.addEvent(fd).subscribe(function (data) {
                 console.log(data);
                 _this.viewCtrl.dismiss();
@@ -262,7 +237,6 @@ var ItemCreatePage = (function () {
                 l1.dismiss();
             });
         });
-        // this.viewCtrl.dismiss(this.form.value);
     };
     return ItemCreatePage;
 }());

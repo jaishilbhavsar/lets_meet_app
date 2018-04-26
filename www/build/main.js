@@ -903,9 +903,8 @@ var CreatePostPage = (function () {
         this.form = formBuilder.group({
             profilePic: [''],
             post_title: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required],
-            post_des: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]
+            post_des: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].minLength(10), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].maxLength(1500), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required])]
         });
-        // Watch the form for changes, and
         this.form.valueChanges.subscribe(function (v) {
             _this.isReadyToSave = _this.form.valid;
         });
@@ -932,13 +931,8 @@ var CreatePostPage = (function () {
     };
     CreatePostPage.prototype.processWebImage = function (event) {
         var _this = this;
-        var reader = new FileReader();
-        reader.onload = function (readerEvent) {
-            var imageData = readerEvent.target.result;
-            _this.form.patchValue({ 'profilePic': imageData });
-        };
-        reader.readAsDataURL(event.target.files[0]);
         this.selectedFile = event.target.files[0];
+        console.log(this.selectedFile);
         if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
             this.selectedFile = null;
             this.isReadyToSave = this.form.invalid;
@@ -949,13 +943,18 @@ var CreatePostPage = (function () {
             });
             toast.present();
         }
+        else {
+            var reader = new FileReader();
+            reader.onload = function (readerEvent) {
+                var imageData = readerEvent.target.result;
+                _this.form.patchValue({ 'profilePic': imageData });
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
     };
     CreatePostPage.prototype.getProfileImageStyle = function () {
         return 'url(' + this.form.controls['profilePic'].value + ')';
     };
-    /**
-     * The user cancelled, so we dismiss without sending data back.
-     */
     CreatePostPage.prototype.cancel = function () {
         this.viewCtrl.dismiss();
     };
@@ -971,19 +970,6 @@ var CreatePostPage = (function () {
         this.storage.get('uid').then(function (val) {
             _this.user_id = val;
             console.log(_this.user_id);
-            /*this._dataPost.addPost(new Post_Class(null, this.post_title, this.post_des, 'dp', null, this.user_id, this.comm_id)).subscribe(
-              (data: Post_Class) => {
-                alert("added");
-                console.log(data);
-                this.viewCtrl.dismiss();
-              },
-              function (err) {
-                alert(err);
-              },
-              function () {
-      
-              }
-            )*/
             var fd = new FormData();
             fd.append("post_id", null);
             fd.append("post_title", _this.post_title);
@@ -993,15 +979,16 @@ var CreatePostPage = (function () {
             fd.append("post_fk_user_id", _this.user_id);
             fd.append("fk_comm_id", _this.comm_id);
             _this._dataPost.addPost(fd).subscribe(function (data) {
-                // alert("added");
-                console.log(data);
                 _this.viewCtrl.dismiss();
+                var t1 = _this.tos.create({
+                    duration: 3000,
+                    message: "Added ..."
+                });
             }, function (err) {
                 alert(err);
             }, function () {
             });
         });
-        //this.viewCtrl.dismiss(this.form.value);
     };
     return CreatePostPage;
 }());
@@ -1037,7 +1024,8 @@ CreatePostPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_post_db_post_db__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_post_class__ = __webpack_require__(390);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__ = __webpack_require__(40);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1047,6 +1035,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1090,12 +1079,12 @@ var EditPostPage = (function () {
             _this.post_pic = _this.arrPost[0].post_pic;
             _this.post_title = _this.arrPost[0].post_title;
             _this.post_des = _this.arrPost[0].post_des;
-            _this.form.patchValue({ 'profilePic': _this.post_pic });
+            //this.form.patchValue({ 'profilePic': this.post_pic });
         });
     };
     EditPostPage.prototype.getPicture = function () {
         var _this = this;
-        if (__WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */]['installed']()) {
+        if (__WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */]['installed']()) {
             this.camera.getPicture({
                 destinationType: this.camera.DestinationType.DATA_URL,
                 targetWidth: 96,
@@ -1141,30 +1130,30 @@ var EditPostPage = (function () {
         this.storage.get('uid').then(function (val) {
             _this.user_id = val;
             console.log(_this.user_id);
-            /*this._dataPost.addPost(new Post_Class(null, this.post_title, this.post_des, 'dp', null, this.user_id, this.comm_id)).subscribe(
-              (data: Post_Class) => {
-                alert("added");
-                console.log(data);
-                this.viewCtrl.dismiss();
-              },
-              function (err) {
-                alert(err);
-              },
-              function () {
-      
-              }
-            )*/
-            var fd = new FormData();
-            _this._dataPost.addPost(fd).subscribe(function (data) {
-                // alert("added");
-                console.log(data);
-                _this.viewCtrl.dismiss();
-            }, function (err) {
-                alert(err);
-            }, function () {
-            });
+            if (_this.selectedFile === null) {
+                _this._dataPost.editPostOnly(new __WEBPACK_IMPORTED_MODULE_5__shared_post_class__["a" /* Post_Update_Class */](_this.post_id, _this.post_title, _this.post_des)).subscribe(function (data) {
+                    console.log(data);
+                    _this.viewCtrl.dismiss();
+                }, function (err) {
+                    alert(err);
+                }, function () {
+                });
+            }
+            else {
+                var fd = new FormData();
+                fd.append('post_id', _this.post_id);
+                fd.append('post_title', _this.post_title);
+                fd.append('post_des', _this.post_des);
+                fd.append('image', _this.selectedFile, _this.selectedFile.name);
+                _this._dataPost.editPost(fd).subscribe(function (data) {
+                    console.log(data);
+                    _this.viewCtrl.dismiss();
+                }, function (err) {
+                    alert(err);
+                }, function () {
+                });
+            }
         });
-        //this.viewCtrl.dismiss(this.form.value);
     };
     return EditPostPage;
 }());
@@ -1174,17 +1163,12 @@ __decorate([
 ], EditPostPage.prototype, "fileInput", void 0);
 EditPostPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-edit-post',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\edit-post\edit-post.html"*/'<!--\n  Generated template for the EditPostPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit Post</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="cancel()">\n        <span color="primary" showWhen="ios">\n          {{ \'CANCEL_BUTTON\' | translate }}\n        </span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>\n        <span color="primary" showWhen="ios">\n          {{ \'DONE_BUTTON\' | translate }}\n        </span>\n        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">\n    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n    <div class="profile-image-wrapper" (click)="getPicture()">\n      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n        <ion-icon name="add"></ion-icon>\n        <div>\n          {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n        </div>\n      </div>\n      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n    </div>\n    <ion-list>\n      <ion-item>\n        <ion-input type="text" formControlName="post_title" [(ngModel)]="post_title" placeholder="Title of the Post"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-textarea placeholder="Post Description" formControlName="post_des" [(ngModel)]="post_des"></ion-textarea>\n      </ion-item>\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\edit-post\edit-post.html"*/,
+        selector: 'page-edit-post',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\edit-post\edit-post.html"*/'<!--\n  Generated template for the EditPostPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit Post</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="cancel()">\n        <span color="primary" showWhen="ios">\n          {{ \'CANCEL_BUTTON\' | translate }}\n        </span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>\n        <span color="primary" showWhen="ios">\n          {{ \'DONE_BUTTON\' | translate }}\n        </span>\n        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">\n    <label>Old Image:</label>\n    <img src="https://letsmeetbackend.herokuapp.com/images/posts/{{post_pic}}" *ngIf="post_pic" alt="Loading">\n    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n    <div class="profile-image-wrapper" (click)="getPicture()">\n      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n        <ion-icon name="add"></ion-icon>\n        <div>\n          {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n        </div>\n      </div>\n      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n    </div>\n    <div *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">\n      <p class="error">Please Choose an Image.</p>\n    </div>\n    <ion-list>\n      <ion-item>\n        <ion-input type="text" formControlName="post_title" [(ngModel)]="post_title" placeholder="Title of the Post"></ion-input>\n      </ion-item>\n      <div *ngIf="!this.form.controls.post_title.valid  && this.form.controls.post_title.dirty">\n        <p class="error">Please Enter Post Title.</p>\n      </div>\n\n      <ion-item>\n        <ion-textarea placeholder="Post Description" formControlName="post_des" [(ngModel)]="post_des"></ion-textarea>\n      </ion-item>\n      <div class="error" *ngIf="!this.form.controls.post_des.required  && this.form.controls.post_des.dirty">\n        <p>Please Enter Post Description.</p>\n      </div>\n      <div class="error" *ngIf="!this.form.controls.post_des.minlength  && this.form.controls.post_des.dirty">\n        <p>Please Enter Post Description with minimum length of 10.</p>\n      </div>\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\edit-post\edit-post.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_post_db_post_db__["a" /* PostDbProvider */],
-        __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* ViewController */],
-        __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */],
-        __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__providers_post_db_post_db__["a" /* PostDbProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_post_db_post_db__["a" /* PostDbProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* ViewController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _g || Object])
 ], EditPostPage);
 
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=edit-post.js.map
 
 /***/ }),
@@ -2213,8 +2197,6 @@ var LoginproProvider = (function () {
         return this.http.post(this.urlsignup, fd);
     };
     LoginproProvider.prototype.updateUser = function (id, uname, image, gender, mobile, mydate) {
-        // let header = new Headers({ 'Content-Type': 'application/json' });
-        //let ro = new RequestOptions({ headers: header });
         this.userupdate.user_id = id;
         console.log('Login pro ma user update');
         console.log(id);
@@ -2280,9 +2262,10 @@ var LoginproProvider = (function () {
 }());
 LoginproProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object])
 ], LoginproProvider);
 
+var _a, _b;
 //# sourceMappingURL=loginpro.js.map
 
 /***/ }),
@@ -2566,10 +2549,18 @@ CreateCommunityPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-create-community',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\create-community\create-community.html"*/'<!--\n\n  Generated template for the CreateCommunityPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>Create Community</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <form *ngIf="form" [formGroup]="form">\n\n    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n\n    <div class="profile-image-wrapper" (click)="getPicture()">\n\n      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n\n        <ion-icon name="add"></ion-icon>\n\n        <div>\n\n          {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n\n        </div>\n\n      </div>\n\n      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n\n    </div>\n\n    <div *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">\n\n      <p class="error">Please Choose an Image.</p>\n\n    </div>\n\n\n\n    <ion-list>\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="comm_name" placeholder="Community Name" [(ngModel)]="comm_name"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.comm_name.valid  && this.form.controls.comm_name.dirty">\n\n        <p class="error">Please Enter an Community Name.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="comm_des" placeholder="Community Description" [(ngModel)]="comm_des"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.comm_des.valid  && this.form.controls.comm_des.dirty">\n\n        <p class="error">Please Enter an Community Description.</p>\n\n      </div>\n\n      <div *ngIf="!this.form.controls.comm_des.valid  && this.form.controls.comm_des.dirty">\n\n        <p class="error">Please Enter Community Description with minimum length of 10.</p>\n\n      </div>\n\n\n\n    </ion-list>\n\n    <button ion-button color="danger" [disabled]="!isReadyToSave" (click)="onCreate()" block>Create Community</button>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\create-community\create-community.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__["a" /* ComminityDbTsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__["a" /* ComminityDbTsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* LoadingController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["p" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["p" /* ViewController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */]) === "function" && _k || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__angular_common_http__["a" /* HttpClient */],
+        __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__["a" /* ComminityDbTsProvider */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["p" /* ViewController */],
+        __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+        __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */]])
 ], CreateCommunityPage);
 
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 //# sourceMappingURL=create-community.js.map
 
 /***/ }),
@@ -4082,6 +4073,38 @@ MyApp = __decorate([
 
 /***/ }),
 
+/***/ 390:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export Post_Class */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Post_Update_Class; });
+var Post_Class = (function () {
+    function Post_Class(post_id, post_title, post_des, post_pic, post_date, post_fk_user_id, fk_comm_id) {
+        this.post_id = post_id;
+        this.post_title = post_title;
+        this.post_des = post_des;
+        this.post_pic = post_pic;
+        this.post_date = post_date;
+        this.post_fk_user_id = post_fk_user_id;
+        this.fk_comm_id = fk_comm_id;
+    }
+    return Post_Class;
+}());
+
+var Post_Update_Class = (function () {
+    function Post_Update_Class(post_id, post_title, post_des) {
+        this.post_id = post_id;
+        this.post_title = post_title;
+        this.post_des = post_des;
+    }
+    return Post_Update_Class;
+}());
+
+//# sourceMappingURL=post_class.js.map
+
+/***/ }),
+
 /***/ 41:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4224,6 +4247,7 @@ var PostDbProvider = (function () {
         this.http = http;
         this.url = "https://letsmeetbackend.herokuapp.com/post/";
         this.url1 = "https://letsmeetbackend.herokuapp.com/deletePost/";
+        this.url2 = 'https://letsmeetbackend.herokuapp.com/updatePostOnly/';
         console.log('Hello PostDbProvider Provider');
     }
     PostDbProvider.prototype.getPostById = function (id) {
@@ -4236,9 +4260,12 @@ var PostDbProvider = (function () {
     PostDbProvider.prototype.addPost = function (fd) {
         return this.http.post(this.url, fd);
     };
-    PostDbProvider.prototype.editPost = function (post) {
+    PostDbProvider.prototype.editPostOnly = function (post) {
         var body = JSON.stringify(post);
-        return this.http.put(this.url + post.post_id, body, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Content-Type', 'application/json') });
+        return this.http.put(this.url2, body, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Content-Type', 'application/json') });
+    };
+    PostDbProvider.prototype.editPost = function (fd) {
+        return this.http.put(this.url, fd);
     };
     PostDbProvider.prototype.deletePost = function (post) {
         var body = JSON.stringify(post);
@@ -4248,9 +4275,10 @@ var PostDbProvider = (function () {
 }());
 PostDbProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
 ], PostDbProvider);
 
+var _a;
 //# sourceMappingURL=post-db.js.map
 
 /***/ }),
@@ -4323,11 +4351,15 @@ var ComminityDbTsProvider = (function () {
     ComminityDbTsProvider.prototype.getCommunityById = function (id) {
         return this.http.get(this.url + id);
     };
-    ComminityDbTsProvider.prototype.addCommuniy = function (item) {
-        var body = JSON.stringify(item);
-        //  let h = new Headers({ 'Content-type': 'application/json' });
-        // let rs = new RequestOptions({ headers: h });
-        return this.http.post(this.url, body, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Content-Type', 'application/json') });
+    /* addCommuniy(item: Community_Class) {
+  
+      let body = JSON.stringify(item);
+      //  let h = new Headers({ 'Content-type': 'application/json' });
+      // let rs = new RequestOptions({ headers: h });
+      return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    } */
+    ComminityDbTsProvider.prototype.addCommunity = function (fd) {
+        return this.http.post(this.url, fd);
     };
     ComminityDbTsProvider.prototype.deleteCommunity = function (item) {
         return this.http.post(this.url + item.comm_id, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Content-Type', 'application/json') });

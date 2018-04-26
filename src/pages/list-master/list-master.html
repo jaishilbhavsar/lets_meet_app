@@ -28,53 +28,8 @@
 
 </ion-header>
 
-
-<!--<h1>Hello</h1>
-  <ion-list>
-    <ion-item-sliding *ngFor="let item of currentItems">
-      <button ion-item (click)="openItem(item)">
-        <ion-avatar item-start>
-          <img [src]="item.profilePic" />
-        </ion-avatar>
-        <h2>{{item.name}}</h2>
-        <p>{{item.about}}</p>
-        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
-      </button>
-
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(item)">
-          {{ 'DELETE_BUTTON' | translate }}
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>-->
-
-<!--<ion-content class="cards-bg">
-
-  <ion-card *ngFor="let item of arr">
-
-    <img src="{{item.event_pic}}" (click)="onClick(item.event_id)" />
-
-    <ion-card-content>
-      <ion-row>
-        <ion-col>
-          <ion-card-title (click)="onClick(item.event_id)">
-            {{item.event_name}}
-          </ion-card-title>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button class="align-button" ion-button block icon-left color="danger" item-end>
-            <ion-icon name="add"></ion-icon>
-            Join Event
-          </button>
-        </ion-col>
-
-      </ion-row>
-    </ion-card-content>-->
 <ion-content>
-  
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
     </ion-refresher-content>

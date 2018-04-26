@@ -71,8 +71,6 @@ export class LoginproProvider {
     return this.http.post(this.urlsignup, fd);
   }
   updateUser(id, uname, image, gender, mobile, mydate) {
-    // let header = new Headers({ 'Content-Type': 'application/json' });
-    //let ro = new RequestOptions({ headers: header });
     this.userupdate.user_id = id;
     console.log('Login pro ma user update');
     console.log(id);
