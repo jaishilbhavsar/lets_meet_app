@@ -33502,18 +33502,86 @@ page-tutorial p b {
   color: #000000;
 }
 
-page-view-community .text-wrap {
-  white-space: normal;
+/*page-view-community {
+  .text-wrap {
+    white-space: normal
+  }
 }
 
 ul {
   padding: 0px;
+ 
+  &.rating li {
+    padding:  3px !important;
+    background: none;
+    color: #ffb400;
+ 
+    ion-icon {
+    //  font-size: px;
+    }
+  }
+}*/
+page-view-community progress {
+  border: 1px solid #d7dad6;
+  border-radius: 5px;
+  height: 8px;
+  width: 125px;
+  padding: 0 !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
 }
 
-ul.rating li {
+page-view-community progress::-webkit-progress-bar {
+  background: #eceaea;
+  padding: 0 !important;
+}
+
+page-view-community .progress1::-webkit-progress-value {
+  background: #04ca1e;
+}
+
+page-view-community .progress2::-webkit-progress-value {
+  background: #f71303;
+}
+
+page-view-community .progress3::-webkit-progress-value {
+  background: #ff6803;
+}
+
+page-view-community .ItemSpace {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  border-top: none;
+  border-bottom: none;
+}
+
+page-view-community ul {
+  padding: 0px;
+  padding-bottom: 0px !important;
+  padding-left: 10px !important;
+}
+
+page-view-community ul.rating li {
   padding: 3px !important;
   background: none;
   color: #ffb400;
+}
+
+page-view-community .ratebtn {
+  border-radius: 2px;
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  block-size: 20px;
+  font-size: 11px;
+  background-color: #07a107;
+}
+
+page-view-community hr {
+  border: 0px;
+  border-top: 1px solid darkgrey;
 }
 
 page-view-event .text-wrap {

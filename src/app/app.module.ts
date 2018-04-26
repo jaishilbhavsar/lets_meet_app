@@ -54,6 +54,7 @@ import { LikeDbProvider } from '../providers/like-db/like-db';
 import { FeedbackDbProvider } from '../providers/feedback-db/feedback-db';
 import { StoryDbProvider } from '../providers/story-db/story-db';
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
+import { RatingDbProvider } from '../providers/rating-db/rating-db';
 
 
 // The translate loader needs to know where to load i18n files
@@ -157,7 +158,8 @@ export function provideSettings(storage: Storage) {
     LikeDbProvider,
     FeedbackDbProvider,
     StoryDbProvider,
-    GeolocationProvider
+    GeolocationProvider,
+    RatingDbProvider
   ]
 })
 export class AppModule { }
