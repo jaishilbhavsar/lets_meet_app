@@ -26,6 +26,11 @@ export class LoginproProvider {
     user_mob_no: '',
     user_bdate: null,
   };
+
+  follow: { fk_user_id: string, fk_us_id: string } = {
+    fk_user_id:'',
+    fk_us_id:''
+  };
   chpass: { user_id: string, user_pass: string } = {
     user_id: '',
     user_pass: ''
@@ -137,5 +142,12 @@ export class LoginproProvider {
     let body = JSON.stringify(this.chpass);
     return this.http.put(this.urlchangepass, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
     //"https://letsmeetbackend.herokuapp.com/changepassword/"
+  }
+  iffollowing(user_id,us_id)
+  {
+    this.follow.fk_user_id=user_id;
+    this.follow.fk_us_id=us_id;
+    let body=JSON.stringify(this.follow);
+    return this.http.put("http://localhost:3000/iffollowing/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 }
