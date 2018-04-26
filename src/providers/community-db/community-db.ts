@@ -35,12 +35,16 @@ export class ComminityDbTsProvider {
     return this.http.get(this.url + id);
   }
 
-  addCommuniy(item: Community_Class) {
+  /* addCommuniy(item: Community_Class) {
 
     let body = JSON.stringify(item);
     //  let h = new Headers({ 'Content-type': 'application/json' });
     // let rs = new RequestOptions({ headers: h });
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  } */
+
+  addCommunity(fd: FormData) {
+    return this.http.post(this.url, fd);
   }
 
   deleteCommunity(item: Community_Class) {
@@ -68,7 +72,7 @@ export class ComminityDbTsProvider {
 
   gettopcommunity() {
     return this.http.get(this.url4);
-    
+
   }
 
 }

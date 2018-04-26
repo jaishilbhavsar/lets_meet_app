@@ -55,8 +55,8 @@ export class LoginPage {
     });
   }*/
   dt: user_class;
-  eid: string = "";
-  pass: string = "";
+  eid: string = "jaishilbhavsar@yahoo.in";
+  pass: string = "jaishil";
   onClick() {
     this.data.doLogin(this.eid, this.pass).subscribe(
       (dt) => {

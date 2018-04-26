@@ -1011,7 +1011,7 @@ __decorate([
 ], CreatePostPage.prototype, "fileInput", void 0);
 CreatePostPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-create-post',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\create-post\create-post.html"*/'<!--\n  Generated template for the CreatePostPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Post</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="cancel()">\n        <span color="primary" showWhen="ios">\n          {{ \'CANCEL_BUTTON\' | translate }}\n        </span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>\n        <span color="primary" showWhen="ios">\n          {{ \'DONE_BUTTON\' | translate }}\n        </span>\n        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">\n    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n    <div class="profile-image-wrapper" (click)="getPicture()">\n      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n        <ion-icon name="add"></ion-icon>\n        <div>\n          {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n        </div>\n      </div>\n      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n    </div>\n    <ion-list>\n      <ion-item>\n        <ion-input type="text" formControlName="post_title" [(ngModel)]="post_title" placeholder="Title of the Post"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-textarea placeholder="Post Description" formControlName="post_des" [(ngModel)]="post_des"></ion-textarea>\n      </ion-item>\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\create-post\create-post.html"*/,
+        selector: 'page-create-post',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\create-post\create-post.html"*/'<!--\n  Generated template for the CreatePostPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Post</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="cancel()">\n        <span color="primary" showWhen="ios">\n          {{ \'CANCEL_BUTTON\' | translate }}\n        </span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>\n        <span color="primary" showWhen="ios">\n          {{ \'DONE_BUTTON\' | translate }}\n        </span>\n        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">\n    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n    <div class="profile-image-wrapper" (click)="getPicture()">\n      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n        <ion-icon name="add"></ion-icon>\n        <div>\n          {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n        </div>\n      </div>\n      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n    </div>\n    <div *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">\n      <p class="error">Please Choose an Image.</p>\n    </div>\n    <ion-list>\n      <ion-item>\n        <ion-input type="text" formControlName="post_title" [(ngModel)]="post_title" placeholder="Title of the Post"></ion-input>\n      </ion-item>\n      <div *ngIf="!this.form.controls.post_title.valid  && this.form.controls.post_title.dirty">\n        <p class="error">Please Enter Post Title.</p>\n      </div>\n\n      <ion-item>\n        <ion-textarea placeholder="Post Description" formControlName="post_des" [(ngModel)]="post_des"></ion-textarea>\n      </ion-item>\n      <div class="error" *ngIf="!this.form.controls.post_des.required  && this.form.controls.post_des.dirty">\n        <p>Please Enter Post Description.</p>\n      </div>\n      <div class="error" *ngIf="!this.form.controls.post_des.minlength  && this.form.controls.post_des.dirty">\n        <p>Please Enter Post Description with minimum length of 10.</p>\n      </div>\n\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\create-post\create-post.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_post_db_post_db__["a" /* PostDbProvider */],
         __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
@@ -1578,15 +1578,15 @@ webpackEmptyAsyncContext.id = 143;
 
 var map = {
 	"../pages/change-password/change-password.module": [
-		348,
+		346,
 		27
 	],
 	"../pages/content/content.module": [
-		346,
+		347,
 		14
 	],
 	"../pages/create-community/create-community.module": [
-		347,
+		348,
 		26
 	],
 	"../pages/create-post/create-post.module": [
@@ -1618,75 +1618,75 @@ var map = {
 		13
 	],
 	"../pages/item-detail/item-detail.module": [
-		373,
+		356,
 		12
 	],
 	"../pages/list-master/list-master.module": [
-		356,
+		357,
 		11
 	],
 	"../pages/login/login.module": [
-		357,
+		358,
 		0
 	],
 	"../pages/menu/menu.module": [
-		358,
+		359,
 		10
 	],
 	"../pages/search/search.module": [
-		359,
+		360,
 		9
 	],
 	"../pages/settings/settings.module": [
-		360,
+		361,
 		8
 	],
 	"../pages/signup/signup.module": [
-		361,
+		362,
 		7
 	],
 	"../pages/stories/stories.module": [
-		362,
+		363,
 		6
 	],
 	"../pages/story-detail/story-detail.module": [
-		363,
+		364,
 		19
 	],
 	"../pages/tabs/tabs.module": [
-		364,
+		365,
 		5
 	],
 	"../pages/tutorial/tutorial.module": [
-		365,
+		366,
 		4
 	],
 	"../pages/users/users.module": [
-		366,
+		367,
 		3
 	],
 	"../pages/view-community/view-community.module": [
-		367,
+		368,
 		18
 	],
 	"../pages/view-event/view-event.module": [
-		368,
+		369,
 		17
 	],
 	"../pages/view-past-event/view-past-event.module": [
-		369,
+		370,
 		2
 	],
 	"../pages/view-post/view-post.module": [
-		370,
+		371,
 		16
 	],
 	"../pages/viewuser/viewuser.module": [
-		371,
+		372,
 		15
 	],
 	"../pages/welcome/welcome.module": [
-		372,
+		373,
 		1
 	]
 };
@@ -2319,200 +2319,6 @@ var Tab5Root = 'UsersPage';
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateCommunityPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(11);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-/**
- * Generated class for the CreateCommunityPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CreateCommunityPage = (function () {
-    function CreateCommunityPage(http, st, navCtrl, _data, navParams, tos, load, viewCtrl, formBuilder, camera) {
-        this.http = http;
-        this.st = st;
-        this.navCtrl = navCtrl;
-        this._data = _data;
-        this.navParams = navParams;
-        this.tos = tos;
-        this.load = load;
-        this.viewCtrl = viewCtrl;
-        this.camera = camera;
-        this.selectedFile = null;
-        this.comm_id = null;
-        this.comm_name = '';
-        this.comm_des = '';
-        this.comm_pic = '';
-        //comm_date: any = new Date();
-        this.comm_date = null;
-        this.created_by = '';
-        this.comm_rating = null;
-        this.comm_fk_cat_id = '3';
-        this.rate = 0;
-        this.form = formBuilder.group({
-            profilePic: [''],
-            comm_name: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required],
-            comm_des: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]
-        });
-        // Watch the form for changes, and
-        /*this.form.valueChanges.subscribe((v) => {
-          this.isReadyToSave = this.form.valid;
-        });*/
-    }
-    CreateCommunityPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.st.get('uid').then(function (val) {
-            _this.created_by = val;
-        });
-        this.st.get("rating").then(function (val) {
-            _this.rate = val;
-        });
-        console.log('ionViewDidLoad CreateStoryPage');
-    };
-    CreateCommunityPage.prototype.getPicture = function () {
-        /*if (Camera['installed']()) {
-          this.camera.getPicture({
-            destinationType: this.camera.DestinationType.DATA_URL,
-            targetWidth: 96,
-            targetHeight: 96
-          }).then((data) => {
-            this.form.patchValue({ 'profilePic': 'data:image/jpg;base64,' + data });
-          }, (err) => {
-            alert('Unable to take photo');
-          })
-        } else {
-          this.fileInput.nativeElement.click();
-        }*/
-        this.fileInput.nativeElement.click();
-    };
-    CreateCommunityPage.prototype.processWebImage = function (event) {
-        var _this = this;
-        var reader = new FileReader();
-        reader.onload = function (readerEvent) {
-            var imageData = readerEvent.target.result;
-            _this.form.patchValue({ 'profilePic': imageData });
-        };
-        reader.readAsDataURL(event.target.files[0]);
-        this.selectedFile = event.target.files[0];
-    };
-    CreateCommunityPage.prototype.getProfileImageStyle = function () {
-        return 'url(' + this.form.controls['profilePic'].value + ')';
-    };
-    /**
-     * The user cancelled, so we dismiss without sending data back.
-     */
-    CreateCommunityPage.prototype.cancel = function () {
-        this.viewCtrl.dismiss();
-    };
-    /**
-     * The user is done and wants to create the item, so return it
-     * back to the presenter.
-     */
-    CreateCommunityPage.prototype.done = function () {
-        if (!this.form.valid) {
-            return;
-        }
-        this.viewCtrl.dismiss(this.form.value);
-    };
-    CreateCommunityPage.prototype.onCreate = function () {
-        var _this = this;
-        this.st.get('uid').then(function (val) {
-            _this.created_by = val;
-            console.log(_this.created_by);
-            var t1 = _this.tos.create({
-                message: "Created",
-                duration: 3000
-            });
-            var l1 = _this.load.create({
-                content: "Loading..."
-            });
-            l1.present();
-            /*this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.rate, this.created_by)).subscribe(
-              (data: any) => {
-                console.log(data);
-                t1.present();
-                this.navCtrl.pop();
-              },
-              function (err) {
-                alert(err);
-              },
-              function () {
-                l1.dismiss();
-              }
-            );*/
-            var fd = new FormData();
-            alert(_this.created_by);
-            fd.append("comm_id", _this.comm_id);
-            fd.append("comm_name", _this.comm_name);
-            fd.append("comm_des", _this.comm_des);
-            fd.append("image", _this.selectedFile, _this.selectedFile.name);
-            fd.append("comm_date", _this.comm_date);
-            fd.append("comm_rating", _this.comm_rating);
-            fd.append("created_by", _this.created_by);
-            fd.append("comm_fk_cat_id", _this.comm_fk_cat_id);
-            _this.http.post("http://localhost:3000/community/", fd).subscribe(function (data) {
-                console.log(data);
-                t1.present();
-                _this.navCtrl.pop();
-            }, function (err) {
-                alert(err);
-            }, function () {
-                l1.dismiss();
-            });
-        });
-    };
-    return CreateCommunityPage;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ViewChild */])('fileInput'),
-    __metadata("design:type", Object)
-], CreateCommunityPage.prototype, "fileInput", void 0);
-CreateCommunityPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-create-community',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\create-community\create-community.html"*/'<!--\n\n  Generated template for the CreateCommunityPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>Create Community</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <form *ngIf="form" [formGroup]="form" >\n\n    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n\n    <div class="profile-image-wrapper" (click)="getPicture()">\n\n      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n\n        <ion-icon name="add"></ion-icon>\n\n        <div>\n\n          {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n\n\n\n        </div>\n\n      </div>\n\n      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n\n    </div>\n\n\n\n    <ion-list>\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="comm_name" placeholder="Community Name" [(ngModel)]="comm_name"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="comm_des" placeholder="Community Description" [(ngModel)]="comm_des"></ion-input>\n\n      </ion-item>\n\n\n\n    </ion-list>\n\n    <button ion-button color="danger" (click)="onCreate()" block>Create Community</button>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\create-community\create-community.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__angular_common_http__["a" /* HttpClient */],
-        __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__["a" /* ComminityDbTsProvider */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["p" /* ViewController */],
-        __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
-        __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */]])
-], CreateCommunityPage);
-
-//# sourceMappingURL=create-community.js.map
-
-/***/ }),
-
-/***/ 241:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangePasswordPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
@@ -2590,6 +2396,181 @@ ChangePasswordPage = __decorate([
 ], ChangePasswordPage);
 
 //# sourceMappingURL=change-password.js.map
+
+/***/ }),
+
+/***/ 241:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateCommunityPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+/**
+ * Generated class for the CreateCommunityPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CreateCommunityPage = (function () {
+    function CreateCommunityPage(http, st, navCtrl, _data, navParams, tos, load, viewCtrl, formBuilder, camera) {
+        var _this = this;
+        this.http = http;
+        this.st = st;
+        this.navCtrl = navCtrl;
+        this._data = _data;
+        this.navParams = navParams;
+        this.tos = tos;
+        this.load = load;
+        this.viewCtrl = viewCtrl;
+        this.camera = camera;
+        this.selectedFile = null;
+        this.comm_id = null;
+        this.comm_name = '';
+        this.comm_des = '';
+        this.comm_pic = '';
+        //comm_date: any = new Date();
+        this.comm_date = null;
+        this.created_by = '';
+        this.comm_rating = null;
+        this.comm_fk_cat_id = '3';
+        this.rate = 0;
+        this.form = formBuilder.group({
+            profilePic: [''],
+            comm_name: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required],
+            comm_des: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].minLength(10), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].maxLength(280), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required])]
+        });
+        // Watch the form for changes, and
+        this.form.valueChanges.subscribe(function (v) {
+            _this.isReadyToSave = _this.form.valid;
+        });
+    }
+    CreateCommunityPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.st.get('uid').then(function (val) {
+            _this.created_by = val;
+        });
+        this.st.get("rating").then(function (val) {
+            _this.rate = val;
+        });
+        console.log('ionViewDidLoad CreateStoryPage');
+    };
+    CreateCommunityPage.prototype.getPicture = function () {
+        var _this = this;
+        if (__WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */]['installed']()) {
+            this.camera.getPicture({
+                destinationType: this.camera.DestinationType.DATA_URL,
+                targetWidth: 96,
+                targetHeight: 96
+            }).then(function (data) {
+                _this.form.patchValue({ 'profilePic': 'data:image/jpg;base64,' + data });
+            }, function (err) {
+                alert('Unable to take photo');
+            });
+        }
+        else {
+            this.fileInput.nativeElement.click();
+        }
+        this.fileInput.nativeElement.click();
+    };
+    CreateCommunityPage.prototype.processWebImage = function (event) {
+        var _this = this;
+        this.selectedFile = event.target.files[0];
+        console.log(this.selectedFile);
+        if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
+            this.selectedFile = null;
+            this.isReadyToSave = this.form.invalid;
+            var toast = this.tos.create({
+                message: 'Only Image formats are accepted!',
+                showCloseButton: true,
+                closeButtonText: 'Ok'
+            });
+            toast.present();
+        }
+        else {
+            var reader = new FileReader();
+            reader.onload = function (readerEvent) {
+                var imageData = readerEvent.target.result;
+                _this.form.patchValue({ 'profilePic': imageData });
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    };
+    CreateCommunityPage.prototype.getProfileImageStyle = function () {
+        return 'url(' + this.form.controls['profilePic'].value + ')';
+    };
+    CreateCommunityPage.prototype.onCreate = function () {
+        var _this = this;
+        if (!this.form.valid) {
+            return;
+        }
+        this.st.get('uid').then(function (val) {
+            _this.created_by = val;
+            var t1 = _this.tos.create({
+                message: "Created",
+                duration: 3000
+            });
+            var l1 = _this.load.create({
+                content: "Loading..."
+            });
+            l1.present();
+            var fd = new FormData();
+            alert(_this.created_by);
+            fd.append("comm_id", _this.comm_id);
+            fd.append("comm_name", _this.comm_name);
+            fd.append("comm_des", _this.comm_des);
+            fd.append("image", _this.selectedFile, _this.selectedFile.name);
+            fd.append("comm_date", _this.comm_date);
+            fd.append("comm_rating", _this.comm_rating);
+            fd.append("created_by", _this.created_by);
+            fd.append("comm_fk_cat_id", _this.comm_fk_cat_id);
+            _this._data.addCommunity(fd).subscribe(function (data) {
+                console.log(data);
+                t1.present();
+                _this.navCtrl.pop();
+            }, function (err) {
+                alert(err);
+            }, function () {
+                l1.dismiss();
+            });
+        });
+    };
+    return CreateCommunityPage;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ViewChild */])('fileInput'),
+    __metadata("design:type", Object)
+], CreateCommunityPage.prototype, "fileInput", void 0);
+CreateCommunityPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-create-community',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\create-community\create-community.html"*/'<!--\n\n  Generated template for the CreateCommunityPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>Create Community</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <form *ngIf="form" [formGroup]="form">\n\n    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n\n    <div class="profile-image-wrapper" (click)="getPicture()">\n\n      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n\n        <ion-icon name="add"></ion-icon>\n\n        <div>\n\n          {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n\n        </div>\n\n      </div>\n\n      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n\n    </div>\n\n    <div *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">\n\n      <p class="error">Please Choose an Image.</p>\n\n    </div>\n\n\n\n    <ion-list>\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="comm_name" placeholder="Community Name" [(ngModel)]="comm_name"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.comm_name.valid  && this.form.controls.comm_name.dirty">\n\n        <p class="error">Please Enter an Community Name.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="comm_des" placeholder="Community Description" [(ngModel)]="comm_des"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.comm_des.valid  && this.form.controls.comm_des.dirty">\n\n        <p class="error">Please Enter an Community Description.</p>\n\n      </div>\n\n      <div *ngIf="!this.form.controls.comm_des.valid  && this.form.controls.comm_des.dirty">\n\n        <p class="error">Please Enter Community Description with minimum length of 10.</p>\n\n      </div>\n\n\n\n    </ion-list>\n\n    <button ion-button color="danger" [disabled]="!isReadyToSave" (click)="onCreate()" block>Create Community</button>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\create-community\create-community.html"*/,
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__["a" /* ComminityDbTsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__["a" /* ComminityDbTsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* LoadingController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["p" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["p" /* ViewController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */]) === "function" && _k || Object])
+], CreateCommunityPage);
+
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+//# sourceMappingURL=create-community.js.map
 
 /***/ }),
 
@@ -3225,7 +3206,7 @@ __decorate([
 ], ViewEventPage.prototype, "mapElement", void 0);
 ViewEventPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-view-event',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\view-event\view-event.html"*/'<!--\n\n  Generated template for the ViewEventPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-navbar>\n\n      <ion-title></ion-title>\n\n    </ion-navbar>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="onSharing()">\n\n        <ion-icon name="share"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-item (click)="onView()">\n\n    <ion-avatar item-start>\n\n      <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{comm_pic}}">\n\n    </ion-avatar>\n\n    <h2>{{comm_name}}</h2>\n\n    <!--<p>November 5, 1955</p>-->\n\n  </ion-item>\n\n\n\n  <img src="https://letsmeetbackend.herokuapp.com/images/events/{{event_pic}}" />\n\n  <h1>{{event_name}}</h1>\n\n  <ion-item *ngIf="join_button">\n\n    <h2>Are you going?</h2>\n\n    <ion-buttons end>\n\n      <button small ion-button icon-only (click)="onClickRSVP()" color="success">\n\n        <ion-icon name="checkmark-circle"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-item>\n\n\n\n  <ion-item *ngIf="going_button">\n\n    <h2>You\'re going!</h2>\n\n    <ion-buttons end>\n\n      <button ion-button small icon-only (click)="doConfirm()" color="danger">\n\n        <ion-icon name="close-circle"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-item>\n\n\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="viewEvent">\n\n      <ion-segment-button value="event_detail">\n\n        Details\n\n      </ion-segment-button>\n\n      <ion-segment-button value="feedback">\n\n        Feedback\n\n      </ion-segment-button>\n\n      <ion-segment-button value="going_cnt">\n\n        {{cnt_rsvp}} are going\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div [ngSwitch]="viewEvent">\n\n    <ion-list *ngSwitchCase="\'event_detail\'">\n\n      <ion-item>\n\n        <h3>\n\n          <ion-icon name="calendar" item-start></ion-icon> {{event_date | date:\'dd-MM-yy\' }}\n\n        </h3>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h4>\n\n          <ion-icon name="time" item-start></ion-icon> {{event_s_time}} - {{event_e_time}}\n\n        </h4>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h3 class="text-wrap">\n\n          <ion-icon name="navigate" item-start></ion-icon> {{event_loc}}\n\n        </h3>\n\n        <div #map id="map"></div>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h3 (click)="showuser(u_id)">\n\n          <ion-icon name="person" item-start> Hosted by</ion-icon> {{created_by}}\n\n        </h3>\n\n      </ion-item>\n\n\n\n      <p>{{event_des}}</p>\n\n\n\n\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'feedback\'">\n\n      <ion-item>\n\n        <ion-avatar item-start>\n\n          <img src="https://letsmeetbackend.herokuapp.com/images/users/{{user_pic}}">\n\n        </ion-avatar>\n\n        <h2>{{user_name}}</h2>\n\n        <p (click)="changeFlag()" *ngIf="flag1;else textAreaBox">Add a new Fedback</p>\n\n        <ng-template #textAreaBox>\n\n          <textarea placeholder="Add a new Fedback" [(ngModel)]="feed_des" name="" id="" cols="14" rows="3"></textarea>\n\n          <button ion-button icon-only (click)="newFeedback()">\n\n            <ion-icon name="happy"></ion-icon>\n\n          </button>\n\n        </ng-template>\n\n      </ion-item>\n\n      <ion-card>\n\n        <ion-item *ngFor="let item of feedback_event_user">\n\n          <ion-avatar item-start>\n\n            <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}" (click)="showuser(item.user_id)">\n\n          </ion-avatar>\n\n          <h2 (click)="showuser(item.user_id)">{{item.user_name}}</h2>\n\n          <p>{{item.feed_date | date:\'mediumDate\'}}</p>\n\n          <ion-card-content>\n\n            <p class="text-wrap">{{item.feed_des}}</p>\n\n          </ion-card-content>\n\n          <button *ngIf="item.user_id==user_id" (click)="deleteFeedback(item.feed_id)" ion-button icon-only item-end clear>\n\n            <ion-icon name="trash"></ion-icon>\n\n          </button>\n\n          <!--<button *ngIf="item.user_id==user_id" (click)="updateFeedback(item.feed_id)" ion-button icon-only item-end clear>\n\n            <ion-icon name="create"></ion-icon>\n\n          </button>-->\n\n        </ion-item>\n\n      </ion-card>\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'going_cnt\'">\n\n      <ion-item *ngFor="let item of event_rsvp_user" (click)="showuser(item.user_id)">\n\n        <ion-avatar item-left>\n\n          <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">\n\n        </ion-avatar>\n\n        <h2>{{item.user_name}}</h2>\n\n      </ion-item>\n\n    </ion-list>\n\n  </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\view-event\view-event.html"*/,
+        selector: 'page-view-event',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\view-event\view-event.html"*/'<!--\n\n  Generated template for the ViewEventPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-navbar>\n\n      <ion-title></ion-title>\n\n    </ion-navbar>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="onSharing()">\n\n        <ion-icon name="share"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-item (click)="onView()">\n\n    <ion-avatar item-start>\n\n      <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{comm_pic}}">\n\n    </ion-avatar>\n\n    <h2>{{comm_name}}</h2>\n\n    <!--<p>November 5, 1955</p>-->\n\n  </ion-item>\n\n\n\n  <img src="https://letsmeetbackend.herokuapp.com/images/events/{{event_pic}}" />\n\n  <h1>{{event_name}}</h1>\n\n  <ion-item *ngIf="join_button">\n\n    <h2>Are you going?</h2>\n\n    <ion-buttons end>\n\n      <button small ion-button icon-only (click)="onClickRSVP()" color="success">\n\n        <ion-icon name="checkmark-circle"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-item>\n\n\n\n  <ion-item *ngIf="going_button">\n\n    <h2>You\'re going!</h2>\n\n    <ion-buttons end>\n\n      <button ion-button small icon-only (click)="doConfirm()" color="danger">\n\n        <ion-icon name="close-circle"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-item>\n\n\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="viewEvent">\n\n      <ion-segment-button value="event_detail">\n\n        Details\n\n      </ion-segment-button>\n\n      <ion-segment-button value="feedback">\n\n        Feedback\n\n      </ion-segment-button>\n\n      <ion-segment-button value="going_cnt">\n\n        {{cnt_rsvp}} are going\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div [ngSwitch]="viewEvent">\n\n    <ion-list *ngSwitchCase="\'event_detail\'">\n\n      <ion-item>\n\n        <h3>\n\n          <ion-icon name="calendar" item-start></ion-icon> {{event_date | date:\'dd-MM-yy\' }}\n\n        </h3>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h4>\n\n          <ion-icon name="time" item-start></ion-icon> {{event_s_time}} - {{event_e_time}}\n\n        </h4>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h3 class="text-wrap">\n\n          <ion-icon name="navigate" item-start></ion-icon> {{event_loc}}\n\n        </h3>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h3 (click)="showuser(u_id)">\n\n          <ion-icon name="person" item-start> Hosted by</ion-icon> {{created_by}}\n\n        </h3>\n\n      </ion-item>\n\n\n\n      <p>{{event_des}}</p>\n\n\n\n\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'feedback\'">\n\n      <ion-item>\n\n        <ion-avatar item-start>\n\n          <img src="https://letsmeetbackend.herokuapp.com/images/users/{{user_pic}}">\n\n        </ion-avatar>\n\n        <h2>{{user_name}}</h2>\n\n        <p (click)="changeFlag()" *ngIf="flag1;else textAreaBox">Add a new Fedback</p>\n\n        <ng-template #textAreaBox>\n\n          <textarea placeholder="Add a new Fedback" [(ngModel)]="feed_des" name="" id="" cols="14" rows="3"></textarea>\n\n          <button ion-button icon-only (click)="newFeedback()">\n\n            <ion-icon name="happy"></ion-icon>\n\n          </button>\n\n        </ng-template>\n\n      </ion-item>\n\n      <ion-card>\n\n        <ion-item *ngFor="let item of feedback_event_user">\n\n          <ion-avatar item-start>\n\n            <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}" (click)="showuser(item.user_id)">\n\n          </ion-avatar>\n\n          <h2 (click)="showuser(item.user_id)">{{item.user_name}}</h2>\n\n          <p>{{item.feed_date | date:\'mediumDate\'}}</p>\n\n          <ion-card-content>\n\n            <p class="text-wrap">{{item.feed_des}}</p>\n\n          </ion-card-content>\n\n          <button *ngIf="item.user_id==user_id" (click)="deleteFeedback(item.feed_id)" ion-button icon-only item-end clear>\n\n            <ion-icon name="trash"></ion-icon>\n\n          </button>\n\n          <!--<button *ngIf="item.user_id==user_id" (click)="updateFeedback(item.feed_id)" ion-button icon-only item-end clear>\n\n            <ion-icon name="create"></ion-icon>\n\n          </button>-->\n\n        </ion-item>\n\n      </ion-card>\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'going_cnt\'">\n\n      <ion-item *ngFor="let item of event_rsvp_user" (click)="showuser(item.user_id)">\n\n        <ion-avatar item-left>\n\n          <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">\n\n        </ion-avatar>\n\n        <h2>{{item.user_name}}</h2>\n\n      </ion-item>\n\n    </ion-list>\n\n  </div>\n\n  <div #map id="map"></div>\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\view-event\view-event.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__ionic_storage__["b" /* Storage */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */],
@@ -3425,7 +3406,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__app_component__ = __webpack_require__(345);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_story_detail_story_detail__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_create_story_create_story__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_create_community_create_community__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_create_community_create_community__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_view_event_view_event__ = __webpack_require__(244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_view_community_view_community__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_editprofile_editprofile__ = __webpack_require__(243);
@@ -3435,7 +3416,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_following_following__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_edit_post_edit_post__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_viewuser_viewuser__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_change_password_change_password__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_change_password_change_password__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_loginpro_loginpro__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__providers_community_db_community_db__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__providers_event_db_event_db__ = __webpack_require__(122);
@@ -3564,9 +3545,9 @@ AppModule = __decorate([
             }),
             __WEBPACK_IMPORTED_MODULE_13_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_19__app_component__["a" /* MyApp */], {}, {
                 links: [
+                    { loadChildren: '../pages/change-password/change-password.module#ChangePasswordPageModule', name: 'ChangePasswordPage', segment: 'change-password', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/content/content.module#ContentPageModule', name: 'ContentPage', segment: 'content', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/create-community/create-community.module#CreateCommunityPageModule', name: 'CreateCommunityPage', segment: 'create-community', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/change-password/change-password.module#ChangePasswordPageModule', name: 'ChangePasswordPage', segment: 'change-password', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/create-post/create-post.module#CreatePostPageModule', name: 'CreatePostPage', segment: 'create-post', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/create-story/create-story.module#CreateStoryPageModule', name: 'CreateStoryPage', segment: 'create-story', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/edit-post/edit-post.module#EditPostPageModule', name: 'EditPostPage', segment: 'edit-post', priority: 'low', defaultHistory: [] },
@@ -3574,6 +3555,7 @@ AppModule = __decorate([
                     { loadChildren: '../pages/follower/follower.module#FollowerPageModule', name: 'FollowerPage', segment: 'follower', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/following/following.module#FollowingPageModule', name: 'FollowingPage', segment: 'following', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/item-create/item-create.module#ItemCreatePageModule', name: 'ItemCreatePage', segment: 'item-create', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/item-detail/item-detail.module#ItemDetailPageModule', name: 'ItemDetailPage', segment: 'item-detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
@@ -3590,8 +3572,7 @@ AppModule = __decorate([
                     { loadChildren: '../pages/view-past-event/view-past-event.module#ViewPastEventPageModule', name: 'view-past-event', segment: 'view-past-event', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/view-post/view-post.module#ViewPostPageModule', name: 'ViewPostPage', segment: 'view-post', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/viewuser/viewuser.module#ViewuserPageModule', name: 'ViewuserPage', segment: 'viewuser', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/item-detail/item-detail.module#ItemDetailPageModule', name: 'ItemDetailPage', segment: 'item-detail', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_10__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
