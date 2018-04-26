@@ -52,7 +52,7 @@ export class LoginproProvider {
     let body = JSON.stringify(this.account);
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  addUser(eid, uname, pass, image, gender, mobile, myDate) {
+  /* addUser(eid, uname, pass, image, gender, mobile, myDate) {
     //let header = new Headers({ 'Content-Type': 'application/json' });
     // let ro = new RequestOptions({ headers: header });
     this.useradd.user_id = eid;
@@ -64,6 +64,11 @@ export class LoginproProvider {
     this.useradd.user_bdate = myDate;
     let body = JSON.stringify(this.useradd);
     return this.http.post(this.urlsignup, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  } */
+
+  addUser(fd: FormData) {
+    console.log(fd);
+    return this.http.post(this.urlsignup, fd);
   }
   updateUser(id, uname, image, gender, mobile, mydate) {
     // let header = new Headers({ 'Content-Type': 'application/json' });
@@ -105,7 +110,8 @@ export class LoginproProvider {
     //alert(this.ed);
     //return this.http.get(this.ed);
   }
-  urlmail: string = "https://letsmeetbackend.herokuapp.com/demomail/"
+  // urlmail: string = "https://letsmeetbackend.herokuapp.com/demomail/"
+  urlmail: string = "http://localhost:3000/demomail";
   sendMail(demo: email_class) {
     let body = JSON.stringify(demo);
     console.log(demo.name);
@@ -113,7 +119,7 @@ export class LoginproProvider {
     console.log(demo.subject);
     return this.http.post(this.urlmail, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  urlchangepass: string = "http://localhost:3000/changePass/";
+  urlchangepass: string = "https://letsmeetbackend.herokuapp.com/changePass/";
   urlfollowers: string = "https://letsmeetbackend.herokuapp.com/follower/";
   urlfollowing: string = "https://letsmeetbackend.herokuapp.com/following/";
   urlfollowuser: string = "https://letsmeetbackend.herokuapp.com/follow_user/";

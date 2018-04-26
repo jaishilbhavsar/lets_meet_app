@@ -1535,11 +1535,11 @@ var map = {
 		23
 	],
 	"../pages/editprofile/editprofile.module": [
-		352,
+		351,
 		22
 	],
 	"../pages/follower/follower.module": [
-		351,
+		352,
 		21
 	],
 	"../pages/following/following.module": [
@@ -1587,11 +1587,11 @@ var map = {
 		19
 	],
 	"../pages/tabs/tabs.module": [
-		365,
+		364,
 		5
 	],
 	"../pages/tutorial/tutorial.module": [
-		364,
+		365,
 		4
 	],
 	"../pages/users/users.module": [
@@ -1962,13 +1962,9 @@ var GeolocationProvider = (function () {
         this.url = "https://maps.googleapis.com/maps/api/geocode/json?address=";
         console.log('Hello GeolocationProvider Provider');
     }
-    /*   getCurrentPosition(address: string) {
+    GeolocationProvider.prototype.getCurrentPosition = function (address) {
         console.log(this.url + address + "&key=AIzaSyC_yzslPZ6nIkW6225NHfNYlnbOBeZGFTk");
         return this.http.get(this.url + address + "&key=AIzaSyC_yzslPZ6nIkW6225NHfNYlnbOBeZGFTk");
-      } */
-    GeolocationProvider.prototype.getCurrentPosition = function (address) {
-        console.log(this.url + address + "&key=AIzaSyCOT-IW9-43QEMmHrheojSCt4Zr64HrnS4");
-        return this.http.get(this.url + address + "&key=AIzaSyCOT-IW9-43QEMmHrheojSCt4Zr64HrnS4");
     };
     return GeolocationProvider;
 }());
@@ -2043,8 +2039,9 @@ var LoginproProvider = (function () {
         this.ed = '';
         this.urluser = "https://letsmeetbackend.herokuapp.com/user/";
         this.follow_user = "https://letsmeetbackend.herokuapp.com/follow_user/";
-        this.urlmail = "https://letsmeetbackend.herokuapp.com/demomail/";
-        this.urlchangepass = "http://localhost:3000/changePass/";
+        // urlmail: string = "https://letsmeetbackend.herokuapp.com/demomail/"
+        this.urlmail = "http://localhost:3000/demomail";
+        this.urlchangepass = "https://letsmeetbackend.herokuapp.com/changePass/";
         this.urlfollowers = "https://letsmeetbackend.herokuapp.com/follower/";
         this.urlfollowing = "https://letsmeetbackend.herokuapp.com/following/";
         this.urlfollowuser = "https://letsmeetbackend.herokuapp.com/follow_user/";
@@ -2059,18 +2056,22 @@ var LoginproProvider = (function () {
         var body = JSON.stringify(this.account);
         return this.http.post(this.url, body, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Content-Type', 'application/json') });
     };
-    LoginproProvider.prototype.addUser = function (eid, uname, pass, image, gender, mobile, myDate) {
-        //let header = new Headers({ 'Content-Type': 'application/json' });
-        // let ro = new RequestOptions({ headers: header });
-        this.useradd.user_id = eid;
-        this.useradd.user_name = uname;
-        this.useradd.user_pass = pass;
-        this.useradd.user_pic = image;
-        this.useradd.gender = gender;
-        this.useradd.user_mob_no = mobile;
-        this.useradd.user_bdate = myDate;
-        var body = JSON.stringify(this.useradd);
-        return this.http.post(this.urlsignup, body, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Content-Type', 'application/json') });
+    /* addUser(eid, uname, pass, image, gender, mobile, myDate) {
+      //let header = new Headers({ 'Content-Type': 'application/json' });
+      // let ro = new RequestOptions({ headers: header });
+      this.useradd.user_id = eid;
+      this.useradd.user_name = uname;
+      this.useradd.user_pass = pass;
+      this.useradd.user_pic = image;
+      this.useradd.gender = gender;
+      this.useradd.user_mob_no = mobile;
+      this.useradd.user_bdate = myDate;
+      let body = JSON.stringify(this.useradd);
+      return this.http.post(this.urlsignup, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    } */
+    LoginproProvider.prototype.addUser = function (fd) {
+        console.log(fd);
+        return this.http.post(this.urlsignup, fd);
     };
     LoginproProvider.prototype.updateUser = function (id, uname, image, gender, mobile, mydate) {
         // let header = new Headers({ 'Content-Type': 'application/json' });
@@ -2140,9 +2141,10 @@ var LoginproProvider = (function () {
 }());
 LoginproProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object])
 ], LoginproProvider);
 
+var _a, _b;
 //# sourceMappingURL=loginpro.js.map
 
 /***/ }),
@@ -2786,7 +2788,7 @@ var ViewEventPage = (function () {
             _this.e_Str = _this.e_Str.substr(0, _this.e_Str.indexOf('T'));
             _this.to_date = new Date(_this.e_Str);
             //this.geo_code(this.event_loc);
-            _this.geo_code("Manekchowk,Ahmedabad,Gujarat,India");
+            _this.geo_code(_this.event_loc);
         }, function (e) {
             alert(e);
         }, function () {
@@ -3085,7 +3087,7 @@ __decorate([
 ], ViewEventPage.prototype, "mapElement", void 0);
 ViewEventPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-view-event',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\view-event\view-event.html"*/'<!--\n\n  Generated template for the ViewEventPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-navbar>\n\n      <ion-title></ion-title>\n\n    </ion-navbar>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="onSharing()">\n\n        <ion-icon name="share"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <div #map id="map"></div>\n\n  <ion-item (click)="onView()">\n\n    <ion-avatar item-start>\n\n      <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{comm_pic}}">\n\n    </ion-avatar>\n\n    <h2>{{comm_name}}</h2>\n\n    <!--<p>November 5, 1955</p>-->\n\n  </ion-item>\n\n\n\n  <img src="https://letsmeetbackend.herokuapp.com/images/events/{{event_pic}}" />\n\n  <h1>{{event_name}}</h1>\n\n  <ion-item *ngIf="join_button">\n\n    <h2>Are you going?</h2>\n\n    <ion-buttons end>\n\n      <button small ion-button icon-only (click)="onClickRSVP()" color="success">\n\n        <ion-icon name="checkmark-circle"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-item>\n\n\n\n  <ion-item *ngIf="going_button">\n\n    <h2>You\'re going!</h2>\n\n    <ion-buttons end>\n\n      <button ion-button small icon-only (click)="doConfirm()" color="danger">\n\n        <ion-icon name="close-circle"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-item>\n\n\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="viewEvent">\n\n      <ion-segment-button value="event_detail">\n\n        Details\n\n      </ion-segment-button>\n\n      <ion-segment-button value="feedback">\n\n        Feedback\n\n      </ion-segment-button>\n\n      <ion-segment-button value="going_cnt">\n\n        {{cnt_rsvp}} are going\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div [ngSwitch]="viewEvent">\n\n    <ion-list *ngSwitchCase="\'event_detail\'">\n\n      <ion-item>\n\n        <h3>\n\n          <ion-icon name="calendar" item-start></ion-icon> {{event_date | date:\'dd-MM-yy\' }}\n\n        </h3>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h4>\n\n          <ion-icon name="time" item-start></ion-icon> {{event_s_time}} - {{event_e_time}}\n\n        </h4>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h3 class="text-wrap">\n\n          <ion-icon name="navigate" item-start></ion-icon> {{event_loc}}\n\n        </h3>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h3 (click)="showuser(u_id)">\n\n          <ion-icon name="person" item-start> Hosted by</ion-icon> {{created_by}}\n\n        </h3>\n\n      </ion-item>\n\n\n\n      <p>{{event_des}}</p>\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'feedback\'">\n\n      <ion-item>\n\n        <ion-avatar item-start>\n\n          <img src="https://letsmeetbackend.herokuapp.com/images/users/{{user_pic}}">\n\n        </ion-avatar>\n\n        <h2>{{user_name}}</h2>\n\n        <p (click)="changeFlag()" *ngIf="flag1;else textAreaBox">Add a new Fedback</p>\n\n        <ng-template #textAreaBox>\n\n          <textarea placeholder="Add a new Fedback" [(ngModel)]="feed_des" name="" id="" cols="14" rows="3"></textarea>\n\n          <button ion-button icon-only (click)="newFeedback()">\n\n            <ion-icon name="happy"></ion-icon>\n\n          </button>\n\n        </ng-template>\n\n      </ion-item>\n\n      <ion-card>\n\n        <ion-item *ngFor="let item of feedback_event_user">\n\n          <ion-avatar item-start>\n\n            <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}" (click)="showuser(item.user_id)">\n\n          </ion-avatar>\n\n          <h2 (click)="showuser(item.user_id)">{{item.user_name}}</h2>\n\n          <p>{{item.feed_date | date:\'mediumDate\'}}</p>\n\n          <ion-card-content>\n\n            <p class="text-wrap">{{item.feed_des}}</p>\n\n          </ion-card-content>\n\n          <button *ngIf="item.user_id==user_id" (click)="deleteFeedback(item.feed_id)" ion-button icon-only item-end clear>\n\n            <ion-icon name="trash"></ion-icon>\n\n          </button>\n\n          <!--<button *ngIf="item.user_id==user_id" (click)="updateFeedback(item.feed_id)" ion-button icon-only item-end clear>\n\n            <ion-icon name="create"></ion-icon>\n\n          </button>-->\n\n        </ion-item>\n\n      </ion-card>\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'going_cnt\'">\n\n      <ion-item *ngFor="let item of event_rsvp_user" (click)="showuser(item.user_id)">\n\n        <ion-avatar item-left>\n\n          <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">\n\n        </ion-avatar>\n\n        <h2>{{item.user_name}}</h2>\n\n      </ion-item>\n\n    </ion-list>\n\n  </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\view-event\view-event.html"*/,
+        selector: 'page-view-event',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\view-event\view-event.html"*/'<!--\n\n  Generated template for the ViewEventPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-navbar>\n\n      <ion-title></ion-title>\n\n    </ion-navbar>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="onSharing()">\n\n        <ion-icon name="share"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-item (click)="onView()">\n\n    <ion-avatar item-start>\n\n      <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{comm_pic}}">\n\n    </ion-avatar>\n\n    <h2>{{comm_name}}</h2>\n\n    <!--<p>November 5, 1955</p>-->\n\n  </ion-item>\n\n\n\n  <img src="https://letsmeetbackend.herokuapp.com/images/events/{{event_pic}}" />\n\n  <h1>{{event_name}}</h1>\n\n  <ion-item *ngIf="join_button">\n\n    <h2>Are you going?</h2>\n\n    <ion-buttons end>\n\n      <button small ion-button icon-only (click)="onClickRSVP()" color="success">\n\n        <ion-icon name="checkmark-circle"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-item>\n\n\n\n  <ion-item *ngIf="going_button">\n\n    <h2>You\'re going!</h2>\n\n    <ion-buttons end>\n\n      <button ion-button small icon-only (click)="doConfirm()" color="danger">\n\n        <ion-icon name="close-circle"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-item>\n\n\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="viewEvent">\n\n      <ion-segment-button value="event_detail">\n\n        Details\n\n      </ion-segment-button>\n\n      <ion-segment-button value="feedback">\n\n        Feedback\n\n      </ion-segment-button>\n\n      <ion-segment-button value="going_cnt">\n\n        {{cnt_rsvp}} are going\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div [ngSwitch]="viewEvent">\n\n    <ion-list *ngSwitchCase="\'event_detail\'">\n\n      <ion-item>\n\n        <h3>\n\n          <ion-icon name="calendar" item-start></ion-icon> {{event_date | date:\'dd-MM-yy\' }}\n\n        </h3>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h4>\n\n          <ion-icon name="time" item-start></ion-icon> {{event_s_time}} - {{event_e_time}}\n\n        </h4>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h3 class="text-wrap">\n\n          <ion-icon name="navigate" item-start></ion-icon> {{event_loc}}\n\n        </h3>\n\n        <div #map id="map"></div>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <h3 (click)="showuser(u_id)">\n\n          <ion-icon name="person" item-start> Hosted by</ion-icon> {{created_by}}\n\n        </h3>\n\n      </ion-item>\n\n\n\n      <p>{{event_des}}</p>\n\n\n\n\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'feedback\'">\n\n      <ion-item>\n\n        <ion-avatar item-start>\n\n          <img src="https://letsmeetbackend.herokuapp.com/images/users/{{user_pic}}">\n\n        </ion-avatar>\n\n        <h2>{{user_name}}</h2>\n\n        <p (click)="changeFlag()" *ngIf="flag1;else textAreaBox">Add a new Fedback</p>\n\n        <ng-template #textAreaBox>\n\n          <textarea placeholder="Add a new Fedback" [(ngModel)]="feed_des" name="" id="" cols="14" rows="3"></textarea>\n\n          <button ion-button icon-only (click)="newFeedback()">\n\n            <ion-icon name="happy"></ion-icon>\n\n          </button>\n\n        </ng-template>\n\n      </ion-item>\n\n      <ion-card>\n\n        <ion-item *ngFor="let item of feedback_event_user">\n\n          <ion-avatar item-start>\n\n            <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}" (click)="showuser(item.user_id)">\n\n          </ion-avatar>\n\n          <h2 (click)="showuser(item.user_id)">{{item.user_name}}</h2>\n\n          <p>{{item.feed_date | date:\'mediumDate\'}}</p>\n\n          <ion-card-content>\n\n            <p class="text-wrap">{{item.feed_des}}</p>\n\n          </ion-card-content>\n\n          <button *ngIf="item.user_id==user_id" (click)="deleteFeedback(item.feed_id)" ion-button icon-only item-end clear>\n\n            <ion-icon name="trash"></ion-icon>\n\n          </button>\n\n          <!--<button *ngIf="item.user_id==user_id" (click)="updateFeedback(item.feed_id)" ion-button icon-only item-end clear>\n\n            <ion-icon name="create"></ion-icon>\n\n          </button>-->\n\n        </ion-item>\n\n      </ion-card>\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'going_cnt\'">\n\n      <ion-item *ngFor="let item of event_rsvp_user" (click)="showuser(item.user_id)">\n\n        <ion-avatar item-left>\n\n          <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">\n\n        </ion-avatar>\n\n        <h2>{{item.user_name}}</h2>\n\n      </ion-item>\n\n    </ion-list>\n\n  </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\view-event\view-event.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__ionic_storage__["b" /* Storage */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */],
@@ -3428,8 +3430,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/create-post/create-post.module#CreatePostPageModule', name: 'CreatePostPage', segment: 'create-post', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/create-story/create-story.module#CreateStoryPageModule', name: 'CreateStoryPage', segment: 'create-story', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/edit-post/edit-post.module#EditPostPageModule', name: 'EditPostPage', segment: 'edit-post', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/follower/follower.module#FollowerPageModule', name: 'FollowerPage', segment: 'follower', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/editprofile/editprofile.module#EditprofilePageModule', name: 'EditprofilePage', segment: 'editprofile', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/follower/follower.module#FollowerPageModule', name: 'FollowerPage', segment: 'follower', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/following/following.module#FollowingPageModule', name: 'FollowingPage', segment: 'following', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/item-create/item-create.module#ItemCreatePageModule', name: 'ItemCreatePage', segment: 'item-create', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/item-detail/item-detail.module#ItemDetailPageModule', name: 'ItemDetailPage', segment: 'item-detail', priority: 'low', defaultHistory: [] },
@@ -3441,8 +3443,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stories/stories.module#StoriesPageModule', name: 'StoriesPage', segment: 'stories', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/story-detail/story-detail.module#StoryDetailPageModule', name: 'StoryDetailPage', segment: 'story-detail', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/users/users.module#UsersPageModule', name: 'UsersPage', segment: 'users', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/view-community/view-community.module#ViewCommunityPageModule', name: 'ViewCommunityPage', segment: 'view-community', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/view-event/view-event.module#ViewEventPageModule', name: 'ViewEventPage', segment: 'view-event', priority: 'low', defaultHistory: [] },

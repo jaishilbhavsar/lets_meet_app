@@ -141,8 +141,9 @@ export class ItemCreatePage {
     };
 
     reader.readAsDataURL(event.target.files[0]);
+
     this.selectedFile = <File>event.target.files[0];
-    //alert(this.selectedFile.type);
+    console.log(this.selectedFile);
     if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
       this.selectedFile = null;
       this.isReadyToSave = this.form.invalid;
