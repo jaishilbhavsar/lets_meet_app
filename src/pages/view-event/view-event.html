@@ -21,7 +21,6 @@
 
 
 <ion-content padding>
-  <div #map id="map"></div>
   <ion-item (click)="onView()">
     <ion-avatar item-start>
       <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{comm_pic}}">
@@ -83,6 +82,7 @@
         <h3 class="text-wrap">
           <ion-icon name="navigate" item-start></ion-icon> {{event_loc}}
         </h3>
+        <div #map id="map"></div>
       </ion-item>
 
       <ion-item>
@@ -92,6 +92,8 @@
       </ion-item>
 
       <p>{{event_des}}</p>
+
+
     </ion-list>
 
     <ion-list *ngSwitchCase="'feedback'">

@@ -129,7 +129,7 @@ export class ViewEventPage {
         this.to_date = new Date(this.e_Str);
 
         //this.geo_code(this.event_loc);
-        this.geo_code("Manekchowk,Ahmedabad,Gujarat,India");
+        this.geo_code(this.event_loc);
 
       },
       function (e) {
