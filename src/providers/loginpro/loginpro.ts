@@ -73,7 +73,7 @@ export class LoginproProvider {
 
   addUser(fd: FormData) {
     console.log(fd);
-    return this.http.post(this.urlsignup, fd);
+    return this.http.post("http://localhost:3000/user/", fd);
   }
   updateUser(id, uname, image, gender, mobile, mydate) {
     // let header = new Headers({ 'Content-Type': 'application/json' });
@@ -154,6 +154,22 @@ export class LoginproProvider {
     this.follow.fk_user_id=user_id;
     this.follow.fk_us_id=us_id;
     let body=JSON.stringify(this.follow);
-    return this.http.put("http://localhost:3000/iffollowing/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.post("http://localhost:3000/iffollowing/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
+  insertfollower(user_id,us_id)
+  {
+    this.follow.fk_user_id=user_id;
+    this.follow.fk_us_id=us_id;
+    let body=JSON.stringify(this.follow);
+    return this.http.post("http://localhost:3000/insertfollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  }
+  deletefollower(user_id,us_id)
+  {
+    this.follow.fk_user_id=user_id;
+    this.follow.fk_us_id=us_id;
+    let body=JSON.stringify(this.follow);
+    return this.http.post("http://localhost:3000/deletefollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  }
+  
+
 }

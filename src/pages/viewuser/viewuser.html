@@ -21,6 +21,8 @@
       </ion-avatar>
       <h1>{{eid}}</h1>
     </ion-item>
+    <button ion-button primary [hidden]="iffo==no" (click)="onfollow()">Follow</button>
+    <button ion-button [hidden]="iffo==yes" (click)="onunfollow()">Following</button>
   </ion-list>
 
   <ion-item (click)="onFollower()">

@@ -141,8 +141,7 @@ export class SignupPage {
     fd.append("gender", this.gender);
     fd.append("user_mob_no", this.mobile);
     fd.append("user_bdate", this.myDate);
-    /*  fd.append("token", "");
-     fd.append("verify", ""); */
+     fd.append("token","user");
     alert(this.eid);
     console.log(fd);
     this.data.addUser(fd).subscribe(

@@ -38,15 +38,37 @@ export class ViewuserPage {
   constructor(public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
-
+user_id:string="";
+us_id:string="";
+iffo:string="";
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewuserPage');
     this.storage.get('viewid').then((val)=>{
       this.uid=val;
+      this.user_id=val;
       let l1 = this.load.create({
         content: "Loading ..."
       });
       l1.present();
+      
+      this.storage.get('uid').then((val)=>
+       {
+            this.us_id=val;
+            this.data.iffollowing(this.user_id,this.us_id).subscribe(
+        
+            (ft:any[])=>{
+          if(ft!=null)
+          {
+            this.iffo="yes";
+          }
+          else
+          {
+            this.iffo="no";
+          }
+        }
+      );
+    });
+
       this.data.getUser(this.uid).subscribe(
         (dt: user_class[]) => {
         this.u = dt;
@@ -92,6 +114,45 @@ export class ViewuserPage {
       //alert(this.uid);
       this.navCtrl.push(FollowerPage,{uid:this.uid});
    // });
+  }
+
+  onfollow()
+  {
+    this.storage.get('viewid').then((val)=>{
+
+      this.user_id=val;
+      this.storage.get('uid').then((val)=>{
+        this.us_id=val;
+        this.data.insertfollower(this.user_id,this.us_id).subscribe(
+          (dt:any[])=>{
+            alert("done");
+          },
+          function(e)
+          {
+            alert(e);
+          }
+        );
+      });
+    });
+  }
+  onunfollow()
+  {
+    this.storage.get('viewid').then((val)=>{
+
+      this.user_id=val;
+      this.storage.get('uid').then((val)=>{
+        this.us_id=val;
+        this.data.deletefollower(this.user_id,this.us_id).subscribe(
+          (dt:any[])=>{
+            alert("done");
+          },
+          function(e)
+          {
+            alert(e);
+          }
+        );
+      });
+    });
   }
   onFollowing()
   {
