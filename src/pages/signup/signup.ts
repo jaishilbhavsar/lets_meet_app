@@ -69,6 +69,7 @@ export class SignupPage {
   mobile: string = "";
   myDate: any;
   image: any;
+  token: string = "user";
 
   getPicture() {
     if (Camera['installed']()) {
@@ -141,10 +142,14 @@ export class SignupPage {
     fd.append("gender", this.gender);
     fd.append("user_mob_no", this.mobile);
     fd.append("user_bdate", this.myDate);
-    /*  fd.append("token", "");
-     fd.append("verify", ""); */
+<<<<<<< HEAD
+     fd.append("token","user");
+=======
+    fd.append("token", this.token);
+>>>>>>> d560afb8b86e99ca4ae927c08b78c8ce1904ba02
     alert(this.eid);
     console.log(fd);
+    console.log(this.token);
     this.data.addUser(fd).subscribe(
       (data: any) => {
         alert("done");
@@ -157,10 +162,6 @@ export class SignupPage {
 
       }
     );
-    /* this.data.addUser(this.eid, this.uname, this.pass, this.image, this.gender, this.mobile, this.myDate).subscribe(
-      (resp) => { alert("Success") },
-      (err) => alert("Signup Later")
-    ); */
   }
   onfile() {
     this.fileChooser.open().then(uri => console.log(uri))

@@ -1,6 +1,10 @@
 webpackJsonp([1],{
 
+<<<<<<< HEAD
 /***/ 372:
+=======
+/***/ 375:
+>>>>>>> a01ee7b6a2e886d322d94a66fdb50f74d59167e2
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82,7 +86,15 @@ var WelcomePage = (function () {
 }());
 WelcomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+<<<<<<< HEAD
         selector: 'page-welcome',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\welcome\welcome.html"*/'<ion-content scroll="false">\n\n  <div class="splash-bg"></div>\n\n  <div class="splash-info">\n\n    <div class="splash-logo"></div>\n\n    <div class="splash-intro">\n\n      The starting point for your better experience !\n\n    </div>\n\n  </div>\n\n  <div padding hide-tabs>\n\n    <button ion-button block (click)="signup()" color="meetup" class="login">{{ \'SIGNUP\' | translate }}</button>\n\n    <button ion-button block (click)="login()" color="meetup" class="login">{{ \'LOGIN\' | translate }}</button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\welcome\welcome.html"*/
+=======
+<<<<<<< HEAD
+        selector: 'page-welcome',template:/*ion-inline-start:"C:\jaishil\Lets meet\lets_meet\lets_meet_app\src\pages\welcome\welcome.html"*/'<ion-content scroll="false">\n\n  <div class="splash-bg"></div>\n\n  <div class="splash-info">\n\n    <div class="splash-logo"></div>\n\n    <div class="splash-intro">\n\n      The starting point for your better experience !\n\n    </div>\n\n  </div>\n\n  <div padding hide-tabs>\n\n    <button ion-button block (click)="signup()" color="meetup" class="login">{{ \'SIGNUP\' | translate }}</button>\n\n    <button ion-button block (click)="login()" color="meetup" class="login">{{ \'LOGIN\' | translate }}</button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\jaishil\Lets meet\lets_meet\lets_meet_app\src\pages\welcome\welcome.html"*/
+=======
+        selector: 'page-welcome',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\welcome\welcome.html"*/'<ion-content scroll="false">\n\n  <div class="splash-bg"></div>\n\n  <div class="splash-info">\n\n    <div class="splash-logo"></div>\n\n    <div class="splash-intro">\n\n      The starting point for your better experience !\n\n    </div>\n\n  </div>\n\n  <div padding hide-tabs>\n\n    <button ion-button block (click)="signup()" color="meetup" class="login">{{ \'SIGNUP\' | translate }}</button>\n\n    <button ion-button block (click)="login()" color="meetup" class="login">{{ \'LOGIN\' | translate }}</button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\welcome\welcome.html"*/
+>>>>>>> d560afb8b86e99ca4ae927c08b78c8ce1904ba02
+>>>>>>> a01ee7b6a2e886d322d94a66fdb50f74d59167e2
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */]])
 ], WelcomePage);
