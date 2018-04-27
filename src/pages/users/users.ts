@@ -215,7 +215,7 @@ export class UsersPage {
     l1.present();
     this.storage.get('uid').then((val) => {
       this.uid = val;
-      this.data.doLogin(this.uid, oldpass)
+      this.data.doLogin(this.uid, oldpass,"user")
         .subscribe(
           (dt: any) => {
             if (dt != "") {

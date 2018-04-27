@@ -99,7 +99,7 @@ var LoginPage = (function () {
     }
     LoginPage.prototype.onClick = function () {
         var _this = this;
-        this.data.doLogin(this.eid, this.pass).subscribe(function (dt) {
+        this.data.doLogin(this.eid, this.pass, "user").subscribe(function (dt) {
             if (dt == "") {
                 var toast = _this.toastCtrl.create({
                     message: "Invalid UserName Or Password , Try Again",

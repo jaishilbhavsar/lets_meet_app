@@ -1,6 +1,6 @@
 webpackJsonp([6],{
 
-/***/ 363:
+/***/ 364:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__signup__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__signup__ = __webpack_require__(385);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,7 +44,7 @@ SignupPageModule = __decorate([
 
 /***/ }),
 
-/***/ 384:
+/***/ 385:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -104,6 +104,7 @@ var SignupPage = (function () {
         this.pass = "";
         this.gender = "";
         this.mobile = "";
+        this.token = "user";
         this.form = formBuilder.group({
             eid: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
             uname: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern('[a-zA-Z ]*')])],
@@ -190,10 +191,10 @@ var SignupPage = (function () {
         fd.append("gender", this.gender);
         fd.append("user_mob_no", this.mobile);
         fd.append("user_bdate", this.myDate);
-        /*  fd.append("token", "");
-         fd.append("verify", ""); */
+        fd.append("token", this.token);
         alert(this.eid);
         console.log(fd);
+        console.log(this.token);
         this.data.addUser(fd).subscribe(function (data) {
             alert("done");
             console.log(data);
@@ -201,10 +202,6 @@ var SignupPage = (function () {
             alert(err);
         }, function () {
         });
-        /* this.data.addUser(this.eid, this.uname, this.pass, this.image, this.gender, this.mobile, this.myDate).subscribe(
-          (resp) => { alert("Success") },
-          (err) => alert("Signup Later")
-        ); */
     };
     SignupPage.prototype.onfile = function () {
         this.fileChooser.open().then(function (uri) { return console.log(uri); })
