@@ -27,16 +27,12 @@ export class LoginproProvider {
     user_mob_no: '',
     user_bdate: null,
   };
-<<<<<<< HEAD
 
   follow: { fk_user_id: string, fk_us_id: string } = {
-    fk_user_id:'',
-    fk_us_id:''
+    fk_user_id: '',
+    fk_us_id: ''
   };
-  chpass: { user_id: string, user_pass: string } = {
-=======
   chpass: { user_id: string, user_pass: string, token: string } = {
->>>>>>> d560afb8b86e99ca4ae927c08b78c8ce1904ba02
     user_id: '',
     user_pass: '',
     token: ''
@@ -154,27 +150,24 @@ export class LoginproProvider {
     return this.http.put(this.urlchangepass, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
     //"https://letsmeetbackend.herokuapp.com/changepassword/"
   }
-  iffollowing(user_id,us_id)
-  {
-    this.follow.fk_user_id=user_id;
-    this.follow.fk_us_id=us_id;
-    let body=JSON.stringify(this.follow);
+  iffollowing(user_id, us_id) {
+    this.follow.fk_user_id = user_id;
+    this.follow.fk_us_id = us_id;
+    let body = JSON.stringify(this.follow);
     return this.http.post("http://localhost:3000/iffollowing/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  insertfollower(user_id,us_id)
-  {
-    this.follow.fk_user_id=user_id;
-    this.follow.fk_us_id=us_id;
-    let body=JSON.stringify(this.follow);
+  insertfollower(user_id, us_id) {
+    this.follow.fk_user_id = user_id;
+    this.follow.fk_us_id = us_id;
+    let body = JSON.stringify(this.follow);
     return this.http.post("http://localhost:3000/insertfollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  deletefollower(user_id,us_id)
-  {
-    this.follow.fk_user_id=user_id;
-    this.follow.fk_us_id=us_id;
-    let body=JSON.stringify(this.follow);
+  deletefollower(user_id, us_id) {
+    this.follow.fk_user_id = user_id;
+    this.follow.fk_us_id = us_id;
+    let body = JSON.stringify(this.follow);
     return this.http.post("http://localhost:3000/deletefollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  
+
 
 }
