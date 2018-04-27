@@ -1,18 +1,6 @@
 webpackJsonp([22],{
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-/***/ 351:
-=======
-<<<<<<< HEAD
-/***/ 352:
-=======
-/***/ 354:
->>>>>>> d560afb8b86e99ca4ae927c08b78c8ce1904ba02
->>>>>>> a01ee7b6a2e886d322d94a66fdb50f74d59167e2
-=======
-/***/ 354:
->>>>>>> b45c685dc8ed946c63b93d601de0d6b6a161a42e
+/***/ 355:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditprofilePageModule", function() { return EditprofilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__editprofile__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__editprofile__ = __webpack_require__(247);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(128);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
