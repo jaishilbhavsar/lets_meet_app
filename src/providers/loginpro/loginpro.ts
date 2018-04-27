@@ -13,10 +13,10 @@ import { email_class } from '../../shared/email_class';
 */
 @Injectable()
 export class LoginproProvider {
-  account: { user_id: string, user_pass: string,token:string } = {
+  account: { user_id: string, user_pass: string, token: string } = {
     user_id: '',
     user_pass: '',
-    token:''
+    token: ''
   };
   useradd: { user_id: string, user_name: string, user_pass: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
     user_id: '',
@@ -32,13 +32,10 @@ export class LoginproProvider {
     fk_user_id: '',
     fk_us_id: ''
   };
-<<<<<<< HEAD
   chpass: { user_id: string, user_pass: string, token: string } = {
-=======
-  chpass: { user_id: string, user_pass: string } = {
->>>>>>> b45c685dc8ed946c63b93d601de0d6b6a161a42e
     user_id: '',
-    user_pass: ''
+    user_pass: '',
+    token: ''
   };
   userupdate: { user_id: string, user_name: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
     user_id: '',
@@ -54,12 +51,12 @@ export class LoginproProvider {
   url: string = "https://letsmeetbackend.herokuapp.com/login";
   urlsignup: string = "https://letsmeetbackend.herokuapp.com/user/";
 
-  doLogin(eid, pass,token) {
+  doLogin(eid, pass, token) {
     //let header = new Headers({ 'Content-Type': 'application/json' });
     //let ro = new RequestOptions({ headers: header });
     this.account.user_id = eid;
     this.account.user_pass = pass;
-    this.account.token=token;
+    this.account.token = token;
     let body = JSON.stringify(this.account);
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
@@ -79,7 +76,7 @@ export class LoginproProvider {
 
   addUser(fd: FormData) {
     console.log(fd);
-    return this.http.post("http://localhost:3000/user/", fd);
+    return this.http.post(this.urlsignup, fd);
   }
   updateUser(id, uname, image, gender, mobile, mydate) {
     // let header = new Headers({ 'Content-Type': 'application/json' });

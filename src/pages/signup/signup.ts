@@ -6,7 +6,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
 import { FileChooser } from '@ionic-native/file-chooser';
-//import { RadioButton } from 'ionic-angular/components/radio/radio-button';
+import { RadioButton } from 'ionic-angular/components/radio/radio-button';
 import { LoginproProvider } from '../../providers/loginpro/loginpro';
 import { Camera } from '@ionic-native/camera';
 @IonicPage()
@@ -33,6 +33,7 @@ export class SignupPage {
 
   form: FormGroup;
   selectedFile: File = null;
+  today: string;
 
   constructor(public data: LoginproProvider,
     formBuilder: FormBuilder,
@@ -50,23 +51,24 @@ export class SignupPage {
       gender: ['', Validators.required],
       mobile: ['', Validators.required],
       myDate: ['', Validators.required],
-      image: ['', Validators.required]
+      profilePic: ['', Validators.required]
     });
 
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
+    this.today = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString();
 
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
     })
   }
 
-  eid: string = "";
-  uname: string = "";
-  pass: string = "";
-  gender: string = "";
-  mobile: string = "";
+  eid: string;
+  uname: string;
+  pass: string;
+  gender: string;
+  mobile: string;
   myDate: any;
   image: any;
   token: string = "user";
@@ -78,7 +80,7 @@ export class SignupPage {
         targetWidth: 96,
         targetHeight: 96
       }).then((data) => {
-        this.form.patchValue({ 'image': 'data:image/jpg;base64,' + data });
+        this.form.patchValue({ 'profilePic': 'data:image/jpg;base64,' + data });
       }, (err) => {
         alert('Unable to take photo');
       })
@@ -92,7 +94,7 @@ export class SignupPage {
     reader.onload = (readerEvent) => {
 
       let imageData = (readerEvent.target as any).result;
-      this.form.patchValue({ 'image': imageData });
+      this.form.patchValue({ 'profilePic': imageData });
     };
 
     reader.readAsDataURL(event.target.files[0]);
@@ -112,7 +114,7 @@ export class SignupPage {
   }
 
   getProfileImageStyle() {
-    return 'url(' + this.form.controls['image'].value + ')'
+    return 'url(' + this.form.controls['profilePic'].value + ')'
   }
 
   doSignup() {
@@ -142,11 +144,7 @@ export class SignupPage {
     fd.append("gender", this.gender);
     fd.append("user_mob_no", this.mobile);
     fd.append("user_bdate", this.myDate);
-<<<<<<< HEAD
-    fd.append("token", this.token);
-=======
-     fd.append("token","user");
->>>>>>> b45c685dc8ed946c63b93d601de0d6b6a161a42e
+    fd.append("token", "user");
     alert(this.eid);
     console.log(fd);
     console.log(this.token);
