@@ -13,9 +13,10 @@ import { email_class } from '../../shared/email_class';
 */
 @Injectable()
 export class LoginproProvider {
-  account: { user_id: string, user_pass: string } = {
+  account: { user_id: string, user_pass: string, token: string } = {
     user_id: '',
-    user_pass: ''
+    user_pass: '',
+    token: ''
   };
   useradd: { user_id: string, user_name: string, user_pass: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
     user_id: '',
@@ -26,14 +27,19 @@ export class LoginproProvider {
     user_mob_no: '',
     user_bdate: null,
   };
+<<<<<<< HEAD
 
   follow: { fk_user_id: string, fk_us_id: string } = {
     fk_user_id:'',
     fk_us_id:''
   };
   chpass: { user_id: string, user_pass: string } = {
+=======
+  chpass: { user_id: string, user_pass: string, token: string } = {
+>>>>>>> d560afb8b86e99ca4ae927c08b78c8ce1904ba02
     user_id: '',
-    user_pass: ''
+    user_pass: '',
+    token: ''
   };
   userupdate: { user_id: string, user_name: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
     user_id: '',
@@ -47,13 +53,14 @@ export class LoginproProvider {
     console.log('Hello LoginproProvider Provider');
   }
   url: string = "https://letsmeetbackend.herokuapp.com/login";
-  urlsignup: string = "https://letsmeetbackend.herokuapp.com/user/";
+  urlsignup: string = "http://localhost:3000/user/";
 
-  doLogin(eid, pass) {
+  doLogin(eid, pass, token) {
     //let header = new Headers({ 'Content-Type': 'application/json' });
     //let ro = new RequestOptions({ headers: header });
     this.account.user_id = eid;
     this.account.user_pass = pass;
+    this.account.token = token;
     let body = JSON.stringify(this.account);
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
@@ -76,8 +83,6 @@ export class LoginproProvider {
     return this.http.post("http://localhost:3000/user/", fd);
   }
   updateUser(id, uname, image, gender, mobile, mydate) {
-    // let header = new Headers({ 'Content-Type': 'application/json' });
-    //let ro = new RequestOptions({ headers: header });
     this.userupdate.user_id = id;
     console.log('Login pro ma user update');
     console.log(id);

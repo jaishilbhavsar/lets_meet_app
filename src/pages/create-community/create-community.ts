@@ -70,19 +70,19 @@ export class CreateCommunityPage {
     formBuilder: FormBuilder,
     public camera: Camera) {
     this.form = formBuilder.group({
-      profilePic: [''],
+      profilePic: ['', Validators.required],
       comm_name: ['', Validators.required],
-      comm_des: ['', Validators.required]
+      comm_des: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(280), Validators.required])]
     });
 
     // Watch the form for changes, and
-    /*this.form.valueChanges.subscribe((v) => {
+    this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
-    });*/
+    });
   }
 
   getPicture() {
-    /*if (Camera['installed']()) {
+    if (Camera['installed']()) {
       this.camera.getPicture({
         destinationType: this.camera.DestinationType.DATA_URL,
         targetWidth: 96,
@@ -94,51 +94,43 @@ export class CreateCommunityPage {
       })
     } else {
       this.fileInput.nativeElement.click();
-    }*/
+    }
     this.fileInput.nativeElement.click();
   }
 
   processWebImage(event) {
-    let reader = new FileReader();
-    reader.onload = (readerEvent) => {
-
-      let imageData = (readerEvent.target as any).result;
-      this.form.patchValue({ 'profilePic': imageData });
-    };
-
-    reader.readAsDataURL(event.target.files[0]);
     this.selectedFile = <File>event.target.files[0];
+    console.log(this.selectedFile);
+    if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
+      this.selectedFile = null;
+      this.isReadyToSave = this.form.invalid;
+      const toast = this.tos.create({
+        message: 'Only Image formats are accepted!',
+        showCloseButton: true,
+        closeButtonText: 'Ok'
+      });
+      toast.present();
+    }
+    else {
+      let reader = new FileReader();
+      reader.onload = (readerEvent) => {
+
+        let imageData = (readerEvent.target as any).result;
+        this.form.patchValue({ 'profilePic': imageData });
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 
   getProfileImageStyle() {
     return 'url(' + this.form.controls['profilePic'].value + ')'
   }
 
-  /**
-   * The user cancelled, so we dismiss without sending data back.
-   */
-  cancel() {
-    this.viewCtrl.dismiss();
-  }
-
-  /**
-   * The user is done and wants to create the item, so return it
-   * back to the presenter.
-   */
-  done() {
-    if (!this.form.valid) { return; }
-    this.viewCtrl.dismiss(this.form.value);
-  }
-
-
-
   onCreate() {
-
+    if (!this.form.valid) { return; }
     this.st.get('uid').then((val) => {
       this.created_by = val;
-
-
-      console.log(this.created_by);
 
       let t1 = this.tos.create({
         message: "Created",
@@ -150,19 +142,6 @@ export class CreateCommunityPage {
       });
       l1.present();
 
-      /*this._data.addCommuniy(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.rate, this.created_by)).subscribe(
-        (data: any) => {
-          console.log(data);
-          t1.present();
-          this.navCtrl.pop();
-        },
-        function (err) {
-          alert(err);
-        },
-        function () {
-          l1.dismiss();
-        }
-      );*/
       const fd = new FormData();
       alert(this.created_by);
       fd.append("comm_id", this.comm_id);
@@ -174,7 +153,7 @@ export class CreateCommunityPage {
       fd.append("created_by", this.created_by);
       fd.append("comm_fk_cat_id", this.comm_fk_cat_id);
 
-      this.http.post("http://localhost:3000/community/", fd).subscribe(
+      this._data.addCommunity(fd).subscribe(
         (data: any) => {
           console.log(data);
           t1.present();

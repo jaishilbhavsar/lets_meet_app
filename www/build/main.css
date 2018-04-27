@@ -33220,6 +33220,12 @@ page-create-community .profile-image-wrapper .profile-image-placeholder ion-icon
   margin-top: 10px;
 }
 
+page-create-community .error {
+  color: #df1721;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
 page-create-post .profile-image-wrapper {
   text-align: center;
   margin: 20px 0;
@@ -33248,6 +33254,12 @@ page-create-post .profile-image-wrapper .profile-image-placeholder ion-icon {
   font-size: 44px;
   margin-bottom: -10px;
   margin-top: 10px;
+}
+
+page-create-post .error {
+  color: #df1721;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 page-create-story .profile-image-wrapper {
@@ -33338,6 +33350,12 @@ page-item-create .profile-image-wrapper .profile-image-placeholder ion-icon {
   font-size: 44px;
   margin-bottom: -10px;
   margin-top: 10px;
+}
+
+page-item-create .error {
+  color: #df1721;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 page-item-detail .item-profile {
@@ -33444,6 +33462,12 @@ page-signup .profile-image-wrapper .profile-image-placeholder ion-icon {
   font-size: 44px;
   margin-bottom: -10px;
   margin-top: 10px;
+}
+
+page-signup .error {
+  color: #df1721;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 page-stories .card-background-page ion-card {

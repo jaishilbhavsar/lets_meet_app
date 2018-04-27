@@ -31,6 +31,8 @@
 
 <ion-content padding>
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+    <label>Old Image:</label>
+    <img src="https://letsmeetbackend.herokuapp.com/images/posts/{{post_pic}}" *ngIf="post_pic" alt="Loading">
     <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
     <div class="profile-image-wrapper" (click)="getPicture()">
       <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
@@ -41,13 +43,26 @@
       </div>
       <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
     </div>
+    <div *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">
+      <p class="error">Please Choose an Image.</p>
+    </div>
     <ion-list>
       <ion-item>
         <ion-input type="text" formControlName="post_title" [(ngModel)]="post_title" placeholder="Title of the Post"></ion-input>
       </ion-item>
+      <div *ngIf="!this.form.controls.post_title.valid  && this.form.controls.post_title.dirty">
+        <p class="error">Please Enter Post Title.</p>
+      </div>
+
       <ion-item>
         <ion-textarea placeholder="Post Description" formControlName="post_des" [(ngModel)]="post_des"></ion-textarea>
       </ion-item>
+      <div class="error" *ngIf="!this.form.controls.post_des.required  && this.form.controls.post_des.dirty">
+        <p>Please Enter Post Description.</p>
+      </div>
+      <div class="error" *ngIf="!this.form.controls.post_des.minlength  && this.form.controls.post_des.dirty">
+        <p>Please Enter Post Description with minimum length of 10.</p>
+      </div>
     </ion-list>
   </form>
 </ion-content>

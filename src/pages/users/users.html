@@ -34,11 +34,7 @@
     Following
     <ion-badge item-end>{{followingcount}}</ion-badge>
   </ion-item>
-  <ion-item>
-    <ion-icon name="people" item-start></ion-icon>
-    Communities
-    <ion-badge item-end>{{commcount}}</ion-badge>
-  </ion-item>
+
 
   <div padding >
     <ion-segment [(ngModel)]="segme">
@@ -52,15 +48,21 @@
   </div>
 
   <div [ngSwitch]="segme">
-    <ion-list *ngSwitchCase="'Events'">
-      <ion-list-header>Attending</ion-list-header>
+    <ion-list *ngSwitchCase="'events'">
+      <ion-list-header>
+        Attending
+      </ion-list-header>
+      <ion-list-header></ion-list-header>
       <ion-item *ngFor="let item of arrUpc" (click)="onCLickUpcEvent(item.event_id)">
         <ion-thumbnail item-start>
           <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
         </ion-thumbnail>
         <h2>{{item.event_name}}</h2>
       </ion-item>
-      <ion-list-header>Attended</ion-list-header>
+
+      <ion-list-header>
+        Attended
+      </ion-list-header>
       <ion-item *ngFor="let item of arrPast" (click)="onCLickPastEvent(item.event_id)">
         <ion-thumbnail item-start>
           <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
@@ -77,25 +79,19 @@
         <h2>{{item.comm_name}}</h2>
       </ion-item>
     </ion-list>
+
   </div>
 
   <ion-list>
     <ion-item (click)="onChangePassword()">
-      <ion-avatar item-start>
-        <ion-icon></ion-icon>
-      </ion-avatar>
-      <h2>Change Password</h2>
+      <h2>
+        <ion-icon name="key" md="md-key">&nbsp;&nbsp;</ion-icon> Change Password</h2>
     </ion-item>
-  </ion-list>
 
-  <ion-list>
     <ion-item (click)="onLogout()">
-      <ion-avatar item-start>
-        <ion-icon></ion-icon>
-      </ion-avatar>
-      <h2>Log Out</h2>
+      <h2>
+        <ion-icon name="power" md="md-key">&nbsp;&nbsp;</ion-icon> Log Out</h2>
     </ion-item>
   </ion-list>
-
 
 </ion-content>

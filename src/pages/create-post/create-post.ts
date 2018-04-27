@@ -42,12 +42,11 @@ export class CreatePostPage {
     public formBuilder: FormBuilder
   ) {
     this.form = formBuilder.group({
-      profilePic: [''],
+      profilePic: ['', Validators.required],
       post_title: ['', Validators.required],
-      post_des: ['', Validators.required]
+      post_des: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(1500), Validators.required])]
     });
 
-    // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
@@ -74,15 +73,8 @@ export class CreatePostPage {
   }
 
   processWebImage(event) {
-    let reader = new FileReader();
-    reader.onload = (readerEvent) => {
-
-      let imageData = (readerEvent.target as any).result;
-      this.form.patchValue({ 'profilePic': imageData });
-    };
-
-    reader.readAsDataURL(event.target.files[0]);
     this.selectedFile = <File>event.target.files[0];
+    console.log(this.selectedFile);
     if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
       this.selectedFile = null;
       this.isReadyToSave = this.form.invalid;
@@ -93,14 +85,22 @@ export class CreatePostPage {
       });
       toast.present();
     }
+    else {
+      let reader = new FileReader();
+      reader.onload = (readerEvent) => {
+
+        let imageData = (readerEvent.target as any).result;
+        this.form.patchValue({ 'profilePic': imageData });
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 
   getProfileImageStyle() {
     return 'url(' + this.form.controls['profilePic'].value + ')'
   }
-  /**
-   * The user cancelled, so we dismiss without sending data back.
-   */
+
   cancel() {
     this.viewCtrl.dismiss();
   }
@@ -114,19 +114,6 @@ export class CreatePostPage {
     this.storage.get('uid').then((val) => {
       this.user_id = val;
       console.log(this.user_id);
-      /*this._dataPost.addPost(new Post_Class(null, this.post_title, this.post_des, 'dp', null, this.user_id, this.comm_id)).subscribe(
-        (data: Post_Class) => {
-          alert("added");
-          console.log(data);
-          this.viewCtrl.dismiss();
-        },
-        function (err) {
-          alert(err);
-        },
-        function () {
-
-        }
-      )*/
       const fd = new FormData();
       fd.append("post_id", null);
       fd.append("post_title", this.post_title);
@@ -137,9 +124,11 @@ export class CreatePostPage {
       fd.append("fk_comm_id", this.comm_id);
       this._dataPost.addPost(fd).subscribe(
         (data: Post_Class) => {
-          // alert("added");
-          console.log(data);
           this.viewCtrl.dismiss();
+          let t1 = this.tos.create({
+            duration: 3000,
+            message: "Added ..."
+          });
         },
         function (err) {
           alert(err);
@@ -148,8 +137,6 @@ export class CreatePostPage {
 
         }
       )
-    }
-    );
-    //this.viewCtrl.dismiss(this.form.value);
+    });
   }
 }
