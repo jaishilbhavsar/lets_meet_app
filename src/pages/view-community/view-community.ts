@@ -556,8 +556,9 @@ export class ViewCommunityPage {
 
     this.comm_rating = rt;
     alert(this.comm_rating);
+    
 
-  }
+  } 
 
   onPastEvent(event_id) {
     this.navCtrl.push(ViewPastEventPage, { e_id: event_id });
