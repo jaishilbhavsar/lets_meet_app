@@ -98,7 +98,7 @@ EventDbProvider = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_view_post_view_post__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_comm_member_class__ = __webpack_require__(325);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_comm_member_class__ = __webpack_require__(326);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_loginpro_loginpro__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__create_post_create_post__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_post_db_post_db__ = __webpack_require__(52);
@@ -1024,7 +1024,7 @@ CreatePostPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_post_db_post_db__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_post_class__ = __webpack_require__(390);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_post_class__ = __webpack_require__(318);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__ = __webpack_require__(40);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1165,10 +1165,15 @@ EditPostPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-edit-post',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\edit-post\edit-post.html"*/'<!--\n  Generated template for the EditPostPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit Post</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="cancel()">\n        <span color="primary" showWhen="ios">\n          {{ \'CANCEL_BUTTON\' | translate }}\n        </span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>\n        <span color="primary" showWhen="ios">\n          {{ \'DONE_BUTTON\' | translate }}\n        </span>\n        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">\n    <label>Old Image:</label>\n    <img src="https://letsmeetbackend.herokuapp.com/images/posts/{{post_pic}}" *ngIf="post_pic" alt="Loading">\n    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n    <div class="profile-image-wrapper" (click)="getPicture()">\n      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n        <ion-icon name="add"></ion-icon>\n        <div>\n          {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n        </div>\n      </div>\n      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n    </div>\n    <div *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">\n      <p class="error">Please Choose an Image.</p>\n    </div>\n    <ion-list>\n      <ion-item>\n        <ion-input type="text" formControlName="post_title" [(ngModel)]="post_title" placeholder="Title of the Post"></ion-input>\n      </ion-item>\n      <div *ngIf="!this.form.controls.post_title.valid  && this.form.controls.post_title.dirty">\n        <p class="error">Please Enter Post Title.</p>\n      </div>\n\n      <ion-item>\n        <ion-textarea placeholder="Post Description" formControlName="post_des" [(ngModel)]="post_des"></ion-textarea>\n      </ion-item>\n      <div class="error" *ngIf="!this.form.controls.post_des.required  && this.form.controls.post_des.dirty">\n        <p>Please Enter Post Description.</p>\n      </div>\n      <div class="error" *ngIf="!this.form.controls.post_des.minlength  && this.form.controls.post_des.dirty">\n        <p>Please Enter Post Description with minimum length of 10.</p>\n      </div>\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\edit-post\edit-post.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__providers_post_db_post_db__["a" /* PostDbProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_post_db_post_db__["a" /* PostDbProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* ViewController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_post_db_post_db__["a" /* PostDbProvider */],
+        __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* ViewController */],
+        __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */],
+        __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]])
 ], EditPostPage);
 
-var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=edit-post.js.map
 
 /***/ }),
@@ -1238,11 +1243,11 @@ CommunityCommMemberProvider = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_post_db_post_db__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_comment_db_comment_db__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_comment_class__ = __webpack_require__(323);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_comment_class__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_loginpro_loginpro__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_like_db_like_db__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_like_class__ = __webpack_require__(324);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_like_class__ = __webpack_require__(325);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__viewuser_viewuser__ = __webpack_require__(41);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1562,39 +1567,39 @@ webpackEmptyAsyncContext.id = 143;
 
 var map = {
 	"../pages/change-password/change-password.module": [
-		346,
+		347,
 		27
 	],
 	"../pages/content/content.module": [
-		347,
+		348,
 		14
 	],
 	"../pages/create-community/create-community.module": [
-		348,
+		349,
 		26
 	],
 	"../pages/create-post/create-post.module": [
-		349,
+		350,
 		25
 	],
 	"../pages/create-story/create-story.module": [
-		350,
+		351,
 		24
 	],
 	"../pages/edit-post/edit-post.module": [
-		351,
+		352,
 		23
 	],
 	"../pages/editprofile/editprofile.module": [
-		352,
+		353,
 		22
 	],
 	"../pages/follower/follower.module": [
-		353,
+		354,
 		21
 	],
 	"../pages/following/following.module": [
-		354,
+		356,
 		20
 	],
 	"../pages/item-create/item-create.module": [
@@ -1602,23 +1607,23 @@ var map = {
 		13
 	],
 	"../pages/item-detail/item-detail.module": [
-		356,
+		357,
 		12
 	],
 	"../pages/list-master/list-master.module": [
-		357,
+		358,
 		11
 	],
 	"../pages/login/login.module": [
-		358,
+		359,
 		0
 	],
 	"../pages/menu/menu.module": [
-		359,
+		360,
 		10
 	],
 	"../pages/search/search.module": [
-		360,
+		362,
 		9
 	],
 	"../pages/settings/settings.module": [
@@ -1626,43 +1631,43 @@ var map = {
 		8
 	],
 	"../pages/signup/signup.module": [
-		362,
+		363,
 		7
 	],
 	"../pages/stories/stories.module": [
-		363,
+		364,
 		6
 	],
 	"../pages/story-detail/story-detail.module": [
-		364,
+		365,
 		19
 	],
 	"../pages/tabs/tabs.module": [
-		365,
+		366,
 		5
 	],
 	"../pages/tutorial/tutorial.module": [
-		366,
+		367,
 		4
 	],
 	"../pages/users/users.module": [
-		367,
+		368,
 		3
 	],
 	"../pages/view-community/view-community.module": [
-		368,
+		369,
 		18
 	],
 	"../pages/view-event/view-event.module": [
-		369,
+		370,
 		17
 	],
 	"../pages/view-past-event/view-past-event.module": [
-		370,
+		371,
 		2
 	],
 	"../pages/view-post/view-post.module": [
-		371,
+		373,
 		16
 	],
 	"../pages/viewuser/viewuser.module": [
@@ -1670,7 +1675,7 @@ var map = {
 		15
 	],
 	"../pages/welcome/welcome.module": [
-		373,
+		374,
 		1
 	]
 };
@@ -1760,7 +1765,7 @@ Api = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Items; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_item__ = __webpack_require__(318);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_item__ = __webpack_require__(319);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2262,10 +2267,9 @@ var LoginproProvider = (function () {
 }());
 LoginproProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
 ], LoginproProvider);
 
-var _a, _b;
 //# sourceMappingURL=loginpro.js.map
 
 /***/ }),
@@ -3389,12 +3393,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ngx_translate_core__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ngx_translate_http_loader__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ionic2_rating__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ionic2_rating__ = __webpack_require__(344);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_screen_orientation__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_calendar__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__mocks_providers_items__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_providers__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__app_component__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__app_component__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_story_detail_story_detail__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_create_story_create_story__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_create_community_create_community__ = __webpack_require__(241);
@@ -3544,14 +3548,14 @@ AppModule = __decorate([
                     { loadChildren: '../pages/edit-post/edit-post.module#EditPostPageModule', name: 'EditPostPage', segment: 'edit-post', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/editprofile/editprofile.module#EditprofilePageModule', name: 'EditprofilePage', segment: 'editprofile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/follower/follower.module#FollowerPageModule', name: 'FollowerPage', segment: 'follower', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/following/following.module#FollowingPageModule', name: 'FollowingPage', segment: 'following', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/item-create/item-create.module#ItemCreatePageModule', name: 'ItemCreatePage', segment: 'item-create', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/following/following.module#FollowingPageModule', name: 'FollowingPage', segment: 'following', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/item-detail/item-detail.module#ItemDetailPageModule', name: 'ItemDetailPage', segment: 'item-detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stories/stories.module#StoriesPageModule', name: 'StoriesPage', segment: 'stories', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/story-detail/story-detail.module#StoryDetailPageModule', name: 'StoryDetailPage', segment: 'story-detail', priority: 'low', defaultHistory: [] },
@@ -3561,8 +3565,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/view-community/view-community.module#ViewCommunityPageModule', name: 'ViewCommunityPage', segment: 'view-community', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/view-event/view-event.module#ViewEventPageModule', name: 'ViewEventPage', segment: 'view-event', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/view-past-event/view-past-event.module#ViewPastEventPageModule', name: 'view-past-event', segment: 'view-past-event', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/view-post/view-post.module#ViewPostPageModule', name: 'ViewPostPage', segment: 'view-post', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/viewuser/viewuser.module#ViewuserPageModule', name: 'ViewuserPage', segment: 'viewuser', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/view-post/view-post.module#ViewPostPageModule', name: 'ViewPostPage', segment: 'view-post', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
                 ]
             }),
@@ -3629,6 +3633,38 @@ AppModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export Post_Class */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Post_Update_Class; });
+var Post_Class = (function () {
+    function Post_Class(post_id, post_title, post_des, post_pic, post_date, post_fk_user_id, fk_comm_id) {
+        this.post_id = post_id;
+        this.post_title = post_title;
+        this.post_des = post_des;
+        this.post_pic = post_pic;
+        this.post_date = post_date;
+        this.post_fk_user_id = post_fk_user_id;
+        this.fk_comm_id = fk_comm_id;
+    }
+    return Post_Class;
+}());
+
+var Post_Update_Class = (function () {
+    function Post_Update_Class(post_id, post_title, post_des) {
+        this.post_id = post_id;
+        this.post_title = post_title;
+        this.post_des = post_des;
+    }
+    return Post_Update_Class;
+}());
+
+//# sourceMappingURL=post_class.js.map
+
+/***/ }),
+
+/***/ 319:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Item; });
 /**
  * A generic model that our Master-Detail pages list, create, and delete.
@@ -3653,7 +3689,7 @@ var Item = (function () {
 
 /***/ }),
 
-/***/ 319:
+/***/ 320:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3742,12 +3778,12 @@ Settings = __decorate([
 
 /***/ }),
 
-/***/ 320:
+/***/ 321:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__ = __webpack_require__(321);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__ = __webpack_require__(322);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_api__ = __webpack_require__(191);
@@ -3845,7 +3881,7 @@ User = __decorate([
 
 /***/ }),
 
-/***/ 323:
+/***/ 324:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3865,7 +3901,7 @@ var Comment_Class = (function () {
 
 /***/ }),
 
-/***/ 324:
+/***/ 325:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3883,7 +3919,7 @@ var Like_Class = (function () {
 
 /***/ }),
 
-/***/ 325:
+/***/ 326:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3901,7 +3937,7 @@ var Comm_member_class = (function () {
 
 /***/ }),
 
-/***/ 345:
+/***/ 346:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4070,38 +4106,6 @@ MyApp = __decorate([
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 390:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export Post_Class */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Post_Update_Class; });
-var Post_Class = (function () {
-    function Post_Class(post_id, post_title, post_des, post_pic, post_date, post_fk_user_id, fk_comm_id) {
-        this.post_id = post_id;
-        this.post_title = post_title;
-        this.post_des = post_des;
-        this.post_pic = post_pic;
-        this.post_date = post_date;
-        this.post_fk_user_id = post_fk_user_id;
-        this.fk_comm_id = fk_comm_id;
-    }
-    return Post_Class;
-}());
-
-var Post_Update_Class = (function () {
-    function Post_Update_Class(post_id, post_title, post_des) {
-        this.post_id = post_id;
-        this.post_title = post_title;
-        this.post_des = post_des;
-    }
-    return Post_Update_Class;
-}());
-
-//# sourceMappingURL=post_class.js.map
 
 /***/ }),
 
@@ -4275,10 +4279,9 @@ var PostDbProvider = (function () {
 }());
 PostDbProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
 ], PostDbProvider);
 
-var _a;
 //# sourceMappingURL=post-db.js.map
 
 /***/ }),
@@ -4289,8 +4292,8 @@ var _a;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mocks_providers_items__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings_settings__ = __webpack_require__(319);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_user__ = __webpack_require__(320);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings_settings__ = __webpack_require__(320);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_user__ = __webpack_require__(321);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__api_api__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__mocks_providers_items__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__settings_settings__["a"]; });
