@@ -133,16 +133,10 @@ export class ItemCreatePage {
   }
 
   processWebImage(event) {
-    let reader = new FileReader();
-    reader.onload = (readerEvent) => {
 
-      let imageData = (readerEvent.target as any).result;
-      this.form.patchValue({ 'profilePic': imageData });
-    };
 
-    reader.readAsDataURL(event.target.files[0]);
     this.selectedFile = <File>event.target.files[0];
-    //alert(this.selectedFile.type);
+    console.log(this.selectedFile);
     if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
       this.selectedFile = null;
       this.isReadyToSave = this.form.invalid;
@@ -152,6 +146,16 @@ export class ItemCreatePage {
         closeButtonText: 'Ok'
       });
       toast.present();
+    }
+    else {
+      let reader = new FileReader();
+      reader.onload = (readerEvent) => {
+
+        let imageData = (readerEvent.target as any).result;
+        this.form.patchValue({ 'profilePic': imageData });
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
     }
   }
 
@@ -182,18 +186,7 @@ export class ItemCreatePage {
         duration: 3000,
         message: "Added ..."
       })
-      /*this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, this.community_id, 'true')).subscribe(
-        (data: any) => {
-          this.viewCtrl.dismiss();
-          t1.present();
-        },
-        function (e) {
-          alert(e);
-        },
-        function () {
-          l1.dismiss();
-        }
-      );*/
+
       const fd = new FormData();
       fd.append("event_id", this.event_id);
       fd.append("event_name", this.event_name);
@@ -207,21 +200,6 @@ export class ItemCreatePage {
       fd.append("fk_comm_id", this.community_id);
       fd.append("event_verify", "true");
 
-      /*this.http.post("http://localhost:3000/event/", fd).subscribe(
-        (data: any) => {
-          console.log(data);
-          console.log(this.selectedFile);
-          console.log(this.selectedFile.name);
-          this.viewCtrl.dismiss();
-          t1.present();
-        },
-        function (e) {
-          alert(e);
-        },
-        function () {
-          l1.dismiss();
-        }
-      )*/
       this._data.addEvent(fd).subscribe(
         (data: any) => {
           console.log(data);
@@ -236,6 +214,5 @@ export class ItemCreatePage {
         }
       )
     });
-    // this.viewCtrl.dismiss(this.form.value);
   }
 }

@@ -110,9 +110,33 @@ var SettingsPage = SettingsPage_1 = (function () {
             page: 'profile',
             pageTitleKey: 'SETTINGS_PAGE_PROFILE'
         };
+<<<<<<< HEAD
         this.page = 'main';
         this.pageTitleKey = 'SETTINGS_TITLE';
         this.subSettings = SettingsPage_1;
+=======
+        this.selectedFile = null;
+        this.eid = "";
+        this.uname = "";
+        this.pass = "";
+        this.gender = "";
+        this.mobile = "";
+        this.form = formBuilder.group({
+            eid: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            uname: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern('[a-zA-Z ]*')])],
+            pass: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].minLength(6), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(10), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required])],
+            gender: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            mobile: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            myDate: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            image: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]
+        });
+        this.form.valueChanges.subscribe(function (v) {
+            _this.isReadyToSave = _this.form.valid;
+        });
+        this.translateService.get('SIGNUP_ERROR').subscribe(function (value) {
+            _this.signupErrorString = value;
+        });
+>>>>>>> e240063853c26afd484110599946d2bd37be6bcb
     }
     SettingsPage.prototype.addCommunity = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__create_community_create_community__["a" /* CreateCommunityPage */]);
@@ -124,6 +148,7 @@ var SettingsPage = SettingsPage_1 = (function () {
             option2: [this.options.option2],
             option3: [this.options.option3]
         };
+<<<<<<< HEAD
         switch (this.page) {
             case 'main':
                 break;
@@ -132,6 +157,21 @@ var SettingsPage = SettingsPage_1 = (function () {
                     option4: [this.options.option4]
                 };
                 break;
+=======
+        reader.readAsDataURL(event.target.files[0]);
+        this.selectedFile = event.target.files[0];
+        console.log(this.selectedFile);
+        //alert(this.selectedFile.type);
+        if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
+            this.selectedFile = null;
+            this.isReadyToSave = this.form.invalid;
+            var toast = this.toastCtrl.create({
+                message: 'Only Image formats are accepted!',
+                showCloseButton: true,
+                closeButtonText: 'Ok'
+            });
+            toast.present();
+>>>>>>> e240063853c26afd484110599946d2bd37be6bcb
         }
         this.form = this.formBuilder.group(group);
         // Watch the form for changes, and
@@ -182,6 +222,32 @@ var SettingsPage = SettingsPage_1 = (function () {
         else {
             this.arr = this.arr1;
         }
+<<<<<<< HEAD
+=======
+        var fd = new FormData();
+        fd.append("user_id", this.eid);
+        fd.append("user_name", this.uname);
+        fd.append("user_pass", this.pass);
+        fd.append("image", this.selectedFile, this.selectedFile.name);
+        fd.append("gender", this.gender);
+        fd.append("user_mob_no", this.mobile);
+        fd.append("user_bdate", this.myDate);
+        /*  fd.append("token", "");
+         fd.append("verify", ""); */
+        alert(this.eid);
+        console.log(fd);
+        this.data.addUser(fd).subscribe(function (data) {
+            alert("done");
+            console.log(data);
+        }, function (err) {
+            alert(err);
+        }, function () {
+        });
+        /* this.data.addUser(this.eid, this.uname, this.pass, this.image, this.gender, this.mobile, this.myDate).subscribe(
+          (resp) => { alert("Success") },
+          (err) => alert("Signup Later")
+        ); */
+>>>>>>> e240063853c26afd484110599946d2bd37be6bcb
     };
     SettingsPage.prototype.onSearchIcon = function () {
         if (this.flag == true) {
@@ -198,7 +264,11 @@ var SettingsPage = SettingsPage_1 = (function () {
 }());
 SettingsPage = SettingsPage_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+<<<<<<< HEAD
         selector: 'page-settings',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\settings\settings.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>Communities</ion-title>\n\n    <ion-buttons start>\n\n      <button (click)="onSearchIcon()" ion-button icon-only>\n\n        <ion-icon name=\'search\'></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="addCommunity()">\n\n        <ion-icon name="add"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-searchbar *ngIf="flag" [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by community"></ion-searchbar>\n\n  <ion-card *ngFor="let item of arr ">\n\n    <!--  <img src="assets/img/cjpg.jpg"/>-->\n\n    \n\n    <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{item.comm_pic}}" (click)="onView(item.comm_id)" height="120" width="100" />\n\n    <ion-row>\n\n      <ion-col col-12>\n\n        <ion-card-content >\n\n          <ion-card-title (click)="onView(item.comm_id)">\n\n            <b>{{item.comm_name}}</b>\n\n          \n\n        </ion-card-title>\n\n           <b> Created by : </b> <h4>{{item.user_name}}</h4>\n\n          \n\n        </ion-card-content>\n\n      </ion-col>\n\n   <!-- <ion-col col-4>\n\n        \n\n        <button ion-button (click)="onJoin(item.comm_id)" color="danger" small align="center">Join Now</button>\n\n\n\n      </ion-col>-->\n\n    </ion-row>\n\n  </ion-card>\n\n\n\n  <!--  <ion-card>\n\n        \n\n            <img src="assets/img/cjpg.jpg" />\n\n        \n\n            <ion-card-content>\n\n              <ion-card-title>\n\n                Community 1\n\n              </ion-card-title>\n\n              \n\n            </ion-card-content>\n\n        \n\n            <ion-item>\n\n              <ion-icon name=\'people\' item-start style="color: #d03e84"></ion-icon>\n\n              Group Members\n\n              <ion-badge item-end>9</ion-badge>\n\n            </ion-item>\n\n\n\n            <button ion-button block >Join Now</button>\n\n        \n\n          </ion-card>-->\n\n  <!--<ion-item>\n\n              <ion-icon name=\'logo-twitter\' item-start style="color: #55acee"></ion-icon>\n\n              Followers\n\n              <ion-badge item-end>260k</ion-badge>\n\n            </ion-item>-->\n\n\n\n\n\n\n\n</ion-content>'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\settings\settings.html"*/
+=======
+        selector: 'page-signup',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\signup\signup.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>{{ \'SIGNUP_TITLE\' | translate }}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <form *ngIf="form" [formGroup]="form" >\n\n\n\n    <ion-list>\n\n      <ion-item>\n\n        <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n\n        <div class="profile-image-wrapper" (click)="getPicture()">\n\n          <div class="profile-image-placeholder" *ngIf="!this.form.controls.image.value">\n\n            <ion-icon name="add"></ion-icon>\n\n            <div>\n\n              {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n\n            </div>\n\n          </div>\n\n          <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.image.value"></div>\n\n        </div>\n\n      </ion-item>\n\n      \n\n      <ion-item>\n\n        <ion-label floating color="red">Email</ion-label>\n\n        <ion-input type="email" formControlName="eid" [(ngModel)]="eid"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label floating>UserName</ion-label>\n\n        <ion-input type="text" formControlName="uname" [(ngModel)]="uname"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label floating>Password</ion-label>\n\n        <ion-input type="passowrd" formControlName="pass" [(ngModel)]="pass"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-list radio-group formControlName="gender" [(ngModel)]="gender">\n\n        <ion-item>\n\n          <ion-label>Male</ion-label>\n\n          <ion-radio value="Male"></ion-radio>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-label>Female</ion-label>\n\n          <ion-radio value="Female"></ion-radio>\n\n        </ion-item>\n\n      </ion-list>\n\n\n\n      <ion-item>\n\n        <ion-label floating>Mobile No</ion-label>\n\n        <ion-input type="text" formControlName="mobile" [(ngModel)]="mobile"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label>Date</ion-label>\n\n        <ion-datetime displayFormat="DD/MMMM/YYYY" pickerFormat="DD MMMM YYYY" formControlName="myDate" [(ngModel)]="myDate"></ion-datetime>\n\n      </ion-item>\n\n\n\n      <div padding>\n\n        <button ion-button color="meetup" (click)="onClick()" [disabled]="!isReadyToSave" block>{{ \'SIGNUP_BUTTON\' | translate }}</button>\n\n      </div>\n\n\n\n    </ion-list>\n\n  </form>\n\n</ion-content>\n\n\n\n<!--<ion-item>\n\n        <ion-label fixed>{{ \'NAME\' | translate }}</ion-label>\n\n         <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>\n\n      </ion-item>\n\n    \n\n      <ion-item>\n\n        <ion-label fixed>{{ \'EMAIL\' | translate }}</ion-label>\n\n        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>\n\n      </ion-item>\n\n    -->\n\n<!--\n\n      Want to add a Username? Here you go:\n\n\n\n      <ion-item>\n\n        <ion-label floating>Username</ion-label>\n\n        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>\n\n      </ion-item>\n\n      -->\n\n<!--\n\n      <ion-item>\n\n        <button ion-button color="primary" (click)="onfile()"block>{{ \'Image\' | translate }}</button>  \n\n      </ion-item>-->\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\signup\signup.html"*/
+>>>>>>> e240063853c26afd484110599946d2bd37be6bcb
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_7__providers_providers__["c" /* Settings */],

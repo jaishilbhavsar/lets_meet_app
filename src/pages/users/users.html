@@ -48,8 +48,27 @@
   </div>
 
   <div [ngSwitch]="segme">
-    <ion-list *ngSwitchCase="'Events'">
+    <ion-list *ngSwitchCase="'events'">
+      <ion-list-header>
+        Attending
+      </ion-list-header>
+      <ion-list-header></ion-list-header>
+      <ion-item *ngFor="let item of arrUpc" (click)="onCLickUpcEvent(item.event_id)">
+        <ion-thumbnail item-start>
+          <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
+        </ion-thumbnail>
+        <h2>{{item.event_name}}</h2>
+      </ion-item>
 
+      <ion-list-header>
+        Attended
+      </ion-list-header>
+      <ion-item *ngFor="let item of arrPast" (click)="onCLickPastEvent(item.event_id)">
+        <ion-thumbnail item-start>
+          <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
+        </ion-thumbnail>
+        <h2>{{item.event_name}}</h2>
+      </ion-item>
     </ion-list>
 
     <ion-list *ngSwitchCase="'commu'">
@@ -60,42 +79,19 @@
         <h2>{{item.comm_name}}</h2>
       </ion-item>
     </ion-list>
-  </div>
-  <div padding>
-    <ion-segment [(ngModel)]="usr">
-      <ion-segment-button value="upc">
-        Attending
-      </ion-segment-button>
-      <ion-segment-button value="past">
-        Attended
-      </ion-segment-button>
-    </ion-segment>
+
   </div>
 
-  <div [ngSwitch]="usr">
-    <ion-list *ngSwitchCase="'upc'">
-      <ion-list>
-        <ion-item *ngFor="let item of arrUpc" (click)="onCLickUpcEvent(item.event_id)">
-          <ion-thumbnail item-start>
-            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
-          </ion-thumbnail>
-          <h2>{{item.event_name}}</h2>
-        </ion-item>
-      </ion-list>
-    </ion-list>
+  <ion-list>
+    <ion-item (click)="onChangePassword()">
+      <ion-avatar item-start>
+        <ion-icon></ion-icon>
+      </ion-avatar>
+      <h2>Change Password</h2>
+    </ion-item>
+  </ion-list>
 
-    <ion-list *ngSwitchCase="'past'">
-      <ion-list>
-        <ion-item *ngFor="let item of arrPast" (click)="onCLickPastEvent(item.event_id)">
-          <ion-thumbnail item-start>
-            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
-          </ion-thumbnail>
-          <h2>{{item.event_name}}</h2>
-        </ion-item>
-      </ion-list>
-    </ion-list>
-
-
+<<<<<<< HEAD
     <ion-list>
       <ion-item (click)="onChangePassword()">
         <h2>
@@ -108,5 +104,16 @@
       </ion-item>
     </ion-list>
   </div>
+=======
+  <ion-list>
+    <ion-item (click)="onLogout()">
+      <ion-avatar item-start>
+        <ion-icon></ion-icon>
+      </ion-avatar>
+      <h2>Log Out</h2>
+    </ion-item>
+  </ion-list>
+
+>>>>>>> e240063853c26afd484110599946d2bd37be6bcb
 
 </ion-content>

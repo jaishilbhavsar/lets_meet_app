@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController, DateTime } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
 import { PostDbProvider } from "../../providers/post-db/post-db";
-import { Post_Class } from "../../shared/post_class";
+import { Post_Class, Post_Update_Class } from "../../shared/post_class";
 import { Camera } from '@ionic-native/camera';
 
 /**
@@ -23,7 +23,7 @@ export class EditPostPage {
   @ViewChild('fileInput') fileInput;
   selectedFile: File = null;
 
-  post_id: number;
+  post_id: any;
 
   arrPost: Post_Class[] = [];
   post_title: string;
@@ -66,7 +66,7 @@ export class EditPostPage {
         this.post_pic = this.arrPost[0].post_pic;
         this.post_title = this.arrPost[0].post_title;
         this.post_des = this.arrPost[0].post_des;
-        this.form.patchValue({ 'profilePic': this.post_pic });
+        //this.form.patchValue({ 'profilePic': this.post_pic });
       }
     )
   }
@@ -118,37 +118,41 @@ export class EditPostPage {
     this.storage.get('uid').then((val) => {
       this.user_id = val;
       console.log(this.user_id);
-      /*this._dataPost.addPost(new Post_Class(null, this.post_title, this.post_des, 'dp', null, this.user_id, this.comm_id)).subscribe(
-        (data: Post_Class) => {
-          alert("added");
-          console.log(data);
-          this.viewCtrl.dismiss();
-        },
-        function (err) {
-          alert(err);
-        },
-        function () {
+      if (this.selectedFile === null) {
 
-        }
-      )*/
-      const fd = new FormData();
+        this._dataPost.editPostOnly(new Post_Update_Class(this.post_id, this.post_title, this.post_des)).subscribe(
+          (data: any) => {
+            console.log(data);
+            this.viewCtrl.dismiss();
+          },
+          function (err) {
+            alert(err);
+          },
+          function () {
 
-      this._dataPost.addPost(fd).subscribe(
-        (data: Post_Class) => {
-         // alert("added");
-          console.log(data);
-          this.viewCtrl.dismiss();
-        },
-        function (err) {
-          alert(err);
-        },
-        function () {
+          }
+        );
 
-        }
-      )
-    }
-    );
-    //this.viewCtrl.dismiss(this.form.value);
+      } else {
+        const fd = new FormData();
+        fd.append('post_id', this.post_id);
+        fd.append('post_title', this.post_title);
+        fd.append('post_des', this.post_des);
+        fd.append('image', this.selectedFile, this.selectedFile.name);
+
+        this._dataPost.editPost(fd).subscribe(
+          (data: any) => {
+            console.log(data);
+            this.viewCtrl.dismiss();
+          },
+          function (err) {
+            alert(err);
+          },
+          function () {
+
+          }
+        );
+      }
+    });
   }
-
 }

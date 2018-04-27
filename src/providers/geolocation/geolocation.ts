@@ -17,13 +17,9 @@ export class GeolocationProvider {
     console.log('Hello GeolocationProvider Provider');
   }
 
-  /*   getCurrentPosition(address: string) {
-      console.log(this.url + address + "&key=AIzaSyC_yzslPZ6nIkW6225NHfNYlnbOBeZGFTk");
-      return this.http.get(this.url + address + "&key=AIzaSyC_yzslPZ6nIkW6225NHfNYlnbOBeZGFTk");
-    } */
-
   getCurrentPosition(address: string) {
-    console.log(this.url + address + "&key=AIzaSyCOT-IW9-43QEMmHrheojSCt4Zr64HrnS4");
-    return this.http.get(this.url + address + "&key=AIzaSyCOT-IW9-43QEMmHrheojSCt4Zr64HrnS4");
+    console.log(this.url + address + "&key=AIzaSyC_yzslPZ6nIkW6225NHfNYlnbOBeZGFTk");
+    return this.http.get(this.url + address + "&key=AIzaSyC_yzslPZ6nIkW6225NHfNYlnbOBeZGFTk");
   }
+
 }

@@ -65,11 +65,10 @@ export class SignupPage {
   eid: string = "";
   uname: string = "";
   pass: string = "";
-  g: string;
   gender: string = "";
   mobile: string = "";
-  myDate: Date;
-  image: string = "abcde";
+  myDate: any;
+  image: any;
 
   getPicture() {
     if (Camera['installed']()) {
@@ -97,6 +96,7 @@ export class SignupPage {
 
     reader.readAsDataURL(event.target.files[0]);
     this.selectedFile = <File>event.target.files[0];
+    console.log(this.selectedFile);
     //alert(this.selectedFile.type);
     if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
       this.selectedFile = null;
@@ -133,10 +133,34 @@ export class SignupPage {
   }
   onClick() {
     if (!this.form.valid) { return; }
-    this.data.addUser(this.eid, this.uname, this.pass, this.image, this.gender, this.mobile, this.myDate).subscribe(
+    const fd = new FormData();
+    fd.append("user_id", this.eid);
+    fd.append("user_name", this.uname);
+    fd.append("user_pass", this.pass);
+    fd.append("image", this.selectedFile, this.selectedFile.name);
+    fd.append("gender", this.gender);
+    fd.append("user_mob_no", this.mobile);
+    fd.append("user_bdate", this.myDate);
+    /*  fd.append("token", "");
+     fd.append("verify", ""); */
+    alert(this.eid);
+    console.log(fd);
+    this.data.addUser(fd).subscribe(
+      (data: any) => {
+        alert("done");
+        console.log(data);
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+
+      }
+    );
+    /* this.data.addUser(this.eid, this.uname, this.pass, this.image, this.gender, this.mobile, this.myDate).subscribe(
       (resp) => { alert("Success") },
       (err) => alert("Signup Later")
-    );
+    ); */
   }
   onfile() {
     this.fileChooser.open().then(uri => console.log(uri))

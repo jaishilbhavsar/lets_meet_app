@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import { Post_Class } from '../../shared/post_class';
+import { Post_Class, Post_Update_Class } from '../../shared/post_class';
 
 
 /*
@@ -15,6 +15,7 @@ export class PostDbProvider {
 
   url: string = "https://letsmeetbackend.herokuapp.com/post/";
   url1: string = "https://letsmeetbackend.herokuapp.com/deletePost/";
+  url2: string = 'https://letsmeetbackend.herokuapp.com/updatePostOnly/';
 
   constructor(public http: HttpClient) {
     console.log('Hello PostDbProvider Provider');
@@ -33,14 +34,19 @@ export class PostDbProvider {
     return this.http.post(this.url, fd);
   }
 
-  editPost(post: Post_Class) {
+  editPostOnly(post: Post_Update_Class) {
     let body = JSON.stringify(post);
-    return this.http.put(this.url + post.post_id, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.put(this.url2, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  }
+
+  editPost(fd: FormData) {
+    return this.http.put(this.url, fd);
   }
 
   deletePost(post) {
     let body = JSON.stringify(post);
     return this.http.post(this.url1, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
+
 
 }
