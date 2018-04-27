@@ -1,10 +1,14 @@
 webpackJsonp([14],{
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /***/ 348:
 =======
 /***/ 373:
 >>>>>>> 4d5e63fc115855788cfae0ccd3d53628855515d2
+=======
+/***/ 374:
+>>>>>>> beb4ec7163958b0ebf0f49223c131a007f1cb8d7
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42,8 +46,8 @@ ViewuserPageModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__viewuser__["a" /* ViewuserPage */]),
         ],
     })
-<<<<<<< HEAD
 ], ViewuserPageModule);
+<<<<<<< HEAD
 =======
 ], ContentPageModule);
 
@@ -82,6 +86,8 @@ ContentPage = __decorate([
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */]])
 ], ContentPage);
 >>>>>>> e240063853c26afd484110599946d2bd37be6bcb
+=======
+>>>>>>> beb4ec7163958b0ebf0f49223c131a007f1cb8d7
 
 //# sourceMappingURL=viewuser.module.js.map
 
