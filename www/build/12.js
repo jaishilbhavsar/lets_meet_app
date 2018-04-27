@@ -1,6 +1,6 @@
 webpackJsonp([12],{
 
-/***/ 356:
+/***/ 357:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__item_create__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__item_create__ = __webpack_require__(377);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,7 +44,7 @@ ItemCreatePageModule = __decorate([
 
 /***/ }),
 
-/***/ 376:
+/***/ 377:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -166,14 +166,8 @@ var ItemCreatePage = (function () {
     };
     ItemCreatePage.prototype.processWebImage = function (event) {
         var _this = this;
-        var reader = new FileReader();
-        reader.onload = function (readerEvent) {
-            var imageData = readerEvent.target.result;
-            _this.form.patchValue({ 'profilePic': imageData });
-        };
-        reader.readAsDataURL(event.target.files[0]);
         this.selectedFile = event.target.files[0];
-        //alert(this.selectedFile.type);
+        console.log(this.selectedFile);
         if (this.selectedFile.type != 'image/png' && this.selectedFile.type != 'image/jpeg') {
             this.selectedFile = null;
             this.isReadyToSave = this.form.invalid;
@@ -183,6 +177,14 @@ var ItemCreatePage = (function () {
                 closeButtonText: 'Ok'
             });
             toast.present();
+        }
+        else {
+            var reader = new FileReader();
+            reader.onload = function (readerEvent) {
+                var imageData = readerEvent.target.result;
+                _this.form.patchValue({ 'profilePic': imageData });
+            };
+            reader.readAsDataURL(event.target.files[0]);
         }
     };
     ItemCreatePage.prototype.getProfileImageStyle = function () {
@@ -213,18 +215,6 @@ var ItemCreatePage = (function () {
                 duration: 3000,
                 message: "Added ..."
             });
-            /*this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, this.community_id, 'true')).subscribe(
-              (data: any) => {
-                this.viewCtrl.dismiss();
-                t1.present();
-              },
-              function (e) {
-                alert(e);
-              },
-              function () {
-                l1.dismiss();
-              }
-            );*/
             var fd = new FormData();
             fd.append("event_id", _this.event_id);
             fd.append("event_name", _this.event_name);
@@ -237,21 +227,6 @@ var ItemCreatePage = (function () {
             fd.append("fk_user_id", _this.created_by);
             fd.append("fk_comm_id", _this.community_id);
             fd.append("event_verify", "true");
-            /*this.http.post("http://localhost:3000/event/", fd).subscribe(
-              (data: any) => {
-                console.log(data);
-                console.log(this.selectedFile);
-                console.log(this.selectedFile.name);
-                this.viewCtrl.dismiss();
-                t1.present();
-              },
-              function (e) {
-                alert(e);
-              },
-              function () {
-                l1.dismiss();
-              }
-            )*/
             _this._data.addEvent(fd).subscribe(function (data) {
                 console.log(data);
                 _this.viewCtrl.dismiss();
@@ -262,7 +237,6 @@ var ItemCreatePage = (function () {
                 l1.dismiss();
             });
         });
-        // this.viewCtrl.dismiss(this.form.value);
     };
     return ItemCreatePage;
 }());
@@ -272,11 +246,7 @@ __decorate([
 ], ItemCreatePage.prototype, "fileInput", void 0);
 ItemCreatePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-<<<<<<< HEAD
-        selector: 'page-item-create',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\item-create\item-create.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Create Event</ion-title>\n\n    <ion-buttons start>\n\n      <button ion-button (click)="cancel()">\n\n        <span color="primary" showWhen="ios">\n\n          {{ \'CANCEL_BUTTON\' | translate }}\n\n        </span>\n\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>\n\n        <span color="primary" showWhen="ios">\n\n          {{ \'DONE_BUTTON\' | translate }}\n\n        </span>\n\n        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <form *ngIf="form" [formGroup]="form" (ngSubmit)="addItem()">\n\n    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n\n    <div class="profile-image-wrapper" (click)="getPicture()">\n\n      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n\n        <ion-icon name="add"></ion-icon>\n\n        <div>\n\n          {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n\n        </div>\n\n      </div>\n\n      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n\n    </div>\n\n    <ion-item *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">\n\n      <p>Please Choose an Image.</p>\n\n    </ion-item>\n\n\n\n    <ion-list>\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="event_name" [(ngModel)]="event_name" placeholder="Event Name"></ion-input>\n\n      </ion-item>\n\n      <ion-item *ngIf="!this.form.controls.event_name.valid  && this.form.controls.event_name.dirty">\n\n        <p>Please Enter an Event Name.</p>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-textarea placeholder="Event Description" formControlName="event_des" [(ngModel)]="event_des"></ion-textarea>\n\n      </ion-item>\n\n      <ion-item *ngIf="!this.form.controls.event_des.valid  && this.form.controls.event_des.dirty">\n\n        <p>Please Enter Event Description with minimum length of 15.</p>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label>Event Starting Time</ion-label>\n\n        <ion-datetime displayFormat="hh:mm A" formControlName="event_s_time" pickerFormat="hh mm A" [(ngModel)]="event_s_time"></ion-datetime>\n\n      </ion-item>\n\n      <ion-item *ngIf="!this.form.controls.event_s_time.valid  && this.form.controls.event_s_time.dirty">\n\n        <p>Please choose Event Starting Time.</p>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label>Event Ending Time</ion-label>\n\n        <ion-datetime displayFormat="hh:mm A" formControlName="event_e_time" pickerFormat="hh mm A" [(ngModel)]="event_e_time"></ion-datetime>\n\n      </ion-item>\n\n      <ion-item *ngIf="!this.form.controls.event_e_time.valid  && this.form.controls.event_e_time.dirty">\n\n        <p>Please choose Event Ending Time.</p>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label>Event Date</ion-label>\n\n        <ion-datetime displayFormat="DD/MMMM/YYYY" min="{{today}}" formControlName="event_date" pickerFormat="DD MMMM YYYY" [(ngModel)]="event_date"></ion-datetime>\n\n      </ion-item>\n\n      <ion-item *ngIf="!this.form.controls.event_date.valid  && this.form.controls.event_date.dirty">\n\n        <p>Please choose Event Date.</p>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label>Event Location</ion-label>\n\n        <ion-textarea formControlName="event_loc" [(ngModel)]="event_loc"></ion-textarea>\n\n      </ion-item>\n\n      <ion-item *ngIf="!this.form.controls.event_loc.valid  && this.form.controls.event_loc.dirty">\n\n        <p>Please Enter Event Location with minimum length of 10.</p>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label>Community Name : </ion-label>\n\n        <ion-select formControlName="community_id" [(ngModel)]="community_id">\n\n          <ion-option *ngFor="let item of arr" value="{{item.comm_id}}">\n\n            {{item.comm_name}}\n\n          </ion-option>\n\n        </ion-select>\n\n      </ion-item>\n\n      <ion-item *ngIf="!this.form.controls.community_id.valid  && this.form.controls.community_id.dirty">\n\n        <p>Please Select a Community.</p>\n\n      </ion-item>\n\n      <!--<button ion-button block (click)="onAdd()" icon-right color="danger">\n\n        Create\n\n        <ion-icon name="checkmark-circle" color="primary"></ion-icon>\n\n      </button>-->\n\n    </ion-list>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\item-create\item-create.html"*/
-=======
-        selector: 'page-item-detail',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\item-detail\item-detail.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>{{ item.name }}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <div class="item-profile" text-center #profilePic [style.background-image]="\'url(\' + item.profilePic + \')\'">\n\n  </div>\n\n\n\n  <div class="item-detail" padding>\n\n    <h2>{{item.name}}</h2>\n\n    <p>{{item.about}}</p>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\item-detail\item-detail.html"*/
->>>>>>> e240063853c26afd484110599946d2bd37be6bcb
+        selector: 'page-item-create',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\item-create\item-create.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Create Event</ion-title>\n\n    <ion-buttons start>\n\n      <button ion-button (click)="cancel()">\n\n        <span color="primary" showWhen="ios">\n\n          {{ \'CANCEL_BUTTON\' | translate }}\n\n        </span>\n\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>\n\n        <span color="primary" showWhen="ios">\n\n          {{ \'DONE_BUTTON\' | translate }}\n\n        </span>\n\n        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <form *ngIf="form" [formGroup]="form" (ngSubmit)="addItem()">\n\n    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n\n    <div class="profile-image-wrapper" (click)="getPicture()">\n\n      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n\n        <ion-icon name="add"></ion-icon>\n\n        <div>\n\n          {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n\n        </div>\n\n      </div>\n\n      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n\n    </div>\n\n    <div *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">\n\n      <p class="error">Please Choose an Image.</p>\n\n    </div>\n\n\n\n    <ion-list>\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="event_name" [(ngModel)]="event_name" placeholder="Event Name"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.event_name.valid  && this.form.controls.event_name.dirty">\n\n        <p class="error">Please Enter an Event Name.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-textarea placeholder="Event Description" formControlName="event_des" [(ngModel)]="event_des"></ion-textarea>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.event_des.valid  && this.form.controls.event_des.dirty">\n\n        <p class="error">Please Enter Event Description with minimum length of 15.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-label>Event Starting Time</ion-label>\n\n        <ion-datetime displayFormat="hh:mm A" formControlName="event_s_time" pickerFormat="hh mm A" [(ngModel)]="event_s_time"></ion-datetime>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.event_s_time.valid  && this.form.controls.event_s_time.dirty">\n\n        <p class="error">Please choose Event Starting Time.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-label>Event Ending Time</ion-label>\n\n        <ion-datetime displayFormat="hh:mm A" formControlName="event_e_time" pickerFormat="hh mm A" [(ngModel)]="event_e_time"></ion-datetime>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.event_e_time.valid  && this.form.controls.event_e_time.dirty">\n\n        <p class="error">Please choose Event Ending Time.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-label>Event Date</ion-label>\n\n        <ion-datetime displayFormat="DD/MMMM/YYYY" min="{{today}}" formControlName="event_date" pickerFormat="DD MMMM YYYY" [(ngModel)]="event_date"></ion-datetime>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.event_date.valid  && this.form.controls.event_date.dirty">\n\n        <p class="error">Please choose Event Date.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-label>Event Location</ion-label>\n\n        <ion-textarea formControlName="event_loc" [(ngModel)]="event_loc"></ion-textarea>\n\n      </ion-item>\n\n      <div class="error" *ngIf="!this.form.controls.event_loc.valid  && this.form.controls.event_loc.dirty">\n\n        <p>Please Enter Event Location with minimum length of 10.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-label>Community Name : </ion-label>\n\n        <ion-select formControlName="community_id" [(ngModel)]="community_id">\n\n          <ion-option *ngFor="let item of arr" value="{{item.comm_id}}">\n\n            {{item.comm_name}}\n\n          </ion-option>\n\n        </ion-select>\n\n      </ion-item>\n\n      <div class="error" *ngIf="!this.form.controls.community_id.valid  && this.form.controls.community_id.dirty">\n\n        <p>Please Select a Community.</p>\n\n      </div>\n\n    </ion-list>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\item-create\item-create.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */],
         __WEBPACK_IMPORTED_MODULE_5__providers_event_db_event_db__["a" /* EventDbProvider */],

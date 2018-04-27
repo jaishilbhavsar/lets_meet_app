@@ -251,30 +251,28 @@ export class ViewCommunityPage {
       );
 
       this._commEvent.getCommunityByPastEvent(this.comm_id).subscribe(
-        (data: any) => {
-          this.comm_past_event = data;
+        (data:any)=>{
+          this.comm_past_event=data;
         },
-        function (e) {
+        function(e){
           alert(e);
         },
-        function () {
+        function(){
 
         }
 
       );
+
       this._commEvent.getCommunityByUpcomingEvent(this.comm_id).subscribe(
-        (data: any) => {
-          this.comm_upcoming_event = data;
-        },
-        function (e) {
-          alert(e);
-        },
-        function () {
 
+        (data:any)=>{
+          this.comm_upcoming_event=data;
+        },
+        function(e){
+          alert(e);
         }
 
       );
-
       let l2 = this.load.create({
         content: "Loading..."
       });
