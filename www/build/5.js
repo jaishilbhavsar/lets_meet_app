@@ -1,15 +1,25 @@
 webpackJsonp([5],{
 
+<<<<<<< HEAD
 /***/ 366:
+=======
+/***/ 364:
+>>>>>>> 4d5e63fc115855788cfae0ccd3d53628855515d2
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsPageModule", function() { return TabsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoriesPageModule", function() { return StoriesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs__ = __webpack_require__(386);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stories__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(127);
+>>>>>>> 4d5e63fc115855788cfae0ccd3d53628855515d2
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,27 +30,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var TabsPageModule = (function () {
-    function TabsPageModule() {
+var StoriesPageModule = (function () {
+    function StoriesPageModule() {
     }
-    return TabsPageModule;
+    return StoriesPageModule;
 }());
-TabsPageModule = __decorate([
+StoriesPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__tabs__["a" /* TabsPage */],
+            __WEBPACK_IMPORTED_MODULE_2__stories__["a" /* StoriesPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__tabs__["a" /* TabsPage */]),
-            __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__stories__["a" /* StoriesPage */]),
+            __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["b" /* TranslateModule */].forChild()
         ],
-        exports: [
-            __WEBPACK_IMPORTED_MODULE_3__tabs__["a" /* TabsPage */]
-        ]
     })
-], TabsPageModule);
+], StoriesPageModule);
 
-//# sourceMappingURL=tabs.module.js.map
+//# sourceMappingURL=stories.module.js.map
 
 /***/ }),
 
@@ -48,11 +55,13 @@ TabsPageModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StoriesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__story_detail_story_detail__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__create_story_create_story__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_story_db_story_db__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -68,40 +77,62 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-//import { Tab6Root } from "../pages";
-var TabsPage = (function () {
-    function TabsPage(navCtrl, translateService) {
+/**
+ * Generated class for the StoriesPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var StoriesPage = (function () {
+    function StoriesPage(navCtrl, navParams, _data, storage) {
         this.navCtrl = navCtrl;
-        this.translateService = translateService;
-        this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__pages__["c" /* Tab1Root */];
-        this.tab2Root = __WEBPACK_IMPORTED_MODULE_3__pages__["d" /* Tab2Root */];
-        this.tab3Root = __WEBPACK_IMPORTED_MODULE_3__pages__["e" /* Tab3Root */];
-        this.tab4Root = __WEBPACK_IMPORTED_MODULE_3__pages__["f" /* Tab4Root */];
-        this.tab5Root = __WEBPACK_IMPORTED_MODULE_3__pages__["g" /* Tab5Root */];
-        //tab6Root: any = Tab6Root;
-        this.tab1Title = "Home";
-        this.tab2Title = "Stories";
-        this.tab3Title = "Search";
-        this.tab4Title = "Communities";
-        this.tab5Title = "Users";
-        /*translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE']).subscribe(values => {
-          this.tab1Title = values['TAB1_TITLE'];
-          this.tab2Title = values['TAB2_TITLE'];
-          this.tab3Title = values['TAB3_TITLE'];
-        });*/
+        this.navParams = navParams;
+        this._data = _data;
+        this.storage = storage;
+        this.arr = [];
+        this.arr1 = [];
     }
-    return TabsPage;
+    StoriesPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        console.log('ionViewDidLoad StoriesPage');
+        this.storage.get('uid').then(function (val) {
+            _this.user_id = val;
+            _this._data.getStoriesById(_this.user_id).subscribe(function (data) {
+                _this.arr = data;
+            }, function (err) {
+                alert(err);
+            }, function () {
+            });
+        });
+        this._data.getAllStories().subscribe(function (data) {
+            _this.arr1 = data;
+        }, function (err) {
+            alert(err);
+        }, function () {
+        });
+    };
+    StoriesPage.prototype.viewStory = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__story_detail_story_detail__["a" /* StoryDetailPage */]);
+    };
+    StoriesPage.prototype.addStory = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__create_story_create_story__["a" /* CreateStoryPage */]);
+    };
+    return StoriesPage;
 }());
-TabsPage = __decorate([
+StoriesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+<<<<<<< HEAD
+        selector: 'page-stories',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\stories\stories.html"*/'<!--\n\n  Generated template for the StoriesPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>Nearby Happening Stories</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="addStory()">\n\n        <ion-icon name="add"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <!--<ion-fab top right edge>\n\n    <button ion-fab mini (click)="addStory()">\n\n      <ion-icon  name="add"></ion-icon>\n\n    </button>\n\n  </ion-fab>-->\n\n  \n\n  <h4><font color="red">My Story </font></h4>\n\n\n\n  <ion-item *ngFor="let item of arr">\n\n    <ion-avatar item-start>\n\n      <img src="{{item.story_pic}}">\n\n    </ion-avatar>\n\n    <h2>{{item.user_name}}</h2>\n\n    <p>{{item.story_time | date:"HH:mm"}}</p>\n\n  </ion-item>\n\n  \n\n  <h4><font color="red">Recent Updates</font></h4>\n\n   <ion-item *ngFor="let item of arr1">\n\n    <ion-avatar item-start>\n\n      <img src="{{item.story_pic}}">\n\n    </ion-avatar>\n\n    <h2>{{item.user_name}}</h2>\n\n    <p>{{item.story_time | date:"HH:mm"}}</p>\n\n  </ion-item>\n\n  \n\n</ion-content>'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\stories\stories.html"*/,
+=======
         selector: 'page-tabs',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\tabs\tabs.html"*/'<ion-tabs class="tabs-icon-text" >\n\n  <ion-tab [root]="tab1Root"  [tabTitle]="tab1Title" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab4Root" [tabTitle]="tab2Title" tabIcon="aperture"></ion-tab>\n\n  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="search"></ion-tab>\n\n  <ion-tab [root]="tab2Root" [tabTitle]="tab4Title" tabIcon="globe"></ion-tab>\n\n  <ion-tab [root]="tab5Root" [tabTitle]="tab5Title" tabIcon="contact"></ion-tab>\n\n  <!--<ion-tab tabIcon="home" [tabTitle]="tab6Title" [root]="tab6Root" ></ion-tab>-->\n\n</ion-tabs>'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\tabs\tabs.html"*/
+>>>>>>> e240063853c26afd484110599946d2bd37be6bcb
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]])
-], TabsPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_4__providers_story_db_story_db__["a" /* StoryDbProvider */],
+        __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]])
+], StoriesPage);
 
-//# sourceMappingURL=tabs.js.map
+//# sourceMappingURL=stories.js.map
 
 /***/ })
 

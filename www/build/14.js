@@ -1,15 +1,24 @@
 webpackJsonp([14],{
 
+<<<<<<< HEAD
 /***/ 348:
+=======
+/***/ 373:
+>>>>>>> 4d5e63fc115855788cfae0ccd3d53628855515d2
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContentPageModule", function() { return ContentPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewuserPageModule", function() { return ViewuserPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__content__ = __webpack_require__(375);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__viewuser__ = __webpack_require__(41);
+>>>>>>> 4d5e63fc115855788cfae0ccd3d53628855515d2
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,25 +28,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var ContentPageModule = (function () {
-    function ContentPageModule() {
+var ViewuserPageModule = (function () {
+    function ViewuserPageModule() {
     }
-    return ContentPageModule;
+    return ViewuserPageModule;
 }());
-ContentPageModule = __decorate([
+ViewuserPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__content__["a" /* ContentPage */],
+            __WEBPACK_IMPORTED_MODULE_2__viewuser__["a" /* ViewuserPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__content__["a" /* ContentPage */]),
-            __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__viewuser__["a" /* ViewuserPage */]),
         ],
-        exports: [
-            __WEBPACK_IMPORTED_MODULE_3__content__["a" /* ContentPage */]
-        ]
     })
+<<<<<<< HEAD
+], ViewuserPageModule);
+=======
 ], ContentPageModule);
 
 //# sourceMappingURL=content.module.js.map
@@ -74,8 +81,9 @@ ContentPage = __decorate([
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */]])
 ], ContentPage);
+>>>>>>> e240063853c26afd484110599946d2bd37be6bcb
 
-//# sourceMappingURL=content.js.map
+//# sourceMappingURL=viewuser.module.js.map
 
 /***/ })
 
