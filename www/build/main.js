@@ -1385,47 +1385,47 @@ var map = {
 		8
 	],
 	"../pages/settings/settings.module": [
-		375,
+		363,
 		7
 	],
 	"../pages/signup/signup.module": [
-		363,
+		364,
 		6
 	],
 	"../pages/stories/stories.module": [
-		364,
+		365,
 		5
 	],
 	"../pages/story-detail/story-detail.module": [
-		365,
+		366,
 		19
 	],
 	"../pages/tabs/tabs.module": [
-		366,
+		367,
 		4
 	],
 	"../pages/tutorial/tutorial.module": [
-		367,
+		368,
 		3
 	],
 	"../pages/users/users.module": [
-		368,
+		369,
 		2
 	],
 	"../pages/view-community/view-community.module": [
-		369,
+		370,
 		18
 	],
 	"../pages/view-event/view-event.module": [
-		370,
+		371,
 		17
 	],
 	"../pages/view-past-event/view-past-event.module": [
-		371,
+		372,
 		16
 	],
 	"../pages/view-post/view-post.module": [
-		372,
+		374,
 		15
 	],
 	"../pages/viewuser/viewuser.module": [
@@ -1433,7 +1433,7 @@ var map = {
 		14
 	],
 	"../pages/welcome/welcome.module": [
-		374,
+		375,
 		1
 	]
 };
@@ -1918,8 +1918,9 @@ var LoginproProvider = (function () {
         this.account.user_id = eid;
         this.account.user_pass = pass;
         this.account.token = token;
+        console.log(this.account);
         var body = JSON.stringify(this.account);
-        return this.http.post(this.url, body, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Content-Type', 'application/json') });
+        return this.http.post(this.urlsignup, body, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Content-Type', 'application/json') });
     };
     /* addUser(eid, uname, pass, image, gender, mobile, myDate) {
       //let header = new Headers({ 'Content-Type': 'application/json' });
@@ -2024,9 +2025,10 @@ var LoginproProvider = (function () {
 }());
 LoginproProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object])
 ], LoginproProvider);
 
+var _a, _b;
 //# sourceMappingURL=loginpro.js.map
 
 /***/ }),
@@ -3236,6 +3238,7 @@ AppModule = __decorate([
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stories/stories.module#StoriesPageModule', name: 'StoriesPage', segment: 'stories', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/story-detail/story-detail.module#StoryDetailPageModule', name: 'StoryDetailPage', segment: 'story-detail', priority: 'low', defaultHistory: [] },
@@ -3245,10 +3248,9 @@ AppModule = __decorate([
                     { loadChildren: '../pages/view-community/view-community.module#ViewCommunityPageModule', name: 'ViewCommunityPage', segment: 'view-community', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/view-event/view-event.module#ViewEventPageModule', name: 'ViewEventPage', segment: 'view-event', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/view-past-event/view-past-event.module#ViewPastEventPageModule', name: 'view-past-event', segment: 'view-past-event', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/view-post/view-post.module#ViewPostPageModule', name: 'ViewPostPage', segment: 'view-post', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/viewuser/viewuser.module#ViewuserPageModule', name: 'ViewuserPage', segment: 'viewuser', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/view-post/view-post.module#ViewPostPageModule', name: 'ViewPostPage', segment: 'view-post', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_10__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
