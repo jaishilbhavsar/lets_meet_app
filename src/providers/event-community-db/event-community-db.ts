@@ -13,6 +13,8 @@ export class EventCommunityDbProvider {
 
   url: string = "https://letsmeetbackend.herokuapp.com/eventCommunity/";
   url1: string = "https://letsmeetbackend.herokuapp.com/eventNotReg/";
+  url2: string = "http://localhost:3000/comm_past_event/";
+  url3: string = "http://localhost:3000/comm_upcoming_event/";
 
   constructor(public http: HttpClient) {
     console.log('Hello EventCommunityDbProvider Provider');
@@ -30,4 +32,11 @@ export class EventCommunityDbProvider {
     return this.http.get(this.url);
   }
 
+  getCommunityByPastEvent(id) {
+    return this.http.get(this.url2 + id);
+  }
+
+  getCommunityByUpcomingEvent(id) {
+    return this.http.get(this.url3 + id);
+  }
 }

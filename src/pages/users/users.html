@@ -34,11 +34,7 @@
     Following
     <ion-badge item-end>{{followingcount}}</ion-badge>
   </ion-item>
-  <ion-item>
-    <ion-icon name="people" item-start></ion-icon>
-    Communities
-    <ion-badge item-end>{{commcount}}</ion-badge>
-  </ion-item>
+ 
 
   <div padding>
     <ion-segment [(ngModel)]="segme">
@@ -102,19 +98,13 @@
 
     <ion-list>
       <ion-item (click)="onChangePassword()">
-        <ion-avatar item-start>
-          <ion-icon></ion-icon>
-        </ion-avatar>
-        <h2>Change Password</h2>
+        <h2>
+            <ion-icon name="key" md="md-key">&nbsp;&nbsp;</ion-icon> Change Password</h2>
       </ion-item>
-    </ion-list>
-
-    <ion-list>
+   
       <ion-item (click)="onLogout()">
-        <ion-avatar item-start>
-          <ion-icon></ion-icon>
-        </ion-avatar>
-        <h2>Log Out</h2>
+        <h2>
+            <ion-icon name="power" md="md-key">&nbsp;&nbsp;</ion-icon> Log Out</h2>
       </ion-item>
     </ion-list>
   </div>

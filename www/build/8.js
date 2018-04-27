@@ -5,11 +5,11 @@ webpackJsonp([8],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingsPageModule", function() { return SettingsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchPageModule", function() { return SearchPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings__ = __webpack_require__(382);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__search__ = __webpack_require__(382);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,27 +20,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SettingsPageModule = (function () {
-    function SettingsPageModule() {
+var SearchPageModule = (function () {
+    function SearchPageModule() {
     }
-    return SettingsPageModule;
+    return SearchPageModule;
 }());
-SettingsPageModule = __decorate([
+SearchPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__settings__["a" /* SettingsPage */],
+            __WEBPACK_IMPORTED_MODULE_3__search__["a" /* SearchPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__settings__["a" /* SettingsPage */]),
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__search__["a" /* SearchPage */]),
             __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_3__settings__["a" /* SettingsPage */]
+            __WEBPACK_IMPORTED_MODULE_3__search__["a" /* SearchPage */]
         ]
     })
-], SettingsPageModule);
+], SearchPageModule);
 
-//# sourceMappingURL=settings.module.js.map
+//# sourceMappingURL=search.module.js.map
 
 /***/ }),
 
@@ -48,18 +48,15 @@ SettingsPageModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__view_community_view_community__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_community_comm_member_community_comm_member__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_providers__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__create_community_create_community__ = __webpack_require__(241);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_community_member_db_community_member_db__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_storage__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_loginpro_loginpro__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__view_community_view_community__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__viewuser_viewuser__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage_dist_storage__ = __webpack_require__(250);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -75,146 +72,105 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-//import { Comm_member_class } from "../../shared/comm_member_class";
-//import { Community_comm_member } from "../../shared/community_comm_member_class";
 
 
-
-
-
-/**
- * The Settings page is a simple form that syncs with a Settings provider
- * to enable the user to customize settings for the app.
- *
- */
-var SettingsPage = SettingsPage_1 = (function () {
-    function SettingsPage(navCtrl, settings, formBuilder, navParams, translate, _data, load, toast, comm_member, storage, community_comm_member) {
+var SearchPage = (function () {
+    function SearchPage(navCtrl, storage, load, _data1, _data, navParams, items) {
         this.navCtrl = navCtrl;
-        this.settings = settings;
-        this.formBuilder = formBuilder;
-        this.navParams = navParams;
-        this.translate = translate;
-        this._data = _data;
-        this.load = load;
-        this.toast = toast;
-        this.comm_member = comm_member;
         this.storage = storage;
-        this.community_comm_member = community_comm_member;
+        this.load = load;
+        this._data1 = _data1;
+        this._data = _data;
+        this.navParams = navParams;
+        this.items = items;
+        this.currentItems = [];
+        //items:any=[];
+        this.user = "allusers";
+        this.txtsearch = '';
         this.arr = [];
         this.arr1 = [];
-        this.user_id = "";
-        this.txtsearch = '';
-        this.flag = false;
-        this.settingsReady = false;
-        this.profileSettings = {
-            page: 'profile',
-            pageTitleKey: 'SETTINGS_PAGE_PROFILE'
-        };
-        this.page = 'main';
-        this.pageTitleKey = 'SETTINGS_TITLE';
-        this.subSettings = SettingsPage_1;
+        this.comm_arr = [];
+        this.comm_arr1 = [];
+        this.search = "user";
+        this.topComm = [];
+        this.currentItems = this.items.query();
     }
-    SettingsPage.prototype.addCommunity = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__create_community_create_community__["a" /* CreateCommunityPage */]);
-    };
-    SettingsPage.prototype._buildForm = function () {
+    SearchPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        var group = {
-            option1: [this.options.option1],
-            option2: [this.options.option2],
-            option3: [this.options.option3]
-        };
-        switch (this.page) {
-            case 'main':
-                break;
-            case 'profile':
-                group = {
-                    option4: [this.options.option4]
-                };
-                break;
-        }
-        this.form = this.formBuilder.group(group);
-        // Watch the form for changes, and
-        this.form.valueChanges.subscribe(function (v) {
-            _this.settings.merge(_this.form.value);
-        });
-    };
-    SettingsPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        // Build an empty form for the template to render
-        this.form = this.formBuilder.group({});
-        var l1 = this.load.create({
-            content: "Loading..."
-        });
-        l1.present();
-        this._data.getAllCommunities().subscribe(function (data) {
+        this._data.getAllUser().subscribe(function (data) {
             _this.arr = data;
-            _this.arr1 = data;
+        }, function (e) {
+            alert(e);
+        });
+        this._data1.getAllCommunities().subscribe(function (data) {
+            _this.comm_arr1 = data;
+            //this.arr1 = data;
         }, function (err) {
             alert(err);
         }, function () {
-            l1.dismiss();
+            //l1.dismiss();
+        });
+        var l2 = this.load.create({
+            content: "Loading..."
+        });
+        l2.present();
+        this._data1.gettopcommunity().subscribe(function (data) {
+            _this.topComm = data;
+        }, function (e) {
+            alert(e);
+        }, function () {
+            l2.dismiss();
         });
     };
-    SettingsPage.prototype.ionViewWillEnter = function () {
-        var _this = this;
-        // Build an empty form for the template to render
-        this.form = this.formBuilder.group({});
-        this.page = this.navParams.get('page') || this.page;
-        this.pageTitleKey = this.navParams.get('pageTitleKey') || this.pageTitleKey;
-        this.translate.get(this.pageTitleKey).subscribe(function (res) {
-            _this.pageTitle = res;
-        });
-        this.settings.load().then(function () {
-            _this.settingsReady = true;
-            _this.options = _this.settings.allSettings;
-            _this._buildForm();
-        });
-    };
-    SettingsPage.prototype.ngOnChanges = function () {
-        console.log('Ng All Changes');
-    };
-    SettingsPage.prototype.onSearch = function () {
+    /**
+     * Perform a service for the proper items.
+     */
+    /*getUsers(us) {
+      this.arr=this.arr1;
+      let val = us.target.value;
+      if (val && val.trim() != '') {
+        this.arr1 = this.arr.filter((x) =>
+          x.user_name.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) > -1);
+      }
+     
+    }*/
+    /**
+     * Navigate to the detail page for this item.
+     */
+    /* openItem(item: Item) {
+       this.navCtrl.push('ItemDetailPage', {
+         item: item
+       });
+     }*/
+    SearchPage.prototype.onSearch = function () {
         var _this = this;
         if (this.txtsearch != '') {
-            this.arr = this.arr.filter(function (x) { return x.comm_name.startsWith(_this.txtsearch); });
+            this.arr1 = this.arr.filter(function (x) { return x.user_name.toLocaleLowerCase().indexOf(_this.txtsearch.toLocaleLowerCase()) > -1; });
+            //   this.arr1 = this.arr.filter((x) => x..startsWith(this.txtsearch))
+            this.comm_arr = this.comm_arr1.filter(function (x) { return x.comm_name.startsWith(_this.txtsearch); });
         }
         else {
-            this.arr = this.arr1;
+            this.arr1 = null;
+            this.comm_arr = null;
         }
     };
-    SettingsPage.prototype.onSearchIcon = function () {
-        if (this.flag == true) {
-            this.flag = false;
-        }
-        else {
-            this.flag = true;
-        }
-    };
-    SettingsPage.prototype.onView = function (comm_id) {
+    SearchPage.prototype.onClick = function (comm_id) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__view_community_view_community__["a" /* ViewCommunityPage */], { c_id: comm_id });
     };
-    return SettingsPage;
+    SearchPage.prototype.onUser = function (user_id) {
+        this.storage.set('viewid', user_id);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__viewuser_viewuser__["a" /* ViewuserPage */]);
+    };
+    return SearchPage;
 }());
-SettingsPage = SettingsPage_1 = __decorate([
+SearchPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-settings',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\settings\settings.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>Communities</ion-title>\n\n    <ion-buttons start>\n\n      <button (click)="onSearchIcon()" ion-button icon-only>\n\n        <ion-icon name=\'search\'></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="addCommunity()">\n\n        <ion-icon name="add"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-searchbar *ngIf="flag" [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by community"></ion-searchbar>\n\n  <ion-card *ngFor="let item of arr ">\n\n    <!--  <img src="assets/img/cjpg.jpg"/>-->\n\n    \n\n    <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{item.comm_pic}}" (click)="onView(item.comm_id)" height="120" width="100" />\n\n    <ion-row>\n\n      <ion-col col-12>\n\n        <ion-card-content >\n\n          <ion-card-title (click)="onView(item.comm_id)">\n\n            <b>{{item.comm_name}}</b>\n\n          \n\n        </ion-card-title>\n\n           <b> Created by : </b> <h4>{{item.user_name}}</h4>\n\n          \n\n        </ion-card-content>\n\n      </ion-col>\n\n   <!-- <ion-col col-4>\n\n        \n\n        <button ion-button (click)="onJoin(item.comm_id)" color="danger" small align="center">Join Now</button>\n\n\n\n      </ion-col>-->\n\n    </ion-row>\n\n  </ion-card>\n\n\n\n  <!--  <ion-card>\n\n        \n\n            <img src="assets/img/cjpg.jpg" />\n\n        \n\n            <ion-card-content>\n\n              <ion-card-title>\n\n                Community 1\n\n              </ion-card-title>\n\n              \n\n            </ion-card-content>\n\n        \n\n            <ion-item>\n\n              <ion-icon name=\'people\' item-start style="color: #d03e84"></ion-icon>\n\n              Group Members\n\n              <ion-badge item-end>9</ion-badge>\n\n            </ion-item>\n\n\n\n            <button ion-button block >Join Now</button>\n\n        \n\n          </ion-card>-->\n\n  <!--<ion-item>\n\n              <ion-icon name=\'logo-twitter\' item-start style="color: #55acee"></ion-icon>\n\n              Followers\n\n              <ion-badge item-end>260k</ion-badge>\n\n            </ion-item>-->\n\n\n\n\n\n\n\n</ion-content>'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\settings\settings.html"*/
+        selector: 'page-search',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\search\search.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>Search</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-searchbar [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by User"></ion-searchbar>\n\n\n\n  <ion-toolbar no-border-top>\n\n    <ion-segment [(ngModel)]="search">\n\n      <ion-segment-button value="community">\n\n        Comminity\n\n      </ion-segment-button>\n\n      <ion-segment-button value="user">\n\n        User\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </ion-toolbar>\n\n\n\n  <div [ngSwitch]="search">\n\n    <ion-list *ngSwitchCase="\'community\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of comm_arr">\n\n          <ion-avatar item-start>\n\n            <img src="{{item.comm_pic}}">\n\n          </ion-avatar>\n\n          <h3 (click)="onClick(item.comm_id)">{{item.comm_name}} </h3>\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'user\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of arr1" (click)="onUser(item.user_id)">\n\n          <ion-avatar item-start>\n\n            <img src="{{item.user_pic}}">\n\n          </ion-avatar>\n\n          <h3>{{item.user_name}}</h3>\n\n        </ion-item>\n\n      </ion-list>\n\n\n\n\n\n    </ion-list>\n\n  </div>\n\n\n\n\n\n\n\n  <!--<ion-list>\n\n    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">\n\n      <ion-avatar item-start>\n\n        <img [src]="item.profilePic" />\n\n      </ion-avatar>\n\n      <h2>{{item.name}}</h2>\n\n      <p>{{item.about}}</p>\n\n      <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>\n\n    </button>\n\n  </ion-list>-->\n\n\n\n\n\n\n\n\n\n<!--\n\n  <h4>Top Rated Communities</h4>\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col *ngFor="let item of topComm">\n\n        <ion-card>\n\n          <img src="assets/img/communities/{{item.comm_pic}}" class="imgComm" />\n\n          <ion-card-content>\n\n            {{item.comm_name}}\n\n              <button ion-button small>Join Now</button>\n\n          </ion-card-content>\n\n        </ion-card>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n</ion-content>-->\n\n<!--  <ion-col>\n\n        <ion-card>\n\n          <img src="assets/img/huddle1.jpg" class="imgComm" />\n\n          <ion-card-content>\n\n            Community 2\n\n            <button ion-button small>Join Now</button>\n\n          </ion-card-content>\n\n        </ion-card>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n    <ion-row>\n\n      <ion-col>\n\n        <ion-card>\n\n          <img src="assets/img/huddle1.jpg" class="imgComm" />\n\n          <ion-card-content>\n\n            Community 3\n\n            <button ion-button small>Join Now</button>\n\n          </ion-card-content>\n\n        </ion-card>\n\n      </ion-col>\n\n      <ion-col>\n\n        <ion-card>\n\n          <img src="assets/img/huddle1.jpg" class="imgComm" />\n\n          <ion-card-content>\n\n            Community 4\n\n            <button ion-button small>Join Now</button>\n\n          </ion-card-content>\n\n        </ion-card>\n\n      </ion-col>-->'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\search\search.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_7__providers_providers__["c" /* Settings */],
-        __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
-        __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__["a" /* ComminityDbTsProvider */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_9__providers_community_member_db_community_member_db__["a" /* CommunityMemberDbProvider */],
-        __WEBPACK_IMPORTED_MODULE_10__ionic_storage__["b" /* Storage */],
-        __WEBPACK_IMPORTED_MODULE_6__providers_community_comm_member_community_comm_member__["a" /* CommunityCommMemberProvider */]])
-], SettingsPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_7__ionic_storage_dist_storage__["a" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__["a" /* ComminityDbTsProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_loginpro_loginpro__["a" /* LoginproProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* Items */]])
+], SearchPage);
 
-var SettingsPage_1;
-//# sourceMappingURL=settings.js.map
+//# sourceMappingURL=search.js.map
 
 /***/ })
 
