@@ -13,10 +13,10 @@ import { email_class } from '../../shared/email_class';
 */
 @Injectable()
 export class LoginproProvider {
-  account: { user_id: string, user_pass: string,token:string } = {
+  account: { user_id: string, user_pass: string, token: string } = {
     user_id: '',
     user_pass: '',
-    token:''
+    token: ''
   };
   useradd: { user_id: string, user_name: string, user_pass: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
     user_id: '',
@@ -29,12 +29,13 @@ export class LoginproProvider {
   };
 
   follow: { fk_user_id: string, fk_us_id: string } = {
-    fk_user_id:'',
-    fk_us_id:''
+    fk_user_id: '',
+    fk_us_id: ''
   };
-  chpass: { user_id: string, user_pass: string } = {
+  chpass: { user_id: string, user_pass: string, token: string } = {
     user_id: '',
-    user_pass: ''
+    user_pass: '',
+    token: ''
   };
   userupdate: { user_id: string, user_name: string, user_pic: string, gender: string, user_mob_no: string, user_bdate: Date } = {
     user_id: '',
@@ -50,12 +51,12 @@ export class LoginproProvider {
   url: string = "https://letsmeetbackend.herokuapp.com/login";
   urlsignup: string = "https://letsmeetbackend.herokuapp.com/user/";
 
-  doLogin(eid, pass,token) {
+  doLogin(eid, pass, token) {
     //let header = new Headers({ 'Content-Type': 'application/json' });
     //let ro = new RequestOptions({ headers: header });
     this.account.user_id = eid;
     this.account.user_pass = pass;
-    this.account.token=token;
+    this.account.token = token;
     let body = JSON.stringify(this.account);
     return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
@@ -75,7 +76,7 @@ export class LoginproProvider {
 
   addUser(fd: FormData) {
     console.log(fd);
-    return this.http.post("http://localhost:3000/user/", fd);
+    return this.http.post(this.urlsignup, fd);
   }
   updateUser(id, uname, image, gender, mobile, mydate) {
     // let header = new Headers({ 'Content-Type': 'application/json' });
@@ -151,27 +152,24 @@ export class LoginproProvider {
     return this.http.put(this.urlchangepass, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
     //"https://letsmeetbackend.herokuapp.com/changepassword/"
   }
-  iffollowing(user_id,us_id)
-  {
-    this.follow.fk_user_id=user_id;
-    this.follow.fk_us_id=us_id;
-    let body=JSON.stringify(this.follow);
+  iffollowing(user_id, us_id) {
+    this.follow.fk_user_id = user_id;
+    this.follow.fk_us_id = us_id;
+    let body = JSON.stringify(this.follow);
     return this.http.post("http://localhost:3000/iffollowing/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  insertfollower(user_id,us_id)
-  {
-    this.follow.fk_user_id=user_id;
-    this.follow.fk_us_id=us_id;
-    let body=JSON.stringify(this.follow);
+  insertfollower(user_id, us_id) {
+    this.follow.fk_user_id = user_id;
+    this.follow.fk_us_id = us_id;
+    let body = JSON.stringify(this.follow);
     return this.http.post("http://localhost:3000/insertfollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  deletefollower(user_id,us_id)
-  {
-    this.follow.fk_user_id=user_id;
-    this.follow.fk_us_id=us_id;
-    let body=JSON.stringify(this.follow);
+  deletefollower(user_id, us_id) {
+    this.follow.fk_user_id = user_id;
+    this.follow.fk_us_id = us_id;
+    let body = JSON.stringify(this.follow);
     return this.http.post("http://localhost:3000/deletefollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  
+
 
 }
