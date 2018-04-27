@@ -42,7 +42,7 @@ export class CreatePostPage {
     public formBuilder: FormBuilder
   ) {
     this.form = formBuilder.group({
-      profilePic: [''],
+      profilePic: ['', Validators.required],
       post_title: ['', Validators.required],
       post_des: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(1500), Validators.required])]
     });

@@ -13,8 +13,8 @@ export class EventCommunityDbProvider {
 
   url: string = "https://letsmeetbackend.herokuapp.com/eventCommunity/";
   url1: string = "https://letsmeetbackend.herokuapp.com/eventNotReg/";
-  url2: string = "http://localhost:3000/comm_past_event/";
-  url3: string = "http://localhost:3000/comm_upcoming_event/";
+  url2: string = "https://letsmeetbackend.herokuapp.com/comm_past_event/";
+  url3: string = "https://letsmeetbackend.herokuapp.com/comm_upcoming_event/";
 
   constructor(public http: HttpClient) {
     console.log('Hello EventCommunityDbProvider Provider');

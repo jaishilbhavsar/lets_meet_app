@@ -16,10 +16,10 @@ export class RatingDbProvider {
     console.log('Hello RatingDbProvider Provider');
   }
 
-  url: string = "http://localhost:3000/rating/";
-  url1: string = "http://localhost:3000/ratingcount/";
-  url2: string = "http://localhost:3000/ratecount/";
-  url3: string = "http://localhost:3000/avgcount/";
+  url: string = "https://letsmeetbackend.herokuapp.com/rating/";
+  url1: string = "https://letsmeetbackend.herokuapp.com/ratingcount/";
+  url2: string = "https://letsmeetbackend.herokuapp.com/ratecount/";
+  url3: string = "https://letsmeetbackend.herokuapp.com/avgcount/";
 
 
   getRatingById(id) {

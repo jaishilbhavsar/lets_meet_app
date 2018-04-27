@@ -70,7 +70,7 @@ export class CreateCommunityPage {
     formBuilder: FormBuilder,
     public camera: Camera) {
     this.form = formBuilder.group({
-      profilePic: [''],
+      profilePic: ['', Validators.required],
       comm_name: ['', Validators.required],
       comm_des: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(280), Validators.required])]
     });

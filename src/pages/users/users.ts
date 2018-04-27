@@ -16,6 +16,9 @@ import { ChangePasswordPage } from '../change-password/change-password';
 import { Event_Comm_Rsvp } from "../../shared/event_community_rsvp_class";
 import { CommunityMemberDbProvider } from "../../providers/community-member-db/community-member-db";
 import { Community_Class } from '../settings/community_class';
+import { ViewEventPage } from '../view-event/view-event';
+import { ViewPastEventPage } from '../view-past-event/view-past-event';
+import { ViewCommunityPage } from '../view-community/view-community';
 
 /**
  * Generated class for the UsersPage page.
@@ -264,12 +267,15 @@ export class UsersPage {
   }
 
   onCLickUpcEvent(id) {
-
-
+    this.navCtrl.push(ViewEventPage, { e_id: id });
   }
 
   onCLickPastEvent(id) {
+    this.navCtrl.push(ViewPastEventPage, { e_id: id });
+  }
 
+  onCLickCommu(id) {
+    this.navCtrl.push(ViewCommunityPage, { c_id: id });
   }
 }
 // @Component({
