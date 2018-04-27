@@ -142,7 +142,11 @@ export class SignupPage {
     fd.append("gender", this.gender);
     fd.append("user_mob_no", this.mobile);
     fd.append("user_bdate", this.myDate);
+<<<<<<< HEAD
     fd.append("token", this.token);
+=======
+     fd.append("token","user");
+>>>>>>> b45c685dc8ed946c63b93d601de0d6b6a161a42e
     alert(this.eid);
     console.log(fd);
     console.log(this.token);

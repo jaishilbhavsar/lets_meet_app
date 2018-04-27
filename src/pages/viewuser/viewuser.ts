@@ -1,3 +1,4 @@
+import { EventDbProvider } from './../../providers/event-db/event-db';
 import { FollowerPage } from './../follower/follower';
 //import { EditprofilePage } from './../editprofile/editprofile';
 import { LoginproProvider } from './../../providers/loginpro/loginpro';
@@ -8,6 +9,9 @@ import { user_class } from '../login/user_class';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { follower_class } from '../../shared/follower_class';
 import { FollowingPage } from '../following/following';
+import { CommunityMemberDbProvider } from '../../providers/community-member-db/community-member-db';
+import { Event_Comm_Rsvp } from '../../shared/event_community_rsvp_class';
+import { Community_Class } from '../settings/community_class';
 
 /**
  * Generated class for the ViewuserPage page.
@@ -22,7 +26,10 @@ import { FollowingPage } from '../following/following';
   templateUrl: 'viewuser.html',
 })
 export class ViewuserPage {
-
+  segme:string="events";
+  arrUpc: Event_Comm_Rsvp[] = [];
+  arrPast: Event_Comm_Rsvp[] = [];
+  arrCommu: Community_Class[] = [];
   
   followingcount:number;
   followercount:number;
@@ -35,12 +42,14 @@ export class ViewuserPage {
   img:string="";
   pet: string = "kittens";
   isAndroid: boolean = false;
-  constructor(public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public _dataEvent: EventDbProvider,
+    public _DataCommu: CommunityMemberDbProvider,public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
 user_id:string="";
 us_id:string="";
-iffo:string="";
+iffo:boolean;
+ifunfollo:boolean;
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewuserPage');
     this.storage.get('viewid').then((val)=>{
@@ -51,19 +60,70 @@ iffo:string="";
       });
       l1.present();
       
+
+      this.storage.get('viewid').then((val) => {
+        this.uid = val;
+        this._dataEvent.getUpcEventRegUser(this.uid).subscribe(
+          (data: Event_Comm_Rsvp[]) => {
+            this.arrUpc = data;
+          },
+          function (err) {
+            alert(err);
+          },
+          function () {
+  
+          }
+        );
+      });
+  
+      this.storage.get('viewid').then((val) => {
+        this.uid = val;
+        this._dataEvent.getPastEventReg(this.uid).subscribe(
+          (data: Event_Comm_Rsvp[]) => {
+            this.arrPast = data;
+          },
+          function (err) {
+            alert(err);
+          },
+          function () {
+  
+          }
+        );
+      });
+  
+      this.storage.get('viewid').then((val) => {
+        this.uid = val;
+        this._DataCommu.getcommunitiesofuser(this.uid).subscribe(
+          (data: Community_Class[]) => {
+            this.arrCommu = data;
+          },
+          function (err) {
+            alert(err);
+          },
+          function () {
+  
+          }
+        );
+      });
+
+
+
+
       this.storage.get('uid').then((val)=>
        {
             this.us_id=val;
             this.data.iffollowing(this.user_id,this.us_id).subscribe(
         
-            (ft:any[])=>{
-          if(ft!=null)
+            (ft)=>{
+          if(ft == "")
           {
-            this.iffo="yes";
+            this.iffo=false;
+            this.ifunfollo=true;
           }
           else
           {
-            this.iffo="no";
+            this.iffo=true;
+            this.ifunfollo=false;
           }
         }
       );
@@ -126,6 +186,7 @@ iffo:string="";
         this.data.insertfollower(this.user_id,this.us_id).subscribe(
           (dt:any[])=>{
             alert("done");
+            this.ionViewDidLoad();
           },
           function(e)
           {
@@ -145,6 +206,7 @@ iffo:string="";
         this.data.deletefollower(this.user_id,this.us_id).subscribe(
           (dt:any[])=>{
             alert("done");
+            this.ionViewDidLoad();
           },
           function(e)
           {
@@ -158,4 +220,5 @@ iffo:string="";
   {
     this.navCtrl.push(FollowingPage,{uid:this.uid});
   }
+
 }

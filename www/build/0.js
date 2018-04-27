@@ -7,7 +7,7 @@ webpackJsonp([0],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login__ = __webpack_require__(380);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -52,7 +52,7 @@ LoginPageModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic_storage__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_providers__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_loginpro_loginpro__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages__ = __webpack_require__(242);
@@ -181,7 +181,11 @@ var LoginPage = (function () {
 }());
 LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["n" /* Component */])({
+<<<<<<< HEAD
         selector: 'page-login',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\login\login.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>{{ \'LOGIN_TITLE\' | translate }}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n  <ion-list>\n\n\n\n    <ion-item>\n\n      <ion-label floating>{{ \'EMAIL\' | translate }}</ion-label>\n\n      <ion-input type="email" [(ngModel)]="eid" name="email" ></ion-input>\n\n    </ion-item>\n\n\n\n    <!--\n\n      Want to use a Username instead of an Email? Here you go:\n\n\n\n      <ion-item>\n\n        <ion-label floating>{{ \'USERNAME\' | translate }}</ion-label>\n\n        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>\n\n      </ion-item>\n\n      -->\n\n\n\n    <ion-item>\n\n      <ion-label floating>{{ \'PASSWORD\' | translate }}</ion-label>\n\n      <ion-input type="password" [(ngModel)]="pass" name="password" ></ion-input>\n\n    </ion-item>\n\n    <ion-item >\n\n      <a (click)="showPrompt()" class="forgetAlign">Forgot Password</a>\n\n    </ion-item>\n\n   \n\n    <div padding>\n\n      <button ion-button color="meetup" (click)="onClick()" block>{{ \'LOGIN_BUTTON\' | translate }}</button>\n\n    </div>\n\n\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\login\login.html"*/
+=======
+        selector: 'page-login',template:/*ion-inline-start:"C:\jaishil\Lets meet\lets_meet\lets_meet_app\src\pages\login\login.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>{{ \'LOGIN_TITLE\' | translate }}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n  <ion-list>\n\n\n\n    <ion-item>\n\n      <ion-label floating>{{ \'EMAIL\' | translate }}</ion-label>\n\n      <ion-input type="email" [(ngModel)]="eid" name="email" ></ion-input>\n\n    </ion-item>\n\n\n\n    <!--\n\n      Want to use a Username instead of an Email? Here you go:\n\n\n\n      <ion-item>\n\n        <ion-label floating>{{ \'USERNAME\' | translate }}</ion-label>\n\n        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>\n\n      </ion-item>\n\n      -->\n\n\n\n    <ion-item>\n\n      <ion-label floating>{{ \'PASSWORD\' | translate }}</ion-label>\n\n      <ion-input type="password" [(ngModel)]="pass" name="password" ></ion-input>\n\n    </ion-item>\n\n    <ion-item >\n\n      <a (click)="showPrompt()" class="forgetAlign">Forgot Password</a>\n\n    </ion-item>\n\n   \n\n    <div padding>\n\n      <button ion-button color="meetup" (click)="onClick()" block>{{ \'LOGIN_BUTTON\' | translate }}</button>\n\n    </div>\n\n\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"C:\jaishil\Lets meet\lets_meet\lets_meet_app\src\pages\login\login.html"*/
+>>>>>>> b45c685dc8ed946c63b93d601de0d6b6a161a42e
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_0__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_5__providers_loginpro_loginpro__["a" /* LoginproProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_4__providers_providers__["d" /* User */],
