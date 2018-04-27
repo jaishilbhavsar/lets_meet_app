@@ -189,11 +189,11 @@
           <ion-list *ngSwitchCase="'pasts'">
             <!-- <button ion-button full *ngIf="created_by==user_id" (click)="addNewMember()" ><ion-icon name="person-add"> Add a new Member</ion-icon></button>-->
             <ion-list>
-              <ion-item *ngFor="let item of comm_past_event" (click)="onPastEvent(comm_id)">
+              <ion-item *ngFor="let item of comm_past_event" >
                 <ion-avatar item-start>
                   <img src="{{item.event_pic}}">
                 </ion-avatar>
-                <h4>{{item.event_name}}</h4>
+                <h4 (click)="onPastEvent(item.event_id)">{{item.event_name}}</h4>
 
               </ion-item>
             </ion-list>
@@ -203,11 +203,11 @@
           <ion-list *ngSwitchCase="'upComing'">
             <!-- <button ion-button full *ngIf="created_by==user_id" (click)="addNewMember()" ><ion-icon name="person-add"> Add a new Member</ion-icon></button>-->
             <ion-list>
-              <ion-item *ngFor="let item of comm_upcoming_event"(click)="onUpcomingEvent(comm_id)" >
+              <ion-item *ngFor="let item of comm_upcoming_event" >
                 <ion-avatar item-start>
                   <img src="{{item.event_pic}}">
                 </ion-avatar>
-                <h4>{{item.event_name}}</h4>
+                <h4 (click)="onUpcomingEvent(item.event_id)">{{item.event_name}}</h4>
 
               </ion-item>
             </ion-list>
