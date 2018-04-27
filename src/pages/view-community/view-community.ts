@@ -24,6 +24,7 @@ import { Event_Community_Class } from "../../shared/event_community_class";
 import { EventCommunityDbProvider } from "../../providers/event-community-db/event-community-db";
 import { ViewPastEventPage } from "../view-past-event/view-past-event";
 import { ViewEventPage } from "../view-event/view-event";
+import { ViewuserPage } from "../viewuser/viewuser";
 /**
  * Generated class for the ViewCommunityPage page.
  *
@@ -235,7 +236,7 @@ export class ViewCommunityPage {
 
           this.s5 = data[0]['COUNT(rate_value)'];
           this.sum += this.s5;
-          this.w = (this.s1 / this.sum);
+          this.w =  (this.s1 / this.sum);
           this.w2 = (this.s2 / this.sum);
           this.w3 = (this.s3 / this.sum);
           this.w4 = (this.s4 / this.sum);
@@ -251,13 +252,13 @@ export class ViewCommunityPage {
       );
 
       this._commEvent.getCommunityByPastEvent(this.comm_id).subscribe(
-        (data:any)=>{
-          this.comm_past_event=data;
+        (data: any) => {
+          this.comm_past_event = data;
         },
-        function(e){
+        function (e) {
           alert(e);
         },
-        function(){
+        function () {
 
         }
 
@@ -265,10 +266,10 @@ export class ViewCommunityPage {
 
       this._commEvent.getCommunityByUpcomingEvent(this.comm_id).subscribe(
 
-        (data:any)=>{
-          this.comm_upcoming_event=data;
+        (data: any) => {
+          this.comm_upcoming_event = data;
         },
-        function(e){
+        function (e) {
           alert(e);
         }
 
@@ -552,13 +553,32 @@ export class ViewCommunityPage {
     addModal1.present();
   }
 
+
   onModelChange(rt) {
 
+    let t1 = this.toast.create({
+      duration: 3000,
+      message: "Done..."
+    })
     this.comm_rating = rt;
     alert(this.comm_rating);
-    
+    this._rate.addRating(new Rate_Class(null, this.comm_rating, this.comm_id, this.user_id)).subscribe(
 
-  } 
+      (data: any) => {
+        t1.present();
+      },
+      function (e) {
+        alert(e);
+      }
+
+    );
+
+  }
+
+  showuser(id) {
+    this.storage.set('viewid', id);
+    this.navCtrl.push(ViewuserPage);
+  }
 
   onPastEvent(event_id) {
     this.navCtrl.push(ViewPastEventPage, { e_id: event_id });
