@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 374:
+/***/ 371:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,11 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__welcome__ = __webpack_require__(391);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__welcome__ = __webpack_require__(389);
->>>>>>> 5b80d79608de99c5a23b28bb3d3eb94c53d8630a
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__welcome__ = __webpack_require__(390);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -48,11 +44,7 @@ WelcomePageModule = __decorate([
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ 391:
-=======
-/***/ 389:
->>>>>>> 5b80d79608de99c5a23b28bb3d3eb94c53d8630a
+/***/ 390:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -90,11 +82,7 @@ var WelcomePage = (function () {
 }());
 WelcomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-<<<<<<< HEAD
         selector: 'page-welcome',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\welcome\welcome.html"*/'<ion-content scroll="false">\n\n  <div class="splash-bg"></div>\n\n  <div class="splash-info">\n\n    <div class="splash-logo"></div>\n\n    <div class="splash-intro">\n\n      The starting point for your better experience !\n\n    </div>\n\n  </div>\n\n  <div padding hide-tabs>\n\n    <button ion-button block (click)="signup()" color="meetup" class="login">{{ \'SIGNUP\' | translate }}</button>\n\n    <button ion-button block (click)="login()" color="meetup" class="login">{{ \'LOGIN\' | translate }}</button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\welcome\welcome.html"*/
-=======
-        selector: 'page-welcome',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\welcome\welcome.html"*/'<ion-content scroll="false">\n\n  <div class="splash-bg"></div>\n\n  <div class="splash-info">\n\n    <div class="splash-logo"></div>\n\n    <div class="splash-intro">\n\n      The starting point for your better experience !\n\n    </div>\n\n  </div>\n\n  <div padding hide-tabs>\n\n    <button ion-button block (click)="signup()" color="meetup" class="login">{{ \'SIGNUP\' | translate }}</button>\n\n    <button ion-button block (click)="login()" color="meetup" class="login">{{ \'LOGIN\' | translate }}</button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\welcome\welcome.html"*/
->>>>>>> 5b80d79608de99c5a23b28bb3d3eb94c53d8630a
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */]])
 ], WelcomePage);
