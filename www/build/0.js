@@ -99,6 +99,11 @@ var LoginPage = (function () {
     }
     LoginPage.prototype.onClick = function () {
         var _this = this;
+        //this.storage.set('uid', "jaishilbhavsar@yahoo.in");
+        /*this.storage.get('uid').then((val) => {
+          console.log(val);
+        });*/
+        //    this.navCtrl.push(MainPage);
         this.data.doLogin(this.eid, this.pass, "user").subscribe(function (dt) {
             if (dt == "") {
                 var toast = _this.toastCtrl.create({
