@@ -6,37 +6,51 @@
 
 </ion-header>
 
-
 <ion-content>
-  <form *ngIf="form" [formGroup]="form" >
+  <form *ngIf="form" [formGroup]="form">
 
     <ion-list>
       <ion-item>
         <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
         <div class="profile-image-wrapper" (click)="getPicture()">
-          <div class="profile-image-placeholder" *ngIf="!this.form.controls.image.value">
+          <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
             <ion-icon name="add"></ion-icon>
             <div>
               {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
             </div>
           </div>
-          <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.image.value"></div>
+          <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+        </div>
+        <div *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">
+          <p class="error">Please Choose an Image.</p>
         </div>
       </ion-item>
-      
+
       <ion-item>
         <ion-label floating color="red">Email</ion-label>
         <ion-input type="email" formControlName="eid" [(ngModel)]="eid"></ion-input>
+        <div *ngIf="!this.form.controls.eid.valid  && this.form.controls.eid.dirty">
+          <p class="error">Please Enter User Email Address.</p>
+        </div>
       </ion-item>
 
       <ion-item>
         <ion-label floating>UserName</ion-label>
         <ion-input type="text" formControlName="uname" [(ngModel)]="uname"></ion-input>
+        <div *ngIf="!this.form.controls.uname.valid  && this.form.controls.uname.dirty">
+          <p class="error">Please Enter User Name.</p>
+        </div>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Password</ion-label>
-        <ion-input type="passowrd" formControlName="pass" [(ngModel)]="pass"></ion-input>
+        <ion-input type="password" formControlName="pass" [(ngModel)]="pass"></ion-input>
+        <div *ngIf="!this.form.controls.pass.valid  && this.form.controls.pass.dirty">
+          <p class="error">Please Enter Password between 6-10.</p>
+        </div>
+        <div *ngIf="!this.form.controls.pass.minlength  && this.form.controls.pass.dirty">
+          <p class="error">Please Enter Password with minimum length of 6.</p>
+        </div>
       </ion-item>
 
       <ion-list radio-group formControlName="gender" [(ngModel)]="gender">
@@ -48,16 +62,25 @@
           <ion-label>Female</ion-label>
           <ion-radio value="Female"></ion-radio>
         </ion-item>
+        <div *ngIf="!this.form.controls.gender.valid && this.form.controls.gender.dirty ">
+          <p class="error">Please select gender.</p>
+        </div>
       </ion-list>
 
       <ion-item>
         <ion-label floating>Mobile No</ion-label>
-        <ion-input type="text" formControlName="mobile" [(ngModel)]="mobile"></ion-input>
+        <ion-input type="text" formControlName="mobile" minlength="6" maxlength="10" [(ngModel)]="mobile"></ion-input>
+        <div *ngIf="!this.form.controls.mobile.valid  && this.form.controls.mobile.dirty">
+          <p class="error">Please Enter Mobile No.</p>
+        </div>
       </ion-item>
 
       <ion-item>
-        <ion-label>Date</ion-label>
+        <ion-label>Birth Date:</ion-label>
         <ion-datetime displayFormat="DD/MMMM/YYYY" pickerFormat="DD MMMM YYYY" formControlName="myDate" [(ngModel)]="myDate"></ion-datetime>
+        <div *ngIf="!this.form.controls.myDate.valid  && this.form.controls.myDate.dirty">
+          <p class="error">Please Enter Birthday.</p>
+        </div>
       </ion-item>
 
       <div padding>
@@ -67,26 +90,3 @@
     </ion-list>
   </form>
 </ion-content>
-
-<!--<ion-item>
-        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
-         <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
-      </ion-item>
-    -->
-<!--
-      Want to add a Username? Here you go:
-
-      <ion-item>
-        <ion-label floating>Username</ion-label>
-        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
-      </ion-item>
-      -->
-<!--
-      <ion-item>
-        <button ion-button color="primary" (click)="onfile()"block>{{ 'Image' | translate }}</button>  
-      </ion-item>-->

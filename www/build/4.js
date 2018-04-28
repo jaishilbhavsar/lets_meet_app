@@ -96,7 +96,11 @@ var TabsPage = (function () {
 }());
 TabsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+<<<<<<< HEAD
         selector: 'page-tabs',template:/*ion-inline-start:"C:\jaishil\Lets meet\lets_meet\lets_meet_app\src\pages\tabs\tabs.html"*/'<ion-tabs class="tabs-icon-text" >\n\n  <ion-tab [root]="tab1Root"  [tabTitle]="tab1Title" tabIcon="home"></ion-tab>\n\n <!-- <ion-tab [root]="tab4Root" [tabTitle]="tab2Title" tabIcon="aperture"></ion-tab>-->\n\n  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="search"></ion-tab>\n\n  <ion-tab [root]="tab2Root" [tabTitle]="tab4Title" tabIcon="globe"></ion-tab>\n\n  <ion-tab [root]="tab5Root" [tabTitle]="tab5Title" tabIcon="contact"></ion-tab>\n\n  <!--<ion-tab tabIcon="home" [tabTitle]="tab6Title" [root]="tab6Root" ></ion-tab>-->\n\n</ion-tabs>'/*ion-inline-end:"C:\jaishil\Lets meet\lets_meet\lets_meet_app\src\pages\tabs\tabs.html"*/
+=======
+        selector: 'page-tabs',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\tabs\tabs.html"*/'<ion-tabs class="tabs-icon-text" >\n\n  <ion-tab [root]="tab1Root"  [tabTitle]="tab1Title" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab4Root" [tabTitle]="tab2Title" tabIcon="aperture"></ion-tab>\n\n  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="search"></ion-tab>\n\n  <ion-tab [root]="tab2Root" [tabTitle]="tab4Title" tabIcon="globe"></ion-tab>\n\n  <ion-tab [root]="tab5Root" [tabTitle]="tab5Title" tabIcon="contact"></ion-tab>\n\n  <!--<ion-tab tabIcon="home" [tabTitle]="tab6Title" [root]="tab6Root" ></ion-tab>-->\n\n</ion-tabs>'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\tabs\tabs.html"*/
+>>>>>>> 27d825768198e3a13300a35a3163d8667b42fdaa
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]])
 ], TabsPage);
