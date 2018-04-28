@@ -1,10 +1,6 @@
 webpackJsonp([3],{
 
-<<<<<<< HEAD
-/***/ 370:
-=======
 /***/ 368:
->>>>>>> 27d825768198e3a13300a35a3163d8667b42fdaa
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12,11 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TutorialPageModule", function() { return TutorialPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tutorial__ = __webpack_require__(389);
-=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tutorial__ = __webpack_require__(388);
->>>>>>> 27d825768198e3a13300a35a3163d8667b42fdaa
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(128);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -52,11 +44,7 @@ TutorialPageModule = __decorate([
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ 389:
-=======
 /***/ 388:
->>>>>>> 27d825768198e3a13300a35a3163d8667b42fdaa
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
