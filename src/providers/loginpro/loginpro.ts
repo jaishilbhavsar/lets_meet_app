@@ -120,7 +120,7 @@ export class LoginproProvider {
     //return this.http.get(this.ed);
   }
   // urlmail: string = "https://letsmeetbackend.herokuapp.com/demomail/"
-  urlmail: string = "http://localhost:3000/demomail";
+  urlmail: string = "https://letsmeetbackend.herokuapp.com/demomail";
   sendMail(demo: email_class) {
     let body = JSON.stringify(demo);
     console.log(demo.name);

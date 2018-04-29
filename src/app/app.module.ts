@@ -38,7 +38,7 @@ import { FollowingPage } from '../pages/following/following';
 import { EditPostPage } from "../pages/edit-post/edit-post";
 import { ViewuserPage } from '../pages/viewuser/viewuser';
 import { ChangePasswordPage } from "../pages/change-password/change-password";
-// import { ViewPastEventPage } from "../pages/view-past-event/view-past-event";
+import { ViewPastEventPage } from "../pages/view-past-event/view-past-event";
 
 import { LoginproProvider } from '../providers/loginpro/loginpro';
 import { ComminityDbTsProvider } from "../providers/community-db/community-db";
@@ -93,9 +93,8 @@ export function provideSettings(storage: Storage) {
     FollowingPage,
     EditPostPage,
     ViewuserPage,
-    ChangePasswordPage
-    // ,
-    // ViewPastEventPage
+    ChangePasswordPage,
+    ViewPastEventPage
   ],
   imports: [
     BrowserModule,
@@ -127,9 +126,8 @@ export function provideSettings(storage: Storage) {
     FollowingPage,
     EditPostPage,
     ViewuserPage,
-    ChangePasswordPage
-    // ,
-    // ViewPastEventPage
+    ChangePasswordPage,
+    ViewPastEventPage
   ],
   providers: [
     Api,
