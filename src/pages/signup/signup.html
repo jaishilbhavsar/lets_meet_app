@@ -27,33 +27,33 @@
       </ion-item>
 
       <ion-item>
-        <ion-label floating color="red">Email</ion-label>
-        <ion-input type="email" formControlName="eid" [(ngModel)]="eid"></ion-input>
-        <div *ngIf="!this.form.controls.eid.valid  && this.form.controls.eid.dirty">
-          <p class="error">Please Enter User Email Address.</p>
-        </div>
+        <ion-input type="email" formControlName="eid" [(ngModel)]="eid" placeholder="Enter Email ID"></ion-input>
       </ion-item>
+      <div *ngIf="!this.form.controls.eid.valid  && this.form.controls.eid.dirty">
+        <p class="error">Please Enter Email ID.</p>
+      </div>
 
       <ion-item>
-        <ion-label floating>UserName</ion-label>
-        <ion-input type="text" formControlName="uname" [(ngModel)]="uname"></ion-input>
-        <div *ngIf="!this.form.controls.uname.valid  && this.form.controls.uname.dirty">
-          <p class="error">Please Enter User Name.</p>
-        </div>
+        <ion-input type="text" formControlName="uname" placeholder="UserName" [(ngModel)]="uname"></ion-input>
       </ion-item>
+      <div *ngIf="!this.form.controls.uname.valid  && this.form.controls.uname.dirty">
+        <p class="error">Please Enter User Name.</p>
+      </div>
 
       <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" formControlName="pass" [(ngModel)]="pass"></ion-input>
-        <div *ngIf="!this.form.controls.pass.valid  && this.form.controls.pass.dirty">
-          <p class="error">Please Enter Password between 6-10.</p>
-        </div>
-        <div *ngIf="!this.form.controls.pass.minlength  && this.form.controls.pass.dirty">
-          <p class="error">Please Enter Password with minimum length of 6.</p>
-        </div>
+        <ion-input type="password" formControlName="pass" placeholder="Enter Password" [(ngModel)]="pass"></ion-input>
       </ion-item>
+      <div *ngIf="!this.form.controls.pass.valid  && this.form.controls.pass.dirty">
+        <p class="error">Please Enter Password between 6-10.</p>
+      </div>
+      <div *ngIf="!this.form.controls.pass.minlength  && this.form.controls.pass.dirty">
+        <p class="error">Please Enter Password with minimum length of 6.</p>
+      </div>
 
-      <ion-list radio-group formControlName="gender" [(ngModel)]="gender">
+      <ion-list radio-group formControlName="gender" placeholder="Select Gender" [(ngModel)]="gender">
+        <ion-list-header>
+          Gender:
+        </ion-list-header>
         <ion-item>
           <ion-label>Male</ion-label>
           <ion-radio value="Male"></ion-radio>
@@ -62,26 +62,25 @@
           <ion-label>Female</ion-label>
           <ion-radio value="Female"></ion-radio>
         </ion-item>
-        <div *ngIf="!this.form.controls.gender.valid && this.form.controls.gender.dirty ">
-          <p class="error">Please select gender.</p>
-        </div>
       </ion-list>
+      <div *ngIf="!this.form.controls.gender.valid && this.form.controls.gender.dirty ">
+        <p class="error">Please select gender.</p>
+      </div>
 
       <ion-item>
-        <ion-label floating>Mobile No</ion-label>
-        <ion-input type="text" formControlName="mobile" minlength="6" maxlength="10" [(ngModel)]="mobile"></ion-input>
-        <div *ngIf="!this.form.controls.mobile.valid  && this.form.controls.mobile.dirty">
-          <p class="error">Please Enter Mobile No.</p>
-        </div>
+        <ion-input type="text" formControlName="mobile" placeholder="Enter Mobile No" minlength="6" maxlength="10" [(ngModel)]="mobile"></ion-input>
       </ion-item>
+      <div *ngIf="!this.form.controls.mobile.valid  && this.form.controls.mobile.dirty">
+        <p class="error">Please Enter Mobile No.</p>
+      </div>
 
       <ion-item>
         <ion-label>Birth Date:</ion-label>
         <ion-datetime displayFormat="DD/MMMM/YYYY" pickerFormat="DD MMMM YYYY" formControlName="myDate" [(ngModel)]="myDate"></ion-datetime>
-        <div *ngIf="!this.form.controls.myDate.valid  && this.form.controls.myDate.dirty">
-          <p class="error">Please Enter Birthday.</p>
-        </div>
       </ion-item>
+      <div *ngIf="!this.form.controls.myDate.valid  && this.form.controls.myDate.dirty">
+        <p class="error">Please Enter Birthday.</p>
+      </div>
 
       <div padding>
         <button ion-button color="meetup" (click)="onClick()" [disabled]="!isReadyToSave" block>{{ 'SIGNUP_BUTTON' | translate }}</button>

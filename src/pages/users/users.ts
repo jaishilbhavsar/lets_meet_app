@@ -37,7 +37,7 @@ import { ViewCommunityPage } from '../view-community/view-community';
 })
 export class UsersPage {
 
-  arrmyevent:Events_Class[]=[];
+  arrmyevent: Events_Class[] = [];
   followingcount: number;
   followercount: number;
   followers: follower_class[] = [];
@@ -55,7 +55,7 @@ export class UsersPage {
   arrUpc: Event_Comm_Rsvp[] = [];
   arrPast: Event_Comm_Rsvp[] = [];
   arrCommu: Community_Class[] = [];
-  arrmycommu:Community_Class[]=[];
+  arrmycommu: Community_Class[] = [];
 
   constructor(public alert: AlertController,
     public menu: MenuController,
@@ -72,8 +72,8 @@ export class UsersPage {
     public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
-communitycount=0;
-eventcount=0;
+  communitycount = 0;
+  eventcount = 0;
   ionViewDidLoad() {
 
     this.storage.get('uid').then((val) => {
@@ -97,16 +97,16 @@ eventcount=0;
       );
 
       this.data.getmycommunity(this.uid).subscribe(
-        (dt:any)=>{
-          this.arrmycommu=dt;
-          this.communitycount=this.arrmycommu.length;
+        (dt: any) => {
+          this.arrmycommu = dt;
+          this.communitycount = this.arrmycommu.length;
         }
       );
 
       this.data.getmyevent(this.uid).subscribe(
-        (dt:any)=>{
-          this.arrmyevent=dt;
-          this.eventcount=this.arrmyevent.length;
+        (dt: any) => {
+          this.arrmyevent = dt;
+          this.eventcount = this.arrmyevent.length;
         }
       );
 
@@ -189,6 +189,9 @@ eventcount=0;
   openModal() {
 
     let modal = this.modalCtrl.create(EditprofilePage);
+    modal.onDidDismiss(item => {
+      this.ionViewDidLoad();
+    });
     modal.present();
   }
   onLogout() {
@@ -237,7 +240,7 @@ eventcount=0;
     l1.present();
     this.storage.get('uid').then((val) => {
       this.uid = val;
-      this.data.doLogin(this.uid, oldpass,"user")
+      this.data.doLogin(this.uid, oldpass, "user")
         .subscribe(
           (dt: any) => {
             if (dt != "") {
@@ -300,12 +303,10 @@ eventcount=0;
     this.navCtrl.push(ViewCommunityPage, { c_id: id });
   }
 
-  onMycommunity()
-  {
+  onMycommunity() {
     this.navCtrl.push(MycommunityPage);
   }
-  onMyevent()
-  {
+  onMyevent() {
     this.navCtrl.push(MyeventPage);
   }
 }

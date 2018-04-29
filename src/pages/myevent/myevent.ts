@@ -5,7 +5,7 @@ import { Events_Class } from './../../shared/event_class';
 import { LoginproProvider } from './../../providers/loginpro/loginpro';
 import { Storage } from '@ionic/storage';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 
 /**
  * Generated class for the MyeventPage page.
@@ -21,46 +21,52 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 })
 export class MyeventPage {
 
-  constructor(public edata:EventDbProvider,public storage:Storage,public data:LoginproProvider,public load:LoadingController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public edata: EventDbProvider,
+    public storage: Storage,
+    public data: LoginproProvider,
+    public load: LoadingController,
+    public navCtrl: NavController,
+    public modalCtrl: ModalController,
+    public navParams: NavParams) {
   }
-uid:string;
-arr:Events_Class[]=[];
+  uid: string;
+  arr: Events_Class[] = [];
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyeventPage');
     console.log('ionViewDidLoad MycommunityPage');
-    this.storage.get('uid').then((val=>{
-      this.uid=val;
+    this.storage.get('uid').then((val => {
+      this.uid = val;
 
       let l1 = this.load.create({
         content: "Loading ..."
       });
       l1.present();
       this.data.getmyevent(this.uid).subscribe(
-        (dt:any[])=>{
-          this.arr=dt;
+        (dt: any[]) => {
+          this.arr = dt;
         },
-        function(e)
-        {
+        function (e) {
           alert(e)
         },
-        function()
-        {
+        function () {
           l1.dismiss();
         }
       );
     }));
   }
-onEdit(id)
-{
-  this.navCtrl.push(EditeventPage,{e_id:id});
-}
-showevent(id)
-{
-  this.navCtrl.push(ViewEventPage,{e_id:id});
-}
-onDelete(id)
-{
-  this.edata.deleteEvent(this.arr[0]);
-  this.ionViewDidLoad();
-}
+  onEdit(id) {
+    //this.navCtrl.push(EditeventPage, { e_id: id });
+    let modal = this.modalCtrl.create(EditeventPage, { e_id: id });
+    modal.onDidDismiss(item => {
+      this.ionViewDidLoad();
+    });
+    modal.present();
+  }
+  showevent(id) {
+    this.navCtrl.push(ViewEventPage, { e_id: id });
+  }
+  onDelete(id) {
+    this.edata.deleteEvent(this.arr[0]);
+    this.ionViewDidLoad();
+  }
 }
