@@ -98,16 +98,13 @@ export function provideSettings(storage: Storage) {
     EditPostPage,
     ViewuserPage,
     ChangePasswordPage,
-<<<<<<< HEAD
-    ViewPastEventPage
-=======
+    ViewPastEventPage,
     MycommunityPage,
     MyeventPage,
     EditcommunityPage,
     EditeventPage
     // ,
     // ViewPastEventPage
->>>>>>> e12b799e925c49045bfe81b4df86d7dafc7d9ebd
   ],
   imports: [
     BrowserModule,
@@ -140,16 +137,13 @@ export function provideSettings(storage: Storage) {
     EditPostPage,
     ViewuserPage,
     ChangePasswordPage,
-<<<<<<< HEAD
-    ViewPastEventPage
-=======
+    ViewPastEventPage,
     MycommunityPage,
     MyeventPage,
     EditcommunityPage,
     EditeventPage
     // ,
     // ViewPastEventPage
->>>>>>> e12b799e925c49045bfe81b4df86d7dafc7d9ebd
   ],
   providers: [
     Api,

@@ -18,26 +18,26 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 })
 export class EditcommunityPage {
 
-  constructor(public cprovider:ComminityDbTsProvider,public load:LoadingController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public cprovider: ComminityDbTsProvider, public load: LoadingController, public navCtrl: NavController, public navParams: NavParams) {
   }
-comm_id:string;
-arr:Community_Class[]=[];
-comm_name:string;
-comm_des:string;
-comm_date:DateTime;
-comm_rating:number;
-created_by:string;
-category_id:number;
+  comm_id: string;
+  arr: Community_Class[] = [];
+  comm_name: string;
+  comm_des: string;
+  comm_date: DateTime;
+  comm_rating: number;
+  created_by: string;
+  category_id: number;
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditcommunityPage');
     this.comm_id = this.navParams.get('c_id');
     this.cprovider.getCommunityById(this.comm_id).subscribe(
-      (dt:any[])=>{
-        this.arr=dt;
-        this.comm_name=this.arr[0].comm_name;
-        this.comm_des=this.arr[0].comm_des;
-        this.comm_date=this.arr[0].comm_date;
-        this.category_id=this.arr[0].comm_fk_cat_id;
+      (dt: any[]) => {
+        this.arr = dt;
+        this.comm_name = this.arr[0].comm_name;
+        this.comm_des = this.arr[0].comm_des;
+        this.comm_date = this.arr[0].comm_date;
+        this.category_id = this.arr[0].comm_fk_cat_id;
         alert(this.comm_name);
         alert(this.comm_des);
         //Image Vadu Nathi Khabar k shu karvanu che etle joi leje e

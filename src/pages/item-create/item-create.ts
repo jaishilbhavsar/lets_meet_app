@@ -40,7 +40,7 @@ export class ItemCreatePage {
   created_by: string = "";
   event_pic: string = "";
   community_id: any;
-  event_verify: any = "true";
+  event_verify: any = "false";
 
   selectedFile: File = null;
 
