@@ -3,7 +3,7 @@ import { ViewCommunityPage } from './../view-community/view-community';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { LoginproProvider } from './../../providers/loginpro/loginpro';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Community_Class } from '../settings/community_class';
 import { Storage } from '@ionic/storage';
 import { ComminityDbTsProvider } from "./../../providers/community-db/community-db";
@@ -21,44 +21,50 @@ import { ComminityDbTsProvider } from "./../../providers/community-db/community-
 })
 export class MycommunityPage {
 
-  constructor(public cprovider:ComminityDbTsProvider,public load:LoadingController,public storage:Storage,public data:LoginproProvider,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public cprovider: ComminityDbTsProvider,
+    public load: LoadingController,
+    public storage: Storage,
+    public modalCtrl: ModalController,
+    public data: LoginproProvider,
+    public navCtrl: NavController,
+    public navParams: NavParams) {
   }
-uid:string;
-arr:Community_Class[]=[];
+  uid: string;
+  arr: Community_Class[] = [];
   ionViewDidLoad() {
     console.log('ionViewDidLoad MycommunityPage');
-    this.storage.get('uid').then((val=>{
-      this.uid=val;
+    this.storage.get('uid').then((val => {
+      this.uid = val;
 
       let l1 = this.load.create({
         content: "Loading ..."
       });
       l1.present();
       this.data.getmycommunity(this.uid).subscribe(
-        (dt:any[])=>{
-          this.arr=dt;
+        (dt: any[]) => {
+          this.arr = dt;
         },
-        function(e)
-        {
+        function (e) {
           alert(e)
         },
-        function()
-        {
+        function () {
           l1.dismiss();
         }
       );
     }));
   }
-  showcommunity(id)
-  {
-    this.navCtrl.push(ViewCommunityPage,{c_id:id});    
+  showcommunity(id) {
+    this.navCtrl.push(ViewCommunityPage, { c_id: id });
   }
-  onEdit(id)
-  {
-    this.navCtrl.push(EditcommunityPage,{c_id:id});
+  onEdit(id) {
+    let addModal = this.modalCtrl.create(EditcommunityPage, { c_id: id });
+    addModal.onDidDismiss(item => {
+      this.ionViewDidLoad();
+    })
+    addModal.present();
+    //this.navCtrl.push(EditcommunityPage, { c_id: id });
   }
-  onDelete(id)
-  {
+  onDelete(id) {
     this.cprovider.deleteCommunity(this.arr[0]);
     this.ionViewDidLoad();
   }

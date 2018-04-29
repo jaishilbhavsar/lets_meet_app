@@ -6,7 +6,6 @@ import { ComminityDbTsProvider } from "../../providers/community-db/community-db
 //import { Community_Class } from "../settings/community_class";
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { Storage } from "@ionic/storage";
-import { HttpClient } from "@angular/common/http";
 
 /**
  * Generated class for the CreateCommunityPage page.
@@ -59,8 +58,7 @@ export class CreateCommunityPage {
 
   form: FormGroup;
 
-  constructor(public http: HttpClient,
-    public st: Storage,
+  constructor(public st: Storage,
     public navCtrl: NavController,
     public _data: ComminityDbTsProvider,
     public navParams: NavParams,

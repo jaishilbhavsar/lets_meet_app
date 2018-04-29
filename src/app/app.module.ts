@@ -50,6 +50,7 @@ import { EventDbProvider } from '../providers/event-db/event-db';
 import { EventCommunityDbProvider } from '../providers/event-community-db/event-community-db';
 import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
 import { PostDbProvider } from '../providers/post-db/post-db';
+import { CategoryDbProvider } from '../providers/category-db/category-db';
 
 import { CommunityMemberDbProvider } from '../providers/community-member-db/community-member-db';
 import { CommunityCommMemberProvider } from '../providers/community-comm-member/community-comm-member';
@@ -59,6 +60,7 @@ import { FeedbackDbProvider } from '../providers/feedback-db/feedback-db';
 import { StoryDbProvider } from '../providers/story-db/story-db';
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
 import { RatingDbProvider } from '../providers/rating-db/rating-db';
+
 
 
 // The translate loader needs to know where to load i18n files
@@ -173,7 +175,8 @@ export function provideSettings(storage: Storage) {
     FeedbackDbProvider,
     StoryDbProvider,
     GeolocationProvider,
-    RatingDbProvider
+    RatingDbProvider,
+    CategoryDbProvider
   ]
 })
 export class AppModule { }

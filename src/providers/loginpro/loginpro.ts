@@ -157,27 +157,25 @@ export class LoginproProvider {
     this.follow.fk_user_id = user_id;
     this.follow.fk_us_id = us_id;
     let body = JSON.stringify(this.follow);
-    return this.http.post("http://localhost:3000/iffollowing/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.post("https://letsmeetbackend.herokuapp.com/iffollowing/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
   insertfollower(user_id, us_id) {
     this.follow.fk_user_id = user_id;
     this.follow.fk_us_id = us_id;
     let body = JSON.stringify(this.follow);
-    return this.http.post("http://localhost:3000/insertfollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.post("https://letsmeetbackend.herokuapp.com/insertfollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
   deletefollower(user_id, us_id) {
     this.follow.fk_user_id = user_id;
     this.follow.fk_us_id = us_id;
     let body = JSON.stringify(this.follow);
-    return this.http.post("http://localhost:3000/deletefollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.post("https://letsmeetbackend.herokuapp.com/deletefollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
-  getmycommunity(id)
-  {
-    return this.http.get("http://localhost:3000/mycommunity/"+ id);
+  getmycommunity(id) {
+    return this.http.get("https://letsmeetbackend.herokuapp.com/mycommunity/" + id);
   }
-  getmyevent(id)
-  {
-    return this.http.get("http://localhost:3000/myevent/"+ id);
+  getmyevent(id) {
+    return this.http.get("https://letsmeetbackend.herokuapp.com/myevent/" + id);
   }
 
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Community_Class } from "../../pages/settings/community_class";
+import { Community_Class, Update_Community_Class } from "../../pages/settings/community_class";
 //import { Community_User_Class } from "../../shared/community_user_class";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import 'rxjs/add/operator/map';
@@ -17,6 +17,7 @@ export class ComminityDbTsProvider {
   url1: string = "https://letsmeetbackend.herokuapp.com/comm_post/";
   url2: string = "https://letsmeetbackend.herokuapp.com/checkMember/";
   url4: string = "https://letsmeetbackend.herokuapp.com/topcommunity/";
+  url5: string = 'https://letsmeetbackend.herokuapp.com/updateCommunityOnly';
 
   community_member: { fk_user_id: string, fk_comm_id: string } = {
     fk_user_id: '',
@@ -35,14 +36,6 @@ export class ComminityDbTsProvider {
     return this.http.get(this.url + id);
   }
 
-  /* addCommuniy(item: Community_Class) {
-
-    let body = JSON.stringify(item);
-    //  let h = new Headers({ 'Content-type': 'application/json' });
-    // let rs = new RequestOptions({ headers: h });
-    return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
-  } */
-
   addCommunity(fd: FormData) {
     return this.http.post(this.url, fd);
   }
@@ -57,11 +50,15 @@ export class ComminityDbTsProvider {
     return this.http.post(this.url + id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
 
   }
-  editCommunity(item: Community_Class) {
 
+  editCommunityOnly(item: Update_Community_Class) {
+    console.log(item);
     let body = JSON.stringify(item);
-    return this.http.post(this.url + item.comm_id, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.put(this.url5, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  }
 
+  editCommunity(fd: FormData) {
+    return this.http.put(this.url, fd);
   }
 
   getPostByCommunityId(id) {

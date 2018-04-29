@@ -26,40 +26,40 @@ import { Community_Class } from '../settings/community_class';
   templateUrl: 'viewuser.html',
 })
 export class ViewuserPage {
-  segme:string="events";
+  segme: string = "events";
   arrUpc: Event_Comm_Rsvp[] = [];
   arrPast: Event_Comm_Rsvp[] = [];
   arrCommu: Community_Class[] = [];
-  
-  followingcount:number;
-  followercount:number;
-  followers:follower_class[]=[];
-  followings:follower_class[]=[];
+
+  followingcount: number;
+  followercount: number;
+  followers: follower_class[] = [];
+  followings: follower_class[] = [];
   ed: any = "";
   u: user_class[] = [];
   eid: string = "";
   uid: string = "";
-  img:string="";
+  img: string = "";
   pet: string = "kittens";
   isAndroid: boolean = false;
   constructor(public _dataEvent: EventDbProvider,
-    public _DataCommu: CommunityMemberDbProvider,public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+    public _DataCommu: CommunityMemberDbProvider, public data: LoginproProvider, public load: LoadingController, public storage: Storage, platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
-user_id:string="";
-us_id:string="";
-iffo:boolean;
-ifunfollo:boolean;
+  user_id: string = "";
+  us_id: string = "";
+  iffo: boolean;
+  ifunfollo: boolean;
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewuserPage');
-    this.storage.get('viewid').then((val)=>{
-      this.uid=val;
-      this.user_id=val;
+    this.storage.get('viewid').then((val) => {
+      this.uid = val;
+      this.user_id = val;
       let l1 = this.load.create({
         content: "Loading ..."
       });
       l1.present();
-      
+
 
       this.storage.get('viewid').then((val) => {
         this.uid = val;
@@ -71,11 +71,11 @@ ifunfollo:boolean;
             alert(err);
           },
           function () {
-  
+
           }
         );
       });
-  
+
       this.storage.get('viewid').then((val) => {
         this.uid = val;
         this._dataEvent.getPastEventReg(this.uid).subscribe(
@@ -86,11 +86,11 @@ ifunfollo:boolean;
             alert(err);
           },
           function () {
-  
+
           }
         );
       });
-  
+
       this.storage.get('viewid').then((val) => {
         this.uid = val;
         this._DataCommu.getcommunitiesofuser(this.uid).subscribe(
@@ -101,7 +101,7 @@ ifunfollo:boolean;
             alert(err);
           },
           function () {
-  
+
           }
         );
       });
@@ -109,33 +109,32 @@ ifunfollo:boolean;
 
 
 
-      this.storage.get('uid').then((val)=>
-       {
-            this.us_id=val;
-            this.data.iffollowing(this.user_id,this.us_id).subscribe(
-        
-            (ft)=>{
-          if(ft == "")
-          {
-            this.iffo=false;
-            this.ifunfollo=true;
+      this.storage.get('uid').then((val) => {
+        this.us_id = val;
+        this.data.iffollowing(this.user_id, this.us_id).subscribe(
+
+          (ft) => {
+            console.log(ft);
+            if (ft == "") {
+              this.iffo = true;
+              this.ifunfollo = false;
+            }
+            else {
+
+              this.iffo = false;
+              this.ifunfollo = true;
+            }
           }
-          else
-          {
-            this.iffo=true;
-            this.ifunfollo=false;
-          }
-        }
-      );
-    });
+        );
+      });
 
       this.data.getUser(this.uid).subscribe(
         (dt: user_class[]) => {
-        this.u = dt;
-        this.eid = this.u[0].user_name;
-        this.img=this.u[0].user_pic;
+          this.u = dt;
+          this.eid = this.u[0].user_name;
+          this.img = this.u[0].user_pic;
         },
-        function (e) { 
+        function (e) {
           alert(e);
         },
         function () {
@@ -143,82 +142,73 @@ ifunfollo:boolean;
         }
       );
       this.data.getFollowers(this.uid).subscribe(
-        (ft:any)=>
-        {
-          if(ft!=="")
-          {
-            this.followers=ft;
-            this.followercount=this.followers.length;
+        (ft: any) => {
+          if (ft !== "") {
+            this.followers = ft;
+            this.followercount = this.followers.length;
           }
         },
       );
       this.data.getFollowing(this.uid).subscribe(
-        (fl:any)=>{
-          if(fl!="")
-          {
-            this.followings=fl;
-            this.followingcount=this.followings.length;
+        (fl: any) => {
+          if (fl != "") {
+            this.followings = fl;
+            this.followingcount = this.followings.length;
           }
         }
       );
     })
-    
+
     //this.data.set_url();
-    
-    
+
+
   }
-  id:string="";
-  onFollower()
-  {
+  id: string = "";
+  onFollower() {
     //this.storage.get('uid').then((val)=>{this.id;
-      //alert(this.uid);
-      this.navCtrl.push(FollowerPage,{uid:this.uid});
-   // });
+    //alert(this.uid);
+    this.navCtrl.push(FollowerPage, { uid: this.uid });
+    // });
   }
 
-  onfollow()
-  {
-    this.storage.get('viewid').then((val)=>{
+  onfollow() {
+    this.storage.get('viewid').then((val) => {
 
-      this.user_id=val;
-      this.storage.get('uid').then((val)=>{
-        this.us_id=val;
-        this.data.insertfollower(this.user_id,this.us_id).subscribe(
-          (dt:any[])=>{
+      this.user_id = val;
+      this.storage.get('uid').then((val) => {
+        this.us_id = val;
+        this.data.insertfollower(this.user_id, this.us_id).subscribe(
+          (dt: any[]) => {
             alert("done");
             this.ionViewDidLoad();
           },
-          function(e)
-          {
+          function (e) {
             alert(e);
           }
         );
       });
     });
   }
-  onunfollow()
-  {
-    this.storage.get('viewid').then((val)=>{
+  onunfollow() {
+    this.storage.get('viewid').then((val) => {
 
-      this.user_id=val;
-      this.storage.get('uid').then((val)=>{
-        this.us_id=val;
-        this.data.deletefollower(this.user_id,this.us_id).subscribe(
-          (dt:any[])=>{
+      this.user_id = val;
+      this.storage.get('uid').then((val) => {
+        this.us_id = val;
+        this.data.deletefollower(this.user_id, this.us_id).subscribe(
+          (dt: any[]) => {
             alert("done");
             this.ionViewDidLoad();
           },
-          function(e)
-          {
+          function (e) {
             alert(e);
           }
         );
       });
     });
   }
-  onFollowing()
-  {
-    this.navCtrl.push(FollowingPage,{uid:this.uid});
+  onFollowing() {
+    this.navCtrl.push(FollowingPage, { uid: this.uid });
   }
 
 }

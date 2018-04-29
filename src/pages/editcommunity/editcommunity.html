@@ -7,13 +7,31 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>editcommunity</ion-title>
+    <ion-title>Edit Community</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">
+        <span color="primary" showWhen="ios">
+          {{ 'CANCEL_BUTTON' | translate }}
+        </span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+        <span color="primary" showWhen="ios">
+          {{ 'DONE_BUTTON' | translate }}
+        </span>
+        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
   <form *ngIf="form" [formGroup]="form">
+    <label *ngIf="comm_pic">Old Image:</label>
+    <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{comm_pic}}" *ngIf="comm_pic" alt="Loading">
     <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
     <div class="profile-image-wrapper" (click)="getPicture()">
       <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
@@ -30,14 +48,14 @@
 
     <ion-list>
       <ion-item>
-        <ion-input type="text" [(ngModel)]="comm_name" formControlName="comm_name" placeholder="Community Name" [(ngModel)]="comm_name"></ion-input>
+        <ion-input type="text" formControlName="comm_name" placeholder="Community Name" [(ngModel)]="comm_name"></ion-input>
       </ion-item>
       <div *ngIf="!this.form.controls.comm_name.valid  && this.form.controls.comm_name.dirty">
         <p class="error">Please Enter an Community Name.</p>
       </div>
 
       <ion-item>
-        <ion-input type="text" [(ngModel)]="comm_desc" formControlName="comm_des" placeholder="Community Description" [(ngModel)]="comm_des"></ion-input>
+        <ion-textarea formControlName="comm_des" placeholder="Community Description" [(ngModel)]="comm_des"></ion-textarea>
       </ion-item>
       <div *ngIf="!this.form.controls.comm_des.valid  && this.form.controls.comm_des.dirty">
         <p class="error">Please Enter an Community Description.</p>
@@ -46,8 +64,15 @@
         <p class="error">Please Enter Community Description with minimum length of 10.</p>
       </div>
 
+      <ion-item>
+        <ion-label>Select Community Category:</ion-label>
+        <ion-select formControlName="comm_fk_cat_id" [(ngModel)]="comm_fk_cat_id">
+          <ion-option *ngFor="let item of arrCat" value="{{item.cat_id}}">{{item.cat_name}}</ion-option>
+        </ion-select>
+      </ion-item>
+
     </ion-list>
-    <button ion-button color="danger" [disabled]="!isReadyToSave" (click)="onCreate()" block>Create Community</button>
+   <!--  <button ion-button color="danger" [disabled]="!isReadyToSave" (click)="onUpdate()" block>Update Community</button> -->
   </form>
 
 </ion-content>

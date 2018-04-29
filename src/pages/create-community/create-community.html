@@ -38,7 +38,7 @@
       </div>
 
       <ion-item>
-        <ion-input type="text" formControlName="comm_des" placeholder="Community Description" [(ngModel)]="comm_des"></ion-input>
+        <ion-textarea formControlName="comm_des" placeholder="Community Description" [(ngModel)]="comm_des"></ion-textarea>
       </ion-item>
       <div *ngIf="!this.form.controls.comm_des.valid  && this.form.controls.comm_des.dirty">
         <p class="error">Please Enter an Community Description.</p>
