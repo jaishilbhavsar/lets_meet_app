@@ -1,3 +1,6 @@
+import { MyeventPage } from './../myevent/myevent';
+import { MycommunityPage } from './../mycommunity/mycommunity';
+import { Events_Class } from './../../shared/event_class';
 import { MyApp } from './../../app/app.component';
 import { WelcomePage } from './../welcome/welcome';
 import { FollowerPage } from './../follower/follower';
@@ -34,6 +37,7 @@ import { ViewCommunityPage } from '../view-community/view-community';
 })
 export class UsersPage {
 
+  arrmyevent:Events_Class[]=[];
   followingcount: number;
   followercount: number;
   followers: follower_class[] = [];
@@ -47,9 +51,11 @@ export class UsersPage {
   segme: string = "events";
   isAndroid: boolean = false;
 
+
   arrUpc: Event_Comm_Rsvp[] = [];
   arrPast: Event_Comm_Rsvp[] = [];
   arrCommu: Community_Class[] = [];
+  arrmycommu:Community_Class[]=[];
 
   constructor(public alert: AlertController,
     public menu: MenuController,
@@ -66,7 +72,8 @@ export class UsersPage {
     public navParams: NavParams) {
     this.isAndroid = platform.is('android');
   }
-
+communitycount=0;
+eventcount=0;
   ionViewDidLoad() {
 
     this.storage.get('uid').then((val) => {
@@ -88,6 +95,21 @@ export class UsersPage {
           l1.dismiss();
         }
       );
+
+      this.data.getmycommunity(this.uid).subscribe(
+        (dt:any)=>{
+          this.arrmycommu=dt;
+          this.communitycount=this.arrmycommu.length;
+        }
+      );
+
+      this.data.getmyevent(this.uid).subscribe(
+        (dt:any)=>{
+          this.arrmyevent=dt;
+          this.eventcount=this.arrmyevent.length;
+        }
+      );
+
       this.data.getFollowers(this.uid).subscribe(
         (ft: any) => {
           if (ft !== "") {
@@ -276,6 +298,15 @@ export class UsersPage {
 
   onCLickCommu(id) {
     this.navCtrl.push(ViewCommunityPage, { c_id: id });
+  }
+
+  onMycommunity()
+  {
+    this.navCtrl.push(MycommunityPage);
+  }
+  onMyevent()
+  {
+    this.navCtrl.push(MyeventPage);
   }
 }
 // @Component({

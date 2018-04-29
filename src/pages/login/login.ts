@@ -58,6 +58,11 @@ export class LoginPage {
   eid: string = "jaishilbhavsar@yahoo.in";
   pass: string = "jaishil";
   onClick() {
+    //this.storage.set('uid', "jaishilbhavsar@yahoo.in");
+          /*this.storage.get('uid').then((val) => {
+            console.log(val);
+          });*/
+      //    this.navCtrl.push(MainPage);
     this.data.doLogin(this.eid, this.pass, "user").subscribe(
       (dt) => {
         if (dt == "") {

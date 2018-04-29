@@ -21,8 +21,8 @@
       </ion-avatar>
       <h1>{{eid}}</h1>
     </ion-item>
-    <button ion-button primary *ngIf="iffo" (click)="onfollow()">Follow</button>
-    <button ion-button *ngIf="ifunfollo" (click)="onunfollow()">Following</button>
+    <button ion-button round float="right" *ngIf="iffo" (click)="onfollow()">Follow</button>
+    <button ion-button round  *ngIf="ifunfollo" (click)="onunfollow()">Following</button>
   </ion-list>
 
   <ion-item (click)="onFollower()">

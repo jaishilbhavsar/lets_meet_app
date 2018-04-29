@@ -26,7 +26,7 @@
       <ion-list>
         <ion-item *ngFor="let item of comm_arr">
           <ion-avatar item-start>
-            <img src="{{item.comm_pic}}">
+            <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{item.comm_pic}}">
           </ion-avatar>
           <h3 (click)="onClick(item.comm_id)">{{item.comm_name}} </h3>
         </ion-item>
@@ -37,7 +37,7 @@
       <ion-list>
         <ion-item *ngFor="let item of arr1" (click)="onUser(item.user_id)">
           <ion-avatar item-start>
-            <img src="{{item.user_pic}}">
+            <img src="https://letsmeetbackend.herokuapp.com/images/users/{{item.user_pic}}">
           </ion-avatar>
           <h3>{{item.user_name}}</h3>
         </ion-item>

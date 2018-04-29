@@ -52,6 +52,11 @@ export class ComminityDbTsProvider {
     return this.http.post(this.url + item.comm_id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
 
   }
+  deleteCommunitybyid(id) {
+
+    return this.http.post(this.url + id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+
+  }
   editCommunity(item: Community_Class) {
 
     let body = JSON.stringify(item);
