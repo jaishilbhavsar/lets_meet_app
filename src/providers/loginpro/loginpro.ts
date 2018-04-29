@@ -59,7 +59,7 @@ export class LoginproProvider {
     this.account.token = token;
     console.log(this.account);
     let body = JSON.stringify(this.account);
-    return this.http.post(this.urlsignup, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.post(this.url, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
   /* addUser(eid, uname, pass, image, gender, mobile, myDate) {
     //let header = new Headers({ 'Content-Type': 'application/json' });
