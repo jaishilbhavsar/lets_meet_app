@@ -171,6 +171,14 @@ export class LoginproProvider {
     let body = JSON.stringify(this.follow);
     return this.http.post("http://localhost:3000/deletefollower/", body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
+  getmycommunity(id)
+  {
+    return this.http.get("http://localhost:3000/mycommunity/"+ id);
+  }
+  getmyevent(id)
+  {
+    return this.http.get("http://localhost:3000/myevent/"+ id);
+  }
 
 
 }

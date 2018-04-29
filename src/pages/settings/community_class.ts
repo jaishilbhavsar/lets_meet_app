@@ -7,7 +7,9 @@ export class Community_Class {
         public comm_pic: string,
         public comm_date: DateTime,
         public comm_rating: number,
-        public created_by: string) {
+        public created_by: string,
+        public comm_fk_cat_id:number
+    ) {
 
     }
 }

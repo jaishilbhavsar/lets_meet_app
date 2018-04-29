@@ -1,3 +1,7 @@
+import { EditeventPage } from './../pages/editevent/editevent';
+import { EditcommunityPage } from './../pages/editcommunity/editcommunity';
+import { MyeventPage } from './../pages/myevent/myevent';
+import { MycommunityPage } from './../pages/mycommunity/mycommunity';
 import { SocialSharing } from '@ionic-native/social-sharing';
 //import { ViewuserPage } from './../pages/viewuser/viewuser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -93,7 +97,11 @@ export function provideSettings(storage: Storage) {
     FollowingPage,
     EditPostPage,
     ViewuserPage,
-    ChangePasswordPage
+    ChangePasswordPage,
+    MycommunityPage,
+    MyeventPage,
+    EditcommunityPage,
+    EditeventPage
     // ,
     // ViewPastEventPage
   ],
@@ -127,7 +135,11 @@ export function provideSettings(storage: Storage) {
     FollowingPage,
     EditPostPage,
     ViewuserPage,
-    ChangePasswordPage
+    ChangePasswordPage,
+    MycommunityPage,
+    MyeventPage,
+    EditcommunityPage,
+    EditeventPage
     // ,
     // ViewPastEventPage
   ],
