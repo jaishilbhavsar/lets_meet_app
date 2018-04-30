@@ -25,7 +25,7 @@ import { EventCommunityDbProvider } from "../../providers/event-community-db/eve
 import { ViewPastEventPage } from "../view-past-event/view-past-event";
 import { ViewEventPage } from "../view-event/view-event";
 import { ViewuserPage } from "../viewuser/viewuser";
-import { Community_Class } from '../settings/community_class';
+import { Community_Class, update_rate_only } from '../settings/community_class';
 /**
  * Generated class for the ViewCommunityPage page.
  *
@@ -53,6 +53,7 @@ export class ViewCommunityPage {
   public created_by: string;
   public comm_id: number;
 
+  check_event:string="upComing";
   comm_post_user: Community_Post_User_Class[] = [];
 
   arrMember: Comm_member_class[] = [];
@@ -126,7 +127,7 @@ export class ViewCommunityPage {
           this.comm_des = this.arr[0].comm_des;
           this.comm_pic = this.arr[0].comm_pic;
           this.comm_date = this.arr[0].comm_date;
-          alert(this.comm_rating);
+         // alert(this.comm_rating);
           if (this.user_id == this.arr[0].created_by) {
             this.comm_rating = this.arr[0].comm_rating;
           }
@@ -577,20 +578,16 @@ export class ViewCommunityPage {
 
     );
 
-    let t2 = this.toast.create({
-      duration: 3000,
-      message: "You rated Successfully..."
-    })
-    if (this.comm_id == this.arr[0].comm_id && this.user_id == this.arr[0].created_by) {
-      this._data.editCommunity(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.comm_rating, this.created_by)).subscribe(
-
-        (data) => {
+    let t2=this.toast.create({
+      duration:3000,
+      message:"successfully rated..."
+    });
+    if(this.comm_id==this.arr[0].comm_id && this.user_id==this.arr[0].created_by)
+    {
+      this._data.editRatingOnly(new update_rate_only(this.comm_id,this.comm_rating)).subscribe(
+        (data2:any)=>{
           t2.present();
-        },
-        function (e) {
-          alert(e);
         }
-
       );
     }
   }

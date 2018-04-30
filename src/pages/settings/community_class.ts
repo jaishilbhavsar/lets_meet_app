@@ -23,3 +23,10 @@ export class Update_Community_Class {
 
     }
 }
+
+export class update_rate_only{
+    constructor(public comm_id:number,
+                public comm_rating:number){
+                    
+                }
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import { Category_class } from "../../shared/category_class";
+import { Category_Class } from "../../shared/category_class";
 
 /*
   Generated class for the CategoryDbProvider provider.
