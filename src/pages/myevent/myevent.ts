@@ -1,3 +1,4 @@
+import { ViewPastEventPage } from './../view-past-event/view-past-event';
 import { EditeventPage } from './../editevent/editevent';
 import { EventDbProvider } from './../../providers/event-db/event-db';
 import { ViewEventPage } from './../view-event/view-event';
@@ -30,7 +31,8 @@ export class MyeventPage {
     public navParams: NavParams) {
   }
   uid: string;
-  arr: Events_Class[] = [];
+  arrPast: Events_Class[] = [];
+  arrUp:Events_Class[]=[];
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyeventPage');
     console.log('ionViewDidLoad MycommunityPage');
@@ -41,9 +43,9 @@ export class MyeventPage {
         content: "Loading ..."
       });
       l1.present();
-      this.data.getmyevent(this.uid).subscribe(
+      this.data.getmyUpcomingEvents(this.uid).subscribe(
         (dt: any[]) => {
-          this.arr = dt;
+          this.arrUp = dt;
         },
         function (e) {
           alert(e)
@@ -52,6 +54,27 @@ export class MyeventPage {
           l1.dismiss();
         }
       );
+    }));
+    
+      this.storage.get('uid').then((val => {
+        this.uid = val;
+  
+        let l1 = this.load.create({
+          content: "Loading ..."
+        });
+        l1.present();
+      this.data.getmyPastEvents(this.uid).subscribe(
+        (dt: any[]) => {
+          this.arrPast = dt;
+        },
+        function (e) {
+          alert(e)
+        },
+        function () {
+          l1.dismiss();
+        }
+      );
+      
     }));
   }
   onEdit(id) {
@@ -62,11 +85,22 @@ export class MyeventPage {
     });
     modal.present();
   }
-  showevent(id) {
+  showUpevent(id) {
     this.navCtrl.push(ViewEventPage, { e_id: id });
   }
-  onDelete(id) {
-    this.edata.deleteEvent(this.arr[0]);
+
+  onDeleteUpcoming(id) {
+    this.edata.deleteEvent(this.arrUp[0]);
+    this.ionViewDidLoad();
+  }
+
+  showPastevent(id)
+  {
+    this.navCtrl.push(ViewPastEventPage,{e_id:id});
+  }
+  onDeletePast(id)
+  {
+    this.edata.deleteEvent(this.arrPast[0]);
     this.ionViewDidLoad();
   }
 }

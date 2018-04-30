@@ -15,18 +15,32 @@
 
 <ion-content>
   <ion-card>
-
-      <ion-item *ngFor="let item of arr">
+    <ion-list-header>
+      Upcoming
+    </ion-list-header>
+      <ion-item *ngFor="let item of arrUp">
         <ion-avatar item-start>
           <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
         </ion-avatar>
         <h2>{{item.event_name}}</h2>
         <p>{{item.event_desc}}</p>
         <button ion-button (click)="onEdit(item.event_id)" color="primary" round>Edit</button>
-        <button ion-button (click)="showevent(item.event_id)" color="light" round>View</button>
-        <button ion-button (click)="onDelete(item.event_id)" color="danger" round>Delete</button>
+        <button ion-button (click)="showUpevent(item.event_id)" color="light" round>View</button>
+        <button ion-button (click)="onDeleteUpcoming(item.event_id)" color="danger" round>Delete</button>
+      </ion-item>
+<ion-item></ion-item>
+    <ion-list-header>
+      Past
+    </ion-list-header>
+      <ion-item *ngFor="let item of arrPast">
+        <ion-avatar item-start>
+          <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}">
+        </ion-avatar>
+        <h2>{{item.event_name}}</h2>
+        <p>{{item.event_desc}}</p>
+        <button ion-button (click)="showPastevent(item.event_id)" color="light" round>View</button>
+        <button ion-button (click)="onDeletePast(item.event_id)" color="danger" round>Delete</button>
       </ion-item>
   </ion-card>
 </ion-content>
-
 

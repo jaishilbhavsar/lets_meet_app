@@ -177,6 +177,14 @@ export class LoginproProvider {
   getmyevent(id) {
     return this.http.get("https://letsmeetbackend.herokuapp.com/myevent/" + id);
   }
+  getmyUpcomingEvents(id)
+  {
+    return this.http.get("http://localhost:3000/myupcomingevent/"+id);
+  }
+  getmyPastEvents(id)
+  {
+    return this.http.get("http://localhost:3000/mypastevent/"+id);
+  }
 
 
 }

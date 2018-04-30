@@ -12,6 +12,9 @@ import { FollowingPage } from '../following/following';
 import { CommunityMemberDbProvider } from '../../providers/community-member-db/community-member-db';
 import { Event_Comm_Rsvp } from '../../shared/event_community_rsvp_class';
 import { Community_Class } from '../settings/community_class';
+import { ViewEventPage } from '../view-event/view-event';
+import { ViewPastEventPage } from '../view-past-event/view-past-event';
+import { ViewCommunityPage } from '../view-community/view-community';
 
 /**
  * Generated class for the ViewuserPage page.
@@ -164,6 +167,18 @@ export class ViewuserPage {
 
   }
   id: string = "";
+  onCLickUpcEvent(id) {
+    this.navCtrl.push(ViewEventPage, { e_id: id });
+  }
+
+  onCLickPastEvent(id) {
+    this.navCtrl.push(ViewPastEventPage, { e_id: id });
+  }
+
+  onCLickCommu(id) {
+    this.navCtrl.push(ViewCommunityPage, { c_id: id });
+  }
+
   onFollower() {
     //this.storage.get('uid').then((val)=>{this.id;
     //alert(this.uid);
