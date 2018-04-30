@@ -1,18 +1,14 @@
 webpackJsonp([25],{
 
-<<<<<<< HEAD
-/***/ 361:
-=======
-/***/ 360:
->>>>>>> 90b10f97ac7fa42128c906973a3de57f5019a6c0
+/***/ 377:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FollowerPageModule", function() { return FollowerPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditeventPageModule", function() { return EditeventPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__follower__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__editevent__ = __webpack_require__(135);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var FollowerPageModule = (function () {
-    function FollowerPageModule() {
+var EditeventPageModule = (function () {
+    function EditeventPageModule() {
     }
-    return FollowerPageModule;
+    return EditeventPageModule;
 }());
-FollowerPageModule = __decorate([
+EditeventPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__follower__["a" /* FollowerPage */],
+            __WEBPACK_IMPORTED_MODULE_2__editevent__["a" /* EditeventPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__follower__["a" /* FollowerPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__editevent__["a" /* EditeventPage */]),
         ],
     })
-], FollowerPageModule);
+], EditeventPageModule);
 
-//# sourceMappingURL=follower.module.js.map
+//# sourceMappingURL=editevent.module.js.map
 
 /***/ })
 

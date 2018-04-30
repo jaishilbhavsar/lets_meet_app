@@ -60,7 +60,6 @@ import { FeedbackDbProvider } from '../providers/feedback-db/feedback-db';
 import { StoryDbProvider } from '../providers/story-db/story-db';
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
 import { RatingDbProvider } from '../providers/rating-db/rating-db';
-import { CategoryDbProvider } from '../providers/category-db/category-db';
 
 
 
@@ -100,10 +99,6 @@ export function provideSettings(storage: Storage) {
     FollowingPage,
     EditPostPage,
     ViewuserPage,
-<<<<<<< HEAD
-    ChangePasswordPage ,
-     ViewPastEventPage
-=======
     ChangePasswordPage,
     ViewPastEventPage,
     MycommunityPage,
@@ -112,7 +107,6 @@ export function provideSettings(storage: Storage) {
     EditeventPage
     // ,
     // ViewPastEventPage
->>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
   ],
   imports: [
     BrowserModule,
@@ -145,9 +139,6 @@ export function provideSettings(storage: Storage) {
     EditPostPage,
     ViewuserPage,
     ChangePasswordPage,
-<<<<<<< HEAD
-    ViewPastEventPage
-=======
     ViewPastEventPage,
     MycommunityPage,
     MyeventPage,
@@ -155,7 +146,6 @@ export function provideSettings(storage: Storage) {
     EditeventPage
     // ,
     // ViewPastEventPage
->>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
   ],
   providers: [
     Api,
