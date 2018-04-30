@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, ViewController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { IonicPage, NavController, ViewController, NavParams, LoadingController, ToastController, AlertController, Platform } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { EventDbProvider } from "../../providers/event-db/event-db";
@@ -17,7 +17,12 @@ import { Feedback_Event_User_Class } from "../../shared/feedback_event_user_clas
 import { user_class } from '../login/user_class';
 import { LoginproProvider } from '../../providers/loginpro/loginpro';
 import { Feedback_Class } from "../../shared/feedback_class";
+import { ViewuserPage } from '../viewuser/viewuser';
+import { Events_User_Class } from '../../shared/event_user_class';
+import { Calendar } from '@ionic-native/calendar';
+import { GeolocationProvider } from '../../providers/geolocation/geolocation';
 
+declare var google;
 
 /**
  * Generated class for the ViewPastEventPage page.
@@ -36,7 +41,7 @@ import { Feedback_Class } from "../../shared/feedback_class";
 export class ViewPastEventPage {
 
   viewEvent: string = "event_detail";
-  arr: Events_Class[];
+  arr: Events_User_Class[];
   event_community: Event_Community_Class[];
   e_id: number;
   event_name: string = "";
@@ -49,10 +54,17 @@ export class ViewPastEventPage {
   event_pic: string = "";
   user_id: string = "";
   e_pic: string = "";
+  u_id: string = "";
+  e_date: any;
+  e_Str: string;
+  to_date: any;
 
   comm_id: number;
   comm_name: string = "";
   comm_pic: string = "";
+  day: number;
+  month: number;
+  year: number;
 
   rsvp_id: number[] = [];
   arrRsvp: RSVP_Class;
@@ -73,26 +85,34 @@ export class ViewPastEventPage {
 
   feed_des: string = "";
 
+  /*  @ViewChild("map") mapElement: ElementRef;
+   map: any; */
+  @ViewChild("map") mapElement: ElementRef;
+  map: any;
+
   constructor(public storage: Storage,
     public load: LoadingController,
     public tos: ToastController,
     private socialSharing: SocialSharing,
+    private calendar: Calendar,
     public alerCtrl: AlertController,
     public _dataEvent: EventDbProvider,
     public _dataRSVP: RsvpDbProvider,
     public _dataEventComm: EventCommunityDbProvider,
     public _dataFeedback: FeedbackDbProvider,
     public _dataUser: LoginproProvider,
+    public _geolocation: GeolocationProvider,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public viewCtrl: ViewController) {
+    public viewCtrl: ViewController,
+    platform: Platform) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewEventPage');
     this.e_id = this.navParams.get('e_id');
     this._dataEvent.getEventById(this.e_id).subscribe(
-      (d: Events_Class[]) => {
+      (d: Events_User_Class[]) => {
         this.arr = d;
         this.event_name = this.arr[0].event_name;
         this.event_des = this.arr[0].event_des;
@@ -101,7 +121,18 @@ export class ViewPastEventPage {
         this.event_e_time = this.arr[0].event_e_time;
         this.event_date = this.arr[0].event_date;
         this.event_loc = this.arr[0].event_loc;
-        this.created_by = this.arr[0].fk_user_id;
+        this.created_by = this.arr[0].user_name;
+        this.u_id = this.arr[0].user_id;
+        this.e_date = this.event_date;
+        this.e_Str = new String(this.e_date).toString();
+        //alert(this.e_Str.substr(0, this.e_Str.indexOf('T')));
+        this.e_Str = this.e_Str.substr(0, this.e_Str.indexOf('T'));
+        this.to_date = new Date(this.e_Str);
+
+        //this.geo_code(this.event_loc);
+        this.geo_code(this.event_loc);
+        //alert(this.event_loc);
+
       },
       function (e) {
         alert(e);
@@ -126,27 +157,27 @@ export class ViewPastEventPage {
       }
     )
 
-    this.storage.get('uid').then((val) => {
-      this.user_id = val;
-      this._dataRSVP.checkRSVPOfEvent(this.user_id, this.e_id).subscribe(
-        (data) => {
-          if (data == "") {
-            //alert("baki");
-            this.join_button = true;
-            this.going_button = false;
-          }
-          else {
-            this.join_button = false;
-            this.going_button = true;
-          }
-        },
-        function (e) {
-          alert(e);
-        },
-        function () {
-        }
-      );
-    });
+    /*     this.storage.get('uid').then((val) => {
+          this.user_id = val;
+          this._dataRSVP.checkRSVPOfEvent(this.user_id, this.e_id).subscribe(
+            (data) => {
+              if (data == "") {
+                //alert("baki");
+                this.join_button = true;
+                this.going_button = false;
+              }
+              else {
+                this.join_button = false;
+                this.going_button = true;
+              }
+            },
+            function (e) {
+              alert(e);
+            },
+            function () {
+            }
+          );
+        }); */
 
     this._dataRSVP.countRSVP(this.e_id).subscribe(
       (data: Event_RSVP_User_class[]) => {
@@ -194,7 +225,44 @@ export class ViewPastEventPage {
         );
       }
     );
+
+    /* this.calendar.createCalendar('MyCalendar').then(
+      (msg) => { console.log(msg); },
+      (err) => { console.log(err); }
+    ); */
+
   }
+
+  geo_code(address: string) {
+    console.log("inside geo_code::");
+    this._geolocation.getCurrentPosition(address).subscribe(
+      (data: any) => {
+        this.loadMap(data);
+        console.log("add:" + data);
+      }
+    );
+  }
+
+  loadMap(data: any) {
+    let lat = data["results"][0].geometry.location.lat;
+    let lng = data["results"][0].geometry.location.lng;
+    let latLng = new google.maps.LatLng(lat, lng);
+    console.log("lat:" + lat);
+    let mapOptions = {
+      center: latLng,
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    var marker = new google.maps.Marker({
+      position: latLng,
+      title: this.event_loc,
+      map: this.map,
+      draggable: true
+    });
+  }
+
   changeFlag() {
     if (this.flag1 == true) {
       this.flag1 = false;
@@ -221,6 +289,10 @@ export class ViewPastEventPage {
           t1.present();
           this.join_button = false;
           this.going_button = true;
+          this.calendar.createEvent(this.event_name, this.event_loc, this.event_des, this.to_date, this.to_date).then(
+            (msg) => { console.log(msg); },
+            (err) => { console.log(err); }
+          );
           //his.arrRsvp = data;
           //this.rsvp_id = this.arrRsvp.RSVP_id;
           //alert(this.rsvp_id);
@@ -235,111 +307,6 @@ export class ViewPastEventPage {
     });
   }
 
-  onClickRSVP() {
-    this.storage.get('uid').then((val) => {
-      this.user_id = val;
-      let l1 = this.load.create({
-        content: 'Joining ...'
-      });
-      l1.present();
-      this._dataRSVP.checkRSVPOfEvent(this.user_id, this.e_id).subscribe(
-        (data: any) => {
-          if (data == "") {
-            this.onRSVP();
-          }
-          else {
-            let t1 = this.tos.create({
-              duration: 3000,
-              message: "You're Going ..."
-            });
-            t1.present();
-            this.arrRsvp = data;
-            // this.rsvp_id = this.arrRsvp.RSVP_id;
-            //alert(this.rsvp_id);
-          }
-        },
-        function (e) {
-          alert(e);
-        },
-        function () {
-          l1.dismiss();
-        }
-      );
-    });
-  }
-
-  onRemoveRSVP() {
-
-    this.storage.get('uid').then((val) => {
-      this.user_id = val;
-      let l1 = this.load.create({
-        content: 'Removing ...'
-      });
-      l1.present();
-      let t1 = this.tos.create({
-        duration: 3000,
-        message: "Removed ..."
-      });
-      this._dataRSVP.checkRSVPOfEvent(this.user_id, this.e_id).subscribe(
-        (data: any) => {
-          if (data == "") {
-            alert("nathi");
-          }
-          else {
-            this.arrRsvp = data;
-            //console.log(data);
-            //console.log(this.arrRsvp[0].RSVP_id);
-            this._dataRSVP.deleteRSVP(this.arrRsvp[0].RSVP_id).subscribe(
-              (data: RSVP_Class) => {
-                //alert("thyu");
-                this.join_button = true;
-                this.going_button = false;
-              },
-              function (err) {
-                alert(err);
-              },
-              function () {
-
-              }
-            );
-          }
-        },
-        function (e) {
-          alert(e);
-        },
-        function () {
-          l1.dismiss();
-          t1.present();
-        }
-      );
-    });
-  }
-
-  doConfirm() {
-    let confirm = this.alerCtrl.create({
-      title: 'Not going?',
-      message: "Are you sure you don't want to attend this event?",
-      buttons: [
-        {
-          text: 'Disagree',
-          handler: () => {
-            console.log('Disagree clicked');
-          }
-        },
-        {
-          text: 'Agree',
-          handler: () => {
-            this.onRemoveRSVP();
-          }
-        }
-      ]
-    });
-    confirm.present()
-  }
-
-  onView() {
-    this.navCtrl.push(ViewCommunityPage, { c_id: this.comm_id });
-  }
 
   newFeedback() {
     if (this.feed_des.length > 0) {
@@ -392,6 +359,11 @@ export class ViewPastEventPage {
     this.e_pic = "https://letsmeetbackend.herokuapp.com/public/images/events/" + this.event_pic;
     this.socialSharing.share(this.event_des, this.event_name).
       catch((err) => alert(err));
+  }
+
+  showuser(id) {
+    this.storage.set('viewid', id);
+    this.navCtrl.push(ViewuserPage);
   }
 
 }

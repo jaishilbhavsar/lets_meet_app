@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { Events_Class } from "../../shared/event_class";
+import { Events_Class, Event_update_class } from "../../shared/event_class";
 
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 //import { RSVP_Class } from '../../shared/rsvp_class';
@@ -22,6 +22,7 @@ export class EventDbProvider {
   url3: string = "https://letsmeetbackend.herokuapp.com/eventNotReg/";
   url4: string = "https://letsmeetbackend.herokuapp.com/upcEvnByUser/";
   url5: string = "https://letsmeetbackend.herokuapp.com/pastEvnByUser/";
+  url6: string = 'https://letsmeetbackend.herokuapp.com/updateEventOnly/';
 
   constructor(public http: HttpClient) {
     console.log('Hello EventDbProvider Provider');
@@ -43,9 +44,14 @@ export class EventDbProvider {
     return this.http.post(this.url, fd);
   }
 
-  editEvent(evn: Events_Class) {
-    let body = JSON.stringify(evn);
-    return this.http.put(this.url + evn.event_id, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  editEvent(fd: FormData) {
+    return this.http.put(this.url, fd);
+  }
+
+  updateEventOnly(event: Event_update_class) {
+    console.log(event);
+    let body = JSON.stringify(event);
+    return this.http.put(this.url6, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
   deleteEvent(evn: Events_Class) {

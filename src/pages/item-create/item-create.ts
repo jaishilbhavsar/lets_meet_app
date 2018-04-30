@@ -40,7 +40,7 @@ export class ItemCreatePage {
   created_by: string = "";
   event_pic: string = "";
   community_id: any;
-  event_verify: any = "true";
+  event_verify: any = "false";
 
   selectedFile: File = null;
 
@@ -85,36 +85,9 @@ export class ItemCreatePage {
       function () {
 
       }
-    )
+    );
 
   }
-
-  /* onAdd() {
- 
-     this.storage.get('uid').then((val) => {
-       this.created_by = val;
-       let l1 = this.load.create({
-         content: 'Creating ...'
-       });
-       l1.present();
-       let t1 = this.tos.create({
-         duration: 3000,
-         message: "Added ..."
-       })
-       this._data.addEvent(new Events_Class(this.event_id, this.event_name, this.event_des, this.event_pic, this.event_s_time, this.event_e_time, this.event_date, this.event_loc, this.created_by, this.community_id, 'true')).subscribe(
-         (data: any) => {
-           this.navCtrl.pop();
-           t1.present();
-         },
-         function (e) {
-           alert(e);
-         },
-         function () {
-           l1.dismiss();
-         }
-       );
-     });
-   }*/
 
   getPicture() {
     if (Camera['installed']()) {
@@ -198,7 +171,7 @@ export class ItemCreatePage {
       fd.append("event_loc", this.event_loc);
       fd.append("fk_user_id", this.created_by);
       fd.append("fk_comm_id", this.community_id);
-      fd.append("event_verify", "true");
+      fd.append("event_verify", "false");
 
       this._data.addEvent(fd).subscribe(
         (data: any) => {

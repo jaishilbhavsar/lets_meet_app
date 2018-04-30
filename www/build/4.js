@@ -1,15 +1,25 @@
 webpackJsonp([4],{
 
+<<<<<<< HEAD
 /***/ 370:
+=======
+/***/ 379:
+>>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsPageModule", function() { return TabsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs__ = __webpack_require__(390);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs__ = __webpack_require__(399);
+>>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,15 +54,25 @@ TabsPageModule = __decorate([
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 390:
+=======
+/***/ 399:
+>>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages__ = __webpack_require__(243);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages__ = __webpack_require__(246);
+>>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -68,7 +88,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
+//import { Tab4Root } from "../pages";
 
 //import { Tab6Root } from "../pages";
 var TabsPage = (function () {
@@ -78,8 +98,8 @@ var TabsPage = (function () {
         this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__pages__["c" /* Tab1Root */];
         this.tab2Root = __WEBPACK_IMPORTED_MODULE_3__pages__["d" /* Tab2Root */];
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_3__pages__["e" /* Tab3Root */];
-        this.tab4Root = __WEBPACK_IMPORTED_MODULE_3__pages__["f" /* Tab4Root */];
-        this.tab5Root = __WEBPACK_IMPORTED_MODULE_3__pages__["g" /* Tab5Root */];
+        // tab4Root: any = Tab4Root;
+        this.tab5Root = __WEBPACK_IMPORTED_MODULE_3__pages__["f" /* Tab5Root */];
         //tab6Root: any = Tab6Root;
         this.tab1Title = "Home";
         this.tab2Title = "Stories";
@@ -96,7 +116,11 @@ var TabsPage = (function () {
 }());
 TabsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+<<<<<<< HEAD
         selector: 'page-tabs',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\tabs\tabs.html"*/'<ion-tabs class="tabs-icon-text" >\n\n  <ion-tab [root]="tab1Root"  [tabTitle]="tab1Title" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab4Root" [tabTitle]="tab2Title" tabIcon="aperture"></ion-tab>\n\n  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="search"></ion-tab>\n\n  <ion-tab [root]="tab2Root" [tabTitle]="tab4Title" tabIcon="globe"></ion-tab>\n\n  <ion-tab [root]="tab5Root" [tabTitle]="tab5Title" tabIcon="contact"></ion-tab>\n\n  <!--<ion-tab tabIcon="home" [tabTitle]="tab6Title" [root]="tab6Root" ></ion-tab>-->\n\n</ion-tabs>'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\tabs\tabs.html"*/
+=======
+        selector: 'page-tabs',template:/*ion-inline-start:"C:\jaishil\Lets meet\lets_meet\lets_meet_app\src\pages\tabs\tabs.html"*/'<ion-tabs class="tabs-icon-text" >\n\n  <ion-tab [root]="tab1Root"  [tabTitle]="tab1Title" tabIcon="home"></ion-tab>\n\n <!-- <ion-tab [root]="tab4Root" [tabTitle]="tab2Title" tabIcon="aperture"></ion-tab>-->\n\n  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="search"></ion-tab>\n\n  <ion-tab [root]="tab2Root" [tabTitle]="tab4Title" tabIcon="globe"></ion-tab>\n\n  <ion-tab [root]="tab5Root" [tabTitle]="tab5Title" tabIcon="contact"></ion-tab>\n\n  <!--<ion-tab tabIcon="home" [tabTitle]="tab6Title" [root]="tab6Root" ></ion-tab>-->\n\n</ion-tabs>'/*ion-inline-end:"C:\jaishil\Lets meet\lets_meet\lets_meet_app\src\pages\tabs\tabs.html"*/
+>>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]])
 ], TabsPage);

@@ -34,6 +34,16 @@
     Following
     <ion-badge item-end>{{followingcount}}</ion-badge>
   </ion-item>
+  <ion-item (click)="onMycommunity()">
+    <ion-icon name="people" item-start></ion-icon>
+    My Communities
+    <ion-badge item-end>{{communitycount}}</ion-badge>
+  </ion-item>
+  <ion-item (click)="onMyevent()">
+    <ion-icon name="megaphone" item-start></ion-icon>
+    My Events
+    <ion-badge item-end>{{eventcount}}</ion-badge>
+  </ion-item>
 
 
   <div padding >

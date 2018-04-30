@@ -1,14 +1,18 @@
 webpackJsonp([20],{
 
+<<<<<<< HEAD
 /***/ 359:
+=======
+/***/ 373:
+>>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FollowingPageModule", function() { return FollowingPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyeventPageModule", function() { return MyeventPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__following__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myevent__ = __webpack_require__(252);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +22,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var FollowingPageModule = (function () {
-    function FollowingPageModule() {
+var MyeventPageModule = (function () {
+    function MyeventPageModule() {
     }
-    return FollowingPageModule;
+    return MyeventPageModule;
 }());
-FollowingPageModule = __decorate([
+MyeventPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__following__["a" /* FollowingPage */],
+            __WEBPACK_IMPORTED_MODULE_2__myevent__["a" /* MyeventPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__following__["a" /* FollowingPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__myevent__["a" /* MyeventPage */]),
         ],
     })
-], FollowingPageModule);
+], MyeventPageModule);
 
-//# sourceMappingURL=following.module.js.map
+//# sourceMappingURL=myevent.module.js.map
 
 /***/ })
 

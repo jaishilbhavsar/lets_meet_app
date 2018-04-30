@@ -55,9 +55,9 @@
       <ion-segment-button value="event_detail">
         Details
       </ion-segment-button>
-      <ion-segment-button value="feedback">
+      <!-- <ion-segment-button value="feedback">
         Feedback
-      </ion-segment-button>
+      </ion-segment-button> -->
       <ion-segment-button value="going_cnt">
         {{cnt_rsvp}} are going
       </ion-segment-button>
@@ -95,7 +95,7 @@
 
     </ion-list>
 
-    <ion-list *ngSwitchCase="'feedback'">
+    <!-- <ion-list *ngSwitchCase="'feedback'">
       <ion-item>
         <ion-avatar item-start>
           <img src="https://letsmeetbackend.herokuapp.com/images/users/{{user_pic}}">
@@ -125,9 +125,9 @@
           <!--<button *ngIf="item.user_id==user_id" (click)="updateFeedback(item.feed_id)" ion-button icon-only item-end clear>
             <ion-icon name="create"></ion-icon>
           </button>-->
-        </ion-item>
+       <!--  </ion-item>
       </ion-card>
-    </ion-list>
+    </ion-list> --> 
 
     <ion-list *ngSwitchCase="'going_cnt'">
       <ion-item *ngFor="let item of event_rsvp_user" (click)="showuser(item.user_id)">

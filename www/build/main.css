@@ -33322,6 +33322,114 @@ page-edit-post .profile-image-wrapper .profile-image-placeholder ion-icon {
   margin-top: 10px;
 }
 
+page-editcommunity .profile-image-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
+page-editcommunity .profile-image-wrapper .profile-image {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+page-editcommunity .profile-image-wrapper .profile-image-placeholder {
+  display: inline-block;
+  background-color: #eee;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+page-editcommunity .profile-image-wrapper .profile-image-placeholder ion-icon {
+  font-size: 44px;
+  margin-bottom: -10px;
+  margin-top: 10px;
+}
+
+page-editcommunity .error {
+  color: #df1721;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+page-editevent .profile-image-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
+page-editevent .profile-image-wrapper .profile-image {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+page-editevent .profile-image-wrapper .profile-image-placeholder {
+  display: inline-block;
+  background-color: #eee;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+page-editevent .profile-image-wrapper .profile-image-placeholder ion-icon {
+  font-size: 44px;
+  margin-bottom: -10px;
+  margin-top: 10px;
+}
+
+page-editevent .error {
+  color: #df1721;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+page-editprofile .profile-image-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
+page-editprofile .profile-image-wrapper .profile-image {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+page-editprofile .profile-image-wrapper .profile-image-placeholder {
+  display: inline-block;
+  background-color: #eee;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+page-editprofile .profile-image-wrapper .profile-image-placeholder ion-icon {
+  font-size: 44px;
+  margin-bottom: -10px;
+  margin-top: 10px;
+}
+
+page-editprofile .error {
+  color: #df1721;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
 page-item-create .profile-image-wrapper {
   text-align: center;
   margin: 20px 0;

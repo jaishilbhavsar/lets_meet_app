@@ -1,3 +1,7 @@
+import { EditeventPage } from './../pages/editevent/editevent';
+import { EditcommunityPage } from './../pages/editcommunity/editcommunity';
+import { MyeventPage } from './../pages/myevent/myevent';
+import { MycommunityPage } from './../pages/mycommunity/mycommunity';
 import { SocialSharing } from '@ionic-native/social-sharing';
 //import { ViewuserPage } from './../pages/viewuser/viewuser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -46,6 +50,7 @@ import { EventDbProvider } from '../providers/event-db/event-db';
 import { EventCommunityDbProvider } from '../providers/event-community-db/event-community-db';
 import { RsvpDbProvider } from '../providers/rsvp-db/rsvp-db';
 import { PostDbProvider } from '../providers/post-db/post-db';
+import { CategoryDbProvider } from '../providers/category-db/category-db';
 
 import { CommunityMemberDbProvider } from '../providers/community-member-db/community-member-db';
 import { CommunityCommMemberProvider } from '../providers/community-comm-member/community-comm-member';
@@ -56,6 +61,7 @@ import { StoryDbProvider } from '../providers/story-db/story-db';
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
 import { RatingDbProvider } from '../providers/rating-db/rating-db';
 import { CategoryDbProvider } from '../providers/category-db/category-db';
+
 
 
 // The translate loader needs to know where to load i18n files
@@ -94,8 +100,19 @@ export function provideSettings(storage: Storage) {
     FollowingPage,
     EditPostPage,
     ViewuserPage,
+<<<<<<< HEAD
     ChangePasswordPage ,
      ViewPastEventPage
+=======
+    ChangePasswordPage,
+    ViewPastEventPage,
+    MycommunityPage,
+    MyeventPage,
+    EditcommunityPage,
+    EditeventPage
+    // ,
+    // ViewPastEventPage
+>>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
   ],
   imports: [
     BrowserModule,
@@ -128,7 +145,17 @@ export function provideSettings(storage: Storage) {
     EditPostPage,
     ViewuserPage,
     ChangePasswordPage,
+<<<<<<< HEAD
     ViewPastEventPage
+=======
+    ViewPastEventPage,
+    MycommunityPage,
+    MyeventPage,
+    EditcommunityPage,
+    EditeventPage
+    // ,
+    // ViewPastEventPage
+>>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
   ],
   providers: [
     Api,
