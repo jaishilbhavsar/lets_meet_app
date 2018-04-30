@@ -60,10 +60,7 @@ import { FeedbackDbProvider } from '../providers/feedback-db/feedback-db';
 import { StoryDbProvider } from '../providers/story-db/story-db';
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
 import { RatingDbProvider } from '../providers/rating-db/rating-db';
-<<<<<<< HEAD
 //import { CategoryDbProvider } from '../providers/category-db/category-db';
-=======
->>>>>>> 7470f0e83491969f32d0d17c7f4133e1c6df39e5
 
 
 

@@ -144,7 +144,7 @@ export class EditprofilePage {
     return 'url(' + this.form.controls['profilePic'].value + ')'
   }
 
-  dismiss() {
+  cancel() {
     this.viewCtrl.dismiss();
   }
   done() {

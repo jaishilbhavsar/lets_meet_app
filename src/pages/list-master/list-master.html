@@ -44,7 +44,7 @@
             <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">
           </ion-avatar>
           <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
-          <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>
+          <!-- <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3> -->
           <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:'fullDate'}},{{item.event_s_time}}</p>
           <ion-icon name="add-circle" (click)="onClickRSVP(item.event_id)" item-end color="danger"></ion-icon>
           <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->
@@ -59,7 +59,7 @@
             <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">
           </ion-avatar>
           <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>
-          <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>
+          <!-- <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3> -->
           <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:'fullDate'}},{{item.event_s_time}}</p>
 
           <ion-icon name="checkmark-circle" (click)="onClickRSVP(item.event_id)" item-end color="danger"></ion-icon>

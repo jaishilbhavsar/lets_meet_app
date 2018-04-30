@@ -64,8 +64,18 @@ export class MycommunityPage {
     addModal.present();
     //this.navCtrl.push(EditcommunityPage, { c_id: id });
   }
-  onDelete(id) {
-    this.cprovider.deleteCommunity(this.arr[0]);
+  onDelete(item) {
+    this.cprovider.deleteCommunity(item).subscribe(
+      (data: any) => {
+        this.ionViewDidLoad();
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+
+      }
+    );;
     this.ionViewDidLoad();
   }
 }

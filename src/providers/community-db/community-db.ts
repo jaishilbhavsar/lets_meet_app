@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Community_Class, Update_Community_Class,update_rate_only } from "../../pages/settings/community_class";
+import { Community_Class, Update_Community_Class, update_rate_only } from "../../pages/settings/community_class";
 //import { Community_User_Class } from "../../shared/community_user_class";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import 'rxjs/add/operator/map';
@@ -18,7 +18,7 @@ export class ComminityDbTsProvider {
   url2: string = "https://letsmeetbackend.herokuapp.com/checkMember/";
   url4: string = "https://letsmeetbackend.herokuapp.com/topcommunity/";
   url5: string = 'https://letsmeetbackend.herokuapp.com/updateCommunityOnly';
-  url6:string = 'http://localhost:3000/rating_edit/'
+  url6: string = 'https://letsmeetbackend.herokuapp.com/rating_edit/'
 
   community_member: { fk_user_id: string, fk_comm_id: string } = {
     fk_user_id: '',
@@ -43,7 +43,7 @@ export class ComminityDbTsProvider {
 
   deleteCommunity(item: Community_Class) {
 
-    return this.http.post(this.url + item.comm_id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+    return this.http.delete(this.url + item.comm_id, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
 
   }
   deleteCommunitybyid(id) {
@@ -78,7 +78,7 @@ export class ComminityDbTsProvider {
 
   }
 
-  
+
   editRatingOnly(item: update_rate_only) {
 
     let body = JSON.stringify(item);

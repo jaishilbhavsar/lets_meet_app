@@ -32,7 +32,7 @@ export class MyeventPage {
   }
   uid: string;
   arrPast: Events_Class[] = [];
-  arrUp:Events_Class[]=[];
+  arrUp: Events_Class[] = [];
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyeventPage');
     console.log('ionViewDidLoad MycommunityPage');
@@ -55,14 +55,14 @@ export class MyeventPage {
         }
       );
     }));
-    
-      this.storage.get('uid').then((val => {
-        this.uid = val;
-  
-        let l1 = this.load.create({
-          content: "Loading ..."
-        });
-        l1.present();
+
+    this.storage.get('uid').then((val => {
+      this.uid = val;
+
+      let l1 = this.load.create({
+        content: "Loading ..."
+      });
+      l1.present();
       this.data.getmyPastEvents(this.uid).subscribe(
         (dt: any[]) => {
           this.arrPast = dt;
@@ -74,7 +74,7 @@ export class MyeventPage {
           l1.dismiss();
         }
       );
-      
+
     }));
   }
   onEdit(id) {
@@ -89,18 +89,35 @@ export class MyeventPage {
     this.navCtrl.push(ViewEventPage, { e_id: id });
   }
 
-  onDeleteUpcoming(id) {
-    this.edata.deleteEvent(this.arrUp[0]);
-    this.ionViewDidLoad();
+  onDeleteUpcoming(item) {
+    this.edata.deleteEvent(item).subscribe(
+      (data: any) => {
+        this.ionViewDidLoad();
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+
+      }
+    );
+
   }
 
-  showPastevent(id)
-  {
-    this.navCtrl.push(ViewPastEventPage,{e_id:id});
+  showPastevent(id) {
+    this.navCtrl.push(ViewPastEventPage, { e_id: id });
   }
-  onDeletePast(id)
-  {
-    this.edata.deleteEvent(this.arrPast[0]);
-    this.ionViewDidLoad();
+  onDeletePast(item) {
+    this.edata.deleteEvent(item).subscribe(
+      (data: any) => {
+        this.ionViewDidLoad();
+      },
+      function (err) {
+        alert(err);
+      },
+      function () {
+
+      }
+    );
   }
 }

@@ -23,8 +23,8 @@ export class ListMasterPage {
   event: string = "upcEvents";
   currentItems: Item[];
   u_id: string = "";
-  arr: Event_Community_Class[] = [];
-  arr1: Event_Community_Class[] = [];
+  arr: Events_Class[] = [];
+  arr1: Events_Class[] = [];
   arrRsvp: RSVP_Class;
   //arr1: Events[] = [];
   //join_button: boolean[] = [true];
@@ -56,7 +56,7 @@ export class ListMasterPage {
       this.u_id = val;
       //this._data1.getAllEventsAndCommunities().subscribe(
       this._data.getNotRegisteredEventsofUser(this.u_id).subscribe(
-        (d: Event_Community_Class[]) => {
+        (d: Events_Class[]) => {
           this.arr = d;
           this.arr1 = d;
           console.log(this.arr);
@@ -71,7 +71,7 @@ export class ListMasterPage {
       );
     });
     let l2 = this.load.create({
-      content: 'Registered Events'
+      content: 'Loading Events'
     });
     l2.present();
     this.storage.get('uid').then((val) => {

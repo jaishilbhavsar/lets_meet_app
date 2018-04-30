@@ -1,14 +1,6 @@
 webpackJsonp([6],{
 
-<<<<<<< HEAD
 /***/ 377:
-=======
-<<<<<<< HEAD
-/***/ 377:
-=======
-/***/ 382:
->>>>>>> 7470f0e83491969f32d0d17c7f4133e1c6df39e5
->>>>>>> 27e51fa718e4fb1e28cc3d56bcf99feeab46cee3
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17,15 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__signup__ = __webpack_require__(398);
-=======
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__signup__ = __webpack_require__(398);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__signup__ = __webpack_require__(400);
->>>>>>> 7470f0e83491969f32d0d17c7f4133e1c6df39e5
->>>>>>> 27e51fa718e4fb1e28cc3d56bcf99feeab46cee3
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,15 +44,7 @@ SignupPageModule = __decorate([
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ 398:
-=======
-<<<<<<< HEAD
-/***/ 398:
-=======
-/***/ 400:
->>>>>>> 7470f0e83491969f32d0d17c7f4133e1c6df39e5
->>>>>>> 27e51fa718e4fb1e28cc3d56bcf99feeab46cee3
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77,15 +53,7 @@ SignupPageModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(7);
-<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_date_picker__ = __webpack_require__(140);
-=======
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_date_picker__ = __webpack_require__(140);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_date_picker__ = __webpack_require__(137);
->>>>>>> 7470f0e83491969f32d0d17c7f4133e1c6df39e5
->>>>>>> 27e51fa718e4fb1e28cc3d56bcf99feeab46cee3
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_providers__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_loginpro_loginpro__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__ = __webpack_require__(26);
@@ -206,11 +174,7 @@ __decorate([
 ], SignupPage.prototype, "fileInput", void 0);
 SignupPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-<<<<<<< HEAD
-        selector: 'page-signup',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\signup\signup.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>{{ \'SIGNUP_TITLE\' | translate }}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <form *ngIf="form" [formGroup]="form">\n\n\n\n    <ion-list>\n\n      <ion-item>\n\n        <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n\n        <div class="profile-image-wrapper" (click)="getPicture()">\n\n          <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n\n            <ion-icon name="add"></ion-icon>\n\n            <div>\n\n              {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n\n            </div>\n\n          </div>\n\n          <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n\n        </div>\n\n        <div *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">\n\n          <p class="error">Please Choose an Image.</p>\n\n        </div>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-input type="email" formControlName="eid" [(ngModel)]="eid" placeholder="Enter Email ID"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.eid.valid  && this.form.controls.eid.dirty">\n\n        <p class="error">Please Enter Email ID.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="uname" placeholder="UserName" [(ngModel)]="uname"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.uname.valid  && this.form.controls.uname.dirty">\n\n        <p class="error">Please Enter User Name.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-input type="password" formControlName="pass" placeholder="Enter Password" [(ngModel)]="pass"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.pass.valid  && this.form.controls.pass.dirty">\n\n        <p class="error">Please Enter Password between 6-10.</p>\n\n      </div>\n\n      <div *ngIf="!this.form.controls.pass.minlength  && this.form.controls.pass.dirty">\n\n        <p class="error">Please Enter Password with minimum length of 6.</p>\n\n      </div>\n\n\n\n      <ion-list radio-group formControlName="gender" placeholder="Select Gender" [(ngModel)]="gender">\n\n        <ion-list-header>\n\n          Gender:\n\n        </ion-list-header>\n\n        <ion-item>\n\n          <ion-label>Male</ion-label>\n\n          <ion-radio value="Male"></ion-radio>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-label>Female</ion-label>\n\n          <ion-radio value="Female"></ion-radio>\n\n        </ion-item>\n\n      </ion-list>\n\n      <div *ngIf="!this.form.controls.gender.valid && this.form.controls.gender.dirty ">\n\n        <p class="error">Please select gender.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="mobile" placeholder="Enter Mobile No" minlength="6" maxlength="10" [(ngModel)]="mobile"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.mobile.valid  && this.form.controls.mobile.dirty">\n\n        <p class="error">Please Enter Mobile No.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-label>Birth Date:</ion-label>\n\n        <ion-datetime displayFormat="DD/MMMM/YYYY" pickerFormat="DD MMMM YYYY" formControlName="myDate" [(ngModel)]="myDate"></ion-datetime>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.myDate.valid  && this.form.controls.myDate.dirty">\n\n        <p class="error">Please Enter Birthday.</p>\n\n      </div>\n\n\n\n      <div padding>\n\n        <button ion-button color="meetup" (click)="onClick()" [disabled]="!isReadyToSave" block>{{ \'SIGNUP_BUTTON\' | translate }}</button>\n\n      </div>\n\n\n\n    </ion-list>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\signup\signup.html"*/
-=======
         selector: 'page-signup',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\signup\signup.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>{{ \'SIGNUP_TITLE\' | translate }}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <form *ngIf="form" [formGroup]="form">\n\n\n\n    <ion-list>\n\n      <ion-item>\n\n        <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n\n        <div class="profile-image-wrapper" (click)="getPicture()">\n\n          <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n\n            <ion-icon name="add"></ion-icon>\n\n            <div>\n\n              {{ \'ITEM_CREATE_CHOOSE_IMAGE\' | translate }}\n\n            </div>\n\n          </div>\n\n          <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n\n        </div>\n\n        <div *ngIf="!this.form.controls.profilePic.valid  && this.form.controls.profilePic.dirty">\n\n          <p class="error">Please Choose an Image.</p>\n\n        </div>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-input type="email" formControlName="eid" [(ngModel)]="eid" placeholder="Enter Email ID"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.eid.valid  && this.form.controls.eid.dirty">\n\n        <p class="error">Please Enter Email ID.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="uname" placeholder="UserName" [(ngModel)]="uname"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.uname.valid  && this.form.controls.uname.dirty">\n\n        <p class="error">Please Enter User Name.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-input type="password" formControlName="pass" placeholder="Enter Password" [(ngModel)]="pass"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.pass.valid  && this.form.controls.pass.dirty">\n\n        <p class="error">Please Enter Password between 6-10.</p>\n\n      </div>\n\n      <div *ngIf="!this.form.controls.pass.minlength  && this.form.controls.pass.dirty">\n\n        <p class="error">Please Enter Password with minimum length of 6.</p>\n\n      </div>\n\n\n\n      <ion-list radio-group formControlName="gender" placeholder="Select Gender" [(ngModel)]="gender">\n\n        <ion-list-header>\n\n          Gender:\n\n        </ion-list-header>\n\n        <ion-item>\n\n          <ion-label>Male</ion-label>\n\n          <ion-radio value="Male"></ion-radio>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-label>Female</ion-label>\n\n          <ion-radio value="Female"></ion-radio>\n\n        </ion-item>\n\n      </ion-list>\n\n      <div *ngIf="!this.form.controls.gender.valid && this.form.controls.gender.dirty ">\n\n        <p class="error">Please select gender.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-input type="text" formControlName="mobile" placeholder="Enter Mobile No" minlength="6" maxlength="10" [(ngModel)]="mobile"></ion-input>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.mobile.valid  && this.form.controls.mobile.dirty">\n\n        <p class="error">Please Enter Mobile No.</p>\n\n      </div>\n\n\n\n      <ion-item>\n\n        <ion-label>Birth Date:</ion-label>\n\n        <ion-datetime displayFormat="DD/MMMM/YYYY" pickerFormat="DD MMMM YYYY" formControlName="myDate" [(ngModel)]="myDate"></ion-datetime>\n\n      </ion-item>\n\n      <div *ngIf="!this.form.controls.myDate.valid  && this.form.controls.myDate.dirty">\n\n        <p class="error">Please Enter Birthday.</p>\n\n      </div>\n\n\n\n      <div padding>\n\n        <button ion-button color="meetup" (click)="onClick()" [disabled]="!isReadyToSave" block>{{ \'SIGNUP_BUTTON\' | translate }}</button>\n\n      </div>\n\n\n\n    </ion-list>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\signup\signup.html"*/
->>>>>>> 7470f0e83491969f32d0d17c7f4133e1c6df39e5
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__providers_loginpro_loginpro__["a" /* LoginproProvider */],
         __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],

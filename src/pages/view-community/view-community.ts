@@ -564,9 +564,9 @@ export class ViewCommunityPage {
       message: "Done..."
     })
     this.comm_rating = rt;
-    alert(this.comm_rating);
-    alert(this.comm_id);
-    alert(this.user_id);
+    //alert(this.comm_rating);
+    //alert(this.comm_id);
+    //alert(this.user_id);
     this._rate.addRating(new Rate_Class(null, this.comm_rating, this.comm_id, this.user_id)).subscribe(
 
       (data: any) => {
@@ -592,10 +592,10 @@ export class ViewCommunityPage {
     }
   }
 
-  showuser(id) {
+  /* showuser(id) {
     this.storage.set('viewid', id);
     this.navCtrl.push(ViewuserPage);
-  }
+  } */
 
   onPastEvent(event_id) {
     this.navCtrl.push(ViewPastEventPage, { e_id: event_id });

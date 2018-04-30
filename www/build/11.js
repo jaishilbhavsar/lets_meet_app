@@ -1,14 +1,6 @@
 webpackJsonp([11],{
 
-<<<<<<< HEAD
 /***/ 369:
-=======
-<<<<<<< HEAD
-/***/ 369:
-=======
-/***/ 366:
->>>>>>> 7470f0e83491969f32d0d17c7f4133e1c6df39e5
->>>>>>> 27e51fa718e4fb1e28cc3d56bcf99feeab46cee3
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17,15 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__item_detail__ = __webpack_require__(391);
-=======
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__item_detail__ = __webpack_require__(391);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__item_detail__ = __webpack_require__(390);
->>>>>>> 7470f0e83491969f32d0d17c7f4133e1c6df39e5
->>>>>>> 27e51fa718e4fb1e28cc3d56bcf99feeab46cee3
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,15 +44,7 @@ ItemDetailPageModule = __decorate([
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ 391:
-=======
-<<<<<<< HEAD
-/***/ 391:
-=======
-/***/ 390:
->>>>>>> 7470f0e83491969f32d0d17c7f4133e1c6df39e5
->>>>>>> 27e51fa718e4fb1e28cc3d56bcf99feeab46cee3
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97,11 +73,7 @@ var ItemDetailPage = (function () {
 }());
 ItemDetailPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-<<<<<<< HEAD
-        selector: 'page-item-detail',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\item-detail\item-detail.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>{{ item.name }}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <div class="item-profile" text-center #profilePic [style.background-image]="\'url(\' + item.profilePic + \')\'">\n\n  </div>\n\n\n\n  <div class="item-detail" padding>\n\n    <h2>{{item.name}}</h2>\n\n    <p>{{item.about}}</p>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\item-detail\item-detail.html"*/
-=======
         selector: 'page-item-detail',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\item-detail\item-detail.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>{{ item.name }}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <div class="item-profile" text-center #profilePic [style.background-image]="\'url(\' + item.profilePic + \')\'">\n\n  </div>\n\n\n\n  <div class="item-detail" padding>\n\n    <h2>{{item.name}}</h2>\n\n    <p>{{item.about}}</p>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\item-detail\item-detail.html"*/
->>>>>>> 7470f0e83491969f32d0d17c7f4133e1c6df39e5
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* Items */]])
 ], ItemDetailPage);
