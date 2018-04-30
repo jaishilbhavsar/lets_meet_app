@@ -25,6 +25,7 @@ import { EventCommunityDbProvider } from "../../providers/event-community-db/eve
 import { ViewPastEventPage } from "../view-past-event/view-past-event";
 import { ViewEventPage } from "../view-event/view-event";
 import { ViewuserPage } from "../viewuser/viewuser";
+import { Community_Class } from '../settings/community_class';
 /**
  * Generated class for the ViewCommunityPage page.
  *
@@ -81,11 +82,11 @@ export class ViewCommunityPage {
   public s5: number = 0;
   public sum: number = 0;
 
-  w: any = 0.0;
-  w2: any = 0.0;
-  w3: any = 0.0;
-  w4: any = 0.0;
-  w5: any = 0.0;
+  public w: number = 0;
+  public w2: number = 0;
+  public w3: number = 0;
+  public w4: number = 0;
+  public w5: number = 0;
 
 
 
@@ -125,6 +126,7 @@ export class ViewCommunityPage {
           this.comm_des = this.arr[0].comm_des;
           this.comm_pic = this.arr[0].comm_pic;
           this.comm_date = this.arr[0].comm_date;
+          alert(this.comm_rating);
           if (this.user_id == this.arr[0].created_by) {
             this.comm_rating = this.arr[0].comm_rating;
           }
@@ -236,7 +238,7 @@ export class ViewCommunityPage {
 
           this.s5 = data[0]['COUNT(rate_value)'];
           this.sum += this.s5;
-          this.w =  (this.s1 / this.sum);
+          this.w = (this.s1 / this.sum);
           this.w2 = (this.s2 / this.sum);
           this.w3 = (this.s3 / this.sum);
           this.w4 = (this.s4 / this.sum);
@@ -562,6 +564,8 @@ export class ViewCommunityPage {
     })
     this.comm_rating = rt;
     alert(this.comm_rating);
+    alert(this.comm_id);
+    alert(this.user_id);
     this._rate.addRating(new Rate_Class(null, this.comm_rating, this.comm_id, this.user_id)).subscribe(
 
       (data: any) => {
@@ -573,6 +577,22 @@ export class ViewCommunityPage {
 
     );
 
+    let t2 = this.toast.create({
+      duration: 3000,
+      message: "You rated Successfully..."
+    })
+    if (this.comm_id == this.arr[0].comm_id && this.user_id == this.arr[0].created_by) {
+      this._data.editCommunity(new Community_Class(this.comm_id, this.comm_name, this.comm_des, this.comm_pic, this.comm_date, this.comm_rating, this.created_by)).subscribe(
+
+        (data) => {
+          t2.present();
+        },
+        function (e) {
+          alert(e);
+        }
+
+      );
+    }
   }
 
   showuser(id) {

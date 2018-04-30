@@ -8,7 +8,7 @@
 
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by User"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by User or Community"></ion-searchbar>
 
   <ion-toolbar no-border-top>
     <ion-segment [(ngModel)]="search">
@@ -23,14 +23,35 @@
 
   <div [ngSwitch]="search">
     <ion-list *ngSwitchCase="'community'">
-      <ion-list>
-        <ion-item *ngFor="let item of comm_arr">
-          <ion-avatar item-start>
-            <img src="{{item.comm_pic}}">
-          </ion-avatar>
-          <h3 (click)="onClick(item.comm_id)">{{item.comm_name}} </h3>
-        </ion-item>
-      </ion-list>
+
+      <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="community">
+          <ion-segment-button value="category">
+            Category
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+
+      <div [ngSwitch]="community">
+        <ion-list *ngSwitchCase="'category'">
+          <ion-grid *ngFor="let item of cat_comm1">
+            <ion-row>
+              <ion-col col-4>
+                <h3>{{item.cat_name}}</h3>
+              </ion-col>
+              <ion-col col-8>
+                <h3 (click)="onClick(item.comm_id)">{{item.comm_name}}</h3>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <!-- <ion-item *ngFor="let item of comm_arr">
+            <ion-avatar item-start>
+              <img src="{{item.comm_pic}}">
+            </ion-avatar>
+            <h3 (click)="onClick(item.comm_id)">{{item.comm_name}} </h3>
+          </ion-item>-->
+        </ion-list>
+      </div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'user'">
@@ -63,7 +84,7 @@
 
 
 
-<!--
+  <!--
   <h4>Top Rated Communities</h4>
   <ion-grid>
     <ion-row>
@@ -80,7 +101,7 @@
   </ion-grid>
 
 </ion-content>-->
-<!--  <ion-col>
+  <!--  <ion-col>
         <ion-card>
           <img src="assets/img/huddle1.jpg" class="imgComm" />
           <ion-card-content>
