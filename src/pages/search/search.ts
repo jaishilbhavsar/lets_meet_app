@@ -54,10 +54,8 @@ export class SearchPage {
     this._data1.getAllCommunities().subscribe(
 
       (data: any) => {
-        // alert(data[0].comm_fk_cat_id);
-
         this.comm_arr1 = data;
-        //this.arr1 = data;
+       // this.arr = data;
 
       },
       function (err) {
@@ -68,15 +66,6 @@ export class SearchPage {
         //l1.dismiss();
       }
 
-    );
-
-    this._cat_comm.getAllCommunityByCategory(this.txtsearch).subscribe(
-      (data1: any) => {
-        this.cat_comm = data1;
-      },
-      function (e) {
-        alert(e);
-      }
     );
 
 
@@ -127,9 +116,9 @@ export class SearchPage {
 
     if (this.txtsearch != '') {
 
-      this.arr1 = this.arr.filter((x) => x.user_name.indexOf(this.txtsearch));
-      //   this.arr1 = this.arr.filter((x) => x..startsWith(this.txtsearch));
-      this.cat_comm1 = this.cat_comm.filter((x) => x.comm_name.indexOf(this.txtsearch));
+      this.arr1 = this.arr.filter((x) => x.user_name.toLowerCase().indexOf(this.txtsearch.toLowerCase()));
+        // this.arr1 = this.arr.filter((x) => x.comm_name.startsWith(this.txtsearch));
+     this.comm_arr=this.comm_arr1.filter((x)=>x.comm_name.indexOf(this.txtsearch));
     }
     else {
       this.arr1 = null;

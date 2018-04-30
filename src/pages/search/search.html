@@ -23,46 +23,15 @@
 
   <div [ngSwitch]="search">
     <ion-list *ngSwitchCase="'community'">
-<<<<<<< HEAD
-
-      <ion-toolbar no-border-top>
-        <ion-segment [(ngModel)]="community">
-          <ion-segment-button value="category">
-            Category
-          </ion-segment-button>
-        </ion-segment>
-      </ion-toolbar>
-
-      <div [ngSwitch]="community">
-        <ion-list *ngSwitchCase="'category'">
-          <ion-grid *ngFor="let item of cat_comm1">
-            <ion-row>
-              <ion-col col-4>
-                <h3>{{item.cat_name}}</h3>
-              </ion-col>
-              <ion-col col-8>
-                <h3 (click)="onClick(item.comm_id)">{{item.comm_name}}</h3>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-          <!-- <ion-item *ngFor="let item of comm_arr">
-            <ion-avatar item-start>
-              <img src="{{item.comm_pic}}">
-            </ion-avatar>
-            <h3 (click)="onClick(item.comm_id)">{{item.comm_name}} </h3>
-          </ion-item>-->
-        </ion-list>
-      </div>
-=======
       <ion-list>
         <ion-item *ngFor="let item of comm_arr">
           <ion-avatar item-start>
-            <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{item.comm_pic}}">
+            <img src="{{item.comm_pic}}">
           </ion-avatar>
           <h3 (click)="onClick(item.comm_id)">{{item.comm_name}} </h3>
         </ion-item>
+
       </ion-list>
->>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
     </ion-list>
 
     <ion-list *ngSwitchCase="'user'">
