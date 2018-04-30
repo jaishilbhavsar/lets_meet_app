@@ -33,7 +33,7 @@ export class CreateCommunityPage {
   //comm_date: any = new Date();
   comm_date: any = null;
   created_by: any = '';
-  comm_rating: any = null;
+  comm_rating: any = 1;
   comm_fk_cat_id: string = '3';
   rate: any = 0;
 

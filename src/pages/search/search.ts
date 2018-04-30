@@ -11,7 +11,7 @@ import { ComminityDbTsProvider } from "../../providers/community-db/community-db
 import { ViewCommunityPage } from "../view-community/view-community";
 import { ViewuserPage } from "../viewuser/viewuser";
 import { Storage } from '@ionic/storage/dist/storage';
-import { Category_class } from "../../shared/category_class";
+import { Category_Class } from "../../shared/category_class";
 import { CategoryDbProvider } from "../../providers/category-db/category-db";
 
 @IonicPage()
@@ -30,8 +30,7 @@ export class SearchPage {
   comm_arr: Community_Class[] = [];
   comm_arr1: Community_Class[] = [];
   search: string = "user";
-  cat_comm: Category_class[] = [];
-  cat_comm1: Category_class[] = [];
+
 
   topComm: Community_Class[] = [];
 
@@ -54,10 +53,8 @@ export class SearchPage {
     this._data1.getAllCommunities().subscribe(
 
       (data: any) => {
-        // alert(data[0].comm_fk_cat_id);
-
         this.comm_arr1 = data;
-        //this.arr1 = data;
+        // this.arr = data;
 
       },
       function (err) {
@@ -68,15 +65,6 @@ export class SearchPage {
         //l1.dismiss();
       }
 
-    );
-
-    this._cat_comm.getAllCommunityByCategory(this.txtsearch).subscribe(
-      (data1: any) => {
-        this.cat_comm = data1;
-      },
-      function (e) {
-        alert(e);
-      }
     );
 
 
@@ -127,13 +115,13 @@ export class SearchPage {
 
     if (this.txtsearch != '') {
 
-      this.arr1 = this.arr.filter((x) => x.user_name.indexOf(this.txtsearch));
-      //   this.arr1 = this.arr.filter((x) => x..startsWith(this.txtsearch));
-      this.cat_comm1 = this.cat_comm.filter((x) => x.comm_name.indexOf(this.txtsearch));
+      this.arr1 = this.arr.filter((x) => x.user_name.toLowerCase().indexOf(this.txtsearch.toLowerCase()) > -1);
+      // this.arr1 = this.arr.filter((x) => x.comm_name.startsWith(this.txtsearch));
+      this.comm_arr = this.comm_arr1.filter((x) => x.comm_name.toLowerCase().indexOf(this.txtsearch.toLowerCase()) > -1);
     }
     else {
       this.arr1 = null;
-      this.cat_comm1 = null;
+      this.comm_arr = null;
     }
   }
   onClick(comm_id) {

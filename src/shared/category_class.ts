@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { DateTime } from "ionic-angular/components/datetime/datetime";
 export class Category_class {
     constructor(public cat_id: number,
@@ -12,6 +13,8 @@ export class Category_class {
 
     }
 }
+=======
+>>>>>>> 27e51fa718e4fb1e28cc3d56bcf99feeab46cee3
 export class Category_Class {
     constructor(public cat_id: number,
         public cat_name: string) {
