@@ -120,7 +120,7 @@ export class LoginproProvider {
     //return this.http.get(this.ed);
   }
   // urlmail: string = "https://letsmeetbackend.herokuapp.com/demomail/"
-  urlmail: string = "https://letsmeetbackend.herokuapp.com/demomail";
+  urlmail: string = "http://localhost:3000/demomail";
   sendMail(demo: email_class) {
     let body = JSON.stringify(demo);
     console.log(demo.name);
@@ -177,13 +177,11 @@ export class LoginproProvider {
   getmyevent(id) {
     return this.http.get("https://letsmeetbackend.herokuapp.com/myevent/" + id);
   }
-  getmyUpcomingEvents(id)
-  {
-    return this.http.get("http://localhost:3000/myupcomingevent/"+id);
+  getmyUpcomingEvents(id) {
+    return this.http.get("http://localhost:3000/myupcomingevent/" + id);
   }
-  getmyPastEvents(id)
-  {
-    return this.http.get("http://localhost:3000/mypastevent/"+id);
+  getmyPastEvents(id) {
+    return this.http.get("http://localhost:3000/mypastevent/" + id);
   }
 
 
