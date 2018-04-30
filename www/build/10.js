@@ -1,25 +1,15 @@
 webpackJsonp([10],{
 
-<<<<<<< HEAD
-/***/ 362:
-=======
-/***/ 369:
->>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
+/***/ 371:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListMasterPageModule", function() { return ListMasterPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingsPageModule", function() { return SettingsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__list_master__ = __webpack_require__(382);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__list_master__ = __webpack_require__(391);
->>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings__ = __webpack_require__(397);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -30,59 +20,46 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ListMasterPageModule = (function () {
-    function ListMasterPageModule() {
+var SettingsPageModule = (function () {
+    function SettingsPageModule() {
     }
-    return ListMasterPageModule;
+    return SettingsPageModule;
 }());
-ListMasterPageModule = __decorate([
+SettingsPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */],
+            __WEBPACK_IMPORTED_MODULE_3__settings__["a" /* SettingsPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */]),
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__settings__["a" /* SettingsPage */]),
             __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */]
+            __WEBPACK_IMPORTED_MODULE_3__settings__["a" /* SettingsPage */]
         ]
     })
-], ListMasterPageModule);
+], SettingsPageModule);
 
-//# sourceMappingURL=list-master.module.js.map
+//# sourceMappingURL=settings.module.js.map
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ 382:
-=======
-/***/ 391:
->>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
+/***/ 397:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListMasterPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_event_db_event_db__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__view_event_view_event__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_event_community_db_event_community_db__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_rsvp_class__ = __webpack_require__(135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_rsvp_db_rsvp_db__ = __webpack_require__(69);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_event_db_event_db__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__view_event_view_event__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_event_community_db_event_community_db__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_rsvp_class__ = __webpack_require__(140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_rsvp_db_rsvp_db__ = __webpack_require__(72);
->>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__view_community_view_community__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_community_comm_member_community_comm_member__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_providers__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__create_community_create_community__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_community_member_db_community_member_db__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_storage__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -98,115 +75,115 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//import { Comm_member_class } from "../../shared/comm_member_class";
+//import { Community_comm_member } from "../../shared/community_comm_member_class";
 
 
 
-var ListMasterPage = (function () {
-    function ListMasterPage(storage, tos, _data, _data1, _dataRSVP, load, navCtrl, items, modalCtrl) {
-        this.storage = storage;
-        this.tos = tos;
-        this._data = _data;
-        this._data1 = _data1;
-        this._dataRSVP = _dataRSVP;
-        this.load = load;
+
+
+/**
+ * The Settings page is a simple form that syncs with a Settings provider
+ * to enable the user to customize settings for the app.
+ *
+ */
+var SettingsPage = SettingsPage_1 = (function () {
+    function SettingsPage(navCtrl, settings, formBuilder, navParams, translate, _data, load, toast, comm_member, storage, community_comm_member) {
         this.navCtrl = navCtrl;
-        this.items = items;
-        this.modalCtrl = modalCtrl;
-        this.event = "upcEvents";
-        this.u_id = "";
+        this.settings = settings;
+        this.formBuilder = formBuilder;
+        this.navParams = navParams;
+        this.translate = translate;
+        this._data = _data;
+        this.load = load;
+        this.toast = toast;
+        this.comm_member = comm_member;
+        this.storage = storage;
+        this.community_comm_member = community_comm_member;
         this.arr = [];
         this.arr1 = [];
-        //arr1: Events[] = [];
-        //join_button: boolean[] = [true];
-        //going_button: boolean[] = [false];
         this.user_id = "";
-        this.flag = false;
         this.txtsearch = '';
-        this.reg = [];
+        this.flag = false;
+        this.settingsReady = false;
+        this.profileSettings = {
+            page: 'profile',
+            pageTitleKey: 'SETTINGS_PAGE_PROFILE'
+        };
+        this.page = 'main';
+        this.pageTitleKey = 'SETTINGS_TITLE';
+        this.subSettings = SettingsPage_1;
     }
-    ListMasterPage.prototype.ionViewDidLoad = function () {
+    SettingsPage.prototype.addCommunity = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__create_community_create_community__["a" /* CreateCommunityPage */]);
+    };
+    SettingsPage.prototype._buildForm = function () {
         var _this = this;
+        var group = {
+            option1: [this.options.option1],
+            option2: [this.options.option2],
+            option3: [this.options.option3]
+        };
+        switch (this.page) {
+            case 'main':
+                break;
+            case 'profile':
+                group = {
+                    option4: [this.options.option4]
+                };
+                break;
+        }
+        this.form = this.formBuilder.group(group);
+        // Watch the form for changes, and
+        this.form.valueChanges.subscribe(function (v) {
+            _this.settings.merge(_this.form.value);
+        });
+    };
+    SettingsPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        // Build an empty form for the template to render
+        this.form = this.formBuilder.group({});
         var l1 = this.load.create({
-            content: 'Loading Events'
+            content: "Loading..."
         });
         l1.present();
-        this.storage.get('uid').then(function (val) {
-            _this.u_id = val;
-            //this._data1.getAllEventsAndCommunities().subscribe(
-            _this._data.getNotRegisteredEventsofUser(_this.u_id).subscribe(function (d) {
-                _this.arr = d;
-                _this.arr1 = d;
-                console.log(_this.arr);
-                console.log(_this.arr[0].event_pic);
-            }, function (e) {
-                alert(e);
-            }, function () {
-                l1.dismiss();
-            });
-        });
-        var l2 = this.load.create({
-            content: 'Registered Events'
-        });
-        l2.present();
-        this.storage.get('uid').then(function (val) {
-            _this.u_id = val;
-            _this._data.getRegisteredEventsofUser(_this.u_id).subscribe(function (data) {
-                _this.reg = data;
-                console.log(_this.reg);
-            }, function (err) {
-                alert(err);
-            }, function () {
-                l2.dismiss();
-            });
+        this._data.getAllCommunities().subscribe(function (data) {
+            _this.arr = data;
+            _this.arr1 = data;
+        }, function (err) {
+            alert(err);
+        }, function () {
+            l1.dismiss();
         });
     };
-    ListMasterPage.prototype.ionViewDidEnter = function () {
-        this.ionViewDidLoad();
-    };
-    /**
-     * Prompt the user to add a new item. This shows our ItemCreatePage in a
-     * modal and then adds the new item to our data source if the user created one.
-     */
-    ListMasterPage.prototype.addItem = function () {
+    SettingsPage.prototype.ionViewWillEnter = function () {
         var _this = this;
-        var addModal = this.modalCtrl.create('ItemCreatePage');
-        addModal.onDidDismiss(function (item) {
-            _this.ionViewDidLoad();
+        // Build an empty form for the template to render
+        this.form = this.formBuilder.group({});
+        this.page = this.navParams.get('page') || this.page;
+        this.pageTitleKey = this.navParams.get('pageTitleKey') || this.pageTitleKey;
+        this.translate.get(this.pageTitleKey).subscribe(function (res) {
+            _this.pageTitle = res;
         });
-        addModal.present();
-        //this.navCtrl.push(CreateEventPage);
+        this.settings.load().then(function () {
+            _this.settingsReady = true;
+            _this.options = _this.settings.allSettings;
+            _this._buildForm();
+        });
     };
-    ListMasterPage.prototype.onClick = function (event_id) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__view_event_view_event__["a" /* ViewEventPage */], { e_id: event_id });
-        //this.navCtrl.push(ViewEventPage);
-        // this.navCtrl.push('view-past-event', { e_id: event_id });
-        // this.storage.set('evn_id', event_id);
+    SettingsPage.prototype.ngOnChanges = function () {
+        console.log('Ng All Changes');
     };
-    ListMasterPage.prototype.onRSVP = function (event_id) {
+    SettingsPage.prototype.onSearch = function () {
         var _this = this;
-        this.storage.get('uid').then(function (val) {
-            _this.user_id = val;
-            var l1 = _this.load.create({
-                content: 'Joining ...'
-            });
-            l1.present();
-            var t1 = _this.tos.create({
-                duration: 3000,
-                message: "Joined ..."
-            });
-            _this._dataRSVP.addRSVP(new __WEBPACK_IMPORTED_MODULE_7__shared_rsvp_class__["a" /* RSVP_Class */](null, _this.user_id, event_id)).subscribe(function (data) {
-                _this.ionViewDidLoad();
-                //this.join_button = false;
-                //this.going_button = true;
-            }, function (e) {
-                alert(e);
-            }, function () {
-                l1.dismiss();
-                t1.present();
-            });
-        });
+        if (this.txtsearch != '') {
+            this.arr = this.arr.filter(function (x) { return x.comm_name.startsWith(_this.txtsearch); });
+        }
+        else {
+            this.arr = this.arr1;
+        }
     };
-    ListMasterPage.prototype.onSearchIcon = function () {
+    SettingsPage.prototype.onSearchIcon = function () {
         if (this.flag == true) {
             this.flag = false;
         }
@@ -214,124 +191,30 @@ var ListMasterPage = (function () {
             this.flag = true;
         }
     };
-    ListMasterPage.prototype.getItems = function (ev) {
-        this.arr = this.arr1;
-        var val = ev.target.value;
-        if (val && val.trim() != '') {
-            this.arr = this.arr.filter(function (x) {
-                return x.event_name.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) > -1;
-            });
-        }
+    SettingsPage.prototype.onView = function (comm_id) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__view_community_view_community__["a" /* ViewCommunityPage */], { c_id: comm_id });
     };
-    ListMasterPage.prototype.onClickRSVP = function (evn_id) {
-        var _this = this;
-        this.storage.get('uid').then(function (val) {
-            _this.user_id = val;
-            var l1 = _this.load.create({
-                content: 'Joining ...'
-            });
-            l1.present();
-            _this._dataRSVP.checkRSVPOfEvent(_this.u_id, evn_id).subscribe(function (data) {
-                if (data == "") {
-                    _this.onRSVP(evn_id);
-                    //console.log("hello");
-                    //console.log(data);
-                }
-                else {
-                    var t1 = _this.tos.create({
-                        duration: 3000,
-                        message: "You're already Going ...",
-                        position: 'top'
-                    });
-                    t1.present();
-                }
-            }, function (e) {
-                alert(e);
-            }, function () {
-                l1.dismiss();
-            });
-        });
-    };
-    // doInfinite(infiniteScroll) {
-    //   console.log('Begin async operation');
-    //   setTimeout(() => {
-    //     for (let i = 0; i < 30; i++) {
-    //       this.items.push(this.items.length);
-    //     }
-    //     console.log('Async operation has ended');
-    //     infiniteScroll.complete();
-    //   }, 500);
-    // }
-    ListMasterPage.prototype.doRefresh = function (refresher) {
-        console.log('Begin async operation', refresher);
-        setTimeout(function () {
-            console.log('Async operation has ended');
-            refresher.complete();
-        }, 2000);
-    };
-    return ListMasterPage;
+    return SettingsPage;
 }());
-ListMasterPage = __decorate([
+SettingsPage = SettingsPage_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-<<<<<<< HEAD
-        selector: 'page-list-master',template:/*ion-inline-start:"E:\final\lets_meet_app\src\pages\list-master\list-master.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <!--<ion-title>{{ \'LIST_MASTER_TITLE\' | translate }}</ion-title>-->\n\n    <ion-title>Events</ion-title>\n\n    <ion-buttons start>\n\n      <button (click)="onSearchIcon()" ion-button icon-only>\n\n        <ion-icon name=\'search\'></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="addItem()">\n\n        <ion-icon name="add"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-segment [(ngModel)]="event">\n\n      <ion-segment-button value="upcEvents">\n\n        Upcomig\n\n      </ion-segment-button>\n\n      <ion-segment-button value="rgEvents">\n\n        Registered\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </ion-toolbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n\n\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n\n    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">\n\n    </ion-refresher-content>\n\n  </ion-refresher>\n\n\n\n  <ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>\n\n  <div [ngSwitch]="event">\n\n    <ion-list *ngSwitchCase="\'upcEvents\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of arr" class="text-wrap">\n\n          <ion-avatar item-start>\n\n            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">\n\n          </ion-avatar>\n\n          <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>\n\n          <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>\n\n          <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:\'fullDate\'}},{{item.event_s_time}}</p>\n\n          <ion-icon name="add-circle" (click)="onClickRSVP(item.event_id)" item-end color="danger"></ion-icon>\n\n          <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'rgEvents\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of reg" class="text-wrap">\n\n          <ion-avatar item-start>\n\n            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">\n\n          </ion-avatar>\n\n          <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>\n\n          <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>\n\n          <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:\'fullDate\'}},{{item.event_s_time}}</p>\n\n\n\n          <ion-icon name="checkmark-circle" (click)="onClickRSVP(item.event_id)" item-end color="danger"></ion-icon>\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-list>\n\n  </div>\n\n  <!--<ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>\n\n  <ion-list>\n\n    <ion-item *ngFor="let item of arr" class="text-wrap">\n\n      <ion-avatar item-start>\n\n        <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">\n\n      </ion-avatar>\n\n      <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>\n\n      <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>\n\n      <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:\'fullDate\'}},{{item.event_s_time}}</p>\n\n      <button ion-button (click)="onClickRSVP(item.event_id)" color="danger" clear item-end>Join Event</button>-->\n\n  <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->\n\n  <!--</ion-item>\n\n  </ion-list>-->\n\n\n\n  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n\n    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">\n\n    </ion-infinite-scroll-content>\n\n  </ion-infinite-scroll> -->\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\final\lets_meet_app\src\pages\list-master\list-master.html"*/
-=======
-        selector: 'page-list-master',template:/*ion-inline-start:"C:\jaishil\Lets meet\lets_meet\lets_meet_app\src\pages\list-master\list-master.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <!--<ion-title>{{ \'LIST_MASTER_TITLE\' | translate }}</ion-title>-->\n\n    <ion-title>Events</ion-title>\n\n    <ion-buttons start>\n\n      <button (click)="onSearchIcon()" ion-button icon-only>\n\n        <ion-icon name=\'search\'></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="addItem()">\n\n        <ion-icon name="add"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-segment [(ngModel)]="event">\n\n      <ion-segment-button value="upcEvents">\n\n        Upcomig\n\n      </ion-segment-button>\n\n      <ion-segment-button value="rgEvents">\n\n        Registered\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </ion-toolbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n\n\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n\n    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">\n\n    </ion-refresher-content>\n\n  </ion-refresher>\n\n\n\n  <ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>\n\n  <div [ngSwitch]="event">\n\n    <ion-list *ngSwitchCase="\'upcEvents\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of arr" class="text-wrap">\n\n          <ion-avatar item-start>\n\n            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">\n\n          </ion-avatar>\n\n          <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>\n\n          <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>\n\n          <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:\'fullDate\'}},{{item.event_s_time}}</p>\n\n          <ion-icon name="add-circle" (click)="onClickRSVP(item.event_id)" item-end color="danger"></ion-icon>\n\n          <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'rgEvents\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of reg" class="text-wrap">\n\n          <ion-avatar item-start>\n\n            <img src="https://letsmeetbackend.herokuapp.com/images/events/{{item.event_pic}}" (click)="onClick(item.event_id)">\n\n          </ion-avatar>\n\n          <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>\n\n          <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>\n\n          <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:\'fullDate\'}},{{item.event_s_time}}</p>\n\n\n\n          <ion-icon name="checkmark-circle" (click)="onClickRSVP(item.event_id)" item-end color="danger"></ion-icon>\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-list>\n\n  </div>\n\n  <!--<ion-searchbar *ngIf="flag" (ionInput)="getItems($event)"></ion-searchbar>\n\n  <ion-list>\n\n    <ion-item *ngFor="let item of arr" class="text-wrap">\n\n      <ion-avatar item-start>\n\n        <img src="{{item.event_pic}}" (click)="onClick(item.event_id)">\n\n      </ion-avatar>\n\n      <h2 class="text-wrap" (click)="onClick(item.event_id)">{{item.event_name}}</h2>\n\n      <h3 class="text-wrap" (click)="onClick(item.event_id)">{{item.comm_name}}</h3>\n\n      <p class="text-wrap" (click)="onClick(item.event_id)">{{item.event_date | date:\'fullDate\'}},{{item.event_s_time}}</p>\n\n      <button ion-button (click)="onClickRSVP(item.event_id)" color="danger" clear item-end>Join Event</button>-->\n\n  <!--<button ion-button (click)="onRemoveRSVP(item.event_id)" *ngIf="going_button[i]" clear item-end>Going</button>-->\n\n  <!--</ion-item>\n\n  </ion-list>-->\n\n\n\n  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n\n    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">\n\n    </ion-infinite-scroll-content>\n\n  </ion-infinite-scroll> -->\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\jaishil\Lets meet\lets_meet\lets_meet_app\src\pages\list-master\list-master.html"*/
->>>>>>> 41551c0d1547f8a58104539fbe1a3ae26e0e0df7
+        selector: 'page-settings',template:/*ion-inline-start:"F:\Let's Meet\lets_meet_app\src\pages\settings\settings.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="signcolor">\n\n    <ion-title>Communities</ion-title>\n\n    <ion-buttons start>\n\n      <button (click)="onSearchIcon()" ion-button icon-only>\n\n        <ion-icon name=\'search\'></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="addCommunity()">\n\n        <ion-icon name="add"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-searchbar *ngIf="flag" [(ngModel)]="txtsearch" (keyup)="onSearch()" placeholder="Search by community"></ion-searchbar>\n\n  <ion-card *ngFor="let item of arr ">\n\n    <!--  <img src="assets/img/cjpg.jpg"/>-->\n\n    \n\n    <img src="https://letsmeetbackend.herokuapp.com/images/communities/{{item.comm_pic}}" (click)="onView(item.comm_id)" height="120" width="100" />\n\n    <ion-row>\n\n      <ion-col col-12>\n\n        <ion-card-content >\n\n          <ion-card-title (click)="onView(item.comm_id)">\n\n            <b>{{item.comm_name}}</b>\n\n          \n\n        </ion-card-title>\n\n           <b> Created by : </b> <h4>{{item.user_name}}</h4>\n\n          \n\n        </ion-card-content>\n\n      </ion-col>\n\n   <!-- <ion-col col-4>\n\n        \n\n        <button ion-button (click)="onJoin(item.comm_id)" color="danger" small align="center">Join Now</button>\n\n\n\n      </ion-col>-->\n\n    </ion-row>\n\n  </ion-card>\n\n\n\n  <!--  <ion-card>\n\n        \n\n            <img src="assets/img/cjpg.jpg" />\n\n        \n\n            <ion-card-content>\n\n              <ion-card-title>\n\n                Community 1\n\n              </ion-card-title>\n\n              \n\n            </ion-card-content>\n\n        \n\n            <ion-item>\n\n              <ion-icon name=\'people\' item-start style="color: #d03e84"></ion-icon>\n\n              Group Members\n\n              <ion-badge item-end>9</ion-badge>\n\n            </ion-item>\n\n\n\n            <button ion-button block >Join Now</button>\n\n        \n\n          </ion-card>-->\n\n  <!--<ion-item>\n\n              <ion-icon name=\'logo-twitter\' item-start style="color: #55acee"></ion-icon>\n\n              Followers\n\n              <ion-badge item-end>260k</ion-badge>\n\n            </ion-item>-->\n\n\n\n\n\n\n\n</ion-content>'/*ion-inline-end:"F:\Let's Meet\lets_meet_app\src\pages\settings\settings.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_4__providers_event_db_event_db__["a" /* EventDbProvider */],
-        __WEBPACK_IMPORTED_MODULE_6__providers_event_community_db_event_community_db__["a" /* EventCommunityDbProvider */],
-        __WEBPACK_IMPORTED_MODULE_8__providers_rsvp_db_rsvp_db__["a" /* RsvpDbProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_3__providers_providers__["b" /* Items */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */]])
-], ListMasterPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_7__providers_providers__["c" /* Settings */],
+        __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
+        __WEBPACK_IMPORTED_MODULE_4__providers_community_db_community_db__["a" /* ComminityDbTsProvider */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_9__providers_community_member_db_community_member_db__["a" /* CommunityMemberDbProvider */],
+        __WEBPACK_IMPORTED_MODULE_10__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_6__providers_community_comm_member_community_comm_member__["a" /* CommunityCommMemberProvider */]])
+], SettingsPage);
 
-/**
- * Delete an item from the list of items.
- */
-/*deleteItem(item) {
-  this.items.delete(item);
-}*/
-/**
- * Navigate to the detail page for this item.
- */
-/* openItem(item: Item) {
-   this.navCtrl.push('ItemDetailPage', {
-     item: item
-   });
- }*/
-/*
-onRemoveRSVP(event_id) {
- this.storage.get('uid').then((val) => {
-   this.user_id = val;
-   let l1 = this.load.create({
-     content: 'Removing ...'
-   });
-   l1.present();
-   let t1 = this.tos.create({
-     duration: 3000,
-     message: "Removed ..."
-   })
-   this._dataRSVP.deleteRSVP(new RSVP_Class(null, this.user_id, event_id)).subscribe(
-     (data: any) => {
-       t1.present();
-     },
-     function (e) {
-       alert(e);
-     },
-     function () {
-       l1.dismiss();
-     }
-   );
- });
-}
-
-*/
-//# sourceMappingURL=list-master.js.map
+var SettingsPage_1;
+//# sourceMappingURL=settings.js.map
 
 /***/ })
 
